@@ -173,58 +173,9 @@ angular.module('myMod').config(function ($provide) {
 In general, these options can be applied to any generator, though they only affect generators that produce scripts.
 
 ### CoffeeScript
-For generators that output scripts, the `--coffee` option will output CoffeeScript instead of JavaScript.
-
-For example:
-```bash
-yo angular:controller user --coffee
-```
-
-Produces `app/scripts/controller/user.coffee`:
-```coffeescript
-angular.module('myMod')
-  .controller 'UserCtrl', ($scope) ->
-```
-
-A project can mix CoffeScript and JavaScript files.
-
-To output JavaScript files, even if CoffeeScript files exist (the default is to output CoffeeScript files if 
-the generator finds any in the project), use `--coffee=false`.
+CoffeScript is not supported for now for maintenance reasons. Coffescript is awesome, but I won't spend the time necessary to maintain different versions for now. May be added in the future.
 
 ### Minification Safe
-By default, generators produce unannotated code. Without annotations, AngularJS's DI system will break when minified. Typically, these annotations that make minification safe are added automatically at build-time, after application files are concatenated, but before they are minified. By providing the `--minsafe` option, the code generated will out-of-the-box be ready for minification. The trade-off is between amount of boilerplate, and build process complexity.
-
-#### Example
-```bash
-yo angular:controller user --minsafe
-```
-
-Produces `app/controller/user.js`:
-```javascript
-angular.module('myMod').controller('UserCtrl', ['$scope', function ($scope) {
-  // ...
-}]);
-```
-
-#### Background
-Unannotated:
-```javascript
-angular.module('myMod').controller('MyCtrl', function ($scope, $http, myService) {
-  // ...
-});
-```
-
-Annotated:
-```javascript
-angular.module('myMod').controller('MyCtrl',
-  ['$scope', '$http', 'myService', function ($scope, $http, myService) {
-
-    // ...
-  }]);
-```
-
-The annotations are important because minified code will rename variables, making it impossible for AngularJS to infer module names based solely on function parameters.
-
 The recommended build process uses `ngmin`, a tool that automatically adds these annotations. However, if you'd rather not use `ngmin`, you have to add these annotations manually yourself.
 
 ### Add to Index
