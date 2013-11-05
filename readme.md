@@ -1,5 +1,6 @@
 # AngularJS generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.png?branch=master)](http://travis-ci.org/yeoman/generator-angular)
-
+Angular generator is AWESOME, but not EXACTLY my cup of tea. 
+Customized to use some nice patterns and best-practices I regularly use.
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
 Based on [angular-seed](https://github.com/angular/angular-seed/)
@@ -8,8 +9,9 @@ Based on [angular-seed](https://github.com/angular/angular-seed/)
 ## Usage
 
 Install `generator-angular`:
+There is not yet registered a NPM package. So for now:
 ```
-npm install -g generator-angular
+npm install -g https://github.com/kennethlynne/generator-angular-sockless.git
 ```
 
 Make a new directory, and `cd` into it:
@@ -17,27 +19,27 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular`, optionally passing an app name:
+Run `yo angular-sockless`, optionally passing an app name:
 ```
-yo angular [app-name]
+yo angular-sockless [app-name]
 ```
 
 ## Generators
 
 Available generators:
 
-* [angular](#app) (aka [angular:app](#app))
-* [angular:controller](#controller)
-* [angular:directive](#directive)
-* [angular:filter](#filter)
-* [angular:route](#route)
-* [angular:service](#service)
-* [angular:provider](#service)
-* [angular:factory](#service)
-* [angular:value](#service)
-* [angular:constant](#service)
-* [angular:decorator] (#decorator)
-* [angular:view](#view)
+* [angular-sockless](#app) (aka [angular-sockless:app](#app))
+* [angular-sockless:controller](#controller)
+* [angular-sockless:directive](#directive)
+* [angular-sockless:filter](#filter)
+* [angular-sockless:route](#route)
+* [angular-sockless:service](#service)
+* [angular-sockless:provider](#service)
+* [angular-sockless:factory](#service)
+* [angular-sockless:value](#service)
+* [angular-sockless:constant](#service)
+* [angular-sockless:decorator] (#decorator)
+* [angular-sockless:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -46,7 +48,7 @@ Sets up a new AngularJS app, generating all the boilerplate you need to get star
 
 Example:
 ```bash
-yo angular
+yo angular-sockless
 ```
 
 ### Route
@@ -54,7 +56,7 @@ Generates a controller and view, and configures a route in `app/scripts/app.js` 
 
 Example:
 ```bash
-yo angular:route myroute
+yo angular-sockless:route myroute
 ```
 
 Produces `app/scripts/controllers/myroute.js`:
@@ -74,7 +76,7 @@ Generates a controller in `app/scripts/controllers`.
 
 Example:
 ```bash
-yo angular:controller user
+yo angular-sockless:controller user
 ```
 
 Produces `app/scripts/controllers/user.js`:
@@ -88,7 +90,7 @@ Generates a directive in `app/scripts/directives`.
 
 Example:
 ```bash
-yo angular:directive myDirective
+yo angular-sockless:directive myDirective
 ```
 
 Produces `app/scripts/directives/myDirective.js`:
@@ -109,7 +111,7 @@ Generates a filter in `app/scripts/filters`.
 
 Example:
 ```bash
-yo angular:filter myFilter
+yo angular-sockless:filter myFilter
 ```
 
 Produces `app/scripts/filters/myFilter.js`:
@@ -126,7 +128,7 @@ Generates an HTML view file in `app/views`.
 
 Example:
 ```bash
-yo angular:view user
+yo angular-sockless:view user
 ```
 
 Produces `app/views/user.html`:
@@ -139,7 +141,7 @@ Generates an AngularJS service.
 
 Example:
 ```bash
-yo angular:service myService
+yo angular-sockless:service myService
 ```
 
 Produces `app/scripts/services/myService.js`:
@@ -156,7 +158,7 @@ Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular:decorator serviceName
+yo angular-sockless:decorator serviceName
 ```
 
 Produces `app/scripts/decorators/serviceNameDecorator.js`:
@@ -187,7 +189,7 @@ By default, new scripts are added to the index.html file. However, this may not 
 
 To skip adding them to the index, pass in the skip-add argument:
 ```bash
-yo angular:service serviceName --skip-add
+yo angular-sockless:service serviceName --skip-add
 ```
 
 ## Bower Components
