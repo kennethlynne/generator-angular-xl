@@ -143,11 +143,11 @@ module.exports = function (grunt) {
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%%= yeoman.app %>/images',
         javascriptsDir: '<%%= yeoman.app %>/scripts',
-        fontsDir: '<%%= yeoman.app %>/styles/fonts',
+        fontsDir: '<%%= yeoman.app %>/fonts',
         importPath: '<%%= yeoman.app %>/bower_components',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
+        httpFontsPath: '/fonts',
         relativeAssets: false
       },
       dist: {},
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
       html: ['<%%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        dirs: ['<%%= yeoman.dist %>']
+        assetsDirs: ['<%%= yeoman.dist %>']
       }
     },
     imagemin: {
@@ -254,7 +254,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            'fonts/*'
           ]
         }, {
           expand: true,
@@ -307,9 +307,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%%= yeoman.dist %>/scripts',
+          cwd: '.tmp/concat/scripts',
           src: '*.js',
-          dest: '<%%= yeoman.dist %>/scripts'
+          dest: '.tmp/concat/scripts'
         }]
       }
     },
@@ -352,9 +352,9 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
+    'ngmin',
     'copy:dist',
     'cdnify',
-    'ngmin',
     'cssmin',
     'uglify',
     'rev',
