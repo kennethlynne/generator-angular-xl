@@ -1,7 +1,7 @@
 {
-  "name": "generator-angular",
+  "name": "generator-angular-sockless",
   "version": "0.6.0-rc.1",
-  "description": "Yeoman generator for AngularJS",
+  "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
     "scaffold",
@@ -10,13 +10,13 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/yeoman/generator-angular",
-  "bugs": "https://github.com/yeoman/generator-angular/issues",
+  "homepage": "https://github.com/kennethlynne/generator-angular-sockless",
+  "bugs": "https://github.com/kennethlynne/generator-angular-sockless/issues",
   "author": "Chrome Developer Relations",
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yeoman/generator-angular.git"
+    "url": "git://github.com/kennethlynne/generator-angular-sockless.git"
   },
   "scripts": {
     "test": "mocha"
