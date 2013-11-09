@@ -11,12 +11,13 @@ describe('Controller: <%= classedName %>Ctrl', function () {
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
             <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
-                $scope: scope
+                $scope: scope,
+                init: 'DATA'
             });
         });
     });
 
     it('should attach a list of awesomeThings to the scope', function () {
-        expect(scope.awesomeThings.length).toBe(3);
+        expect(scope.data).toEqual('DATA');
     });
 });
