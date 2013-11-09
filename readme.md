@@ -31,6 +31,7 @@ Available generators:
 * [angular-sockless](#app) (aka [angular-sockless:app](#app))
 * [angular-sockless:controller](#controller)
 * [angular-sockless:directive](#directive)
+* [angular-sockless:component](#component)
 * [angular-sockless:filter](#filter)
 * [angular-sockless:route](#route)
 * [angular-sockless:service](#service)
@@ -105,7 +106,13 @@ angular.module('myMod').directive('myDirective', function () {
   };
 });
 ```
+### Component
+Generates a directive in `app/scripts/components`.
 
+Example:
+```bash
+yo angular-sockless:component myComponent
+```
 ### Filter
 Generates a filter in `app/scripts/filters`.
 
