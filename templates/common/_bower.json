@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "~1.2.0",
-    "json3": "~3.2.4",<% if (bootstrap) { %>
+    "json3": "~3.2.4",
     "jquery": "~1.10.0",
     "sass-bootstrap": "~3.0.0",
-    <% } %>"es5-shim": "~2.1.0"<% if (resourceModule) { %>,
+    "es5-shim": "~2.1.0"<% if (resourceModule) { %>,
     "angular-resource": "~1.2.0"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "~1.2.0"<% } %><% if (sanitizeModule) { %>,
-    "angular-sanitize": "~1.2.0"<% } %><% if (routeModule) { %>,
-    "angular-route": "~1.2.0"<% } %>
+    "angular-sanitize": "~1.2.0"<% } %>,
+    "angular-route": "~1.2.0"<% if (animateModule) { %>,
+    "angular-animate": "~1.2.0"<% } %>
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",

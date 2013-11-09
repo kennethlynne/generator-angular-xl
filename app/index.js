@@ -45,7 +45,7 @@ var Generator = module.exports = function Generator(args, options) {
   this.on('end', function () {
     this.installDependencies({ skipInstall: this.options['skip-install'] });
 
-    var enabledComponents = [];
+    var enabledComponents = ['angular-route/angular-route.js'];
 
     if (this.resourceModule) {
       enabledComponents.push('angular-resource/angular-resource.js');
@@ -59,8 +59,8 @@ var Generator = module.exports = function Generator(args, options) {
       enabledComponents.push('angular-sanitize/angular-sanitize.js');
     }
 
-    if (this.routeModule) {
-      enabledComponents.push('angular-route/angular-route.js');
+    if (this.animateModule) {
+      enabledComponents.push('angular-animate/angular-animate.js');
     }
 
     this.invoke('karma:app', {
@@ -101,8 +101,8 @@ Generator.prototype.askForModules = function askForModules() {
       name: 'angular-sanitize.js',
       checked: false
     }, {
-      value: 'routeModule',
-      name: 'angular-route.js',
+      value: 'animateModule',
+      name: 'angular-animate.js',
       checked: true
     }]
   }];
@@ -112,22 +112,20 @@ Generator.prototype.askForModules = function askForModules() {
     this.resourceModule = hasMod('resourceModule');
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
-    this.routeModule = hasMod('routeModule');
 
-    var angMods = [];
+    var angMods = ["'ngRoute'"];
 
     if (this.cookiesModule) {
       angMods.push("'ngCookies'");
     }
-
     if (this.resourceModule) {
       angMods.push("'ngResource'");
     }
     if (this.sanitizeModule) {
       angMods.push("'ngSanitize'");
     }
-    if (this.routeModule) {
-      angMods.push("'ngRoute'");
+    if (this.animateModule) {
+      angMods.push("'ngAnimate'");
     }
 
     if (angMods.length) {
@@ -200,8 +198,8 @@ Generator.prototype.extraModules = function extraModules() {
     modules.push('bower_components/angular-sanitize/angular-sanitize.js');
   }
 
-  if (this.routeModule) {
-    modules.push('bower_components/angular-route/angular-route.js');
+  if (this.animateModule) {
+    modules.push('bower_components/angular-animate/angular-animate.js');
   }
 
   if (modules.length) {
