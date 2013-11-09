@@ -81,30 +81,6 @@ var Generator = module.exports = function Generator(args, options) {
 
 util.inherits(Generator, yeoman.generators.Base);
 
-Generator.prototype.askForBootstrap = function askForBootstrap() {
-  var cb = this.async();
-
-  this.prompt([{
-    type: 'confirm',
-    name: 'bootstrap',
-    message: 'Would you like to include Twitter Bootstrap?',
-    default: true
-  }, {
-    type: 'confirm',
-    name: 'compassBootstrap',
-    message: 'Would you like to use the SCSS version of Twitter Bootstrap with the Compass CSS Authoring Framework?',
-    default: true,
-    when: function (props) {
-      return props.bootstrap;
-    }
-  }], function (props) {
-    this.bootstrap = props.bootstrap;
-    this.compassBootstrap = props.compassBootstrap;
-
-    cb();
-  }.bind(this));
-};
-
 Generator.prototype.askForModules = function askForModules() {
   var cb = this.async();
 
@@ -115,7 +91,7 @@ Generator.prototype.askForModules = function askForModules() {
     choices: [{
       value: 'resourceModule',
       name: 'angular-resource.js',
-      checked: true
+      checked: false
     }, {
       value: 'cookiesModule',
       name: 'angular-cookies.js',
@@ -123,7 +99,7 @@ Generator.prototype.askForModules = function askForModules() {
     }, {
       value: 'sanitizeModule',
       name: 'angular-sanitize.js',
-      checked: true
+      checked: false
     }, {
       value: 'routeModule',
       name: 'angular-route.js',
@@ -168,19 +144,12 @@ Generator.prototype.readIndex = function readIndex() {
 
 // Waiting a more flexible solution for #138
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
-  var sass = this.compassBootstrap;
   var files = [];
-  var source = 'styles/' + ( sass ? 's' : '' ) + 'css/';
+  var source = 'styles/scss/';
 
-  if (this.bootstrap && !sass) {
-    files.push('bootstrap.css');
-    this.copy('fonts/glyphicons-halflings-regular.eot', 'app/fonts/glyphicons-halflings-regular.eot');
-    this.copy('fonts/glyphicons-halflings-regular.ttf', 'app/fonts/glyphicons-halflings-regular.ttf');
-    this.copy('fonts/glyphicons-halflings-regular.svg', 'app/fonts/glyphicons-halflings-regular.svg');
-    this.copy('fonts/glyphicons-halflings-regular.woff', 'app/fonts/glyphicons-halflings-regular.woff');
-  }
-
-  files.push('main.' + (sass ? 's' : '') + 'css');
+  files.push('main.scss');
+  files.push('_globals.scss');
+  files.push('_config.scss');
 
   files.forEach(function (file) {
     this.copy(source + file, 'app/styles/' + file);
@@ -198,10 +167,6 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
 };
 
 Generator.prototype.bootstrapJS = function bootstrapJS() {
-  if (!this.bootstrap) {
-    return;  // Skip if disabled.
-  }
-
   // Wire Twitter Bootstrap plugins
   this.indexFile = this.appendScripts(this.indexFile, 'scripts/plugins.js', [
     'bower_components/sass-bootstrap/js/affix.js',
