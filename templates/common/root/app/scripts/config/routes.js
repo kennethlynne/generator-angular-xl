@@ -2,9 +2,12 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function ($routeProvider) {
+
+        var viewDir = 'views/';
+
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
+                templateUrl: viewDir + 'main.html',
                 controller: 'MainCtrl'
             })
             .otherwise({
