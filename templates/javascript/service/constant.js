@@ -1,4 +1,4 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-  .constant('<%= cameledName %>', 42);
+    .constant('<%= cameledName %>', 42);

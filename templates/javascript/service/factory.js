@@ -1,16 +1,15 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-  .factory('<%= cameledName %>', function () {
-    // Service logic
-    // ...
+    .factory('<%= cameledName %>', function () {
 
-    var meaningOfLife = 42;
+        var _privateVar = 42;
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+        var _getMeaningOfLife = function () {
+            return _privateVar;
+        }
+
+        return {
+            getMeaningOfLife: _getMeaningOfLife
+        };
+    });
