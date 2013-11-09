@@ -149,7 +149,9 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
 
   files.push('main.scss');
   files.push('_globals.scss');
-  files.push('_config.scss');
+  files.push('_components.scss');
+  files.push('_views.scss');
+  files.push('_animations.scss');
 
   files.forEach(function (file) {
     this.copy(source + file, 'app/styles/' + file);
