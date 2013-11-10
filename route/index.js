@@ -20,9 +20,12 @@ Generator.prototype.rewriteRoutesJs = function () {
       'scripts/config/routes.js'
     ),
     needle: '.otherwise',
-    splicable: [
-      "  templateUrl: 'views/" + this.name + ".html',",
-      "  controller: '" + this.classedName + "Ctrl'"
+        splicable: [
+        "    templateUrl: viewDir + '" + this.name + ".html',",
+        "    controller: '" + this.classedName + "Ctrl'",
+        "    resolve: {",
+        "        init: prepare('" + this.classedName + "CtrlInit')",
+        "    }"
     ]
   };
 

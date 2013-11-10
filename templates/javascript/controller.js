@@ -10,9 +10,9 @@ angular.module('<%= scriptAppName %>')
             var deferred = $q.defer();
 
             deferred.resolve([
-                'HTML5 Boilerplate',
-                'AngularJS',
-                'Karma'
+                'Awe',
+                'Some',
+                'Sauce'
             ]);
 
             return deferred.promise;

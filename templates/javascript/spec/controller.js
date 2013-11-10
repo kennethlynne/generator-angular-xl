@@ -17,7 +17,28 @@ describe('Controller: <%= classedName %>Ctrl', function () {
         });
     });
 
-    it('should attach a list of awesomeThings to the scope', function () {
+    it('should attach init data to scope', function () {
         expect(scope.data).toEqual('DATA');
     });
+});
+
+describe('Service: <%= classedName %>CtrlInit', function () {
+
+    var <%= classedName %>CtrlInit;
+
+    beforeEach(function () {
+
+        module('<%= scriptAppName %>');
+
+        inject(function (_<%= classedName %>CtrlInit_) {
+            <%= classedName %>CtrlInit = _<%= classedName %>CtrlInit_;
+        });
+
+    });
+
+
+    it('should have a prepare function', function () {
+        expect(typeof <%= classedName %>CtrlInit.prepare).toEqual('function');
+    });
+
 });
