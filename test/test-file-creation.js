@@ -57,7 +57,7 @@ describe('Angular-sockless generator', function () {
                     'Gruntfile.js',
                     'package.json',
                     ['bower.json', /"name":\s+"temp"/],
-                    'app/scripts/modules.js',
+                    'app/scripts/module.js',
                     'app/scripts/config/routes.js',
                     'app/index.html',
                     'app/scripts/controllers/main.js',
