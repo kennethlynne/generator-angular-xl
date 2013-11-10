@@ -95,7 +95,7 @@ Generator.prototype.askForModules = function askForModules() {
     }, {
       value: 'cookiesModule',
       name: 'angular-cookies.js',
-      checked: true
+      checked: false
     }, {
       value: 'sanitizeModule',
       name: 'angular-sanitize.js',
@@ -112,8 +112,9 @@ Generator.prototype.askForModules = function askForModules() {
     this.resourceModule = hasMod('resourceModule');
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
+    this.animateModule = hasMod('animateModule');
 
-    var angMods = ["'ngRoute'"];
+    var angMods = ["'ngRoute'", "'socklessJS.utils.componentFactory'"];
 
     if (this.cookiesModule) {
       angMods.push("'ngCookies'");
