@@ -47,7 +47,11 @@ describe('Angular-sockless generator', function () {
                     'app/404.html',
                     'app/favicon.ico',
                     'app/robots.txt',
-                    'app/styles/main.css',
+                    'app/styles/main.scss',
+                    'app/styles/_animations.scss',
+                    'app/styles/_components.scss',
+                    'app/styles/_globals.scss',
+                    'app/styles/_views.scss',
                     'app/views/main.html',
                     ['.bowerrc', /"directory": "app\/bower_components"/],
                     'Gruntfile.js',
@@ -168,7 +172,7 @@ describe('Angular-sockless generator', function () {
     });
 
     it('should generate a new service', function (done) {
-      serviceTest('service', _.classify, done);
+      serviceTest('service', _.camelize, done);
     });
 
     it('should generate a new factory', function (done) {

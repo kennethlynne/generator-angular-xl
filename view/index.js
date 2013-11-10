@@ -2,7 +2,7 @@
 var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
-
+var _ = require('underscore.string');
 
 var Generator = module.exports = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
