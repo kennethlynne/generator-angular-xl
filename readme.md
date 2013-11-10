@@ -1,4 +1,4 @@
-# AngularJS generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.png?branch=master)](http://travis-ci.org/yeoman/generator-angular)
+# AngularJS generator [![Build Status](https://travis-ci.org/kennethlynne/generator-angular-sockless.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-sockless)
 Angular generator is AWESOME, but not EXACTLY my cup of tea. 
 Customized to use some nice patterns and best-practices I regularly use.
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
