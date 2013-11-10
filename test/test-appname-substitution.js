@@ -36,7 +36,8 @@ describe('Angular generator template mechanism', function () {
     it('should generate the same appName in every file', function (done) {
         var expectedAppName = 'upperCaseBugApp';
         var expected = [
-            'app/scripts/app.js',
+            'app/scripts/module.js',
+            'app/scripts/config/routes.js',
             'app/scripts/controllers/main.js',
             'app/index.html',
             'test/spec/controllers/main.js'
@@ -50,13 +51,15 @@ describe('Angular generator template mechanism', function () {
             helpers.assertFiles(expected);
 
             // read JS Files
-            var app_js = fs.readFileSync('app/scripts/app.js', 'utf8');
+            var module_js = fs.readFileSync('app/scripts/module.js', 'utf8');
+            var route_js = fs.readFileSync('app/scripts/config/routes.js', 'utf8');
             var main_js = fs.readFileSync('app/scripts/controllers/main.js', 'utf8');
             var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
 
             // Test JS Files
             var regex_js = new RegExp('module\\(\'' + expectedAppName + '\'');
-            assert.ok(regex_js.test(app_js), 'app.js template using a wrong appName');
+            assert.ok(regex_js.test(module_js), 'module.js template using a wrong appName');
+            assert.ok(regex_js.test(route_js), 'route.js template using a wrong appName');
             assert.ok(regex_js.test(main_js), 'main.js template using a wrong appName');
             assert.ok(regex_js.test(main_test_js), 'controller spec template using a wrong appName');
 
