@@ -27,7 +27,7 @@ describe('Angular generator template mechanism', function () {
             if (err) {
                 done(err);
             }
-            angular = helpers.createGenerator('angular:app', deps);
+            angular = helpers.createGenerator('angular-sockless:app', deps);
             angular.options['skip-install'] = true;
             done();
         });
@@ -42,8 +42,6 @@ describe('Angular generator template mechanism', function () {
             'test/spec/controllers/main.js'
         ];
         helpers.mockPrompt(angular, {
-          bootstrap: true,
-          compassBoostrap: true,
           modules: []
         });
 
