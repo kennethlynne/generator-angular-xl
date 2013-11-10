@@ -70,6 +70,8 @@ var Generator = module.exports = function Generator(args, options) {
         'skip-install': this.options['skip-install'],
         components: [
           'angular/angular.js',
+          'angular-route/angular-route.js',
+          'angular-component-factory/angular-component-factory.js',
           'angular-mocks/angular-mocks.js'
         ].concat(enabledComponents)
       }
@@ -114,7 +116,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.sanitizeModule = hasMod('sanitizeModule');
     this.animateModule = hasMod('animateModule');
 
-    var angMods = ["'ngRoute'", "'socklessJS.utils.componentFactory'"];
+    var angMods = ["'ngRoute'", "'socklessJS.utils.componentFactory'", "'socklessJS.components"];
 
     if (this.cookiesModule) {
       angMods.push("'ngCookies'");
@@ -147,14 +149,6 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   var source = 'styles/scss/';
 
   files.push('main.scss');
-  files.push('_globals.scss');
-  files.push('_components.scss');
-  files.push('_views.scss');
-  files.push('_animations.scss');
-
-  files.forEach(function (file) {
-    this.copy(source + file, 'app/styles/' + file);
-  }.bind(this));
 
   this.indexFile = this.appendFiles({
     html: this.indexFile,

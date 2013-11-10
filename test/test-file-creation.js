@@ -53,6 +53,9 @@ describe('Angular-sockless generator', function () {
                     'app/styles/_globals.scss',
                     'app/styles/_views.scss',
                     'app/views/main.html',
+                    'app/views/components/sockless.js',
+                    'app/scripts/components/sockless.js',
+                    'test/spec/components/sockless.js',
                     ['.bowerrc', /"directory": "app\/bower_components"/],
                     'Gruntfile.js',
                     'package.json',
@@ -156,6 +159,12 @@ describe('Angular-sockless generator', function () {
     });
   });
 
+  describe('Component', function () {
+    it('should generate a new directive', function (done) {
+        generatorTest('component', 'component', 'components', _.camelize, _.camelize, 'Component', done);
+    });
+  });
+
   describe('Filter', function () {
     it('should generate a new filter', function (done) {
       generatorTest('filter', 'filter', 'filters', _.camelize, _.camelize, '', done);
@@ -164,7 +173,7 @@ describe('Angular-sockless generator', function () {
 
   describe('Service', function () {
     function serviceTest (generatorType, nameFn, done) {
-      generatorTest(generatorType, 'service', 'services', nameFn, _.classify, '', done);
+      generatorTest(generatorType, 'service', 'services', nameFn, _.camelize, '', done);
     };
 
     it('should generate a new constant', function (done) {
