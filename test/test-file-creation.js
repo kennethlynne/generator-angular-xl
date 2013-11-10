@@ -53,7 +53,7 @@ describe('Angular-sockless generator', function () {
                     'app/styles/_globals.scss',
                     'app/styles/_views.scss',
                     'app/views/main.html',
-                    'app/views/components/sockless.js',
+                    'app/views/components/sockless/sockless.js',
                     'app/scripts/components/sockless.js',
                     'test/spec/components/sockless.js',
                     ['.bowerrc', /"directory": "app\/bower_components"/],
@@ -71,33 +71,6 @@ describe('Angular-sockless generator', function () {
     });
 
     angular.run({}, function() {
-      helpers.assertFiles(expected);
-      done();
-    });
-  });
-
-  xit('creates coffeescript files', function (done) {
-    var expected = ['app/.htaccess',
-                    'app/404.html',
-                    'app/favicon.ico',
-                    'app/robots.txt',
-                    'app/styles/main.css',
-                    'app/views/main.html',
-                    ['.bowerrc', /"directory": "app\/bower_components"/],
-                    'Gruntfile.js',
-                    'package.json',
-                    ['bower.json', /"name":\s+"temp"/],
-                    'app/scripts/app.coffee',
-                    'app/index.html',
-                    'app/scripts/controllers/main.coffee',
-                    'test/spec/controllers/main.coffee'
-                    ];
-    helpers.mockPrompt(angular, {
-      modules: []
-    });
-
-    angular.env.options.coffee = true;
-    angular.run([], function () {
       helpers.assertFiles(expected);
       done();
     });
