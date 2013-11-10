@@ -7,9 +7,9 @@ angular.module('<%= scriptAppName %>')
 
         var _getMeaningOfLife = function () {
             return _privateVar;
-        }
+        };
 
         return {
             getMeaningOfLife: _getMeaningOfLife
-        };
+        }
     });
