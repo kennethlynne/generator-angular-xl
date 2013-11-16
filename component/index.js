@@ -31,5 +31,5 @@ Generator.prototype.createComponentFiles = function createComponentFiles() {
     this.options['skip-add'] || false
   );
 
-  this.template('common/componentview.html', path.join(this.env.options.appPath, 'views', 'components', _.dasherize(this.name), _.dasherize(this.name) + '.html'));
+  this.template('../common/componentview.html', path.join(this.env.options.appPath, 'views', 'components', _.dasherize(this.name), _.dasherize(this.name) + '.html'));
 };
