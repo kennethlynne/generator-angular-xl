@@ -2,23 +2,25 @@
 
 describe('Component: socklessComponent', function () {
 
-    var element, scope;
+    var element, scope, $compile;
 
     beforeEach(function () {
 
-        module('socklessJS.components');
+        module('socklessJS.components.sockless');
 
-        inject(function ($rootScope) {
+        inject(function ($rootScope, _$compile_) {
             scope = $rootScope.$new();
+            $compile = _$compile_;
         });
 
     });
 
-    it('should have the sockless-component class', inject(function ($compile) {
-        element = angular.element('<sockless-component></sockless-component>');
+    it('should have the sockless-component class', function () {
+        element = angular.element('<sockless-component/>');
         element = $compile(element)(scope);
+        scope.$digest();
         expect(element.hasClass('sockless-component')).toBeTruthy();
-    }));
+    });
 });
 
 describe('Component controller: socklessComponentCtrl', function () {
@@ -27,7 +29,7 @@ describe('Component controller: socklessComponentCtrl', function () {
 
     beforeEach(function () {
 
-        module('socklessJS.components');
+        module('socklessJS.components.sockless');
 
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
