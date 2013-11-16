@@ -6,7 +6,17 @@ describe('Component: socklessComponent', function () {
 
     beforeEach(function () {
 
-        module('socklessJS.components.sockless');
+        module('socklessJS.components.sockless', function($templateCache) {
+
+          $templateCache.put('views/components/sockless/sockless.html',
+            "<div class=\"sockless-component\">\r" +
+            "\n" +
+            "    <h1>This is a sockless component!</h1>\r" +
+            "\n" +
+            "</div>"
+          );
+
+        });
 
         inject(function ($rootScope, _$compile_) {
             scope = $rootScope.$new();
