@@ -22,22 +22,29 @@
         "grunt-google-cdn": "~0.2.0",
         "grunt-ngmin": "~0.0.2",
         "grunt-rev": "~0.1.0",
-        "grunt-usemin": "~2.0.0",
         "jshint-stylish": "~0.1.3",
         "load-grunt-tasks": "~0.2.0",
         "time-grunt": "~0.2.0",
+        "karma-script-launcher": "~0.1.0",
+        "karma-chrome-launcher": "~0.1.0",
+        "karma-firefox-launcher": "~0.1.0",
+        "karma-html2js-preprocessor": "~0.1.0",
+        "karma-jasmine": "~0.1.3",
+        "karma-requirejs": "~0.1.0",
+        "karma-coffee-preprocessor": "~0.1.0",
+        "karma-phantomjs-launcher": "~0.1.0",
+        "karma": "~0.10.4",
         "karma-ng-html2js-preprocessor": "~0.1.0",
-        "karma-ng-scenario": "~0.1.0",
         "grunt-karma": "~0.6.2",
         "karma-coverage": "~0.1.2",
-        "path": "~0.4.9"
+        "path": "~0.4.9",
+        "grunt-sails-linker": "~0.9.4"
     },
     "engines": {
         "node": ">=0.8.0"
     },
     "scripts": {
-        "start": "grunt production",
-        "debug": "grunt debug production",
+        "start": "grunt server:dist",
         "test": "grunt test"
     }
 }

@@ -6,11 +6,30 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
 
+    var yeomanConfig = {
+        app: require('./bower.json').appPath || 'app',
+        dist: require('./bower.json').distPath || 'dist'
+    };
+
+    //TODO: Extract into separate json
+    var jsFiles = [
+        'scripts/components/sockless/sockless.js',
+        'scripts/module.js',
+        'scripts/config/routes.js',
+        'scripts/**/*.js'
+    ].map(function (path) {
+            return yeomanConfig.app + '/' + path;
+        });
+
+    //TODO: Extract into separate json
+    var cssFiles = [
+        'styles/**/*.css'
+    ].map(function (path) {
+            return yeomanConfig.app + '/' + path;
+        });
+
     grunt.initConfig({
-        yeoman: {
-            app: require('./bower.json').appPath || 'app',
-            dist: 'dist'
-        },
+        yeoman: yeomanConfig,
         watch: {
             coffee: {
                 files: ['<%%= yeoman.app %>/scripts/**/*.coffee'],
@@ -38,6 +57,10 @@ module.exports = function (grunt) {
                     '{.tmp,<%%= yeoman.app %>}/scripts/**/*.js',
                     '<%%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            },
+            sailslinker: {
+                files: [].concat(jsFiles).concat(cssFiles),
+                tasks: ['linkAssets']
             }
         },
         connect: {
@@ -130,11 +153,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        // not used since Uglify task does concat,
-        // but still available if needed
-        /*concat: {
-         dist: {}
-         },*/
         rev: {
             dist: {
                 files: {
@@ -145,19 +163,6 @@ module.exports = function (grunt) {
                         '<%%= yeoman.dist %>/styles/fonts/*'
                     ]
                 }
-            }
-        },
-        useminPrepare: {
-            html: '<%%= yeoman.app %>/index.html',
-            options: {
-                dest: '<%%= yeoman.dist %>'
-            }
-        },
-        usemin: {
-            html: ['<%%= yeoman.dist %>/**/*.html'],
-            css: ['<%%= yeoman.dist %>/styles/**/*.css'],
-            options: {
-                assetsDirs: ['<%%= yeoman.dist %>']
             }
         },
         imagemin: {
@@ -171,35 +176,33 @@ module.exports = function (grunt) {
             }
         },
         cssmin: {
-            // By default, your `index.html` <!-- Usemin Block --> will take care of
-            // minification. This option is pre-configured if you do not wish to use
-            // Usemin blocks.
-            // dist: {
-            //   files: {
-            //     '<%%= yeoman.dist %>/styles/main.css': [
-            //       '.tmp/styles/{,*/}*.css',
-            //       '<%%= yeoman.app %>/styles/{,*/}*.css'
-            //     ]
-            //   }
-            // }
+            dist: {
+                files: {
+                    '<%%= yeoman.dist %>/styles/main.css': [
+                        '.tmp/styles/**/*.css',
+                        '<%%= yeoman.app %>/styles/**/*.css'
+                    ]
+                }
+            }
         },
         htmlmin: {
             dist: {
                 options: {
-                    /*removeCommentsFromCDATA: true,
-                     // https://github.com/yeoman/grunt-usemin/issues/44
-                     //collapseWhitespace: true,
-                     collapseBooleanAttributes: true,
-                     removeAttributeQuotes: true,
-                     removeRedundantAttributes: true,
-                     useShortDoctype: true,
-                     removeEmptyAttributes: true,
-                     removeOptionalTags: true*/
+                    removeCommentsFromCDATA: true,
+                    collapseWhitespace: true,
+                    removeComments: true,
+                    collapseBooleanAttributes: true,
+                    removeAttributeQuotes: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: false,
+                    removeOptionalTags: true,
+                    removeEmpyElements: false
                 },
                 files: [{
                     expand: true,
                     cwd: '<%%= yeoman.app %>',
-                    src: ['*.html', 'views/*.html'],
+                    src: ['*.html', 'views/**/*.html'],
                     dest: '<%%= yeoman.dist %>'
                 }]
             }
@@ -264,10 +267,19 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '.tmp/concat/scripts',
-                    src: '*.js',
-                    dest: '.tmp/concat/scripts'
+                    src: jsFiles,
+                    dest: '.tmp/scripts'
                 }]
+            }
+        },
+        concat: {
+            js: {
+                src: '.tmp/scripts',
+                dest: '<%%= yeoman.dist %>/scripts/scripts.js'
+            },
+            css: {
+                src: '.tmp/styles',
+                dest: '<%%= yeoman.dist %>/styles/main.css'
             }
         },
         uglify: {
@@ -279,17 +291,59 @@ module.exports = function (grunt) {
                 }
             }
         },
-        express: {
-            options: {
-                port: process.env.PORT || 80,
-                hostname: process.env.IP || '*'
-            },
-            prod: {
+        'sails-linker': {
+
+            devJs: {
                 options: {
-                    bases: path.resolve(__dirname, '<%%= yeoman.dist %>')
+                    startTag: '<!--INJECT SCRIPTS-->',
+                    endTag: '<!--/INJECT SCRIPTS-->',
+                    fileTmpl: '<script src="%s"></script>',
+                    appRoot: '<%%= yeoman.app %>'
+                },
+                files: {
+                    '.tmp/index.html': jsFiles
+                }
+            },
+
+            prodJs: {
+                options: {
+                    startTag: '<!--INJECT SCRIPTS-->',
+                    endTag: '<!--/INJECT SCRIPTS-->',
+                    fileTmpl: '<script src="%s"></script>',
+                    appRoot: '<%%= yeoman.app %>'
+                },
+                files: {
+                    '<%%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/scripts/scripts.js']
+                }
+            },
+
+            devStyles: {
+                options: {
+                    startTag: '<!--INJECT STYLES-->',
+                    endTag: '<!--/INJECT STYLES-->',
+                    fileTmpl: '<link rel="stylesheet" href="%s">',
+                    appRoot: '<%%= yeoman.app %>'
+                },
+
+                files: {
+                    '.tmp/index.html': cssFiles
+                }
+            },
+
+            prodStyles: {
+                options: {
+                    startTag: '<!--INJECT STYLES-->',
+                    endTag: '<!--/INJECT STYLES-->',
+                    fileTmpl: '<link rel="stylesheet" href="%s">',
+                    appRoot: '.tmp/public/'
+                },
+                files: {
+                    '<%%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/styles/main.css']
                 }
             }
+
         }
+
     });
 
     grunt.registerTask('server', function (target) {
@@ -301,6 +355,7 @@ module.exports = function (grunt) {
             'clean:server',
             'concurrent:server',
             'connect:livereload',
+            'linkAssets-dev',
             'watch'
         ]);
     });
@@ -311,26 +366,29 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'useminPrepare',
         'concurrent:dist',
-        'concat',
         'ngmin',
+        'concat',
         'copy:dist',
         'cdnify',
         'cssmin',
         'uglify',
         'rev',
-        'usemin'
+        'linkAssets-production',
+        'htmlmin'
     ]);
 
-    grunt.registerTask('production', [
-        'build',
-        'express:prod',
-        'express-keepalive'
+    grunt.registerTask('linkAssets-dev', [
+        'sails-linker:devStyles',
+        'sails-linker:devJs'
+    ]);
+
+    grunt.registerTask('linkAssets-production', [
+        'sails-linker:prodStyles',
+        'sails-linker:prodJs'
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
         'test',
         'build'
     ]);
