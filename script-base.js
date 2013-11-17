@@ -78,10 +78,7 @@ Generator.prototype.addScriptToIndex = function (script) {
   }
 };
 
-Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory, skipAdd) {
+Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory) {
   this.appTemplate(appTemplate, path.join('scripts', targetDirectory, _.dasherize(this.name)));
   this.testTemplate(testTemplate, path.join(targetDirectory, _.dasherize(this.name)));
-  if (!skipAdd) {
-    this.addScriptToIndex(path.join(targetDirectory, _.dasherize(this.name)));
-  }
 };
