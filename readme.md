@@ -1,10 +1,10 @@
 # AngularJS generator [![Build Status](https://travis-ci.org/kennethlynne/generator-angular-sockless.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-sockless)
-Angular generator is AWESOME, but not EXACTLY my cup of tea. 
-Customized to use some nice patterns and best-practices I regularly use.
+Angular generator is awesome, but it is missing some spice to become really useful in larger applications.
+This is the same generator, customized to use some nice patterns and best-practices.
+
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
-Based on [angular-seed](https://github.com/angular/angular-seed/)
-
+Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator-angular](https://github.com/yeoman/generator-angular).
 
 ## Usage
 
@@ -23,6 +23,9 @@ Run `yo angular-sockless`, optionally passing an app name:
 ```
 yo angular-sockless [app-name]
 ```
+
+## Module
+Module.js contains the applications main module definition. All dependancies for your application needs to be specified here.
 
 ## Generators
 
@@ -53,7 +56,7 @@ yo angular-sockless
 ```
 
 ### Route
-Generates a controller and view, and configures a route in `app/scripts/app.js` connecting them.
+Generates a controller and view, and configures a route in `app/scripts/config/routes.js` connecting them.
 
 Example:
 ```bash
@@ -73,7 +76,9 @@ Produces `app/views/myroute.html`:
 ```
 
 ### Controller
-Generates a controller in `app/scripts/controllers`.
+Generates a controller in `app/scripts/controllers` and an accompanying test in `test/spec/controllers`.
+Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise.
+This promise will be resolved before the controller is instantiated.
 
 Example:
 ```bash
@@ -107,7 +112,9 @@ angular.module('myMod').directive('myDirective', function () {
 });
 ```
 ### Component
-Generates a directive in `app/scripts/components`.
+A component is basically a element directive that has been prebound to use a view located in `app/views/component/<component-name>/<component-name>.html`.
+This helps keep complexity low, and makes it easy to separate parts of your application into smaller and more maintainable parts.
+Generates a directive in `app/scripts/components` that uses a factory called `componentFactory` for convention over configuration.
 
 Example:
 ```bash
