@@ -4,6 +4,10 @@
 
   > div[ng-view]
   {
-
+    > .container
+    {
+      max-width: none;
+      margin: 0;
+    }
   }
 }
