@@ -131,9 +131,7 @@ Generator.prototype.askForModules = function askForModules() {
       angMods.push("'ngAnimate'");
     }
 
-    if (angMods.length) {
-      this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
-    }
+    this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
 
     cb();
   }.bind(this));
@@ -159,24 +157,6 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
     }),
     searchPath: '.tmp'
   });
-};
-
-Generator.prototype.bootstrapJS = function bootstrapJS() {
-  // Wire Twitter Bootstrap plugins
-  this.indexFile = this.appendScripts(this.indexFile, 'scripts/plugins.js', [
-    'bower_components/sass-bootstrap/js/affix.js',
-    'bower_components/sass-bootstrap/js/alert.js',
-    'bower_components/sass-bootstrap/js/button.js',
-    'bower_components/sass-bootstrap/js/carousel.js',
-    'bower_components/sass-bootstrap/js/transition.js',
-    'bower_components/sass-bootstrap/js/collapse.js',
-    'bower_components/sass-bootstrap/js/dropdown.js',
-    'bower_components/sass-bootstrap/js/modal.js',
-    'bower_components/sass-bootstrap/js/scrollspy.js',
-    'bower_components/sass-bootstrap/js/tab.js',
-    'bower_components/sass-bootstrap/js/tooltip.js',
-    'bower_components/sass-bootstrap/js/popover.js'
-  ]);
 };
 
 Generator.prototype.extraModules = function extraModules() {
@@ -208,7 +188,7 @@ Generator.prototype.appJs = function appJs() {
     html: this.indexFile,
     fileType: 'js',
     optimizedPath: 'scripts/scripts.js',
-    sourceFileList: ['scripts/module.js', 'scripts/config/routes.js', 'scripts/controllers/main.js'],
+    sourceFileList: ['scripts/components/sockless/sockless.js', 'scripts/module.js', 'scripts/config/routes.js', 'scripts/controllers/main.js'],
     searchPath: ['.tmp', 'app']
   });
 };
