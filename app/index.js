@@ -84,7 +84,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.sanitizeModule = hasMod('sanitizeModule');
     this.animateModule = hasMod('animateModule');
 
-    var angMods = ["'ngRoute'", "'socklessJS.utils.componentFactory'", "'socklessJS.components.sockless'"];
+    var angMods = ["'ngRoute'", "'socklessJS.utils.componentFactory'", "'socklessJS.components.sockless'", "'" + this.scriptAppName + ".components'"];
 
     if (this.cookiesModule) {
       angMods.push("'ngCookies'");

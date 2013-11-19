@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
+angular.module('<%= scriptAppName %>.components')
     .controller('<%= cameledName %>ComponentCtrl', function ($scope, $element) {
         $element.text('this is the <%= _.camelize(name) %> component');
     })
