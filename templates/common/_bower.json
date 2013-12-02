@@ -6,7 +6,7 @@
     "json3": "~3.2.4",
     "jquery": "~1.10.0",
     "sass-bootstrap": "~3.0.0",
-    "angular-component-factory": "~0.0.0",
+    "angular-component-factory": "~1.1.0",
     "es5-shim": "~2.1.0"<% if (resourceModule) { %>,
     "angular-resource": "~1.2.0"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "~1.2.0"<% } %><% if (sanitizeModule) { %>,
