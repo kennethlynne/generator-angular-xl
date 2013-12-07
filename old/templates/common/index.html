@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="<%= scriptAppName %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= scriptAppName %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- TODO: Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- TODO: Insert Qbaka script-->
+    <!-- /Qbaka -->
+
+    <!--INJECT STYLES--><!--/INJECT STYLES-->
+
+  </head>
+  <body>
+
+    <noscript>
+      <div>
+        <h3>Javascript is deactivated. You must <a href="http://www.activatejavascript.org/">activate javascript</a> in order to use this site.</h3>
+      </div>
+    </noscript>
+
+    <div id="root" class="ng-cloak">
+        <!--Constant elements like menus and footers may be added here-->
+
+        <div ui-view class="view-change-animation"></div>
+
+    </div>
+
+    <!--INJECT SCRIPTS--><!--/INJECT SCRIPTS-->
+
+  </body>
+</html>

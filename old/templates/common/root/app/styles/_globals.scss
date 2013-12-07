@@ -1,0 +1,13 @@
+#root
+{
+  position: relative; //View will be positioned absolute during animations
+
+  > div[ng-view]
+  {
+    > .container
+    {
+      max-width: none;
+      margin: 0;
+    }
+  }
+}

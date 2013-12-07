@@ -1,0 +1,51 @@
+{
+  "name": "generator-angular-sockless",
+  "version": "0.0.0",
+  "description": "Custom yeoman generator for AngularJS",
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "framework",
+    "component",
+    "front-end",
+    "app"
+  ],
+  "homepage": "https://github.com/kennethlynne/generator-angular-sockless",
+  "bugs": "https://github.com/kennethlynne/generator-angular-sockless/issues",
+  "author": "Chrome Developer Relations",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kennethlynne/generator-angular-sockless.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.0"
+  },
+  "peerDependencies": {
+    "generator-karma": "~0.6.0",
+    "yo": ">=1.0.0-rc.1.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-conventional-changelog": "~1.0.0",
+    "load-grunt-tasks": "~0.1.0",
+    "marked": "~0.2.8",
+    "semver": "~2.1.0",
+    "underscore.string": "~2.3.1",
+    "grunt-release": "~0.6.0"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ]
+}
