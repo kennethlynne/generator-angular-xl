@@ -7,6 +7,8 @@ angular.module('<%= scriptAppName %>')
         //Decorate httpBackend with awesomesauce
         $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 
+        var APIUrl = (Config.API.protocol + '://' + Config.API.host + ':' + Config.API.port + Config.API.path + '/');
+
         $httpProvider.interceptors.push(function ($q, $timeout, Config, $log) {
             return {
                 'request': function (config) {
@@ -16,7 +18,7 @@ angular.module('<%= scriptAppName %>')
                 'response': function (response) {
                     var deferred = $q.defer();
 
-                    if(response.config.url.indexOf(Config.view_dir) == 0) return response; //Let through views immideately
+                    if(!response.config.url.indexOf(APIUrl) == 0) return response; //Only handle calls to the API
 
                     //Fake delay on response from APIs and other urls
                     $log.log('Delaying response with ' + Config.API.fakeDelay + 'ms');
@@ -50,7 +52,7 @@ angular.module('<%= scriptAppName %>')
         }
 
         //When backend receives a request to the views folder, pass it through
-        $httpBackend.whenGET( RegExp( regEsc( Config.view_dir ) ) ).passThrough();
+        $httpBackend.whenGET( RegExp( regEsc( Config.viewsDir ) ) ).passThrough();
 
         //Message should return a list og messages
         $httpBackend.whenGET(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
