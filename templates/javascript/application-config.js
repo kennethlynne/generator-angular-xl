@@ -1,4 +1,5 @@
-angular.module('<%= scriptAppName %>').constant('Config', {
+angular.module('<%= scriptAppName %>')
+.constant('Config', {
     useMocks:               true,
     view_dir:               'views/',
     API: {
@@ -9,5 +10,5 @@ angular.module('<%= scriptAppName %>').constant('Config', {
         fakeDelay:          2000
     }
 })
-.value('cgBusyTemplateName','views/angular-busy/default-spinner.html');
-
+.value('cgBusyTemplateName','views/angular-busy/default-spinner.html')
+.run(function(editableOptions) {editableOptions.theme = 'bs3'});
