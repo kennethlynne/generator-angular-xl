@@ -18,12 +18,15 @@ module.exports = function(config) {
         //TODO: Extract into json, share with build
         files: [
             'app/bower_components/angular/angular.js',
+            'app/bower_components/lodash/lodash.js',
             'app/bower_components/angular-route/angular-route.js',
             'app/bower_components/angular-component-factory/angular-component-factory.js',
             'app/bower_components/angular-loading-bar/build/loading-bar.js',
             'app/bower_components/angular-animate/angular-animate.js',
             'app/bower_components/angular-busy/dist/angular-busy.js',
+            'app/bower_components/angular-ui-router/release/angular-ui-router.js',
             'app/bower_components/angular-promise-tracker/promise-tracker.js',
+            'app/bower_components/restangular/dist/restangular.js',
             'app/bower_components/angular-xeditable/dist/js/xeditable.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-route/angular-route.js',
@@ -31,6 +34,7 @@ module.exports = function(config) {
             'app/bower_components/angular-resource/angular-resource.js',
             'app/bower_components/angular-cookies/angular-cookies.js',
             'app/bower_components/angular-sanitize/angular-sanitize.js',
+            'app/scripts/module.js',
             'app/scripts/*.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',
