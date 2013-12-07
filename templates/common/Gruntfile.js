@@ -12,20 +12,34 @@ module.exports = function (grunt) {
     };
 
     //TODO: Extract into separate json
+    //TODO: Automatically look through bower.json files and include "main" js
     var jsFiles = [
+        'bower_components/jquery/jquery.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-mocks/angular-mocks.js',
+        'bower_components/lodash/lodash.js',
+        'bower_components/angular-component-factory/angular-component-factory.js',
+        'bower_components/angular-loading-bar/build/loading-bar.js',
+        'bower_components/angular-animate/angular-animate.js',
+        'bower_components/angular-busy/dist/angular-busy.js',
+        'bower_components/angular-promise-tracker/promise-tracker.js',
+        'bower_components/angular-xeditable/dist/js/xeditable.js',
+        'bower_components/restangular/dist/restangular.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.js',
         'scripts/module.js',
         'scripts/config/routes.js',
         'scripts/**/*.js'
     ].map(function (path) {
-            return yeomanConfig.app + '/' + path;
-        });
+        return yeomanConfig.app + '/' + path;
+    });
+
 
     //TODO: Extract into separate json
     var cssFiles = [
         'styles/**/*.css'
     ].map(function (path) {
-            return yeomanConfig.app + '/' + path;
-        });
+        return '.tmp/' + path;
+    });
 
     grunt.initConfig({
         yeoman: yeomanConfig,
@@ -299,7 +313,7 @@ module.exports = function (grunt) {
                     appRoot: '<%%= yeoman.app %>'
                 },
                 files: {
-                    '.tmp/index.html': jsFiles
+                    '<%%= yeoman.app %>/index.html': jsFiles
                 }
             },
 
@@ -320,11 +334,11 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT STYLES-->',
                     endTag: '<!--/INJECT STYLES-->',
                     fileTmpl: '<link rel="stylesheet" href="%s">',
-                    appRoot: '<%%= yeoman.app %>'
+                    appRoot: '.tmp'
                 },
 
                 files: {
-                    '.tmp/index.html': cssFiles
+                    '<%%= yeoman.app %>/index.html': cssFiles
                 }
             },
 

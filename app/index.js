@@ -125,38 +125,6 @@ Generator.prototype.readIndex = function readIndex() {
   this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
 };
 
-Generator.prototype.extraModules = function extraModules() {
-  var modules = [];
-  if (this.resourceModule) {
-    modules.push('bower_components/angular-resource/angular-resource.js');
-  }
-
-  if (this.cookiesModule) {
-    modules.push('bower_components/angular-cookies/angular-cookies.js');
-  }
-
-  if (this.sanitizeModule) {
-    modules.push('bower_components/angular-sanitize/angular-sanitize.js');
-  }
-
-  if (this.animateModule) {
-    modules.push('bower_components/angular-animate/angular-animate.js');
-  }
-
-  if (this.restangularModule) {
-    modules.push('bower_components/restangular/dist/restangular.js');
-  }
-
-  if (this.uirouterModule) {
-    modules.push('bower_components/angular-ui-router/release/angular-ui-router.js');
-  }
-
-  if (modules.length) {
-    this.indexFile = this.appendScripts(this.indexFile, 'scripts/modules.js',
-        modules);
-  }
-};
-
 Generator.prototype.createIndexHtml = function createIndexHtml() {
   this.write(path.join(this.appPath, 'index.html'), this.indexFile);
 };
