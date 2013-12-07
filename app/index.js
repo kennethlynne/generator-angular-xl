@@ -94,7 +94,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.uirouterModule = hasMod('uirouterModule');
     this.routeModule = hasMod('routeModule');
 
-    var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'"];
+    var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'xeditable'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
