@@ -2,6 +2,22 @@
 // http://karma-runner.github.io/0.10/config/configuration-file.html
 
 module.exports = function(config) {
+
+    var jsFiles = require('./resources.json').javascript.map(function (path) {
+        return (require('./bower.json').appPath || 'app') + '/' + path;
+    });
+
+    var files = [].concat(jsFiles).concat([
+        'test/loadTemplates.js',
+        'app/scripts/module.js',
+        'test/matchers/**/*.js',
+        'app/scripts/*.js',
+        'app/scripts/**/*.js',
+        'test/mock/**/*.js',
+        'test/spec/**/*.js',
+        'app/views/**/*.html'
+    ]);
+
     config.set({
         // base path, that will be used to resolve files and exclude
         basePath: '',
@@ -15,34 +31,7 @@ module.exports = function(config) {
         },
 
         // list of files / patterns to load in the browser
-        //TODO: Extract into json, share with build
-        files: [
-            'app/bower_components/angular/angular.js',
-            'app/bower_components/lodash/lodash.js',
-            'app/bower_components/angular-route/angular-route.js',
-            'app/bower_components/angular-component-factory/angular-component-factory.js',
-            'app/bower_components/angular-loading-bar/build/loading-bar.js',
-            'app/bower_components/angular-animate/angular-animate.js',
-            'app/bower_components/angular-busy/dist/angular-busy.js',
-            'app/bower_components/angular-ui-router/release/angular-ui-router.js',
-            'app/bower_components/angular-promise-tracker/promise-tracker.js',
-            'app/bower_components/restangular/dist/restangular.js',
-            'app/bower_components/angular-xeditable/dist/js/xeditable.js',
-            'app/bower_components/angular-mocks/angular-mocks.js',
-            'app/bower_components/angular-route/angular-route.js',
-            'app/bower_components/angular-animate/angular-animate.js',
-            'app/bower_components/angular-resource/angular-resource.js',
-            'app/bower_components/angular-cookies/angular-cookies.js',
-            'app/bower_components/angular-sanitize/angular-sanitize.js',
-            'test/loadTemplates.js',
-            'app/scripts/module.js',
-            'test/matchers/**/*.js',
-            'app/scripts/*.js',
-            'app/scripts/**/*.js',
-            'test/mock/**/*.js',
-            'test/spec/**/*.js',
-            'app/views/**/*.html'
-        ],
+        files: files,
 
         reporters: ['progress', 'coverage'],
 

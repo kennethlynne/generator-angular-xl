@@ -6,38 +6,19 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
 
+    var includes = require('./resources.json');
+
     var yeomanConfig = {
         app: require('./bower.json').appPath || 'app',
         dist: require('./bower.json').distPath || 'dist'
     };
 
-    //TODO: Extract into separate json
     //TODO: Automatically look through bower.json files and include "main" js
-    var jsFiles = [
-        'bower_components/jquery/jquery.js',
-        'bower_components/angular/angular.js',
-        'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/lodash/lodash.js',
-        'bower_components/angular-component-factory/angular-component-factory.js',
-        'bower_components/angular-loading-bar/build/loading-bar.js',
-        'bower_components/angular-animate/angular-animate.js',
-        'bower_components/angular-busy/dist/angular-busy.js',
-        'bower_components/angular-promise-tracker/promise-tracker.js',
-        'bower_components/angular-xeditable/dist/js/xeditable.js',
-        'bower_components/restangular/dist/restangular.js',
-        'bower_components/angular-ui-router/release/angular-ui-router.js',
-        'scripts/module.js',
-        'scripts/config/routes.js',
-        'scripts/**/*.js'
-    ].map(function (path) {
+    var jsFiles = includes.javascript.map(function (path) {
         return yeomanConfig.app + '/' + path;
     });
 
-
-    //TODO: Extract into separate json
-    var cssFiles = [
-        'styles/**/*.css'
-    ].map(function (path) {
+    var cssFiles = includes.css.map(function (path) {
         return '.tmp/' + path;
     });
 
