@@ -125,24 +125,6 @@ Generator.prototype.readIndex = function readIndex() {
   this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
 };
 
-// Waiting a more flexible solution for #138
-Generator.prototype.bootstrapFiles = function bootstrapFiles() {
-  var files = [];
-  var source = 'styles/scss/';
-
-  files.push('main.scss');
-
-  this.indexFile = this.appendFiles({
-    html: this.indexFile,
-    fileType: 'css',
-    optimizedPath: 'styles/main.css',
-    sourceFileList: files.map(function (file) {
-      return 'styles/' + file.replace('.scss', '.css');
-    }),
-    searchPath: '.tmp'
-  });
-};
-
 Generator.prototype.extraModules = function extraModules() {
   var modules = [];
   if (this.resourceModule) {
