@@ -8,7 +8,8 @@ describe('Component: <%= cameledName %>Component', function () {
 
         module('<%= scriptAppName %>.components');
 
-        inject(function ($rootScope, $controller) {
+        inject(function ($rootScope, $controller, $compile) {
+            outerScope = $rootScope;
             scope = $rootScope.$new();
             element = angular.element('<<%= _.dasherize(name) %>-component />');
             element = $compile(element)(outerScope);
