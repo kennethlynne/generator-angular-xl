@@ -1,4 +1,4 @@
-# AngularJS generator [![Build Status](https://travis-ci.org/kennethlynne/generator-angular-sockless.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-sockless)
+# AngularJS generator 
 Angular generator is awesome, but it is missing some spice to become really useful in larger applications.
 This is the same generator, customized to use some nice patterns and best-practices.
 
