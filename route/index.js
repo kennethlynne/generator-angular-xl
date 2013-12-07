@@ -32,5 +32,5 @@ Generator.prototype.rewriteRoutesJs = function () {
   config.splicable.unshift(".when('/" + this.name + "', {");
   config.splicable.push("})");
 
-  angularUtils.rewriteFile(config);
+  //angularUtils.rewriteFile(config);
 };
