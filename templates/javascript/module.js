@@ -1,4 +1,7 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>.components', []);
-angular.module('<%= scriptAppName %>', [<%= angularModules %>]);
+var components = angular.module('<%= scriptAppName %>.components', []);
+angular.componentFacyory.moduleDecorator(components);
+
+var app = angular.module('<%= scriptAppName %>', [<%= angularModules %>]);
+angular.componentFacyory.moduleDecorator(app);
