@@ -148,7 +148,7 @@ Generator.prototype.extraModules = function extraModules() {
   }
 
   if (this.uirouterModule) {
-    modules.push('bower_components/angular-ui-router/angular-ui-router.js');
+    modules.push('bower_components/angular-ui-router/release/angular-ui-router.js');
   }
 
   if (modules.length) {

@@ -11,7 +11,7 @@ describe('Component: <%= cameledName %>Component', function () {
         inject(function ($rootScope, $controller, $compile) {
             outerScope = $rootScope;
             scope = $rootScope.$new();
-            element = angular.element('<<%= _.dasherize(name) %>-component />');
+            element = angular.element('<<%= _.dasherize(name) %>-component></<%= _.dasherize(name) %>-component>');
             element = $compile(element)(outerScope);
             outerScope.$digest();
 
