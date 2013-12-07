@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-sockless",
-  "version": "0.6.0-rc.1",
+  "version": "0.0.0",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
