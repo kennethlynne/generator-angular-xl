@@ -82,10 +82,6 @@ Generator.prototype.askForModules = function askForModules() {
         value: 'restangularModule',
         name: 'restangular.js',
         checked: true
-    }, {
-      value: 'animateModule',
-      name: 'angular-animate.js',
-      checked: false
     }]
   }];
 
@@ -94,12 +90,11 @@ Generator.prototype.askForModules = function askForModules() {
     this.resourceModule = hasMod('resourceModule');
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
-    this.animateModule = hasMod('animateModule');
     this.restangularModule = hasMod('restangularModule');
     this.uirouterModule = hasMod('uirouterModule');
     this.routeModule = hasMod('routeModule');
 
-    var angMods = ["'componentFactory'", "'socklessJS.components.sockless'", "'" + this.scriptAppName + ".components'"];
+    var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
@@ -118,9 +113,6 @@ Generator.prototype.askForModules = function askForModules() {
       }
       if (this.routeModule) {
           angMods.push("'ngRoute'");
-      }
-      if (this.animateModule) {
-          angMods.push("'ngAnimate'");
       }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
