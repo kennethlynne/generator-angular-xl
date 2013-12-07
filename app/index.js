@@ -67,13 +67,21 @@ Generator.prototype.askForModules = function askForModules() {
       name: 'angular-cookies.js',
       checked: false
     }, {
-      value: 'sanitizeModule',
-      name: 'angular-sanitize.js',
-      checked: false
+        value: 'sanitizeModule',
+        name: 'angular-sanitize.js',
+        checked: false
+    }, {
+        value: 'uirouterModule',
+        name: 'angular-ui-router.js',
+        checked: true
+    }, {
+        value: 'restangularModule',
+        name: 'restangular.js',
+        checked: true
     }, {
       value: 'animateModule',
       name: 'angular-animate.js',
-      checked: true
+      checked: false
     }]
   }];
 
@@ -83,8 +91,10 @@ Generator.prototype.askForModules = function askForModules() {
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
     this.animateModule = hasMod('animateModule');
+    this.restangularModule = hasMod('restangularModule');
+    this.uirouterModule = hasMod('uirouterModule');
 
-    var angMods = ["'ngRoute'", "'socklessJS.utils.componentFactory'", "'socklessJS.components.sockless'", "'" + this.scriptAppName + ".components'"];
+    var angMods = ["'componentFactory'", "'socklessJS.components.sockless'", "'" + this.scriptAppName + ".components'"];
 
     if (this.cookiesModule) {
       angMods.push("'ngCookies'");
@@ -92,8 +102,14 @@ Generator.prototype.askForModules = function askForModules() {
     if (this.resourceModule) {
       angMods.push("'ngResource'");
     }
+    if (this.restangularModule) {
+      angMods.push("'restangular'");
+    }
     if (this.sanitizeModule) {
       angMods.push("'ngSanitize'");
+    }
+    if (this.uirouterModule) {
+      angMods.push("'ui.router'");
     }
     if (this.animateModule) {
       angMods.push("'ngAnimate'");
@@ -145,20 +161,18 @@ Generator.prototype.extraModules = function extraModules() {
     modules.push('bower_components/angular-animate/angular-animate.js');
   }
 
+  if (this.restangularModule) {
+    modules.push('bower_components/restangular/dist/restangular.js');
+  }
+
+  if (this.uirouterModule) {
+    modules.push('bower_components/angular-ui-router/angular-ui-router.js');
+  }
+
   if (modules.length) {
     this.indexFile = this.appendScripts(this.indexFile, 'scripts/modules.js',
         modules);
   }
-};
-
-Generator.prototype.appJs = function appJs() {
-  this.indexFile = this.appendFiles({
-    html: this.indexFile,
-    fileType: 'js',
-    optimizedPath: 'scripts/scripts.js',
-    sourceFileList: ['scripts/components/sockless/sockless.js', 'scripts/module.js', 'scripts/config/routes.js', 'scripts/controllers/main.js'],
-    searchPath: ['.tmp', 'app']
-  });
 };
 
 Generator.prototype.createIndexHtml = function createIndexHtml() {
@@ -166,7 +180,10 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function () {
-  this.template('../../templates/common/_bower.json', 'bower.json');
-  this.template('../../templates/common/_package.json', 'package.json');
-  this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
+    this.template('../../templates/common/_bower.json', 'bower.json');
+    this.template('../../templates/common/_package.json', 'package.json');
+    this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
+    this.template('../../templates/javascript/api-base-url.js', 'app/scripts/api-base-url.js');
+    this.template('../../templates/javascript/application-config.js', 'app/scripts/config/application-config.js');
+    this.template('../../templates/javascript/mock-api.js', 'app/scripts/mock-api.js');
 };
