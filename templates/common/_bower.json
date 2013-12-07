@@ -11,8 +11,8 @@
     "angular-ui-router": "~0.2.6"<% } %><% if (restangularModule) { %>,
     "restangular": "~1.1.8"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "~1.2.3"<% } %><% if (sanitizeModule) { %>,
-    "angular-sanitize": "~1.2.3"<% } %>, <% if (routeModule) { %>,
-    "angular-route": "~1.2.3"<% if (animateModule) { %>,
+    "angular-sanitize": "~1.2.3"<% } %><% if (routeModule) { %>,
+    "angular-route": "~1.2.3"<% } %><% if (animateModule) { %>,
     "angular-animate": "~1.2.3"<% } %>
   },
   "devDependencies": {
