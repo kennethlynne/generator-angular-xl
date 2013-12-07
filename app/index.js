@@ -75,6 +75,10 @@ Generator.prototype.askForModules = function askForModules() {
         name: 'angular-ui-router.js',
         checked: true
     }, {
+        value: 'routeModule',
+        name: 'angular-route.js',
+        checked: false
+    }, {
         value: 'restangularModule',
         name: 'restangular.js',
         checked: true
@@ -93,27 +97,31 @@ Generator.prototype.askForModules = function askForModules() {
     this.animateModule = hasMod('animateModule');
     this.restangularModule = hasMod('restangularModule');
     this.uirouterModule = hasMod('uirouterModule');
+    this.routeModule = hasMod('routeModule');
 
     var angMods = ["'componentFactory'", "'socklessJS.components.sockless'", "'" + this.scriptAppName + ".components'"];
 
-    if (this.cookiesModule) {
-      angMods.push("'ngCookies'");
-    }
-    if (this.resourceModule) {
-      angMods.push("'ngResource'");
-    }
-    if (this.restangularModule) {
-      angMods.push("'restangular'");
-    }
-    if (this.sanitizeModule) {
-      angMods.push("'ngSanitize'");
-    }
-    if (this.uirouterModule) {
-      angMods.push("'ui.router'");
-    }
-    if (this.animateModule) {
-      angMods.push("'ngAnimate'");
-    }
+      if (this.cookiesModule) {
+          angMods.push("'ngCookies'");
+      }
+      if (this.resourceModule) {
+          angMods.push("'ngResource'");
+      }
+      if (this.restangularModule) {
+          angMods.push("'restangular'");
+      }
+      if (this.sanitizeModule) {
+          angMods.push("'ngSanitize'");
+      }
+      if (this.uirouterModule) {
+          angMods.push("'ui.router'");
+      }
+      if (this.routeModule) {
+          angMods.push("'ngRoute'");
+      }
+      if (this.animateModule) {
+          angMods.push("'ngAnimate'");
+      }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
 
