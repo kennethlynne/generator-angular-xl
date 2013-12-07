@@ -13,7 +13,6 @@ module.exports = function (grunt) {
 
     //TODO: Extract into separate json
     var jsFiles = [
-        'scripts/components/sockless/sockless.js',
         'scripts/module.js',
         'scripts/config/routes.js',
         'scripts/**/*.js'
@@ -255,7 +254,7 @@ module.exports = function (grunt) {
         karma: {
             unit: {
                 configFile: 'karma.conf.js',
-                singleRun: true
+                singleRun: false
             }
         },
         cdnify: {
