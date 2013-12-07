@@ -13,7 +13,6 @@ module.exports = function (grunt) {
         dist: require('./bower.json').distPath || 'dist'
     };
 
-    //TODO: Automatically look through bower.json files and include "main" js
     var jsFiles = includes.javascript.map(function (path) {
         return yeomanConfig.app + '/' + path;
     });
