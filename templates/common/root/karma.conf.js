@@ -34,7 +34,9 @@ module.exports = function(config) {
             'app/bower_components/angular-resource/angular-resource.js',
             'app/bower_components/angular-cookies/angular-cookies.js',
             'app/bower_components/angular-sanitize/angular-sanitize.js',
+            'test/loadTemplates.js',
             'app/scripts/module.js',
+            'test/matchers/**/*.js',
             'app/scripts/*.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',
@@ -77,7 +79,8 @@ module.exports = function(config) {
         ngHtml2JsPreprocessor: {
             // setting this option will create only a single module that contains templates
             // from all the files, so you can load them all with module('foo')
-            moduleName: 'templates'
+            moduleName: 'compiledTemplates',
+            stripPrefix: 'app/'
         },
 
 
