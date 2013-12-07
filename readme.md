@@ -11,7 +11,7 @@ Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator
 Install `generator-angular`:
 There is not yet registered a NPM package. So for now:
 ```
-npm install -g https://github.com/kennethlynne/generator-angular-sockless.git
+npm install -g https://github.com/kennethlynne/generator-angular-awesome.git
 ```
 
 Make a new directory, and `cd` into it:
@@ -19,9 +19,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular-sockless`, optionally passing an app name:
+Run `yo angular-awesome`, optionally passing an app name:
 ```
-yo angular-sockless [app-name]
+yo angular-awesome [app-name]
 ```
 
 ## Module
@@ -31,19 +31,19 @@ Module.js contains the applications main module definition. All dependancies for
 
 Available generators:
 
-* [angular-sockless](#app) (aka [angular-sockless:app](#app))
-* [angular-sockless:controller](#controller)
-* [angular-sockless:directive](#directive)
-* [angular-sockless:component](#component)
-* [angular-sockless:filter](#filter)
-* [angular-sockless:route](#route)
-* [angular-sockless:service](#service)
-* [angular-sockless:provider](#service)
-* [angular-sockless:factory](#service)
-* [angular-sockless:value](#service)
-* [angular-sockless:constant](#service)
-* [angular-sockless:decorator] (#decorator)
-* [angular-sockless:view](#view)
+* [angular-awesome](#app) (aka [angular-awesome:app](#app))
+* [angular-awesome:controller](#controller)
+* [angular-awesome:directive](#directive)
+* [angular-awesome:component](#component)
+* [angular-awesome:filter](#filter)
+* [angular-awesome:route](#route)
+* [angular-awesome:service](#service)
+* [angular-awesome:provider](#service)
+* [angular-awesome:factory](#service)
+* [angular-awesome:value](#service)
+* [angular-awesome:constant](#service)
+* [angular-awesome:decorator] (#decorator)
+* [angular-awesome:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -52,7 +52,7 @@ Sets up a new AngularJS app, generating all the boilerplate you need to get star
 
 Example:
 ```bash
-yo angular-sockless
+yo angular-awesome
 ```
 
 ### Route
@@ -60,7 +60,7 @@ Generates a controller and view, and configures a route in `app/scripts/config/r
 
 Example:
 ```bash
-yo angular-sockless:route myroute
+yo angular-awesome:route myroute
 ```
 
 Produces `app/scripts/controllers/myroute.js`:
@@ -82,7 +82,7 @@ This promise will be resolved before the controller is instantiated.
 
 Example:
 ```bash
-yo angular-sockless:controller user
+yo angular-awesome:controller user
 ```
 
 Produces `app/scripts/controllers/user.js`:
@@ -96,7 +96,7 @@ Generates a directive in `app/scripts/directives`.
 
 Example:
 ```bash
-yo angular-sockless:directive myDirective
+yo angular-awesome:directive myDirective
 ```
 
 Produces `app/scripts/directives/myDirective.js`:
@@ -118,14 +118,14 @@ Generates a directive in `app/scripts/components` that uses a factory called `co
 
 Example:
 ```bash
-yo angular-sockless:component myComponent
+yo angular-awesome:component myComponent
 ```
 ### Filter
 Generates a filter in `app/scripts/filters`.
 
 Example:
 ```bash
-yo angular-sockless:filter myFilter
+yo angular-awesome:filter myFilter
 ```
 
 Produces `app/scripts/filters/myFilter.js`:
@@ -142,7 +142,7 @@ Generates an HTML view file in `app/views`.
 
 Example:
 ```bash
-yo angular-sockless:view user
+yo angular-awesome:view user
 ```
 
 Produces `app/views/user.html`:
@@ -155,7 +155,7 @@ Generates an AngularJS service.
 
 Example:
 ```bash
-yo angular-sockless:service myService
+yo angular-awesome:service myService
 ```
 
 Produces `app/scripts/services/myService.js`:
@@ -172,7 +172,7 @@ Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular-sockless:decorator serviceName
+yo angular-awesome:decorator serviceName
 ```
 
 Produces `app/scripts/decorators/serviceNameDecorator.js`:
@@ -203,7 +203,7 @@ By default, new scripts are added to the index.html file. However, this may not 
 
 To skip adding them to the index, pass in the skip-add argument:
 ```bash
-yo angular-sockless:service serviceName --skip-add
+yo angular-awesome:service serviceName --skip-add
 ```
 
 ## Bower Components

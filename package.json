@@ -1,5 +1,5 @@
 {
-  "name": "generator-angular-sockless",
+  "name": "generator-angular-awesome",
   "version": "0.0.0",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
@@ -10,13 +10,13 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/kennethlynne/generator-angular-sockless",
-  "bugs": "https://github.com/kennethlynne/generator-angular-sockless/issues",
+  "homepage": "https://github.com/kennethlynne/generator-angular-awesome",
+  "bugs": "https://github.com/kennethlynne/generator-angular-awesome/issues",
   "author": "Chrome Developer Relations",
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kennethlynne/generator-angular-sockless.git"
+    "url": "git://github.com/kennethlynne/generator-angular-awesome.git"
   },
   "scripts": {
     "test": "mocha"

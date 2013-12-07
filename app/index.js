@@ -30,15 +30,15 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
-  this.hookFor('angular-sockless:common', {
+  this.hookFor('angular-awesome:common', {
     args: args
   });
 
-  this.hookFor('angular-sockless:main', {
+  this.hookFor('angular-awesome:main', {
     args: args
   });
 
-  this.hookFor('angular-sockless:controller', {
+  this.hookFor('angular-awesome:controller', {
     args: args
   });
 

@@ -8,7 +8,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular-sockless generator', function () {
+describe('Angular-awesome generator', function () {
   var angular;
 
   beforeEach(function (done) {
@@ -25,7 +25,7 @@ describe('Angular-sockless generator', function () {
       if (err) {
         done(err);
       }
-      angular = helpers.createGenerator('angular-sockless:app', deps);
+      angular = helpers.createGenerator('angular-awesome:app', deps);
       angular.options['skip-install'] = true;
       done();
     });
@@ -53,9 +53,9 @@ describe('Angular-sockless generator', function () {
                     'app/styles/_globals.scss',
                     'app/styles/_views.scss',
                     'app/views/main.html',
-                    'app/views/components/sockless/sockless.js',
-                    'app/scripts/components/sockless.js',
-                    'test/spec/components/sockless.js',
+                    'app/views/components/awesome/awesome.js',
+                    'app/scripts/components/awesome.js',
+                    'test/spec/components/awesome.js',
                     ['.bowerrc', /"directory": "app\/bower_components"/],
                     'Gruntfile.js',
                     'package.json',
@@ -104,7 +104,7 @@ describe('Angular-sockless generator', function () {
     var angularGenerator;
     var name = 'foo';
     var deps = [path.join('../..', generatorType)];
-    angularGenerator = helpers.createGenerator('angular-sockless:' + generatorType, deps, [name]);
+    angularGenerator = helpers.createGenerator('angular-awesome:' + generatorType, deps, [name]);
 
     helpers.mockPrompt(angular, {
       modules: []
@@ -174,7 +174,7 @@ describe('Angular-sockless generator', function () {
     it('should generate a new view', function (done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-sockless:view', deps, ['foo']);
+      angularView = helpers.createGenerator('angular-awesome:view', deps, ['foo']);
 
       helpers.mockPrompt(angular, {
         modules: []
@@ -192,7 +192,7 @@ describe('Angular-sockless generator', function () {
     it('should generate a new view in subdirectories', function (done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-sockless:view', deps, ['foo/bar']);
+      angularView = helpers.createGenerator('angular-awesome:view', deps, ['foo/bar']);
 
       helpers.mockPrompt(angular, {
         modules: []
