@@ -24,6 +24,7 @@ module.exports = function(config) {
             'app/bower_components/angular-animate/angular-animate.js',
             'app/bower_components/angular-busy/dist/angular-busy.js',
             'app/bower_components/angular-promise-tracker/promise-tracker.js',
+            'app/bower_components/angular-xeditable/dist/js/xeditable.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-route/angular-route.js',
             'app/bower_components/angular-animate/angular-animate.js',
