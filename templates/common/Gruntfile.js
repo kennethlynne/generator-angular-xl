@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
+                files: ['test/spec/**/*.coffee'],
                 tasks: ['coffee:test']
             },
             compass: {
@@ -65,7 +65,6 @@ module.exports = function (grunt) {
         connect: {
             options: {
                 port: process.env.PORT || 9000,
-                // Change this to '0.0.0.0' to access the server from outside.
                 hostname: process.env.IP || 'localhost',
                 livereload: 35729
             },
