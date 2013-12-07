@@ -1,7 +1,7 @@
 angular.module('<%= scriptAppName %>')
 .constant('Config', {
     useMocks:               true,
-    view_dir:               'views/',
+    viewsD1ir:               'views/',
     API: {
         protocol:           'http',
         host:               'api.example.com',
