@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('MockAPI')
-    .config(function(Config, $provide) {
-        //Decorate backend with awesomesauce
-        if(Config.useMocks) $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-    })
-    .config(function ($httpProvider, Config) {
+angular.module('<%= scriptAppName %>')
+    .config(function ($httpProvider, Config, $provide) {
         if(!Config.useMocks) return;
+
+        //Decorate httpBackend with awesomesauce
+        $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 
         $httpProvider.interceptors.push(function ($q, $timeout, Config, $log) {
             return {
@@ -32,7 +31,7 @@ angular.module('MockAPI')
         })
 
     })
-    .run(function (Config, $httpBackend, $log, APIBase, $timeout) {
+    .run(function (Config, $httpBackend, $log, APIBaseUrl) {
 
         //Only load mocks if config says so
         if(!Config.useMocks) return;
@@ -54,11 +53,11 @@ angular.module('MockAPI')
         $httpBackend.whenGET( RegExp( regEsc( Config.view_dir ) ) ).passThrough();
 
         //Message should return a list og messages
-        $httpBackend.whenGET(APIBase + 'messages').respond(function(method, url, data, headers) {
+        $httpBackend.whenGET(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
             return [200, messages.data, {/*headers*/}];
         });
 
-        $httpBackend.whenPOST(APIBase + 'messages').respond(function(method, url, data, headers) {
+        $httpBackend.whenPOST(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
             var message = angular.fromJson(data);
 
             messages.data.push(message);
@@ -69,7 +68,7 @@ angular.module('MockAPI')
         });
 
         //Message/id should return a message
-        $httpBackend.whenGET( new RegExp(regEsc(APIBase + 'messages/') + '\\d+$' ) ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( new RegExp(regEsc(APIBaseUrl + 'messages/') + '\\d+$' ) ).respond(function(method, url, data, headers) {
             var id = url.match(/\d+$/)[0];
             return [200, messages.index[id] || null, {/*headers*/}];
         });

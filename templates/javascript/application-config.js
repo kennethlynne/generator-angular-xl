@@ -1,4 +1,4 @@
-angular.module().constant('Config', {
+angular.module('<%= scriptAppName %>').constant('Config', {
     useMocks:               true,
     view_dir:               'views/',
     API: {
