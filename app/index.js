@@ -74,11 +74,11 @@ Generator.prototype.askForModules = function askForModules() {
         value: 'uirouterModule',
         name: 'angular-ui-router.js',
         checked: true
-    }, {
+    }, /*{
         value: 'routeModule',
         name: 'angular-route.js',
         checked: false
-    }, {
+    },*/ {
         value: 'restangularModule',
         name: 'restangular.js',
         checked: true
@@ -92,7 +92,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.sanitizeModule = hasMod('sanitizeModule');
     this.restangularModule = hasMod('restangularModule');
     this.uirouterModule = hasMod('uirouterModule');
-    this.routeModule = hasMod('routeModule');
+    this.routeModule = false;//hasMod('routeModule');
 
     var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'"];
 
@@ -111,9 +111,9 @@ Generator.prototype.askForModules = function askForModules() {
       if (this.uirouterModule) {
           angMods.push("'ui.router'");
       }
-      if (this.routeModule) {
-          angMods.push("'ngRoute'");
-      }
+//      if (this.routeModule) {
+//          angMods.push("'ngRoute'");
+//      }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
 
