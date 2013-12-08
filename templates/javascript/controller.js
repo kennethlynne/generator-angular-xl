@@ -1,9 +1,6 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .controller('<%= classedName %>Ctrl', function ($scope, init) {
-        $scope.data = init;
-    })
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
         var _prepare = function () {
@@ -23,4 +20,7 @@ angular.module('<%= scriptAppName %>')
             prepare: _prepare
         }
 
+    })
+    .controller('<%= classedName %>Ctrl', function ($scope, init) {
+        $scope.data = init;
     });
