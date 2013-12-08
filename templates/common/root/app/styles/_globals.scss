@@ -2,7 +2,7 @@
 {
   position: relative; //View will be positioned absolute during animations
 
-  > div[ng-view]
+  > div[ng-view], > div[ui-view]
   {
     > .container
     {
