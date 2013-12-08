@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function () {
+    .config(function ($urlRouterProvider, $stateProvider) {
 
         var viewDir = 'views/';
 
@@ -11,18 +11,6 @@ angular.module('<%= scriptAppName %>')
                 return instance.prepare(params);
             }];
         };
-
-//        $routeProvider
-//            .when('/', {
-//                templateUrl: viewDir + 'main.html',
-//                controller: 'MainCtrl',
-//                resolve: {
-//                    init: prepare('MainCtrlInit')
-//                }
-//            })
-//            .otherwise({
-//                redirectTo: '/'
-//            });
 
 //        $urlRouterProvider.otherwise("/state1");
 //        $stateProvider
