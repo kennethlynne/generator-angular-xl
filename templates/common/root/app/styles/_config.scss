@@ -1,1 +1,15 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+$font-family-sans-serif:  "Open Sans", sans-serif !default;
+$font-size-base:          13px !default;
+$font-size-large:         $font-size-base * 1.25 !default; // 16px
+$font-size-larger:        $font-size-base + 1;    // 14px
+$font-size-small:         $font-size-base * 0.85 !default; // 12px
+$font-size-mini:          $font-size-base * 0.75 !default; // 11px
+$font-size-index:         $font-size-base * 0.7 !default; //10px
+$line-height-base:        20px !default;
+$line-height-computed:    $line-height-base !default; // ~20px
+$font-weight-base:        300;
+
+$iconSpritePath:          "../images/glyphicons-halflings.png" !default;
+$iconWhiteSpritePath:     "../images/glyphicons-halflings-white.png" !default;
