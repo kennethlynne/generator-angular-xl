@@ -53,7 +53,7 @@ module.exports = function (grunt) {
             },
             sailslinker: {
                 files: [].concat(jsFiles).concat(cssFiles),
-                tasks: ['linkAssets']
+                tasks: ['linkAssets-dev']
             }
         },
         connect: {
