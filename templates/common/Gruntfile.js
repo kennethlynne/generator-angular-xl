@@ -52,7 +52,7 @@ module.exports = function (grunt) {
                 ]
             },
             sailslinker: {
-                files: [].concat(jsFiles).concat(cssFiles),
+                files: ['<%%= yeoman.app %>/**/*.{scss,sass,js}'],
                 tasks: ['linkAssets-dev']
             }
         },
