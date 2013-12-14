@@ -11,6 +11,8 @@ module.exports = function(config) {
         'test/loadTemplates.js',
         'app/scripts/module.js',
         'test/matchers/**/*.js',
+        'test/utils/*.js',
+        'test/utils/**/*.js',
         'app/scripts/*.js',
         'app/scripts/**/*.js',
         'test/mock/**/*.js',
