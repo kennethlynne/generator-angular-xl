@@ -7,8 +7,8 @@ var angularUtils = require('../util.js');
 
 var Generator = module.exports = function Generator() {
   ScriptBase.apply(this, arguments);
-  this.hookFor('angular-awesome:controller');
-  this.hookFor('angular-awesome:view');
+  this.hookFor('angular-xl:controller');
+  this.hookFor('angular-xl:view');
 };
 
 util.inherits(Generator, ScriptBase);

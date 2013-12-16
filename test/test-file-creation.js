@@ -8,7 +8,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular-awesome generator', function () {
+describe('angular-xl generator', function () {
   var angular;
 
   beforeEach(function (done) {
@@ -25,7 +25,7 @@ describe('Angular-awesome generator', function () {
       if (err) {
         done(err);
       }
-      angular = helpers.createGenerator('angular-awesome:app', deps);
+      angular = helpers.createGenerator('angular-xl:app', deps);
       angular.options['skip-install'] = true;
       done();
     });
@@ -104,7 +104,7 @@ describe('Angular-awesome generator', function () {
     var angularGenerator;
     var name = 'foo';
     var deps = [path.join('../..', generatorType)];
-    angularGenerator = helpers.createGenerator('angular-awesome:' + generatorType, deps, [name]);
+    angularGenerator = helpers.createGenerator('angular-xl:' + generatorType, deps, [name]);
 
     helpers.mockPrompt(angular, {
       modules: []
@@ -174,7 +174,7 @@ describe('Angular-awesome generator', function () {
     it('should generate a new view', function (done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-awesome:view', deps, ['foo']);
+      angularView = helpers.createGenerator('angular-xl:view', deps, ['foo']);
 
       helpers.mockPrompt(angular, {
         modules: []
@@ -192,7 +192,7 @@ describe('Angular-awesome generator', function () {
     it('should generate a new view in subdirectories', function (done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-awesome:view', deps, ['foo/bar']);
+      angularView = helpers.createGenerator('angular-xl:view', deps, ['foo/bar']);
 
       helpers.mockPrompt(angular, {
         modules: []

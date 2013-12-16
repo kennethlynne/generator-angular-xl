@@ -30,15 +30,15 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
-  this.hookFor('angular-awesome:common', {
+  this.hookFor('angular-xl:common', {
     args: args
   });
 
-  this.hookFor('angular-awesome:main', {
+  this.hookFor('angular-xl:main', {
     args: args
   });
 
-  this.hookFor('angular-awesome:controller', {
+  this.hookFor('angular-xl:controller', {
     args: args
   });
 
