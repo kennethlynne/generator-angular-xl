@@ -2,7 +2,7 @@
 There is something missing when implementing large scale web applications based on Angular and this is my take on it. It is an actively maintained boilerplate generator to scaffold new AngularJS projects and improve your workflow.
 This tool will rock your world and speed up your development process by about 19 times.. Yeah. It's that good.. Stay in the zone, spend more time flowing and less time doing the boring stuff.
 To sum up:
-* All scripts in app/scrips will be automatically injected, no more hard-coding ```<script src=" ... " ...```, and the same configuration is shared with minifiers and test runners. Need more control? Check out [resources.json](#resources.json)
+* All scripts in app/scrips and styles in app/styles will be automatically in minifiers, index.html and tests, no more hard-coding ```<script src=" ... " ...```. Need more control? Check out [resources.json](#resources.json) the same configuration is shared with minifiers and test runners.
 * Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find out exactly what lines of code are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
 * Use [components](#component) as syntactic spice to help reduce complexity and improve re-usability of code
 * Start a server with live reload easily monitoring your progress with ```grunt server```
