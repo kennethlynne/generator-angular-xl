@@ -67,7 +67,7 @@ yo angular-xl
 ### API
 This helps out if you need to develop and prototype fast before the API is implemented.
 If you have specified that mocks should be used in `app/scripts/config/application-config.js`
-```
+```javascript
 angular.module('yourModule')
 .constant('Config', {
     useMocks:               true,
@@ -159,7 +159,7 @@ yo angular-xl:component awesomeUnicorn
 ```
 Produces these files:
 `app/scripts/components/awesome-unicorn.js`:
-```
+```javascript
 angular.module('yourModule.components')
     .controller('awesomeUnicornCtrl', function ($scope, $element) {
         $element.text('this is the awesome unicorn component');
