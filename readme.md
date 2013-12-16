@@ -317,8 +317,8 @@ This configuration is shared between both jasmine, minifiers and index.html.
 
 Resource.json contains two sections. One for JS and one for SCSS.
 ```
-        "scripts/config/routes.js",
-        "scripts/**/*.js"
+"scripts/config/routes.js",
+"scripts/**/*.js"
 ```
 Files will be matched only once, so in the aforementioned example the routes config will be loaded before everything else is included.
 
