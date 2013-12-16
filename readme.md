@@ -1,6 +1,6 @@
 # AngularJS generator 
-So what is this?
-I felt it was something missing when implementing large scale web applications based on Angular and it inspired this scaffolding tool. It is supposed to be more up to date and actively maintained to always provide cutting edge tools to scaffold new AngularJS projects.
+I think it is something missing when implementing large scale web applications based on Angular and it inspired this scaffolding tool. It is supposed to be more up to date and actively maintained to always provide cutting edge tools to scaffold new AngularJS projects.
+This tool will rock your world and speed up your development by about 19 times.. Yeah. It's that good. Spend more time *flowing* (stay in the zone) and less time doing the boring stuff.
 To sum up:
 * All scripts in app/scrips will be automatically injected, no more hand coding ```<script src=" ... " ...```, need more control? Check out [resources.json](#resources.json)
 * Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find out exactly what lines of code are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
