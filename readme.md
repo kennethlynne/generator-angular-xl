@@ -1,5 +1,5 @@
-# AngularJS generator 
-There is something missing when implementing large scale web applications based on Angular and this is my take on it. It is an actively maintained boilerplate generator to scaffold new AngularJS projects and improve your workflow.
+# AngularJS generator-angular-xl
+Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
 This tool will rock your world and speed up your development process by about 19 times.. Yeah. It's that good.. Stay in the zone, spend more time flowing and less time doing the boring stuff.
 To sum up:
 * All scripts in app/scrips and styles in app/styles will be automatically in minifiers, index.html and tests, no more hard-coding ```<script src=" ... " ...```. Need more control? Check out [resources.json](#resources.json) the same configuration is shared with minifiers and test runners.
@@ -157,13 +157,7 @@ Example:
 yo angular-xl:component awesomeUnicorn
 ```
 Produces these files:
-`
-   create app\scripts\components\awesome-unicorn.js
-   create test\spec\components\awesome-unicorn.js
-   create app\views\components\awesome-unicorn\awesome-unicorn.html
-`
-
-`awesome-unicorn.js`:
+`app/scripts/components/awesome-unicorn.js`:
 ```
 angular.module('yourModule.components')
     .controller('awesomeUnicornCtrl', function ($scope, $element) {
@@ -175,8 +169,8 @@ angular.module('yourModule.components')
         };
     });
 ```
-
-`views/components/awesome-unicorn/awesome-unicorn.html:`
+`test/spec/components/awesome-unicorn.js`
+`app/views/components/awesome-unicorn/awesome-unicorn.html`
 ```
 <div class="awesome-unicorn-component">
     <p>This is the awesome-unicorn component.</p>
