@@ -22,5 +22,5 @@ angular.module('<%= scriptAppName %>')
 
     })
     .controller('<%= classedName %>Ctrl', function ($scope, init) {
-        $scope.data = init;
+        $scope.data = init;  //Now init.message1 is 'Data from service 1', and init.message2 is 'Data from service 2'
     });

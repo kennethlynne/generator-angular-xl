@@ -1,6 +1,14 @@
 # AngularJS generator 
-Angular generator is awesome, but it is missing some spice to become really useful in larger applications.
-This is the same generator, customized to use some nice patterns and best-practices.
+So what is this?
+I felt it was something missing when implementing large scale web applications based on Angular and it inspired this scaffolding tool. It is supposed to be more up to date and actively maintained to always provide cutting edge tools to scaffold new AngularJS projects.
+To sum up:
+* All scripts in app/scrips will be automatically injected, no more hand coding ```<script src=" ... " ...```, need more control? Check out [resources.json](#resources.json)
+* Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find out exactly what lines of code are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
+* Use [components](#component) as syntactic spice to help reduce complexity and improve re-usability of code
+* Start a server with live reload easily monitoring your progress with ```grunt server```
+* Run tests continually when implementing using KarmaJS using ```grunt start```, btw templates are automatically injected to handle mock backend issues.
+* Build and minify the project with one command: ```grunt build```
+* Intercept calls to an API and provide a [mock API](#mock) to do fast prototyping
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
@@ -8,10 +16,10 @@ Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator
 
 ## Usage
 
-Install `generator-angular`:
-There is not yet registered a NPM package. So for now:
+Install `generator-angular-xl`:
+
 ```
-npm install -g https://github.com/kennethlynne/generator-angular-xl.git
+npm install -g generator-angular-xl
 ```
 
 Make a new directory, and `cd` into it:
@@ -55,42 +63,69 @@ Example:
 yo angular-xl
 ```
 
+### Mock API
+If you have specified that mocks should be used in `app/scripts/config/application-config.js`
+```
+angular.module('yourModule')
+.constant('Config', {
+    useMocks:               true,
+    viewsDir:               'views/',
+    API: {
+        protocol:           'http',
+        host:               'api.example.com',
+        port:               '8080',
+        path:               '/api',
+        fakeDelay:          2000
+    }
+})
+```
+it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/scripts/mock-api.js`, when ever you are ready to implement with a real API set ```useMocks: false```
+
 ### Route
-Generates a controller and view, and configures a route in `app/scripts/config/routes.js` connecting them.
-
-Example:
-```bash
-yo angular-xl:route myroute
-```
-
-Produces `app/scripts/controllers/myroute.js`:
-```javascript
-angular.module('myMod').controller('MyrouteCtrl', function ($scope) {
-  // ...
-});
-```
-
-Produces `app/views/myroute.html`:
-```html
-<p>This is the myroute view</p>
-```
+Routes are specified using the powerful Angular-UIs router instead of the ngRouter one. This helps handle sub-views, stateful urls and other nice stuff.
+Routes are configured in `app/scripts/config/routes.js`, for now no generator for routes is implemented and for documentation check out [angular-uis own documentation](https://github.com/angular-ui/ui-router)
+This will be improved in the next version.
 
 ### Controller
 Generates a controller in `app/scripts/controllers` and an accompanying test in `test/spec/controllers`.
-Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise.
-This promise will be resolved before the controller is instantiated.
+Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise. This helps you load data *before* the controller is instantiated.
 
 Example:
 ```bash
 yo angular-xl:controller user
 ```
 
-Produces `app/scripts/controllers/user.js`:
+Produces `app\scripts\controllers\user.js` and `test\spec\controllers\user.js`.
+
+`app\scripts\controllers\user.js`:
 ```javascript
-angular.module('myMod').controller('UserCtrl', function ($scope) {
-  // ...
-});
+angular.module('yourModule')
+    .service('userCtrlInit', function ($q, $log) {
+
+        var _prepare = function () {
+            $log.log("userCtrl loading");
+
+            return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
+                $log.log("userCtrl loaded!");
+
+                return {
+                    message1: data[0],
+                    message2: data[1]
+                }
+            });
+        };
+
+        return {
+            prepare: _prepare
+        }
+
+    })
+    .controller('userCtrl', function ($scope, init) {
+        $scope.data = init; //Now init.message1 is 'Data from service 1', and init.message2 is 'Data from service 2'
+    });
 ```
+This helps keep the code testable (test data fetching separate from controller logic). ```$q.all()``` takes a list of functions, awaits all functions that returns a promise and wraps the returned data in a promise. All services must return successfully before it will resolving the returned promise with the data from the services. Nice.
+
 ### Directive
 Generates a directive in `app/scripts/directives`.
 
@@ -112,14 +147,48 @@ angular.module('myMod').directive('myDirective', function () {
 });
 ```
 ### Component
-A component is basically a element directive that has been prebound to use a view located in `app/views/component/<component-name>/<component-name>.html`.
+A component is basically a element directive that has been pre-bound to use a view located in `app/views/component/<component-name>/<component-name>.html`.
 This helps keep complexity low, and makes it easy to separate parts of your application into smaller and more maintainable parts.
 Generates a directive in `app/scripts/components` that uses a factory called `componentFactory` for convention over configuration.
 
 Example:
 ```bash
-yo angular-xl:component myComponent
+yo angular-xl:component awesomeUnicorn
 ```
+Produces these files:
+`
+   create app\scripts\components\awesome-unicorn.js
+   create test\spec\components\awesome-unicorn.js
+   create app\views\components\awesome-unicorn\awesome-unicorn.html
+`
+
+`awesome-unicorn.js`:
+```
+angular.module('yourModule.components')
+    .controller('awesomeUnicornCtrl', function ($scope, $element) {
+        $element.text('this is the awesome unicorn component');
+    })
+    .component('awesomeUnicorn', function () {
+        return {
+            controller: 'awesomeUnicornComponentCtrl'
+        };
+    });
+```
+
+`views/components/awesome-unicorn/awesome-unicorn.html:`
+```
+<div class="awesome-unicorn-component">
+    <p>This is the awesome-unicorn component.</p>
+</div>
+```
+
+Witch in turn lets you specify custom HTML tags like this to invoke a completely self contained component:
+```
+<awesome-unicorn-component></awesome-unicorn-component>
+```
+
+Bonus: The view has specified a component name as a class, helping you avoid CSS collisions. Specify your styles specific for this component in SCSS under a ```.awesome-unicorn-component``` class wrapper, and only this component is targeted. This is an OK approach until shadow DOMs and web components become widely supported.
+
 ### Filter
 Generates a filter in `app/scripts/filters`.
 
@@ -212,8 +281,13 @@ The following packages are always installed by the [app](#app) generator:
 
 * angular
 * angular-mocks
+* angular-animate
 * angular-scenario
-
+* angular-component-factory
+* angular-ui-router
+* angular-promise-tracker
+* angular-loading-bar
+* angular-xeditable
 
 The following additional modules are available as components on bower, and installable via `bower install`:
 
@@ -241,9 +315,21 @@ You can change the `app` directory by adding a `appPath` property to `bower.json
 ```
 This will cause Yeoman-generated client-side files to be placed in `public`.
 
+## Resources.json
+All configuration about what files and in what order the files are supposed to be loaded is spesified in ```resources.json```.
+This configuration is shared between both jasmine, minifiers and index.html.
+
+Resource.json contains two sections. One for JS and one for SCSS.
+```
+        "scripts/config/routes.js",
+        "scripts/**/*.js"
+```
+Files will be matched only once, so in the aforementioned example the routes config will be loaded before everything else is included.
+
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+Under the folder ```test/coverage``` you will find your whole application structure mapped into matching HTML documents describing how tests cover your code. Use this to your advantage. Crush bugs before they are born.
 
 ## Contribute
 
