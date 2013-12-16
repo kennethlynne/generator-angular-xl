@@ -9,6 +9,7 @@ To sum up:
 * Run tests continually when implementing using KarmaJS using ```grunt start```, btw templates are automatically injected to handle mock backend issues.
 * Build and minify the project with one command: ```grunt build```
 * Intercept calls to an API and provide a [mock API](#mock) to do fast prototyping
+* And more that needs to be documented..
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
