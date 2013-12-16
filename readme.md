@@ -8,7 +8,7 @@ To sum up:
 * Start a server with live reload easily monitoring your progress with ```grunt server```
 * Run tests continually when implementing using KarmaJS using ```grunt start```, btw templates are automatically injected to handle mock backend issues.
 * Build and minify the project with one command: ```grunt build```
-* Intercept calls to an API and provide a [mock API](#mock) to do fast prototyping
+* Intercept calls to an API and provide a [mock API](#api) to do fast prototyping
 * And more that needs to be documented..
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
@@ -64,7 +64,8 @@ Example:
 yo angular-xl
 ```
 
-### Mock API
+### API
+This helps out if you need to develop and prototype fast before the API is implemented.
 If you have specified that mocks should be used in `app/scripts/config/application-config.js`
 ```
 angular.module('yourModule')
@@ -80,7 +81,7 @@ angular.module('yourModule')
     }
 })
 ```
-it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/scripts/mock-api.js`, when ever you are ready to implement with a real API set ```useMocks: false```
+it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/scripts/mock-api.js` after the given delay, when ever you are ready to implement with a real API set ```useMocks: false```
 
 ### Route
 Routes are specified using the powerful Angular-UIs router instead of the ngRouter one. This helps handle sub-views, stateful urls and other nice stuff.
