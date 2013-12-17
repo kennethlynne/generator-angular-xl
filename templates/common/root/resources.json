@@ -19,7 +19,7 @@
         "bower_components/restangular/dist/restangular.js",
         "bower_components/angular-ui-router/release/angular-ui-router.js",
         "scripts/module.js",
-        "scripts/config/routes.js",
+        "scripts/config/*.js",
         "components/**/*.js",
         "scripts/**/*.js"
     ],

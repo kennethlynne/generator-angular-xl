@@ -9,7 +9,6 @@ module.exports = function(config) {
 
     var files = [].concat(jsFiles).concat([
         'test/loadTemplates.js',
-        'app/scripts/module.js',
         'test/matchers/**/*.js',
         'test/utils/*.js',
         'test/utils/**/*.js',
@@ -17,7 +16,8 @@ module.exports = function(config) {
         'app/scripts/**/*.js',
         'test/mock/**/*.js',
         'test/spec/**/*.js',
-        'app/views/**/*.html'
+        'app/views/**/*.html',
+        'app/components/**/*.html'
     ]);
 
     config.set({
@@ -29,6 +29,7 @@ module.exports = function(config) {
 
         preprocessors: {
             'app/views/**/*.html': ['ng-html2js'],
+            'app/components/**/*.html': ['ng-html2js'],
             'app/scripts/**/*.js': ['coverage']
         },
 
