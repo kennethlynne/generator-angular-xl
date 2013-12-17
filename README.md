@@ -126,7 +126,7 @@ angular.module('yourModule')
         $scope.data = init; //Now init.message1 is 'Data from service 1', and init.message2 is 'Data from service 2'
     });
 ```
-This helps keep the code testable (test data fetching separate from controller logic). ```$q.all()``` takes a list of functions, awaits all functions that returns a promise and wraps the returned data in a promise. All services must return successfully before it will resolving the returned promise with the data from the services. Nice.
+This helps keep the code testable (test data fetching separate from controller logic and easily inject mock data in tests). ```$q.all()``` takes a list of functions, awaits all functions that returns a promise and wraps the returned data in a promise. All services must return successfully before it will resolve the returned promise with the data from the services. Nice.
 
 ### Directive
 Generates a directive in `app/scripts/directives`.
