@@ -4,7 +4,7 @@ This tool will rock your world and speed up your development process by about 19
 To sum up:
 * All scripts in app/scrips and styles in app/styles will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json) the same configuration is shared with minifiers and test runners.
 * Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
-* Use [components](#component) as syntactic spice to help reduce complexity and improve re-usability of code
+* Use [components](#component) as syntactic sugar to help reduce complexity and improve re-usability of code
 * Start a server with live reload easily monitoring your progress with ```grunt server```
 * Run tests continually when implementing using KarmaJS using ```grunt start```, btw templates are automatically injected to handle mock backend issues.
 * Build and minify the project with one command: ```grunt build```
