@@ -6,6 +6,7 @@ var fs = require('fs');
 module.exports = {
   rewrite: rewrite,
   rewriteFile: rewriteFile,
+  appendFile: appendFile,
   appName: appName
 };
 
@@ -17,6 +18,22 @@ function rewriteFile (args) {
   var body = rewrite(args);
 
   fs.writeFileSync(fullPath, body);
+}
+
+function appendFile(args) {
+    args.path = args.path || process.cwd();
+    var fullPath = path.join(args.path, args.file);
+
+    args.input = fs.readFileSync(fullPath, 'utf8');
+    var output = append(args);
+
+    fs.writeFileSync(fullPath, output);
+}
+
+function append(args) {
+    var lines = args.input.split('\n');
+    lines.push(args.lines.join('\n'));
+    return lines.join('\n');
 }
 
 function escapeRegExp (str) {

@@ -62,19 +62,18 @@ Generator.prototype.htmlTemplate = function (src, dest) {
   ]);
 };
 
-Generator.prototype.addScriptToIndex = function (script) {
+Generator.prototype.addStyleToComponentScss = function (style) {
   try {
     var appPath = this.env.options.appPath;
-    var fullPath = path.join(appPath, 'index.html');
-    angularUtils.rewriteFile({
+    var fullPath = path.join(appPath, 'styles', '_components.scss');
+    angularUtils.appendFile({
       file: fullPath,
-      needle: '<!-- endbuild -->',
-      splicable: [
-        '<script src="scripts/' + script + '.js"></script>'
+      lines: [
+        '@import \'' + style + '\';'
       ]
     });
   } catch (e) {
-    console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + script + '.js ' + 'not added.\n'.yellow);
+    console.log('\nUnable to find '.yellow + fullPath + '.');
   }
 };
 

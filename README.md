@@ -171,6 +171,7 @@ angular.module('yourModule.components')
     });
 ```
 `test/spec/components/awesome-unicorn.js`
+`app/styles/components/awesome-unicorn/_awesome-unicorn.scss` (and adds an import statement to it in `app/styles/_components.scss`)
 `app/views/components/awesome-unicorn/awesome-unicorn.html`
 ```
 <div class="awesome-unicorn-component">
@@ -183,7 +184,7 @@ Witch in turn lets you specify custom HTML tags like this to invoke a completely
 <awesome-unicorn-component></awesome-unicorn-component>
 ```
 
-Bonus: The view has specified a component name as a class, helping you avoid CSS collisions. Specify your styles specific for this component in SCSS under a ```.awesome-unicorn-component``` class wrapper, and only this component is targeted. This is an OK approach until shadow DOMs and web components become widely supported.
+The view has specified a component name as a class, helping you avoid CSS collisions. Specify your styles specific for this component in SCSS under a ```.awesome-unicorn-component``` class wrapper, and only this component is targeted. This is an OK approach until shadow DOMs and web components become widely supported.
 
 ### Filter
 Generates a filter in `app/scripts/filters`.

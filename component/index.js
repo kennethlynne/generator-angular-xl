@@ -24,12 +24,15 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createComponentFiles = function createComponentFiles() {
-  this.generateSourceAndTest(
-    'component',
-    'spec/component',
-    'components',
-    this.options['skip-add'] || false
-  );
+    this.generateSourceAndTest(
+        'component',
+        'spec/component',
+        'components',
+        this.options['skip-add'] || false
+    );
 
-  this.template('../common/componentview.html', path.join(this.env.options.appPath, 'views', 'components', _.dasherize(this.name), _.dasherize(this.name) + '.html'));
+    this.template('../common/component.scss', path.join(this.env.options.appPath, 'styles', 'components', _.dasherize(this.name), '_' + _.dasherize(this.name) + '.scss'));
+    this.addStyleToComponentScss('components/' + _.dasherize(this.name) + '/' + '_' + _.dasherize(this.name) + '.scss');
+
+    this.template('../common/component.html', path.join(this.env.options.appPath, 'views', 'components', _.dasherize(this.name), _.dasherize(this.name) + '.html'));
 };
