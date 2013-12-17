@@ -27,12 +27,13 @@ Generator.prototype.createComponentFiles = function createComponentFiles() {
     this.generateSourceAndTest(
         'component',
         'spec/component',
+        ('../components/' + _.dasherize(this.name)),
         'components',
         this.options['skip-add'] || false
     );
 
-    this.template('../common/component.scss', path.join(this.env.options.appPath, 'styles', 'components', _.dasherize(this.name), '_' + _.dasherize(this.name) + '.scss'));
-    this.addStyleToComponentScss('components/' + _.dasherize(this.name) + '/' + '_' + _.dasherize(this.name) + '.scss');
+    this.template('../common/component.scss', path.join(this.env.options.appPath, 'components', _.dasherize(this.name), 'styles', '_' + _.dasherize(this.name) + '.scss'));
+    this.addStyleToComponentScss('../components/' + _.dasherize(this.name) + '/styles/' + _.dasherize(this.name));
 
-    this.template('../common/component.html', path.join(this.env.options.appPath, 'views', 'components', _.dasherize(this.name), _.dasherize(this.name) + '.html'));
+    this.template('../common/component.html', path.join(this.env.options.appPath, 'components', _.dasherize(this.name), 'views', _.dasherize(this.name) + '.html'));
 };

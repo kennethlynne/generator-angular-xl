@@ -10,5 +10,8 @@ angular.module('<%= scriptAppName %>')
         fakeDelay:          2000
     }
 })
+.config(function (componentFactoryProvider) { componentFactoryProvider.setViewPath(function (componentSnakeName, componentName) {
+    return 'components/' + componentSnakeName + '/views/' + componentSnakeName + '.html';
+})})
 .value('cgBusyTemplateName','views/angular-busy/default-spinner.html')
 .run(function(editableOptions) {editableOptions.theme = 'bs3'});
