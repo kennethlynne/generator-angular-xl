@@ -21,6 +21,7 @@
         "scripts/module.js",
         "scripts/config/*.js",
         "components/**/*.js",
+        "pages/**/*.js",
         "scripts/**/*.js"
     ],
     "css": [
