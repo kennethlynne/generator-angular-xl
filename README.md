@@ -1,6 +1,8 @@
 # Generator-angular-xl
 Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
+This generator is the framework I missed when developing large AngularJS applications.
 This tool will rock your world and speed up your development process by about 19 times.. Yeah. It's that good.. Stay in the zone, spend more time flowing and less time doing the boring stuff.
+
 To sum up:
 * All scripts in app/scrips and styles in app/styles will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json) the same configuration is shared with minifiers and test runners.
 * Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
