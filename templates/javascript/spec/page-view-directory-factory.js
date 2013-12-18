@@ -8,7 +8,7 @@ describe('pageViewDirectoryFactory', function () {
 
         module('<%= scriptAppName %>');
 
-        inject(function (_<%= cameledName %>_) {
+        inject(function (_pageViewDirectoryFactory_) {
             pageViewDirectoryFactory = _pageViewDirectoryFactory_;
         });
 
