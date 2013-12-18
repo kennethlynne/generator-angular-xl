@@ -13,5 +13,8 @@ angular.module('<%= scriptAppName %>')
 .config(function (componentFactoryProvider) { componentFactoryProvider.setViewPath(function (componentSnakeName, componentName) {
     return 'components/' + componentSnakeName + '/views/' + componentSnakeName + '.html';
 })})
+.value('pageViewDirectoryFactory', function (pageName, state, viewName) {
+    return 'pages/' + pageName + '/' + (state || 'index') + '/views/' + (viewName || state) + '.html';
+})
 .value('cgBusyTemplateName','views/angular-busy/default-spinner.html')
 .run(function(editableOptions) {editableOptions.theme = 'bs3'});
