@@ -12,25 +12,3 @@ var Generator = module.exports = function Generator() {
 };
 
 util.inherits(Generator, ScriptBase);
-
-Generator.prototype.rewriteRoutesJs = function () {
-  var config = {
-    file: path.join(
-      this.env.options.appPath,
-      'scripts/config/routes.js'
-    ),
-    needle: '.otherwise',
-        splicable: [
-        "    templateUrl: viewDir + '" + this.name + ".html',",
-        "    controller: '" + this.classedName + "Ctrl'",
-        "    resolve: {",
-        "        init: prepare('" + this.classedName + "CtrlInit')",
-        "    }"
-    ]
-  };
-
-  config.splicable.unshift(".when('/" + this.name + "', {");
-  config.splicable.push("})");
-
-  //angularUtils.rewriteFile(config);
-};
