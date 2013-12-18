@@ -301,7 +301,7 @@ You can change the `app` directory by adding a `appPath` property to `bower.json
 This will cause Yeoman-generated client-side files to be placed in `public`.
 
 ## Resources.json
-All configuration about what files and in what order the files are supposed to be loaded is spesified in ```resources.json```.
+All configuration about what files and in what order the files are supposed to be loaded is specified in ```resources.json```.
 This configuration is shared between both jasmine, minifiers and index.html.
 
 Resource.json contains two sections. One for JS and one for SCSS.
