@@ -71,14 +71,6 @@ Generator.prototype.askForModules = function askForModules() {
         name: 'angular-sanitize.js',
         checked: false
     }, {
-        value: 'uirouterModule',
-        name: 'angular-ui-router.js',
-        checked: true
-    }, /*{
-        value: 'routeModule',
-        name: 'angular-route.js',
-        checked: false
-    },*/ {
         value: 'restangularModule',
         name: 'restangular.js',
         checked: true
@@ -91,10 +83,8 @@ Generator.prototype.askForModules = function askForModules() {
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
     this.restangularModule = hasMod('restangularModule');
-    this.uirouterModule = hasMod('uirouterModule');
-    this.routeModule = false;//hasMod('routeModule');
 
-    var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'"];
+    var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
@@ -108,12 +98,6 @@ Generator.prototype.askForModules = function askForModules() {
       if (this.sanitizeModule) {
           angMods.push("'ngSanitize'");
       }
-      if (this.uirouterModule) {
-          angMods.push("'ui.router'");
-      }
-//      if (this.routeModule) {
-//          angMods.push("'ngRoute'");
-//      }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
 
@@ -136,4 +120,5 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/api-base-url.js', 'app/scripts/api-base-url.js');
     this.template('../../templates/javascript/application-config.js', 'app/scripts/config/application-config.js');
     this.template('../../templates/javascript/mock-api.js', 'app/scripts/mock-api.js');
+    this.template('../../templates/javascript/spec/page-view-directory-factory.js', 'test/spec/page-view-directory-factory.js');
 };
