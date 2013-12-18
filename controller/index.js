@@ -1,7 +1,7 @@
 'use strict';
 var util = require('util');
 var ScriptBase = require('../script-base.js');
-
+var _ = require('underscore.string');
 
 var Generator = module.exports = function Generator() {
   ScriptBase.apply(this, arguments);
@@ -19,7 +19,6 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
   this.generateSourceAndTest(
     'controller',
     'spec/controller',
-    'controllers',
-    this.options['skip-add'] || false
+    ('../pages/' + _.dasherize(this.name))
   );
 };

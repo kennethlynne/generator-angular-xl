@@ -121,4 +121,5 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/application-config.js', 'app/scripts/config/application-config.js');
     this.template('../../templates/javascript/mock-api.js', 'app/scripts/mock-api.js');
     this.template('../../templates/javascript/spec/page-view-directory-factory.js', 'test/spec/page-view-directory-factory.js');
+    this.template('../../templates/javascript/spec/state-factory.js', 'test/spec/state-factory.js');
 };

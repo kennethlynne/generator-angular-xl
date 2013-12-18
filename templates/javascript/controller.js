@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
+    .config(function ($stateProvider, stateFactory) { $stateProvider.state('<%= classedName %>', stateFactory('<%= classedName %>')) })
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
         var _prepare = function () {
