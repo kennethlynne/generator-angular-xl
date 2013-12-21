@@ -45,7 +45,7 @@ Available generators:
 * [angular-xl:directive](#directive)
 * [angular-xl:component](#component)
 * [angular-xl:filter](#filter)
-* [angular-xl:route](#route)
+* [angular-xl:page](#page)
 * [angular-xl:service](#service)
 * [angular-xl:provider](#service)
 * [angular-xl:factory](#service)
@@ -86,13 +86,21 @@ angular.module('yourModule')
 ```
 it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/scripts/mock-api.js` after the given delay, when ever you are ready to implement with a real API set ```useMocks: false```
 
-### Route
-Routes are specified using the powerful Angular-UIs router instead of the ngRouter one. This helps handle sub-views, stateful urls and other nice stuff.
-Routes are configured in `app/scripts/config/routes.js`, for now no generator for routes is implemented and for documentation check out [angular-uis own documentation](https://github.com/angular-ui/ui-router)
-This will be improved in the next version.
+### Page
+Pages are located under `app/pages`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UIs router instead of the ngRouter one. This helps handle sub-views, stateful urls and other nice stuff.
+
+Example:
+```bash
+yo angular-xl:page user
+```
+
+Produces `app\pages\user\index\user.js`, `test\spec\pages\user\index\user.js`, `app\pages\user\index\views\user.html` and `app\pages\user\styles\_user.scss`
+
+### Routing
+Routes are configured in `app/scripts/config/routes.js`. Each individual controller registers its own route.
 
 ### Controller
-Generates a controller in `app/scripts/controllers` and an accompanying test in `test/spec/controllers`.
+Generates a controller in `app/pages` and an accompanying test in `test/spec/pages`.
 Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise. This helps you load data *before* the controller is instantiated.
 
 Example:
@@ -105,13 +113,14 @@ Produces `app\scripts\controllers\user.js` and `test\spec\controllers\user.js`.
 `app\scripts\controllers\user.js`:
 ```javascript
 angular.module('yourModule')
-    .service('userCtrlInit', function ($q, $log) {
+    .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('User', stateFactoryProvider.$get()('User')) })
+    .service('UserCtrlInit', function ($q, $log) {
 
         var _prepare = function () {
-            $log.log("userCtrl loading");
+            $log.log("UserCtrl loading");
 
             return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
-                $log.log("userCtrl loaded!");
+                $log.log("UserCtrl loaded!");
 
                 return {
                     message1: data[0],
@@ -125,7 +134,7 @@ angular.module('yourModule')
         }
 
     })
-    .controller('userCtrl', function ($scope, init) {
+    .controller('UserCtrl', function ($scope, init) {
         $scope.data = init; //Now init.message1 is 'Data from service 1', and init.message2 is 'Data from service 2'
     });
 ```

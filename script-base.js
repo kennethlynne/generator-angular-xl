@@ -62,19 +62,27 @@ Generator.prototype.htmlTemplate = function (src, dest) {
   ]);
 };
 
+Generator.prototype.appendStyleToScss = function (target, style) {
+    try {
+        var appPath = this.env.options.appPath;
+        var fullPath = path.join(appPath, 'styles', target);
+        angularUtils.appendFile({
+            file: fullPath,
+            lines: [
+                '@import \'' + style + '\';'
+            ]
+        });
+    } catch (e) {
+        console.log('\nUnable to find '.yellow + fullPath + '.');
+    }
+};
+
+Generator.prototype.addStyleToPagesScss = function (style) {
+    this.appendStyleToScss('_pages.scss', style);
+};
+
 Generator.prototype.addStyleToComponentScss = function (style) {
-  try {
-    var appPath = this.env.options.appPath;
-    var fullPath = path.join(appPath, 'styles', '_components.scss');
-    angularUtils.appendFile({
-      file: fullPath,
-      lines: [
-        '@import \'' + style + '\';'
-      ]
-    });
-  } catch (e) {
-    console.log('\nUnable to find '.yellow + fullPath + '.');
-  }
+    this.appendStyleToScss('_components.scss', style);
 };
 
 Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory, testTargetDirectory) {

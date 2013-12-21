@@ -1,8 +1,8 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: IndexCtrl', function () {
 
-    var MainCtrl, scope;
+    var IndexCtrl, scope;
 
     beforeEach(function () {
 
@@ -10,7 +10,7 @@ describe('Controller: MainCtrl', function () {
 
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
-            MainCtrl = $controller('MainCtrl', {
+            IndexCtrl = $controller('IndexCtrl', {
                 $scope: scope,
                 init: 'DATA'
             });
@@ -22,23 +22,23 @@ describe('Controller: MainCtrl', function () {
     });
 });
 
-describe('Service: MainCtrlInit', function () {
+describe('Service: IndexCtrlInit', function () {
 
-    var MainCtrlInit;
+    var IndexCtrlInit;
 
     beforeEach(function () {
 
         module('<%= scriptAppName %>');
 
-        inject(function (_MainCtrlInit_) {
-            MainCtrlInit = _MainCtrlInit_;
+        inject(function (_IndexCtrlInit_) {
+            IndexCtrlInit = _IndexCtrlInit_;
         });
 
     });
 
 
     it('should have a prepare function', function () {
-        expect(typeof MainCtrlInit.prepare).toEqual('function');
+        expect(typeof IndexCtrlInit.prepare).toEqual('function');
     });
 
 });

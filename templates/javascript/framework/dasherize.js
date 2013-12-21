@@ -1,5 +1,5 @@
 angular.module('<%= scriptAppName %>')
-    .constant('camelize', function (input) {
+    .constant('dasherize', function (input) {
         return input
            .replace(/(?:[A-Z]+)/g, function (match) { //camelCase -> snake-case
                return "-" + match.toLowerCase();

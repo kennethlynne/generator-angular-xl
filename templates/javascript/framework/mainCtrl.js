@@ -2,15 +2,15 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function ($stateProvider, stateFactoryProvider) {
-        $stateProvider.state('Main', stateFactoryProvider.$get()('Main', {url:'/'}))
+        $stateProvider.state('Index', stateFactoryProvider.$get()('Index', {url:'/'}))
     })
-    .service('MainCtrlInit', function ($q, $log) {
+    .service('IndexCtrlInit', function ($q, $log) {
 
         var _prepare = function () {
-            $log.log("MainCtrl loading");
+            $log.log("IndexCtrl loading");
 
             return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
-                $log.log("MainCtrl loaded!");
+                $log.log("IndexCtrl loaded!");
 
                 return {
                     message1: data[0],
@@ -24,6 +24,6 @@ angular.module('<%= scriptAppName %>')
         }
 
     })
-    .controller('MainCtrl', function ($scope, init) {
+    .controller('IndexCtrl', function ($scope, init) {
         $scope.data = init;
     });
