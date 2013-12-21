@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('<%= classedName %>', stateFactoryProvider.$get()('<%= classedName %>')) })
-    .service('<%= classedName %>CtrlInit', function ($q, $log) {
+    .config(function ($stateProvider, stateFactoryProvider) {
+        $stateProvider.state('Main', stateFactoryProvider.$get()('Main', {url:'/'}))
+    })
+    .service('MainCtrlInit', function ($q, $log) {
 
         var _prepare = function () {
-            $log.log("<%= classedName %>Ctrl loading");
+            $log.log("MainCtrl loading");
 
             return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
-                $log.log("<%= classedName %>Ctrl loaded!");
+                $log.log("MainCtrl loaded!");
 
                 return {
                     message1: data[0],
@@ -22,6 +24,6 @@ angular.module('<%= scriptAppName %>')
         }
 
     })
-    .controller('<%= classedName %>Ctrl', function ($scope, init) {
+    .controller('MainCtrl', function ($scope, init) {
         $scope.data = init;
     });

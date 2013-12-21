@@ -38,10 +38,6 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.hookFor('angular-xl:controller', {
-    args: args
-  });
-
   this.on('end', function () {
     this.installDependencies({ skipInstall: this.options['skip-install'] });
   });
@@ -117,9 +113,17 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-    this.template('../../templates/javascript/api-base-url.js', 'app/scripts/api-base-url.js');
-    this.template('../../templates/javascript/application-config.js', 'app/scripts/config/application-config.js');
-    this.template('../../templates/javascript/mock-api.js', 'app/scripts/mock-api.js');
-    this.template('../../templates/javascript/spec/page-view-directory-provider.js', 'test/spec/page-view-directory-factory.js');
-    this.template('../../templates/javascript/spec/state-factory-provider.js', 'test/spec/state-factory.js');
+    this.template('../../templates/javascript/framework/api-base-url.js', 'app/scripts/framework/api-base-url.js');
+    this.template('../../templates/javascript/framework/config.js', 'app/scripts/config/config.js');
+    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/error.js');
+    this.template('../../templates/javascript/spec/errorCtrl.js', 'test/spec/pages/error/error.js');
+    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/main/main.js');
+    this.template('../../templates/javascript/spec/mainCtrl.js', 'test/spec/pages/main/main.js');
+    this.template('../../templates/javascript/framework/mock-api.js', 'app/scripts/mock-api.js');
+    this.template('../../templates/javascript/framework/page-view-directory-factory.js', 'app/scripts/framework/page-view-directory-factory.js');
+    this.template('../../templates/javascript/framework/state-factory.js', 'app/scripts/framework/state-factory.js');
+    this.template('../../templates/javascript/spec/page-view-directory-factory.js', 'test/spec/framework/page-view-directory-factory.js');
+    this.template('../../templates/javascript/spec/state-factory-provider.js', 'test/spec/framework/state-factory.js');
+    this.template('../../templates/javascript/framework/camelize.js', 'app/scripts/framework/camelize.js');
+    this.template('../../templates/javascript/spec/camelize.js', 'test/spec/framework/camelize.js');
 };
