@@ -94,7 +94,7 @@ Example:
 yo angular-xl:page user
 ```
 
-Produces `app\pages\user\index\user.js`, `test\spec\pages\user\index\user.js`, `app\pages\user\index\views\user.html` and `app\pages\user\styles\_user.scss`
+Produces `app/pages/user/index/user.js`, `test/spec/pages/user/index/user.js`, `app/pages/user/index/views/user.html` and `app/pages/user/styles/_user.scss`
 
 ### Routing
 Routes are configured in `app/scripts/config/routes.js`. Each individual controller registers its own route.
@@ -108,9 +108,9 @@ Example:
 yo angular-xl:controller user
 ```
 
-Produces `app\scripts\controllers\user.js` and `test\spec\controllers\user.js`.
+Produces `app/scripts/controllers/user.js` and `test/spec/controllers/user.js`.
 
-`app\scripts\controllers\user.js`:
+`app/scripts/controllers/user.js`:
 ```javascript
 angular.module('yourModule')
     .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('User', stateFactoryProvider.$get()('User')) })
