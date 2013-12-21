@@ -189,7 +189,7 @@ module.exports = function (grunt) {
                     useShortDoctype: true,
                     removeEmptyAttributes: false,
                     removeOptionalTags: true,
-                    removeEmpyElements: false
+                    removeEmptyElements: false
                 },
                 files: [{
                     expand: true,
