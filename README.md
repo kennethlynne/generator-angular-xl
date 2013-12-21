@@ -139,7 +139,7 @@ Example:
 yo angular-xl:directive myDirective
 ```
 
-Produces `app/scripts/directives/myDirective.js`:
+Produces `app/scripts/directives/my-directive.js`:
 ```javascript
 angular.module('myMod').directive('myDirective', function () {
   return {
@@ -197,7 +197,7 @@ Example:
 yo angular-xl:filter myFilter
 ```
 
-Produces `app/scripts/filters/myFilter.js`:
+Produces `app/scripts/filters/my-filter.js`:
 ```javascript
 angular.module('myMod').filter('myFilter', function () {
   return function (input) {
@@ -227,7 +227,7 @@ Example:
 yo angular-xl:service myService
 ```
 
-Produces `app/scripts/services/myService.js`:
+Produces `app/scripts/services/my-service.js`:
 ```javascript
 angular.module('myMod').service('myService', function () {
   // ...
@@ -244,7 +244,7 @@ Example:
 yo angular-xl:decorator serviceName
 ```
 
-Produces `app/scripts/decorators/serviceNameDecorator.js`:
+Produces `app/scripts/decorators/servicename-decorator.js`:
 ```javascript
 angular.module('myMod').config(function ($provide) {
     $provide.decorator('serviceName', function ($delegate) {
