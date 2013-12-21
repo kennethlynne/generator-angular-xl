@@ -19,7 +19,7 @@ var Generator = module.exports = function Generator(args, options) {
   });
   this.scriptAppName = this.appname + angularUtils.appName(this);
 
-  args = ['main'];
+  args = ['index'];
 
   if (typeof this.env.options.appPath === 'undefined') {
     try {
