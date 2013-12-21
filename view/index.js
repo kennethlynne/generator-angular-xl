@@ -1,6 +1,7 @@
 'use strict';
 var path = require('path');
 var util = require('util');
+var ScriptBase = require('../script-base.js');
 var yeoman = require('yeoman-generator');
 var _ = require('underscore.string');
 
@@ -16,10 +17,11 @@ var Generator = module.exports = function Generator() {
   }
 };
 
-util.inherits(Generator, yeoman.generators.NamedBase);
+util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-    this.template('common/view.html', path.join(this.env.options.appPath, 'views', _.dasherize(this.name) + '.html'));
-    this.template('../common/page.scss', path.join(this.env.options.appPath, 'pages', _.dasherize(this.name), '_' + _.dasherize(this.name) + '.scss'));
-    this.addStyleToPagesScss('../pages/' + _.dasherize(this.name) + _.dasherize(this.name));
+    var action = 'index';
+    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', _.dasherize(this.name), action, 'views', action + '.html'));
+    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', _.dasherize(this.name), '_' + _.dasherize(this.name) + '.scss'));
+    this.addStyleToPagesScss('../pages/' + _.dasherize(this.name) + '/' + _.dasherize(this.name));
 };

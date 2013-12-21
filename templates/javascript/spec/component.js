@@ -2,32 +2,50 @@
 
 describe('Component: <%= cameledName %>Component', function () {
 
-    var element, outerScope, <%= cameledName %>ComponentCtrl, scope;
+    describe('Directive: <%= cameledName %>Component', function () {
+        var element, scope, $compile;
 
-    beforeEach(function () {
+        beforeEach(function () {
 
-        module('<%= scriptAppName %>.components');
+            module('<%= scriptAppName %>');
 
-        inject(function ($rootScope, $controller, $compile) {
-            outerScope = $rootScope;
-            scope = $rootScope.$new();
-            element = angular.element('<<%= _.dasherize(name) %>-component></<%= _.dasherize(name) %>-component>');
-            element = $compile(element)(outerScope);
-            outerScope.$digest();
-
-            <%= cameledName %>ComponentCtrl = $controller('<%= cameledName %>ComponentCtrl', {
-                $scope: scope,
-                $element: element
+            inject(function ($rootScope, _$compile_) {
+                scope = $rootScope.$new();
+                $compile = _$compile_;
             });
+
+        });
+
+        it('should have the component class', function() {
+            element = angular.element('<<%= _.dasherize(name) %>-component></<%= _.dasherize(name) %>-component>');
+            element = $compile(element)(scope);
+            scope.$digest();
+            expect(element).toHaveClass('<%= _.dasherize(name) %>-component');
         });
 
     });
 
-    it('should have the <%= _.dasherize(name) %>-component class', function () {
-        expect(element.hasClass('<%= _.dasherize(name) %>-component')).toBeTruthy();
+    describe('Controller: <%= cameledName %>ComponentCtrl', function () {
+
+        var Ctrl, scope, element;
+
+        beforeEach(function () {
+
+            module('<%= scriptAppName %>');
+
+            inject(function ($controller, $rootScope) {
+                scope = $rootScope.$new();
+                element = angular.element('<<%= _.dasherize(name) %>-component></<%= _.dasherize(name) %>-component>');
+                Ctrl = $controller('<%= cameledName %>ComponentCtrl', {
+                    $scope: scope,
+                    $element: element
+                });
+            });
+        });
+
+        it('should render a message', function () {
+            expect(element.text()).toEqual('this is the <%= _.camelize(name) %> component');
+        });
     });
 
-    it('should render a message', function() {
-        expect(element.text()).toContain('this is');
-    });
 });

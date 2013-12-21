@@ -17,7 +17,9 @@ module.exports = function(config) {
         'test/mock/**/*.js',
         'test/spec/**/*.js',
         'app/views/**/*.html',
-        'app/components/**/*.html'
+        'app/components/**/*.html',
+        'app/pages/**/*.html'
+
     ]);
 
     config.set({
@@ -30,7 +32,10 @@ module.exports = function(config) {
         preprocessors: {
             'app/views/**/*.html': ['ng-html2js'],
             'app/components/**/*.html': ['ng-html2js'],
-            'app/scripts/**/*.js': ['coverage']
+            'app/pages/**/*.html': ['ng-html2js'],
+            'app/scripts/**/*.js': ['coverage'],
+            'app/components/**/*.js': ['coverage'],
+            'app/pages/**/*.js': ['coverage']
         },
 
         // list of files / patterns to load in the browser
