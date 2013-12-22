@@ -39,6 +39,28 @@ describe('stateFactory', function () {
                 }};
             }
         }
-        expect(state.resolve.init($injector)).toEqual('test');
+        expect(state.resolve.init[1]($injector)).toEqual('test');
+    });
+
+    it('should throw an error if init service is not found', function() {
+        var state = stateFactory('Example');
+
+        function wrapper1() {
+            var $injector = {
+                has: jasmine.createSpy('has').andReturn(false),
+                get: jasmine.createSpy('get')
+            }
+            state.resolve.init[1]($injector)
+        }
+        expect(wrapper1).toThrow('Serious error occurred trying to load controller. No such service: ExampleCtrlInit');
+
+        function wrapper2() {
+            var $injector = {
+                has: jasmine.createSpy('has').andReturn(true),
+                get: jasmine.createSpy('get').andReturn({})
+            }
+            state.resolve.init[1]($injector)
+        }
+        expect(wrapper2).toThrow('ExampleCtrlInit has no prepare method.');
     });
 });

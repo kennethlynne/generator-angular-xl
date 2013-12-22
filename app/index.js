@@ -123,7 +123,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/framework/page-view-directory-factory.js', 'app/scripts/framework/page-view-directory-factory.js');
     this.template('../../templates/javascript/framework/state-factory.js', 'app/scripts/framework/state-factory.js');
     this.template('../../templates/javascript/spec/page-view-directory-factory.js', 'test/spec/framework/page-view-directory-factory.js');
-    this.template('../../templates/javascript/spec/state-factory-provider.js', 'test/spec/framework/state-factory.js');
+    this.template('../../templates/javascript/spec/state-factory.js', 'test/spec/framework/state-factory.js');
     this.template('../../templates/javascript/framework/dasherize.js', 'app/scripts/framework/dasherize.js');
     this.template('../../templates/javascript/spec/dasherize.js', 'test/spec/framework/dasherize.js');
 };

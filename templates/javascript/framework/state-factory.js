@@ -19,25 +19,27 @@ angular.module('<%= scriptAppName %>')
                     controller: classedName + 'Ctrl'
                 };
 
-
                 try
                 {
                     _defaults.resolve = {
-                        init: function ($injector, $log) {
+                        init: ['$injector', function ($injector) {
                             if($injector.has(_INITSERVICE))
                             {
-                                return $injector.get(_INITSERVICE).prepare();
+                                var service = $injector.get(_INITSERVICE);
+                                if(typeof service.prepare !== 'function') throw _INITSERVICE + ' has no prepare method.';
+
+                                return service.prepare();
                             }
                             else
                             {
-                                $log.error('Serious error occurred trying to load controller. Error trying to initialize ' + _INITSERVICE);
+                                throw 'Serious error occurred trying to load controller. No such service: ' + _INITSERVICE;
                             }
-                        }
+                        }]
                     }
                 }
                 catch(e)
                 {
-                    console.error('Serious error occurred trying to load controller.', e);
+                    throw 'Serious error occurred trying to load controller.: ' + e;
                 }
 
                 return angular.extend(_defaults, params);
