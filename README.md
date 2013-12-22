@@ -1,5 +1,5 @@
 # generator-angular-xl
-![Ready](https://badge.waffle.io/kennethlynne/generator-angular-xl.png?label=ready)
+[![Ready](https://badge.waffle.io/kennethlynne/generator-angular-xl.png?label=ready)](https://waffle.io/kennethlynne/generator-angular-xl)
 
 Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
 This generator and framework is the ultimate starter when developing large AngularJS applications.
