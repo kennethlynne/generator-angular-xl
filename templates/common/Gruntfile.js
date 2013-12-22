@@ -304,7 +304,7 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT SCRIPTS-->',
                     endTag: '<!--/INJECT SCRIPTS-->',
                     fileTmpl: '<script src="%s"></script>',
-                    appRoot: '<%%= yeoman.app %>'
+                    appRoot: '<%%= yeoman.dist %>/'
                 },
                 files: {
                     '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/scripts/*.js']
@@ -329,7 +329,7 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT STYLES-->',
                     endTag: '<!--/INJECT STYLES-->',
                     fileTmpl: '<link rel="stylesheet" href="%s">',
-                    appRoot: '.tmp/public/'
+                    appRoot: '<%%= yeoman.dist %>/'
                 },
                 files: {
                     '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
