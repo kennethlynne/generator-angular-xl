@@ -13,7 +13,16 @@ module.exports = function (grunt) {
         dist: require('./bower.json').distPath || 'dist'
     };
 
-    var jsFiles = includes.javascript.map(function (path) {
+    var externalJsSrc = includes.javascript.external.map(function (path) {
+        return yeomanConfig.app + '/' + path;
+    });
+
+    var externalJsMin = includes.javascript.external.map(function (path) {
+        path = path.replace(".js", ".min.js");
+        return yeomanConfig.app + '/' + path;
+    });
+
+    var appJs = includes.javascript.app.map(function (path) {
         return yeomanConfig.app + '/' + path;
     });
 
@@ -83,7 +92,7 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%%= yeoman.dist %>/*',
+                        '<%%= yeoman.dist %>/**/*',
                         '!<%%= yeoman.dist %>/.git*'
                     ]
                 }]
@@ -151,7 +160,6 @@ module.exports = function (grunt) {
                     src: [
                         '<%%= yeoman.dist %>/scripts/**/*.js',
                         '<%%= yeoman.dist %>/styles/**/*.css',
-                        '<%%= yeoman.dist %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
                         '<%%= yeoman.dist %>/styles/fonts/*'
                     ]
                 }
@@ -210,7 +218,6 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'bower_components/**/*',
                         'images/**/*.{gif,webp}',
                         'fonts/*'
                     ]
@@ -250,23 +257,18 @@ module.exports = function (grunt) {
                 singleRun: false
             }
         },
-        cdnify: {
-            dist: {
-                html: ['<%%= yeoman.dist %>/*.html']
-            }
-        },
         ngmin: {
             dist: {
                 files: [{
                     expand: true,
-                    src: jsFiles,
-                    dest: '.tmp/scripts'
+                    src: appJs,
+                    dest: '.tmp/app_scripts'
                 }]
             }
         },
         concat: {
             js: {
-                src: '.tmp/scripts/**/*.js',
+                src: externalJsMin.concat(['.tmp/scripts/app.js']),
                 dest: '<%%= yeoman.dist %>/scripts/scripts.js'
             },
             css: {
@@ -277,8 +279,8 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
-                    '<%%= yeoman.dist %>/scripts/scripts.js': [
-                        '<%%= yeoman.dist %>/scripts/scripts.js'
+                    '.tmp/scripts/app.js': [
+                        '.tmp/app_scripts/**/*.js'
                     ]
                 }
             }
@@ -293,7 +295,7 @@ module.exports = function (grunt) {
                     appRoot: '<%%= yeoman.app %>'
                 },
                 files: {
-                    '<%%= yeoman.app %>/index.html': jsFiles
+                    '<%%= yeoman.app %>/index.html': externalJsSrc.concat(appJs)
                 }
             },
 
@@ -305,7 +307,7 @@ module.exports = function (grunt) {
                     appRoot: '<%%= yeoman.app %>'
                 },
                 files: {
-                    '<%%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/scripts/scripts.js']
+                    '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/scripts/*.js']
                 }
             },
 
@@ -330,7 +332,7 @@ module.exports = function (grunt) {
                     appRoot: '.tmp/public/'
                 },
                 files: {
-                    '<%%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/styles/main.css']
+                    '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
                 }
             }
 
@@ -360,11 +362,10 @@ module.exports = function (grunt) {
         'clean:dist',
         'concurrent:dist',
         'ngmin',
+        'uglify',
         'concat',
         'copy:dist',
-        'cdnify',
         'cssmin',
-        'uglify',
         'rev',
         'linkAssets-production',
         'htmlmin'

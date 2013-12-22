@@ -3,24 +3,51 @@
 
 module.exports = function(config) {
 
-    var jsFiles = require('./resources.json').javascript.map(function (path) {
-        return (require('./bower.json').appPath || 'app') + '/' + path;
-    });
+    var mapAppPath = function (path) {
+        return appPath + '/' + path;
+    };
 
-    var files = [].concat(jsFiles).concat([
+    var appPath = (require('./bower.json').appPath || 'app');
+    var js = require('./resources.json').javascript;
+
+    var jsFiles = js.external.concat(js.app).map(mapAppPath);
+
+    var files = jsFiles.concat([
         'test/loadTemplates.js',
         'test/matchers/**/*.js',
         'test/utils/*.js',
         'test/utils/**/*.js',
-        'app/scripts/*.js',
-        'app/scripts/**/*.js',
+        appPath + '/scripts/*.js',
+        appPath + '/scripts/**/*.js',
         'test/mock/**/*.js',
         'test/spec/**/*.js',
-        'app/views/**/*.html',
-        'app/components/**/*.html',
-        'app/pages/**/*.html'
-
+        appPath + '/views/**/*.html',
+        appPath + '/components/**/*.html',
+        appPath + '/pages/**/*.html'
     ]);
+
+    var preprocessors = {};
+
+    //ng-html2js preprocessor
+    [
+        '/views/**/*.html',
+        '/components/**/*.html',
+        '/pages/**/*.html'
+    ].map(mapAppPath) //append app path to each row
+        .forEach(function (path) {
+            preprocessors[path] = ['ng-html2js']; //insert row
+        });
+
+    //coverage preprocessor
+    [
+        '/scripts/**/*.js',
+        '/components/**/*.js',
+        '/pages/**/*.js'
+    ].map(mapAppPath) //append app path to each row
+        .forEach(function (path) {
+            preprocessors[path] = ['coverage']; //insert row
+        });
+
 
     config.set({
         // base path, that will be used to resolve files and exclude
@@ -29,14 +56,7 @@ module.exports = function(config) {
         // testing framework to use (jasmine/mocha/qunit/...)
         frameworks: ['jasmine'],
 
-        preprocessors: {
-            'app/views/**/*.html': ['ng-html2js'],
-            'app/components/**/*.html': ['ng-html2js'],
-            'app/pages/**/*.html': ['ng-html2js'],
-            'app/scripts/**/*.js': ['coverage'],
-            'app/components/**/*.js': ['coverage'],
-            'app/pages/**/*.js': ['coverage']
-        },
+        preprocessors: preprocessors,
 
         // list of files / patterns to load in the browser
         files: files,
