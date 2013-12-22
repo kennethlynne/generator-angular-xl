@@ -3,7 +3,7 @@
 
 Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
 This generator and framework is the ultimate starter when developing large AngularJS applications.
-This tool will rock your world and speed up your development process by about 19 times.. Yeah. It's that good.. Stay in the zone, spend more time flowing and less time doing the boring stuff.
+Stay in the zone, spend more time flowing and less time doing the boring stuff.
 
 
 To sum up:
