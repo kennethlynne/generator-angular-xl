@@ -85,7 +85,7 @@ Generator.prototype.addStyleToComponentScss = function (style) {
     this.appendStyleToScss('_components.scss', style);
 };
 
-Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory, testTargetDirectory) {
-  this.appTemplate(appTemplate, path.join('scripts', targetDirectory, _.dasherize(this.name)));
-  this.testTemplate(testTemplate, path.join(testTargetDirectory || targetDirectory, _.dasherize(this.name)));
+Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory, testTargetDirectory, targetFilename) {
+  this.appTemplate(appTemplate, path.join('scripts', targetDirectory, targetFilename || _.dasherize(this.name)));
+  this.testTemplate(testTemplate, path.join(testTargetDirectory || targetDirectory, targetFilename || _.dasherize(this.name)));
 };

@@ -16,10 +16,11 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
-  this.generateSourceAndTest(
-    'controller',
-    'spec/controller',
-    ('../pages/' + _.dasherize(this.name)),
-    ('../spec/pages/' + _.dasherize(this.name))
-  );
+    this.generateSourceAndTest(
+        'controller',
+        'spec/controller',
+        ('../pages/' + _.dasherize(this.name) + '/index'),
+        ('../spec/pages/' + _.dasherize(this.name) + '/index'),
+        'index'
+    );
 };
