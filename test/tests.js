@@ -76,7 +76,7 @@ describe('angular-xl generator', function () {
                         ['app/components/thing-thing/thing-thing.js'],
                         ['app/components/thing-thing/styles/_thing-thing.scss'],
                         ['app/components/thing-thing/views/thing-thing.html'],
-                        ['test/spec/components/thing-thing/thing-thing.js']
+                        ['test/spec/components/thing-thing.js']
                     ]);
                     done();
                 });
