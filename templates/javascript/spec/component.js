@@ -23,6 +23,13 @@ describe('Component: <%= cameledName %>Component', function () {
             expect(element).toHaveClass('<%= _.dasherize(name) %>-component');
         });
 
+        it('should render text', function() {
+            element = angular.element('<<%= _.dasherize(name) %>-component></<%= _.dasherize(name) %>-component>');
+            element = $compile(element)(scope);
+            scope.$digest();
+            expect(element.text()).toContain('<%= _.dasherize(name) %>');
+        });
+
     });
 
     describe('Controller: <%= cameledName %>ComponentCtrl', function () {
@@ -44,7 +51,7 @@ describe('Component: <%= cameledName %>Component', function () {
         });
 
         it('should render a message', function () {
-            expect(element.text()).toEqual('this is the <%= _.camelize(name) %> component');
+            expect(scope.text).toEqual('this is the <%= _.camelize(name) %> component');
         });
     });
 
