@@ -27,7 +27,7 @@ describe('Component: <%= cameledName %>Component', function () {
             element = angular.element('<<%= _.dasherize(name) %>-component></<%= _.dasherize(name) %>-component>');
             element = $compile(element)(scope);
             scope.$digest();
-            expect(element.text()).toContain('<%= _.dasherize(name) %>');
+            expect(element.text()).toContain('<%= name %>');
         });
 
     });
