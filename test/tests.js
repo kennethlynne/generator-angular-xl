@@ -33,6 +33,7 @@ describe('angular-xl generator', function () {
     });
 
     describe('Page', function () {
+        //TODO: Test that it adds style import to _pages.scss
         it('should generate a new page', function (done) {
             var controllerGenerator;
             var deps = [
@@ -60,23 +61,47 @@ describe('angular-xl generator', function () {
     });
 
     describe('Component', function () {
+        //TODO: Test that it adds style import to _component.scss
         it('should generate a new component', function (done) {
-            var controllerGenerator;
+            var componentGenerator;
             var deps = [
                 '../../component'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
+            componentGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
             });
             angular.run([], function () {
-                controllerGenerator.run([], function () {
+                componentGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/components/thing-thing/thing-thing.js'],
                         ['app/components/thing-thing/styles/_thing-thing.scss'],
                         ['app/components/thing-thing/views/thing-thing.html'],
                         ['test/spec/components/thing-thing.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('Service', function () {
+        it('should generate a new service', function (done) {
+            var serviceGenerator;
+            var deps = [
+                '../../service'
+            ];
+            serviceGenerator = helpers.createGenerator('angular-xl:service', deps, ['serviceThing']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                serviceGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/services/servoce-thing.js'],
+                        ['spec/services/service-thing.js']
                     ]);
                     done();
                 });
