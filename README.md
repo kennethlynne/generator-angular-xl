@@ -1,4 +1,4 @@
-# generator-angular-xl
+# generator-angular-xl [[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-xl)](https://travis-ci.org/kennethlynne/generator-angular-xl)
 [![Ready](https://badge.waffle.io/kennethlynne/generator-angular-xl.png?label=ready)](https://waffle.io/kennethlynne/generator-angular-xl)
 
 Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
