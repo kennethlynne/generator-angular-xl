@@ -19,7 +19,7 @@
     "url": "git://github.com/kennethlynne/generator-angular-xl.git"
   },
   "scripts": {
-    "test": "mocha && cd test/temp && npm install && bower install && grunt test"
+    "test": "mocha && cd test/temp && npm install && bower install && npm install -g grunt-cli && grunt test"
   },
   "dependencies": {
     "yeoman-generator": "~0.13.0"
