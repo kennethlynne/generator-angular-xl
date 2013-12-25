@@ -32,7 +32,6 @@ describe('angular-xl generator', function () {
         });
     });
 
-
     describe('Page', function () {
         it('should generate a new page', function (done) {
             var controllerGenerator;
@@ -53,6 +52,31 @@ describe('angular-xl generator', function () {
                         ['app/pages/thing-thing/_thing-thing.scss'],
                         ['app/pages/thing-thing/index/views/index.html'],
                         ['test/spec/pages/thing-thing/index/index.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('Component', function () {
+        it('should generate a new component', function (done) {
+            var controllerGenerator;
+            var deps = [
+                '../../component'
+            ];
+            controllerGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                controllerGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/components/thing-thing/thing-thing.js'],
+                        ['app/components/thing-thing/styles/_thing-thing.scss'],
+                        ['app/components/thing-thing/views/thing-thing.html'],
+                        ['test/spec/components/thing-thing/thing-thing.js']
                     ]);
                     done();
                 });
