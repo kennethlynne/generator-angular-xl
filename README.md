@@ -2,9 +2,8 @@
 [![Ready](https://badge.waffle.io/kennethlynne/generator-angular-xl.png?label=ready)](https://waffle.io/kennethlynne/generator-angular-xl)
 
 Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
-This generator and framework is the ultimate starter when developing large AngularJS applications.
+This generator and framework is a seed and basic framework for developing AngularJS applications.
 Stay in the zone, spend more time flowing and less time doing the boring stuff.
-
 
 To sum up:
 * All scripts in `app/scrips`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
