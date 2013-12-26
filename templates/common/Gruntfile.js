@@ -336,6 +336,37 @@ module.exports = function (grunt) {
                 }
             }
 
+        },
+        bump: {
+            options: {
+                files: ['package.json', 'bower.json'],
+                updateConfigs: [],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['-a'], // '-a' for all files
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'upstream',
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
+            }
+        },
+        protractor: {
+            options: {
+                configFile: "node_modules/protractor/referenceConf.js", // Default config file
+                keepAlive: false, // If false, the grunt process stops when the test fails.
+                noColor: false, // If true, protractor will not use colors in its output.
+                args: {
+                    // Arguments passed to the command
+                }
+            }/*,
+            dist: {
+                options: {
+                    configFile: "e2e.conf.js", // Target-specific config file
+                    args: {} // Target-specific arguments
+                }
+            }*/
         }
 
     });
@@ -358,6 +389,10 @@ module.exports = function (grunt) {
         'karma'
     ]);
 
+    grunt.registerTask('test-e2e', [
+        'protractor'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
         'concurrent:dist',
@@ -369,6 +404,13 @@ module.exports = function (grunt) {
         'rev',
         'linkAssets-production',
         'htmlmin'
+    ]);
+
+    grunt.registerTask('release', [
+        'test',
+        'build',
+        'test-e2e',
+        'bump'
     ]);
 
     grunt.registerTask('linkAssets-dev', [

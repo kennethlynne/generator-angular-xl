@@ -38,7 +38,10 @@
         "grunt-karma": "~0.6.2",
         "karma-coverage": "~0.1.2",
         "path": "~0.4.9",
-        "grunt-sails-linker": "~0.9.4"
+        "grunt-sails-linker": "~0.9.4",
+        "grunt-bump":"~0.0.13",
+        "protractor": "~0.15.0",
+        "grunt-protractor-runner": "~0.2.0"
     },
     "engines": {
         "node": ">=0.8.0"
