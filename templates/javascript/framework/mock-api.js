@@ -52,7 +52,7 @@ angular.module('<%= scriptAppName %>')
         }
 
         //When backend receives a request to the views folder, pass it through
-        $httpBackend.whenGET( RegExp( regEsc( Config.viewsDir ) ) ).passThrough();
+        $httpBackend.whenGET( new RegExp( regEsc( Config.viewsDir ) ) ).passThrough();
 
         //Message should return a list og messages
         $httpBackend.whenGET(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
