@@ -18,7 +18,7 @@ angular.module('<%= scriptAppName %>')
                 'response': function (response) {
                     var deferred = $q.defer();
 
-                    if(!response.config.url.indexOf(APIUrl) == 0) return response; //Only handle calls to the API
+                    if(response.config.url.indexOf(APIUrl) != 0) return response; //Only handle calls to the API
 
                     //Fake delay on response from APIs and other urls
                     $log.log('Delaying response with ' + Config.API.fakeDelay + 'ms');
