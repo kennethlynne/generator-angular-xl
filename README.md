@@ -38,6 +38,90 @@ Run `yo angular-xl`, optionally passing an app name:
 yo angular-xl [app-name]
 ```
 
+This will scaffold a structure like this:
+
+``` bash
+.
+  #
+  # Your application resides in the app folder. You can customize this path by specifying appPath in bower.json
+  #
+  /app
+    #
+    # resources.json is where you specify all resources your application consists of using glob patterns.
+    # index.html will be injected with the specified files, and the configuration is shared with the test runner
+    #
+    resources.json 
+    #
+    # Gruntfile contains the regular stuff, it uses resources.json to configure build tasks
+    #
+    Gruntfile.js 
+    #
+    # All unit-test configuration happens in karma.conf.js. It targets files defined in resources.json
+    #
+    karma.conf.js 
+    #
+    # The components folder is where all web-components, or directives with templates if you will, resides.
+    #
+    /components
+      #
+      # If you generate a component using angular-xl:component componentName it will be scaffolded in snake-case
+      #
+      /component-name
+        component-name.js # All your logic are belong to this
+        component-name.html # Your component will by convention use the template specified in this file
+        # _component-name.scss will be imported automatically in app/styles/_components.scss if you use the generator
+        # to scaffold it. Your template will by convention have a .component-name-component div wrapper that
+        # this scss targets. All styles specific for this component should be defined inside this class in the scss file
+        _component-name.scss 
+    /pages
+      #
+      # This is where your pages should be located.
+      #
+      /index # This is the start page
+        # All page specific styling belongs in the _page-name.scss file (index in this case). 
+        # This file will be automatically imported in app/styles/_pages.scss if you use the generator
+        _index.scss
+        # page-name.js is the file where the route for this page is specified, 
+        # and the controller and initialization service is implemented.
+        index.js
+        # The folder action-name (default: index) is where sub-pages/states are defined.
+        /index
+          # This folder is where the templates for the page is defined. Its path should be
+          # page-name/action-name/views/action-name.html
+          # default action is index.
+          /views
+            index.html
+    /styles
+      #
+      # Styles is where all styling should be, and optional references to pages and components
+      #
+      _animations.scss
+      _components.scss
+      _pages.scss
+      ...
+    /views
+      # Views contains all views that are not page nor component specific, if any
+    /scripts
+      #
+      # All code not specific for a page nor component (services, business logic, configuration etc) is placed here
+      #
+      module.js # The application main module. This is where you specify the applications dependancies and modules
+      mock-api.js # Mock API configuration 
+      /config
+        config.js # Generic configuration
+        routes.js # Route handling for non page routes (return urls, error handling etc)
+      /framework
+        #
+        # Helpers and glue, hack with caution.
+        #
+  /test
+    #
+    # The test folder obviously contains all the tests for the code in the app folder
+    #
+    /spec
+
+```
+
 ## Generators
 
 Available generators:
