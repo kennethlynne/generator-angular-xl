@@ -333,7 +333,7 @@ module.exports = function (grunt) {
                     appRoot: '<%%= yeoman.dist %>/'
                 },
                 files: {
-                    '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
+                    '<%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
                 }
             }
 
@@ -403,7 +403,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:dist',
+        'clean',
         'concurrent:dist',
         'ngmin',
         'uglify',
