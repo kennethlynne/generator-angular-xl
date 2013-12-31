@@ -14,7 +14,7 @@ To sum up:
 - Run tests continually when implementing using KarmaJS using ```grunt start```, btw templates are automatically injected to handle mock backend issues.
 - Build and minify the project with one command: ```grunt build```
 - Intercept calls to an API and provide a [mock API](#api) to do fast prototyping
-- Deploy site to your repos [GitHub page](http://pages.github.com/) branch with `grunt release`, automatically runnings tests, tagging your commits and bumping version numbers
+- Deploy site to your repos [GitHub page](http://pages.github.com/) branch with `grunt release`, automatically running tests, tagging your commits and bumping version numbers
 
 ### TODO:
 - Documentation
