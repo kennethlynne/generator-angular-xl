@@ -341,13 +341,13 @@ module.exports = function (grunt) {
             options: {
                 files: ['package.json', 'bower.json'],
                 updateConfigs: [],
-                commit: true,
+                commit: false,
                 commitMessage: 'Release v%VERSION%',
                 commitFiles: ['-a'], // '-a' for all files
                 createTag: true,
                 tagName: 'v%VERSION%',
                 tagMessage: 'Version %VERSION%',
-                push: true,
+                push: false,
                 pushTo: 'upstream',
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
             }
@@ -367,6 +367,14 @@ module.exports = function (grunt) {
                     args: {} // Target-specific arguments
                 }
             }*/
+        },
+        'gh-pages': {
+            options: {
+                base: 'dist',
+                tag: 'v' + require('./bower.json').version,
+                message: 'Auto-generated build from v' + require('./bower.json').version
+            },
+            src: ['**']
         }
 
     });
@@ -410,7 +418,8 @@ module.exports = function (grunt) {
         'test',
         'build',
         'test-e2e',
-        'bump'
+        'bump',
+        'gh-pages'
     ]);
 
     grunt.registerTask('linkAssets-dev', [
