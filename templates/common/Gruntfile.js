@@ -179,8 +179,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%%= yeoman.dist %>/styles/main.css': [
-                        '.tmp/styles/**/*.css',
-                        '<%%= yeoman.app %>/styles/**/*.css'
+                        '.tmp/styles/**/*.css'
                     ]
                 }
             }
@@ -263,7 +262,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     src: appJs,
-                    dest: '.tmp/app_scripts'
+                    dest: '.tmp/app_js/'
                 }]
             }
         },
@@ -280,9 +279,9 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
-                    '.tmp/scripts/app.js': [
-                        '.tmp/app_scripts/**/*.js'
-                    ]
+                    '.tmp/scripts/app.js': appJs.map(function (path) {
+                        return '.tmp/app_js/' + path;
+                    })
                 }
             }
         },
@@ -333,7 +332,7 @@ module.exports = function (grunt) {
                     appRoot: '<%%= yeoman.dist %>/'
                 },
                 files: {
-                    '<%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
+                    '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
                 }
             }
 
@@ -416,10 +415,14 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('release', [
+        'deploy',
+        'bump'
+    ]);
+
+    grunt.registerTask('deploy', [
         'test',
         'build',
         'test-e2e',
-        'bump',
         'gh-pages'
     ]);
 
