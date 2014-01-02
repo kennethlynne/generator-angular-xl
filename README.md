@@ -279,8 +279,8 @@ angular.module('myMod').directive('myDirective', function () {
 });
 ```
 ### Component
-A component is basically a element directive that has been pre-bound to use a view located in `app/views/component/<component-name>/<component-name>.html`.
-This helps keep complexity low, and makes it easy to separate parts of your application into smaller and more maintainable parts.
+A component is basically a element directive that by convention use a view located in `app/views/component/<component-name>/<component-name>.html`.
+This helps keep complexity low, and makes it easy to separate parts of your application into smaller and more maintainable parts. The view folder is configurable, and it is even possible to provide your own factory function for complete customizability.
 Generates a directive in `app/scripts/components` that uses a factory called `componentFactory` for convention over configuration.
 
 Example:
