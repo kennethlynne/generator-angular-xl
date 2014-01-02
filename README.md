@@ -18,7 +18,6 @@ To sum up:
 
 ### TODO:
 - Documentation
-- Support installation of ngTouch in generator
 - Add better examples in views templates
 - Add support for easy theming with bootstrap themes
 - Implement pattern for lazy-loading og angular modules, routes, directives and controllers
@@ -409,6 +408,7 @@ The following additional modules are available as components on bower, and insta
 
 * angular-cookies
 * angular-loader
+* angular-touch
 * angular-resource
 * angular-sanitize
 
