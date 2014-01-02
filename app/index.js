@@ -50,28 +50,40 @@ util.inherits(Generator, yeoman.generators.Base);
 Generator.prototype.askForModules = function askForModules() {
   var cb = this.async();
 
-  var prompts = [{
-    type: 'checkbox',
-    name: 'modules',
-    message: 'Which modules would you like to include?',
-    choices: [{
-      value: 'resourceModule',
-      name: 'angular-resource.js',
-      checked: false
-    }, {
-      value: 'cookiesModule',
-      name: 'angular-cookies.js',
-      checked: false
-    }, {
-        value: 'sanitizeModule',
-        name: 'angular-sanitize.js',
-        checked: false
-    }, {
-        value: 'restangularModule',
-        name: 'restangular.js',
-        checked: true
-    }]
-  }];
+    var prompts = [
+        {
+            type: 'checkbox',
+            name: 'modules',
+            message: 'Which modules would you like to include?',
+            choices: [
+                {
+                    value: 'resourceModule',
+                    name: 'angular-resource.js',
+                    checked: false
+                },
+                {
+                    value: 'cookiesModule',
+                    name: 'angular-cookies.js',
+                    checked: false
+                },
+                {
+                    value: 'sanitizeModule',
+                    name: 'angular-sanitize.js',
+                    checked: false
+                },
+                {
+                    value: 'restangularModule',
+                    name: 'restangular.js',
+                    checked: true
+                },
+                {
+                    value: 'touchModule',
+                    name: 'angular-touch.js',
+                    checked: true
+                }
+            ]
+        }
+    ];
 
   this.prompt(prompts, function (props) {
     var hasMod = function (mod) { return props.modules.indexOf(mod) !== -1; };
@@ -79,6 +91,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
     this.restangularModule = hasMod('restangularModule');
+    this.touchModule = hasMod('touchModule');
 
     var angMods = ["'componentFactory'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
 
@@ -93,6 +106,9 @@ Generator.prototype.askForModules = function askForModules() {
       }
       if (this.sanitizeModule) {
           angMods.push("'ngSanitize'");
+      }
+      if (this.touchModule) {
+          angMods.push("'ngTouch'");
       }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
