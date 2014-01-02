@@ -15,7 +15,7 @@
     "angular-ui-router": "~0.2.6"<% if (restangularModule) { %>,
     "restangular": "~1.1.8"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "~1.2.6"<% } %><% if (sanitizeModule) { %>,
-    "angular-sanitize": "~1.2.6"<% } %>,<% if (touchModule) { %>,
+    "angular-sanitize": "~1.2.6"<% } %><% if (touchModule) { %>,
     "angular-touch": "~1.2.6"<% } %>,
     "angular-animate": "~1.2.6",
     "angular-xeditable": "~0.1.7"
