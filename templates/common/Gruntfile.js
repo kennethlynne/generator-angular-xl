@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                 tasks: ['coffee:test']
             },
             compass: {
-                files: ['<%%= yeoman.app %>/styles/**/*.{scss,sass}'],
+                files: ['<%%= yeoman.app %>/styles/**/*.{scss,sass}', '<%%= yeoman.app %>/components/**/*.{scss,sass}', '<%%= yeoman.app %>/pages/**/*.{scss,sass}'],
                 tasks: ['compass:server']
             },
             styles: {
