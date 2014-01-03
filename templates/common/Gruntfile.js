@@ -381,6 +381,11 @@ module.exports = function (grunt) {
                 dest: 'CHANGELOG.md',
                 versionFile: 'package.json'
             }
+        },
+        "ddescribe-iit": {
+            files: [
+                'test/**/*.js'
+            ]
         }
 
     });
@@ -421,12 +426,14 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('release', [
+        'ddescribe-iit',
         'changelog',
         'deploy',
         'bump'
     ]);
 
     grunt.registerTask('deploy', [
+        'ddescribe-iit',
         'test',
         'build',
         'test-e2e',
