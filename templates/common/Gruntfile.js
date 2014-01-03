@@ -219,7 +219,8 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/**/*.{gif,webp}',
                         'fonts/*',
-                        'CNAME'
+                        'CNAME',
+                        'package.json'
                     ]
                 }, {
                     expand: true,
