@@ -375,6 +375,12 @@ module.exports = function (grunt) {
                 message: 'Auto-generated build from v' + require('./bower.json').version
             },
             src: ['**']
+        },
+        changelog: {
+            options: {
+                dest: 'CHANGELOG.md',
+                versionFile: 'package.json'
+            }
         }
 
     });
@@ -415,6 +421,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('release', [
+        'changelog',
         'deploy',
         'bump'
     ]);
