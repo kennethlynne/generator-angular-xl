@@ -169,7 +169,7 @@ Available generators:
 * [angular-xl:factory](#service)
 * [angular-xl:value](#service)
 * [angular-xl:constant](#service)
-* [angular-xl:decorator] (#decorator)
+* [angular-xl:decorator](#decorator)
 * [angular-xl:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
