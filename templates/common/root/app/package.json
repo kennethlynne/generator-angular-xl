@@ -1,17 +1,17 @@
 {
-  "name": "Frameless Window",
+  "name": "App",
   "description": "Chrome platform app.",
-  "version": "0.1",
-  "main": "frameless_window.html",
+  "version": "0.0.1",
+  "main": "index.html",
   "window": {
-    "show": false,
+    "show": true,
     "toolbar": false,
-    "frame": false,
+    "frame": true,
     "position": "center",
-    "width": 360,
-    "height": 300,
+    "width": 500,
+    "height": 500,
     "min_width": 220,
     "min_height": 220,
-    "fullscreen": true
+    "fullscreen": false
   }
 }
