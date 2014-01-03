@@ -463,3 +463,5 @@ When submitting a new feature, add tests that cover the feature.
 ## License
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-46835353-1/generator-angular-xl/README)](https://github.com/igrigorik/ga-beacon)
