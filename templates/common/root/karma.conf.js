@@ -61,7 +61,7 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: files,
 
-        reporters: ['spec', 'progress', 'coverage'],
+        reporters: [/*'spec', */'progress', 'coverage'],
 
         // optionally, configure the reporter
         coverageReporter: {
