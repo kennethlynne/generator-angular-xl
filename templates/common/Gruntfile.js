@@ -282,7 +282,7 @@ module.exports = function (grunt) {
                 banner: [
                     '/**',
                     ' * <%= pkg.description %>',
-                    ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>',
+                    ' * @version v<%= pkg.version %> - <%%= grunt.template.today("yyyy-mm-dd") %>',
                     ' * @link <%= pkg.homepage %>',
                     ' * @author <%= pkg.author %>',
                     ' * @license MIT License, http://www.opensource.org/licenses/MIT',
