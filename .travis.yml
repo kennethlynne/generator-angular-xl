@@ -2,5 +2,10 @@ language: node_js
 node_js:
   - '0.10'
 after_script:
-  - chmod -R 777 ./tests.sh
-  - ./tests.sh
+  - npm install -g grunt-cli bower
+  - rm -rf ./test/temp/
+  - node ./test/set-up.js
+  - cd test/temp
+  - npm install
+  - bower install
+  - grunt test
