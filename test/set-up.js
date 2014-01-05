@@ -28,7 +28,13 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     angular.options['skip-install'] = true;
 
     helpers.mockPrompt(angular, {
-        modules: []
+        modules: [
+            'resourceModule',
+            'cookiesModule',
+            'sanitizeModule',
+            'restangularModule',
+            'touchModule'
+        ]
     });
 
     angular.run([], function () {
@@ -40,3 +46,6 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         });
     });
 });
+
+
+
