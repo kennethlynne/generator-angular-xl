@@ -1,5 +1,4 @@
 # generator-angular-xl [[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-xl)](https://travis-ci.org/kennethlynne/generator-angular-xl) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-xl.png)](https://codeclimate.com/github/kennethlynne/generator-angular-xl)
-------------------
 
 Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
 This generator and framework is a seed and basic framework for developing AngularJS applications.
