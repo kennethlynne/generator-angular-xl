@@ -19,7 +19,7 @@
     "url": "git://github.com/kennethlynne/generator-angular-xl.git"
   },
   "scripts": {
-    "test": "mocha && ./tests.sh"
+    "test": "mocha"
   },
   "dependencies": {
     "yeoman-generator": "~0.13.0"
