@@ -16,6 +16,7 @@ var deps = [
     '../../value',
     '../../service',
     '../../provider',
+    '../../filter',
     '../../main', [
         helpers.createDummyGenerator(),
         'karma:app'
