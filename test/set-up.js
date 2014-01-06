@@ -29,7 +29,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     var decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['serviceThing']);
     var valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
     var providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
-    var filterGenerator helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
+    var filterGenerator = helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
 
     angular.options['skip-install'] = true;
 
