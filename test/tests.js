@@ -108,6 +108,53 @@ describe('angular-xl generator', function () {
             });
         });
     });
+
+    describe('Directive', function () {
+        it('should generate a new directive', function (done) {
+            var directiveGenerator;
+            var deps = [
+                '../../directive'
+            ];
+            directiveGenerator = helpers.createGenerator('angular-xl:directive', deps, ['superDirective']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                directiveGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/directives/super-directive.js'],
+                        ['test/spec/directives/super-directive.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('Decorator', function () {
+        it('should generate a new decorator', function (done) {
+            var serviceGenerator;
+            var deps = [
+                '../../directive'
+            ];
+            serviceGenerator = helpers.createGenerator('angular-xl:directive', deps, ['superDirective']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                serviceGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/directives/super-directive.js'],
+                        ['test/spec/directives/super-directive.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
      /*
 
 
