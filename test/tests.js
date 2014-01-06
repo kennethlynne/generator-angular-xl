@@ -101,7 +101,7 @@ describe('angular-xl generator', function () {
                 serviceGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/scripts/services/service-thing.js'],
-                        ['test/spec/spec/services/service-thing.js']
+                        ['test/spec/services/service-thing.js']
                     ]);
                     done();
                 });
