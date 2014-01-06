@@ -50,10 +50,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             componentGenerator.run([], function () {
                 valueGenerator.run([], function () {
                     serviceGenerator.run([], function () {
-                        decoratorGenerator.run([], function () {
-                            providerGenerator.run([], function () {
-                                filterGenerator.run([], function () {
-                                });
+                        providerGenerator.run([], function () {
+                            filterGenerator.run([], function () {
                             });
                         });
                     });
