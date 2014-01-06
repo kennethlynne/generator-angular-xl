@@ -12,6 +12,8 @@ var deps = [
     '../../view',
     '../../page',
     '../../component',
+    '../../decorator',
+    '../../value',
     '../../service',
     '../../main', [
         helpers.createDummyGenerator(),
@@ -24,6 +26,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     var pageGenerator = helpers.createGenerator('angular-xl:page', deps, ['thingThing']);
     var componentGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
     var serviceGenerator = helpers.createGenerator('angular-xl:service', deps, ['serviceThing']);
+    var decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['serviceThing']);
+    var valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
 
     angular.options['skip-install'] = true;
 
@@ -40,9 +44,14 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     angular.run([], function () {
         pageGenerator.run([], function () {
             componentGenerator.run([], function () {
-                serviceGenerator.run([], function () {}
-                );}
-            );
+                valueGenerator.run([], function () {
+                    serviceGenerator.run([], function () {
+                        decoratorGenerator.run([], function () {
+
+                        });
+                    });
+                });
+            });
         });
     });
 });
