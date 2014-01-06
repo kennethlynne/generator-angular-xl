@@ -13,6 +13,7 @@ Generator.prototype.createServiceFiles = function createServiceFiles() {
   this.generateSourceAndTest(
     'service/provider',
     'spec/service',
-    '../unit/spec/services'
+    'providers/',
+    '../unit/spec/providers/'
   );
 };

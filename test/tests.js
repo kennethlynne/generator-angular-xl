@@ -109,6 +109,75 @@ describe('angular-xl generator', function () {
         });
     });
 
+    describe('Filter', function () {
+        it('should generate a new filter', function (done) {
+            var filterGenerator;
+            var deps = [
+                '../../filter'
+            ];
+            filterGenerator = helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                filterGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/filters/filter-thing.js'],
+                        ['test/unit/spec/filters/filter-thing.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('Provider', function () {
+        it('should generate a new provider', function (done) {
+            var providerGenerator;
+            var deps = [
+                '../../provider'
+            ];
+            providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                providerGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/providers/provider-thing.js'],
+                        ['test/unit/spec/providers/provider-thing.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('Value', function () {
+        it('should generate a new value service', function (done) {
+            var valueGenerator;
+            var deps = [
+                '../../value'
+            ];
+            valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                valueGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/values/value-thing.js'],
+                        ['test/unit/spec/values/value-thing.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
     describe('Directive', function () {
         it('should generate a new directive', function (done) {
             var directiveGenerator;
@@ -146,8 +215,7 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 decoratorGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/decorators/super-decorator.js'],
-                        ['test/spec/decorators/super-decorator.js']
+                        ['app/scripts/decorators/super-decorator.js']
                     ]);
                     done();
                 });

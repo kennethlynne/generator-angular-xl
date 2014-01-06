@@ -28,6 +28,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     var serviceGenerator = helpers.createGenerator('angular-xl:service', deps, ['serviceThing']);
     var decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['serviceThing']);
     var valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
+    var providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
+    var filterGenerator helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
 
     angular.options['skip-install'] = true;
 
@@ -47,7 +49,10 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
                 valueGenerator.run([], function () {
                     serviceGenerator.run([], function () {
                         decoratorGenerator.run([], function () {
-
+                            providerGenerator.run([], function () {
+                                filterGenerator.run([], function () {
+                                });
+                            });
                         });
                     });
                 });
