@@ -124,7 +124,7 @@ describe('angular-xl generator', function () {
                 directiveGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/scripts/directives/super-directive.js'],
-                        ['test/spec/directives/super-directive.js']
+                        ['test/unit/spec/directives/super-directive.js']
                     ]);
                     done();
                 });
@@ -147,7 +147,7 @@ describe('angular-xl generator', function () {
                 decoratorGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/scripts/decorators/super-decorator.js'],
-                        ['test/spec/directives/super-decorator.js']
+                        ['test/spec/decorators/super-decorator.js']
                     ]);
                     done();
                 });
