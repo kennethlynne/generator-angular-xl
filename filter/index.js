@@ -13,7 +13,6 @@ Generator.prototype.createFilterFiles = function createFilterFiles() {
   this.generateSourceAndTest(
     'filter',
     'spec/filter',
-    'filters',
-    this.options['skip-add'] || false
+    '../unit/spec/filters'
   );
 };

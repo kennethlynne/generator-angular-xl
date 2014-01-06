@@ -28,8 +28,7 @@ Generator.prototype.createComponentFiles = function createComponentFiles() {
         'component',
         'spec/component',
         ('../components/' + _.dasherize(this.name)),
-        'components',
-        this.options['skip-add'] || false
+        'unit/components'
     );
 
     this.template('../common/component.scss', path.join(this.env.options.appPath, 'components', _.dasherize(this.name), 'styles', '_' + _.dasherize(this.name) + '.scss'));

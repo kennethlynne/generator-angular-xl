@@ -52,7 +52,7 @@ describe('angular-xl generator', function () {
                         ['app/pages/thing-thing/index/index.js'],
                         ['app/pages/thing-thing/_thing-thing.scss'],
                         ['app/pages/thing-thing/index/views/index.html'],
-                        ['test/spec/pages/thing-thing/index/index.js']
+                        ['test/unit/spec/pages/thing-thing/index/index.js']
                     ]);
                     done();
                 });
@@ -78,7 +78,7 @@ describe('angular-xl generator', function () {
                         ['app/components/thing-thing/thing-thing.js'],
                         ['app/components/thing-thing/styles/_thing-thing.scss'],
                         ['app/components/thing-thing/views/thing-thing.html'],
-                        ['test/spec/components/thing-thing.js']
+                        ['test/spec/spec/components/thing-thing.js']
                     ]);
                     done();
                 });
@@ -101,7 +101,7 @@ describe('angular-xl generator', function () {
                 serviceGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/scripts/services/service-thing.js'],
-                        ['test/spec/services/service-thing.js']
+                        ['test/spec/spec/services/service-thing.js']
                     ]);
                     done();
                 });

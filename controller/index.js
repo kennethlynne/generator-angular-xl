@@ -20,7 +20,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
         'controller',
         'spec/controller',
         ('../pages/' + _.dasherize(this.name) + '/index'),
-        ('../spec/pages/' + _.dasherize(this.name) + '/index'),
+        ('../unit/spec/pages/' + _.dasherize(this.name) + '/index'),
         'index'
     );
 };

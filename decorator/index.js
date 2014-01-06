@@ -2,6 +2,7 @@
 var util = require('util');
 var ScriptBase = require('../script-base.js');
 var fs = require('fs');
+var _ = require('underscore.string');
 
 var Generator = module.exports = function Generator(args, options) {
   ScriptBase.apply(this, arguments);
@@ -59,9 +60,8 @@ Generator.prototype.askForNewName = function askForNewName() {
 
 Generator.prototype.createDecoratorFiles = function createDecoratorFiles() {
   this.appTemplate('decorator', 'scripts/' + buildRelativePath(this.fileName));
-  this.addScriptToIndex(buildRelativePath(this.fileName));
 };
 
 function buildRelativePath(fileName){
-  return 'decorators/' + fileName + "Decorator";
+  return 'decorators/' + _.dasherize(fileName  + "Decorator");
 }
