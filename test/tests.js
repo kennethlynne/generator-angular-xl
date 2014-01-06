@@ -78,7 +78,7 @@ describe('angular-xl generator', function () {
                         ['app/components/thing-thing/thing-thing.js'],
                         ['app/components/thing-thing/styles/_thing-thing.scss'],
                         ['app/components/thing-thing/views/thing-thing.html'],
-                        ['test/spec/components/thing-thing.js']
+                        ['test/unit/spec/components/thing-thing.js']
                     ]);
                     done();
                 });
@@ -101,7 +101,7 @@ describe('angular-xl generator', function () {
                 serviceGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/scripts/services/service-thing.js'],
-                        ['test/spec/services/service-thing.js']
+                        ['test/unit/spec/services/service-thing.js']
                     ]);
                     done();
                 });
@@ -134,20 +134,20 @@ describe('angular-xl generator', function () {
 
     describe('Decorator', function () {
         it('should generate a new decorator', function (done) {
-            var serviceGenerator;
+            var decoratorGenerator;
             var deps = [
-                '../../directive'
+                '../../decorator'
             ];
-            serviceGenerator = helpers.createGenerator('angular-xl:directive', deps, ['superDirective']);
+            decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['super']);
 
             helpers.mockPrompt(angular, {
                 modules: []
             });
             angular.run([], function () {
-                serviceGenerator.run([], function () {
+                decoratorGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/directives/super-directive.js'],
-                        ['test/spec/directives/super-directive.js']
+                        ['app/scripts/decorators/super-decorator.js'],
+                        ['test/spec/directives/super-decorator.js']
                     ]);
                     done();
                 });
