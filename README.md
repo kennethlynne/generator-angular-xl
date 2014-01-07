@@ -15,15 +15,6 @@ To sum up:
 - Intercept calls to an API and provide a [mock API](#api) to do fast prototyping
 - Deploy site to your repos [GitHub page](http://pages.github.com/) branch with `grunt release`, automatically running tests, tagging your commits and bumping version numbers. This will also automatically generate your CHANGELOG.md using your commit history if you follow [these conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit).
 
-### TODO:
-- Documentation
-- Add better examples in views templates
-- Add support for easy theming with bootstrap themes
-- Implement pattern for lazy-loading og angular modules, routes, directives and controllers
-- Use directive to lazy-load components and images
-- Implement pattern for modals
-- Improve spec reporter to provide cleaner test results
-
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
 Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator-angular](https://github.com/yeoman/generator-angular).
