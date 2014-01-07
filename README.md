@@ -415,6 +415,7 @@ The following packages are always installed by the [app](#app) generator:
 * angular-promise-tracker
 * angular-loading-bar
 * angular-xeditable
+* angular-modelprovider
 
 The following additional modules are available as components on bower, and installable via `bower install`:
 
