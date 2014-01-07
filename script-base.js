@@ -17,6 +17,11 @@ var Generator = module.exports = function Generator() {
   this.scriptAppName = this._.camelize(this.appname) + angularUtils.appName(this);
 
   this.cameledName = this._.camelize(this.name);
+  this.dasherizedName = this.name
+                                .replace(/(?:[A-Z]+)/g, function (match) { //camelCase -> snake-case
+                                    return "-" + match.toLowerCase();
+                                })
+                                .replace(/^-/, ''); // CamelCase -> -snake-case -> snake-case
   this.classedName = this._.classify(this.name);
 
   if (typeof this.env.options.appPath === 'undefined') {

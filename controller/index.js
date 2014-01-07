@@ -19,8 +19,8 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     this.generateSourceAndTest(
         'controller',
         'spec/controller',
-        ('../pages/' + _.dasherize(this.name) + '/index'),
-        ('../unit/spec/pages/' + _.dasherize(this.name) + '/index'),
+        ('../pages/' + this.dasherizedName + '/index'),
+        ('../unit/spec/pages/' + this.dasherizedName + '/index'),
         'index'
     );
 };

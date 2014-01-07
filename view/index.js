@@ -21,7 +21,7 @@ util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
     var action = 'index';
-    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', _.dasherize(this.name), action, 'views', action + '.html'));
-    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', _.dasherize(this.name), '_' + _.dasherize(this.name) + '.scss'));
-    this.addStyleToPagesScss('../pages/' + _.dasherize(this.name) + '/' + _.dasherize(this.name));
+    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', this.dasherizedName, action, 'views', action + '.html'));
+    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', this.dasherizedName, '_' + this.dasherizedName + '.scss'));
+    this.addStyleToPagesScss('../pages/' + this.dasherizedName + '/' + this.dasherizedName);
 };
