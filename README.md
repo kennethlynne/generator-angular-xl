@@ -144,6 +144,11 @@ This will scaffold a structure like this:
         #
         # Helpers and glue, hack with caution.
         #
+
+      /models
+        #
+        # Your models goes here
+        #
   /test
     #
     # The test folder obviously contains all the tests for the code in the app folder
@@ -166,6 +171,7 @@ Available generators:
 * [angular-xl:service](#service)
 * [angular-xl:provider](#service)
 * [angular-xl:factory](#service)
+* [angular-xl:model](#model)
 * [angular-xl:value](#service)
 * [angular-xl:constant](#service)
 * [angular-xl:decorator](#decorator)
@@ -361,6 +367,25 @@ angular.module('myMod').service('myService', function () {
 ```
 
 You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`, and `yo angular:constant` for other types of services.
+
+### Model
+Generates an AngularJS factory that returns a class that has `$save` and `$delete` methods and more, and an accompanying context to handle client side caching and change tracking.
+It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
+
+Example:
+```bash
+yo angular-xl:model school
+```
+
+Produces `app/scripts/models/school.js` and an accompanying test. Then you will be able to use this model in your application like this:
+
+```javascript
+angular.module('myMod').service('myService', function (SchoolModel) {
+  var school = new SchoolModel({id:5, title:'Awesomesauce'});
+  school.$save(); //This can for example do a PUT to api/schools/5
+});
+```
+
 
 ### Decorator
 Generates an AngularJS service decorator.
