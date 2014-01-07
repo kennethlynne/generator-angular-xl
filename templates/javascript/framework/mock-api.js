@@ -33,7 +33,7 @@ angular.module('<%= scriptAppName %>')
         })
 
     })
-    .run(function (Config, $httpBackend, $log, APIBaseUrl) {
+    .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape) {
 
         //Only load mocks if config says so
         if(!Config.useMocks) return;
@@ -46,13 +46,12 @@ angular.module('<%= scriptAppName %>')
             messages.index[item.id] = item; //Index messages to be able to do efficient lookups on id
         });
 
-        //Escape string to be able to use it in a regular expression
-        function regEsc(str) {
-            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        function passThrough(url) {
+            $httpBackend.whenGET( new RegExp( regexEscape( url ) ) ).passThrough();
         }
 
         //When backend receives a request to the views folder, pass it through
-        $httpBackend.whenGET( new RegExp( regEsc( Config.viewsDir ) ) ).passThrough();
+        passThrough(Config.viewsDir);
 
         //Message should return a list og messages
         $httpBackend.whenGET(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
@@ -70,7 +69,7 @@ angular.module('<%= scriptAppName %>')
         });
 
         //Message/id should return a message
-        $httpBackend.whenGET( new RegExp(regEsc(APIBaseUrl + 'messages/') + '\\d+$' ) ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + 'messages/') + '\\d+$' ) ).respond(function(method, url, data, headers) {
             var id = url.match(/\d+$/)[0];
             return [200, messages.index[id] || null, {/*headers*/}];
         });
