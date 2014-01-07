@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     });
 
     var externalJsMin = includes.javascript.external.map(function (path) {
-        path = path.replace(".js", ".min.js");
+        path = path.replace(/(\.js|\.src.js)/, ".min.js");
         return yeomanConfig.app + '/' + path;
     });
 
