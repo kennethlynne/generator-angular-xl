@@ -269,11 +269,13 @@ module.exports = function (grunt) {
             }
         },
         concat: {
-            // Replace all 'use strict' statements in the code with a single one at the top
-            banner: "'use strict';\n",
-            process: function(src, filepath) {
-                return '// Source: ' + filepath + '\n' +
-                    src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+            options: {
+                // Replace all 'use strict' statements in the code with a single one at the top
+                banner: "'use strict';\n",
+                process: function(src, filepath) {
+                    return '// Source: ' + filepath + '\n' +
+                        src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+                }
             },
             js: {
                 src: externalJsMin.concat(['.tmp/scripts/app.js']),
