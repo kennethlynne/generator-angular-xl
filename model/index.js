@@ -9,7 +9,7 @@ var Generator = module.exports = function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.createServiceFiles = function createServiceFiles() {
+Generator.prototype.createModelFiles = function createModelFiles() {
   this.generateSourceAndTest(
     'model',
     'spec/model',
