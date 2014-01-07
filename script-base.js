@@ -91,6 +91,6 @@ Generator.prototype.addStyleToComponentScss = function (style) {
 };
 
 Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory, testTargetDirectory, targetFilename) {
-  this.appTemplate(appTemplate, path.join('scripts', targetDirectory, targetFilename || _.dasherize(this.name)));
-  this.testTemplate(testTemplate, path.join(testTargetDirectory || targetDirectory, targetFilename || _.dasherize(this.name)));
+  this.appTemplate(appTemplate, path.join('scripts', targetDirectory, targetFilename || this.dasherizedName));
+  this.testTemplate(testTemplate, path.join(testTargetDirectory || targetDirectory, targetFilename || this.dasherizedName));
 };
