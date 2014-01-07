@@ -7,6 +7,7 @@ var _ = require('underscore.string');
 
 var Generator = module.exports = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
+  ScriptBase.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, '../templates'));
 
   if (typeof this.env.options.appPath === 'undefined') {
