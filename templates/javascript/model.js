@@ -74,8 +74,9 @@ angular.module('<%= scriptAppName %>')
         var _pool = {};
 
         var _getById = function (id) {
-            var deferred = $q.defer();
-            var instance = _pool[id];
+            var deferred = $q.defer(),
+                instance = _pool[id];
+                
             if(instance)
             {
                 deferred.resolve(instance);
