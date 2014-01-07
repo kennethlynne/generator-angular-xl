@@ -405,9 +405,6 @@ angular.module('myMod').config(function ($provide) {
   });
 ```
 
-## Options
-In general, these options can be applied to any generator, though they only affect generators that produce scripts.
-
 ### CoffeeScript
 CoffeScript is not supported for now for maintenance reasons. Coffescript is awesome, but I won't spend the time necessary to maintain different versions for now. May be added in the future.
 
