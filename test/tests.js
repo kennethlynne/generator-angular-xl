@@ -123,8 +123,8 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 factoryGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/factories/service-thing.js'],
-                        ['test/unit/spec/factories/service-thing.js']
+                        ['app/scripts/factories/factory-thing.js'],
+                        ['test/unit/spec/factories/factory-thing.js']
                     ]);
                     done();
                 });
@@ -246,90 +246,50 @@ describe('angular-xl generator', function () {
         });
     });
 
-     /*
+    xdescribe('Model', function () {
+        it('should generate a new model', function (done) {
+            var modelGenerator;
+            var deps = [
+                '../../model'
+            ];
+            modelGenerator = helpers.createGenerator('angular-xl:model', deps, ['superThang']);
 
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                modelGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/models/super-thang.js'],
+                        ['test/unit/spec/models/super-thang.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
 
- xit('creates expected files', function (done) {
- var expected = [
- 'app/.htaccess',
- 'app/404.html',
- 'app/favicon.ico',
- 'app/robots.txt',
- 'app/styles/main.scss',
- 'app/styles/_animations.scss',
- 'app/styles/_components.scss',
- 'app/styles/_globals.scss',
- 'app/styles/_views.scss',
- 'app/views/main.html',
- 'app/views/components/awesome/awesome.js',
- 'app/scripts/components/awesome.js',
- 'test/spec/components/awesome.js',
- ['.bowerrc', /"directory": "app\/bower_components"/],
- 'Gruntfile.js',
- 'package.json',
- ['bower.json', /"name":\s+"temp"/],
- 'app/scripts/module.js',
- 'app/scripts/config/routes.js',
- 'app/index.html',
- 'app/scripts/controllers/main.js',
- 'test/spec/controllers/main.js'
- ];
- helpers.mockPrompt(angular, {
- modules: []
- });
+    /*
 
- angular.run({}, function () {
- helpers.assertFiles(expected);
- done();
- });
- });
+        // read JS Files
+        var module_js = fs.readFileSync('app/scripts/module.js', 'utf8');
+        var route_js = fs.readFileSync('app/scripts/config/routes.js', 'utf8');
+        var main_js = fs.readFileSync('app/scripts/controllers/main.js', 'utf8');
+        var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
 
- xit('should generate the same appName in every file', function (done) {
- var expectedAppName = 'upperCaseBugApp';
- var expected = [
- 'app/scripts/module.js',
- 'app/scripts/config/routes.js',
- 'app/scripts/controllers/main.js',
- 'app/index.html',
- 'test/spec/controllers/main.js'
- ];
- helpers.mockPrompt(angular, {
- modules: []
- });
+        // Test JS Files
+        var regex_js = new RegExp('module\\(\'' + expectedAppName + '\'');
+        assert.ok(regex_js.test(module_js), 'module.js template using a wrong appName');
+        assert.ok(regex_js.test(route_js), 'route.js template using a wrong appName');
+        assert.ok(regex_js.test(main_js), 'main.js template using a wrong appName');
+        assert.ok(regex_js.test(main_test_js), 'controller spec template using a wrong appName');
 
- angular.run({}, function () {
- // Check if all files are created for the test
- helpers.assertFiles(expected);
+        // read HTML file
+        var index_html = fs.readFileSync('app/index.html', 'utf8');
 
- // read JS Files
- var module_js = fs.readFileSync('app/scripts/module.js', 'utf8');
- var route_js = fs.readFileSync('app/scripts/config/routes.js', 'utf8');
- var main_js = fs.readFileSync('app/scripts/controllers/main.js', 'utf8');
- var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
+        // Test HTML File
+        var regex_html = new RegExp('ng-app=\"' + expectedAppName + '\"');
+        assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
 
- // Test JS Files
- var regex_js = new RegExp('module\\(\'' + expectedAppName + '\'');
- assert.ok(regex_js.test(module_js), 'module.js template using a wrong appName');
- assert.ok(regex_js.test(route_js), 'route.js template using a wrong appName');
- assert.ok(regex_js.test(main_js), 'main.js template using a wrong appName');
- assert.ok(regex_js.test(main_test_js), 'controller spec template using a wrong appName');
-
- // read HTML file
- var index_html = fs.readFileSync('app/index.html', 'utf8');
-
- // Test HTML File
- var regex_html = new RegExp('ng-app=\"' + expectedAppName + '\"');
- assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
- done();
- });
- });
-
- xdescribe('Controller', function () {
- it('should generate a new controller', function (done) {
- generatorTest('controller', 'controller', 'controllers', _.classify, _.classify, 'Ctrl', done);
- });
- });
-
-
-* */
+    */
 });
