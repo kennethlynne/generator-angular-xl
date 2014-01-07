@@ -15,6 +15,7 @@ var deps = [
     '../../decorator',
     '../../value',
     '../../service',
+    '../../factory',
     '../../provider',
     '../../filter',
     '../../main', [
@@ -28,6 +29,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     var pageGenerator = helpers.createGenerator('angular-xl:page', deps, ['thingThing']);
     var componentGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
     var serviceGenerator = helpers.createGenerator('angular-xl:service', deps, ['serviceThing']);
+    var factoryGenerator = helpers.createGenerator('angular-xl:factory', deps, ['factoryThing']);
     var decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['serviceThing']);
     var valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
     var providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
@@ -52,6 +54,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
                     serviceGenerator.run([], function () {
                         providerGenerator.run([], function () {
                             filterGenerator.run([], function () {
+                                factoryGenerator.run([], function () {
+                                });
                             });
                         });
                     });
