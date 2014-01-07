@@ -109,6 +109,29 @@ describe('angular-xl generator', function () {
         });
     });
 
+    describe('Factory', function () {
+        it('should generate a new factory', function (done) {
+            var factoryGenerator;
+            var deps = [
+                '../../factory'
+            ];
+            factoryGenerator = helpers.createGenerator('angular-xl:factory', deps, ['factoryThing']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                factoryGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/factories/service-thing.js'],
+                        ['test/unit/spec/factories/service-thing.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
     describe('Filter', function () {
         it('should generate a new filter', function (done) {
             var filterGenerator;
