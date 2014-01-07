@@ -246,7 +246,7 @@ describe('angular-xl generator', function () {
         });
     });
 
-    xdescribe('Model', function () {
+    describe('Model', function () {
         it('should generate a new model', function (done) {
             var modelGenerator;
             var deps = [

@@ -34,6 +34,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     var valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
     var providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
     var filterGenerator = helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
+    var modelGenerator = helpers.createGenerator('angular-xl:model', deps, ['wooopStuff']);
 
     angular.options['skip-install'] = true;
 
@@ -55,6 +56,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
                         providerGenerator.run([], function () {
                             filterGenerator.run([], function () {
                                 factoryGenerator.run([], function () {
+                                    modelGenerator.run([], function () {
+                                    });
                                 });
                             });
                         });
