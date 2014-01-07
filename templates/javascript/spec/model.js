@@ -151,7 +151,7 @@ describe('Model Context: <%= classedName %>ModelContext', function () {
 
     describe('getById', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET('/<%= classedName %>/5').respond(200, {id: 5, title:'Post title'});
+            $httpBackend.expectGET('/<%= classedName %>/5').respond(200, {id: 5, title:'<%= classedName %> title'});
 
             var promise = <%= classedName %>ModelContext.getById(5);
 
@@ -164,11 +164,11 @@ describe('Model Context: <%= classedName %>ModelContext', function () {
 
             expect(response instanceof <%= classedName %>Model).toBe(true);
             expect(response.id).toEqual(5);
-            expect(response.title).toEqual('Post title');
+            expect(response.title).toEqual('<%= classedName %> title');
         });
 
         it('should not do subsequent calls if model already exits in pool', function() {
-            $httpBackend.expectGET('/<%= classedName %>/5').respond(200, {id: 5, title:'Post title'});
+            $httpBackend.expectGET('/<%= classedName %>/5').respond(200, {id: 5, title:'<%= classedName %> title'});
             <%= classedName %>ModelContext.getById(5);
             $httpBackend.flush();
 
@@ -183,7 +183,7 @@ describe('Model Context: <%= classedName %>ModelContext', function () {
 
             expect(response instanceof <%= classedName %>Model).toBe(true);
             expect(response.id).toEqual(5);
-            expect(response.title).toEqual('Post title');
+            expect(response.title).toEqual('<%= classedName %> title');
         });
 
         it('should handle rejects', function() {
@@ -205,7 +205,7 @@ describe('Model Context: <%= classedName %>ModelContext', function () {
 
     describe('getAll', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET('/<%= classedName %>').respond(200, [{id: 5, title:'Post title'},{id: 6, title:'Post title'}]);
+            $httpBackend.expectGET('/<%= classedName %>').respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
 
             var promise = <%= classedName %>ModelContext.getAll();
 
@@ -219,11 +219,11 @@ describe('Model Context: <%= classedName %>ModelContext', function () {
 
             expect(<%= classedName %>5 instanceof <%= classedName %>Model).toBe(true);
             expect(<%= classedName %>5.id).toEqual(5);
-            expect(<%= classedName %>5.title).toEqual('Post title');
+            expect(<%= classedName %>5.title).toEqual('<%= classedName %> title');
 
             expect(<%= classedName %>6 instanceof <%= classedName %>Model).toBe(true);
             expect(<%= classedName %>6.id).toEqual(6);
-            expect(<%= classedName %>6.title).toEqual('Post title');
+            expect(<%= classedName %>6.title).toEqual('<%= classedName %> title');
         });
 
         it('should handle rejects', function() {
@@ -261,7 +261,7 @@ describe('Model Context: <%= classedName %>ModelContext', function () {
 
         it('should return the attached model on subsequent requests', function() {
 
-            <%= classedName %>ModelContext.attach(new <%= classedName %>Model({id: 5, title:'Post title'}));
+            <%= classedName %>ModelContext.attach(new <%= classedName %>Model({id: 5, title:'<%= classedName %> title'}));
 
             var <%= classedName %>;
 

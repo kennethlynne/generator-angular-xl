@@ -4,12 +4,12 @@ angular.module('<%= scriptAppName %>')
     .factory('<%= classedName %>Model', function ($q, $http, $rootScope) {
 
         //Constructor
-        function Blogpost(data) {
-            var post = this;
+        function <%= classedName %>Model(data) {
+            var <%= cameledName %> = this;
             this.$set(data);
 
             $rootScope.$watch(function () {
-                var copy = angular.copy(post);
+                var copy = angular.copy(<%= cameledName %>);
 
                 //Remove all properties prefixed with $
                 for(var key in copy)
@@ -20,54 +20,54 @@ angular.module('<%= scriptAppName %>')
                 return copy;
             }, function (newVal, oldVal) {
                 if(newVal !== oldVal) {
-                    post.$isDirty = true;
-                    post.$_changeSubscribers.forEach(function (cb) {
+                    <%= cameledName %>.$isDirty = true;
+                    <%= cameledName %>.$_changeSubscribers.forEach(function (cb) {
                         cb();
                     });
                 }
             }, true);
         };
 
-        Blogpost.prototype = {
+        <%= classedName %>Model.prototype = {
             $set: function (data, resetDirty) {
-                var post = this;
+                var <%= cameledName %> = this;
 
                 if(resetDirty) {
-                    this.$isDirty = false;
+                    <%= cameledName %>.$isDirty = false;
                 }
 
                 //Remove all properties not prefixed with $
-                for(var key in post)
+                for(var key in <%= cameledName %>)
                 {
                     //More efficient than indexOf
-                    if(key.substr(0,1) !== '$') delete post[key];
+                    if(key.substr(0,1) !== '$') delete <%= cameledName %>[key];
                 }
 
-                angular.extend(post, data);
+                angular.extend(<%= cameledName %>, data);
             },
             $delete: function () {
-                var post = this;
-                return $http.delete('/posts/' + post.id, post).then(function (response) {
-                    post.$set(response.data, true);
+                var <%= cameledName %> = this;
+                return $http.delete('/<%= classedName %>/' + <%= cameledName %>.id, <%= cameledName %>).then(function (response) {
+                    <%= cameledName %>.$set(response.data, true);
                     return response;
                 });
             },
             $save: function () {
-                var post = this;
-                return $http.put('/posts/' + post.id, post).then(function (response) {
-                    post.$set(response.data, true);
+                var <%= cameledName %> = this;
+                return $http.put('/<%= classedName %>/' + <%= cameledName %>.id, <%= cameledName %>).then(function (response) {
+                    <%= cameledName %>.$set(response.data, true);
                     return response;
                 });
             },
             $_changeSubscribers: [],
             $isDirty: false,
             $onChange: function (cb) {
-                var post = this;
-                post.$_changeSubscribers.push(cb);
+                var <%= cameledName %> = this;
+                <%= cameledName %>.$_changeSubscribers.push(cb);
             }
         };
 
-        return Blogpost;
+        return <%= classedName %>Model;
     })
     .factory('<%= classedName %>ModelContext', function (<%= classedName %>Model, $q, $http) {
 
@@ -83,10 +83,10 @@ angular.module('<%= scriptAppName %>')
             }
             else
             {
-                return $http.get('/posts/' + id).then(function (response) {
-                    var post = new <%= classedName %>Model(response.data);
-                    _pool[id] = post;
-                    return post;
+                return $http.get('/<%= classedName %>/' + id).then(function (response) {
+                    var <%= cameledName %> = new <%= classedName %>Model(response.data);
+                    _pool[id] = <%= cameledName %>;
+                    return <%= cameledName %>;
                 });
             }
 
@@ -94,13 +94,13 @@ angular.module('<%= scriptAppName %>')
 
         var _getAll = function () {
             //TODO: Max length of pool, to not manage to many instances in memory?
-            return $http.get('/posts').then(function (response) {
+            return $http.get('/<%= classedName %>').then(function (response) {
                 if(Array.isArray(response.data))
                 {
                     return response.data.map(function (item) {
-                        var post = new <%= classedName %>Model(item);
-                        _pool[item.id] = post;
-                        return post;
+                        var <%= cameledName %> = new <%= classedName %>Model(item);
+                        _pool[item.id] = <%= cameledName %>;
+                        return <%= cameledName %>;
                     });
                 }
             });
