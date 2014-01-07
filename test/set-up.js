@@ -17,6 +17,7 @@ var deps = [
     '../../service',
     '../../factory',
     '../../provider',
+    '../../model',
     '../../filter',
     '../../main', [
         helpers.createDummyGenerator(),
