@@ -26,6 +26,6 @@
   },
    "resolutions": {
     "angular-promise-tracker": "~1.5.0",
-    "angular": "1.2.8-build.2087+sha.affcbad"
+    "angular": "1.2.8-build.2093+sha.1c045f1"
   }
 }
