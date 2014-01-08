@@ -17,7 +17,7 @@ module.exports = function (grunt) {
       options: {
         commitMessage: '<%= version %>',
         tagName: 'v<%= version %>',
-        bump: false, // we have our own bump
+        bump: true,
         file: 'package.json'
       }
     },
