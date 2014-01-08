@@ -57,6 +57,11 @@ Generator.prototype.askForModules = function askForModules() {
             message: 'Which modules would you like to include?',
             choices: [
                 {
+                    value: 'xeditableModule',
+                    name: 'xeditable.js',
+                    checked: false
+                },
+                {
                     value: 'resourceModule',
                     name: 'angular-resource.js',
                     checked: false
@@ -92,8 +97,9 @@ Generator.prototype.askForModules = function askForModules() {
     this.sanitizeModule = hasMod('sanitizeModule');
     this.restangularModule = hasMod('restangularModule');
     this.touchModule = hasMod('touchModule');
+    this.xeditableModule = hasMod('xeditableModule');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
+    var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
@@ -109,6 +115,10 @@ Generator.prototype.askForModules = function askForModules() {
       }
       if (this.touchModule) {
           angMods.push("'ngTouch'");
+      }
+      if (this.xeditableModule)
+      {
+          angMods.push("'xeditable'");
       }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";

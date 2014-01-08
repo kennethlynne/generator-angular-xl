@@ -45,7 +45,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             'cookiesModule',
             'sanitizeModule',
             'restangularModule',
-            'touchModule'
+            'touchModule',
+            'xeditableModule'
         ]
     });
 
