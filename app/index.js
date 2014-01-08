@@ -93,7 +93,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.restangularModule = hasMod('restangularModule');
     this.touchModule = hasMod('touchModule');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", "'kennethlynne.angular-modelprovider'", "'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
+    var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'xeditable'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
