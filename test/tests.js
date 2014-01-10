@@ -26,7 +26,7 @@ describe('angular-xl generator', function () {
             if (err) {
                 done(err);
             }
-            angular = helpers.createGenerator('angular-xl:app test', deps);
+            angular = helpers.createGenerator('angular-xl:app', deps, ['test']);
             angular.options['skip-install'] = true;
             done();
         });
