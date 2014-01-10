@@ -85,6 +85,11 @@ Generator.prototype.askForModules = function askForModules() {
                     value: 'touchModule',
                     name: 'angular-touch.js',
                     checked: true
+                },
+                {
+                    value: 'angularUIBootstrapModule',
+                    name: 'angular-ui-bootstrap.js',
+                    checked: false
                 }
             ]
         }
@@ -98,6 +103,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.restangularModule = hasMod('restangularModule');
     this.touchModule = hasMod('touchModule');
     this.xeditableModule = hasMod('xeditableModule');
+    this.angularUIBootstrapModule = hasMod('angularUIBootstrapModule');
 
     var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
 
@@ -119,6 +125,10 @@ Generator.prototype.askForModules = function askForModules() {
       if (this.xeditableModule)
       {
           angMods.push("'xeditable'");
+      }
+      if (this.angularUIBootstrapModule)
+      {
+          angMods.push("'ui.bootstrap'");
       }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";

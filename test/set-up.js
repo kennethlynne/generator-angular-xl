@@ -46,7 +46,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             'sanitizeModule',
             'restangularModule',
             'touchModule',
-            'xeditableModule'
+            'xeditableModule',
+            'angularUIBootstrapModule'
         ]
     });
 
