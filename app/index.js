@@ -143,6 +143,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/framework/config.js', 'app/scripts/config/config.js');
     this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/regex-escape.js', 'app/scripts/framework/regex-escape.js');
+    this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar/navbar.js');
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
