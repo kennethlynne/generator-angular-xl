@@ -26,9 +26,17 @@ describe('angular-xl generator', function () {
             if (err) {
                 done(err);
             }
-            angular = helpers.createGenerator('angular-xl:app', deps);
+            angular = helpers.createGenerator('angular-xl:app test', deps);
             angular.options['skip-install'] = true;
             done();
+        });
+    });
+
+    describe('App', function () {
+        it('should use the correct app name', function() {
+            var index_html = fs.readFileSync('app/index.html', 'utf8');
+            var regex_html = new RegExp('ng-app=\"testApp\"');
+            assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
         });
     });
 
@@ -280,16 +288,8 @@ describe('angular-xl generator', function () {
         // Test JS Files
         var regex_js = new RegExp('module\\(\'' + expectedAppName + '\'');
         assert.ok(regex_js.test(module_js), 'module.js template using a wrong appName');
-        assert.ok(regex_js.test(route_js), 'route.js template using a wrong appName');
-        assert.ok(regex_js.test(main_js), 'main.js template using a wrong appName');
-        assert.ok(regex_js.test(main_test_js), 'controller spec template using a wrong appName');
 
-        // read HTML file
-        var index_html = fs.readFileSync('app/index.html', 'utf8');
 
-        // Test HTML File
-        var regex_html = new RegExp('ng-app=\"' + expectedAppName + '\"');
-        assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
 
     */
 });
