@@ -34,9 +34,12 @@ describe('angular-xl generator', function () {
 
     describe('App', function () {
         it('should use the correct app name', function() {
-            var index_html = fs.readFileSync('app/index.html', 'utf8');
-            var regex_html = new RegExp('ng-app=\"testApp\"');
-            assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
+            angular.run([], function () {
+                var index_html = fs.readFileSync('app/index.html', 'utf8');
+                var regex_html = new RegExp('ng-app=\"testApp\"');
+                assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
+                done();
+            });
         });
     });
 
