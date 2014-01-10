@@ -32,4 +32,7 @@ describe('Service: dasherize', function () {
         expect(dasherize('NameXML')).toBe('name-xml');
     });
 
+    it('should transform XMLfile to xml-file', function() {
+        expect(dasherize('XMLfileIsCool')).toBe('xml-file-is-cool');
+    });
 });
