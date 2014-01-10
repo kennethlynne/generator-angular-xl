@@ -10,10 +10,12 @@ angular.module('<%= scriptAppName %>')
             return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
                 $log.log("<%= classedName %>Ctrl loaded!");
 
-                return {
+                var init = {
                     message1: data[0],
                     message2: data[1]
-                }
+                };
+
+                return init;  //This is the same init that is sent to the controller when it is initialized
             });
         };
 
