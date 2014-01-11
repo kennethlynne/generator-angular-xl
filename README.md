@@ -425,6 +425,7 @@ The following additional modules are available as components on bower, and insta
 * angular-resource
 * angular-sanitize
 * angular-ui-bootstrap
+* ngStorage
 
 All of these can be updated with `bower update` as new versions of AngularJS are released.
 When you install new dependancies you have to add a reference to the script files in `resources.json` under ```external```. The build task will inject this into `index.html` during runtime, and when you build the project it will by convention use the minified version of the source file, that should be located in the same folder, with the exact same filename with a `.min` suffix. This will be concatenated without minification.

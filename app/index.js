@@ -57,6 +57,26 @@ Generator.prototype.askForModules = function askForModules() {
             message: 'Which modules would you like to include?',
             choices: [
                 {
+                    value: 'ngStorageModule',
+                    name: 'angular-storage.js',
+                    checked: true
+                },
+                {
+                    value: 'restangularModule',
+                    name: 'restangular.js',
+                    checked: true
+                },
+                {
+                    value: 'touchModule',
+                    name: 'angular-touch.js',
+                    checked: true
+                },
+                {
+                    value: 'angularUIBootstrapModule',
+                    name: 'angular-ui-bootstrap.js',
+                    checked: false
+                },
+                {
                     value: 'xeditableModule',
                     name: 'xeditable.js',
                     checked: false
@@ -75,21 +95,6 @@ Generator.prototype.askForModules = function askForModules() {
                     value: 'sanitizeModule',
                     name: 'angular-sanitize.js',
                     checked: false
-                },
-                {
-                    value: 'restangularModule',
-                    name: 'restangular.js',
-                    checked: true
-                },
-                {
-                    value: 'touchModule',
-                    name: 'angular-touch.js',
-                    checked: true
-                },
-                {
-                    value: 'angularUIBootstrapModule',
-                    name: 'angular-ui-bootstrap.js',
-                    checked: false
                 }
             ]
         }
@@ -104,6 +109,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.touchModule = hasMod('touchModule');
     this.xeditableModule = hasMod('xeditableModule');
     this.angularUIBootstrapModule = hasMod('angularUIBootstrapModule');
+    this.ngStorageModule = hasMod('ngStorageModule');
 
     var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
 
@@ -129,6 +135,9 @@ Generator.prototype.askForModules = function askForModules() {
       if (this.angularUIBootstrapModule)
       {
           angMods.push("'ui.bootstrap'");
+      }
+      if (this.ngStorageModule) {
+          angMods.push("'ngStorage'");
       }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";

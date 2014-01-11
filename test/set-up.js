@@ -47,10 +47,12 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             'restangularModule',
             'touchModule',
             'xeditableModule',
-            'angularUIBootstrapModule'
+            'angularUIBootstrapModule',
+            'ngStorageModule'
         ]
     });
 
+    //YEEeeaah.. I kid you not. TODO:
     angular.run([], function () {
         pageGenerator.run([], function () {
             componentGenerator.run([], function () {
