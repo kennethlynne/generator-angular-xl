@@ -19,6 +19,7 @@ var deps = [
     '../../provider',
     '../../model',
     '../../filter',
+    '../../directive',
     '../../main', [
         helpers.createDummyGenerator(),
         'karma:app'
@@ -43,8 +44,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         ]
     });
 
-    var generators = {};
-    var names = [
+    var queue = [
         'page',
         'component',
         'service',
@@ -52,27 +52,25 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         'value',
         'provider',
         'filter',
-        'model'
+        'model',
+        'directive',
+        'view',
+        'controller'
     ];
-
-    names.forEach(function (name) {
-        generators[name] = helpers.createGenerator('angular-xl:' + name, deps, [ name + 'Test' ]);
-    });
-
-    var queue = names.slice(0); //Clone list of names
 
     //Recursively do all tests
     function testNext() {
         if (queue.length == 0) {
             return;
         }
+        var name = queue.pop(); //Get next generator in line
+        var generator = helpers.createGenerator('angular-xl:' + name, deps, [ name + 'Test' ]);
 
-        generators[queue.pop()].run([], function () {
+        generator.run([], function () {
             //Do the next test in queue
             testNext();
         });
-
-    }
+    };
 
     //Run tests
     angular.run([], function () {
