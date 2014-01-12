@@ -17,7 +17,17 @@ util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
     var path = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
-    this.statifiedPath = this.slugifiedPath.join('.') + '.' + this.dasherizedName;
+
+    if (this.slugifiedPath.length > 0) {
+        this.statifiedPath = this.slugifiedPath.join('-') + '-' + this.dasherizedName;
+        //TODO: Support view inheritance using dot notation
+        //https://github.com/angular-ui/ui-router/wiki/Nested-States-%26-Nested-Views
+    }
+    else
+    {
+        this.statifiedPath = this.dasherizedName;
+    }
+
     this.pageUrl = path;
 
     this.generateSourceAndTest(
