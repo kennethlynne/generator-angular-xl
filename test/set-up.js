@@ -27,15 +27,6 @@ var deps = [
 
 helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     var angular = helpers.createGenerator('angular-xl:app', deps);
-    var pageGenerator = helpers.createGenerator('angular-xl:page', deps, ['thingThing']);
-    var componentGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
-    var serviceGenerator = helpers.createGenerator('angular-xl:service', deps, ['serviceThing']);
-    var factoryGenerator = helpers.createGenerator('angular-xl:factory', deps, ['factoryThing']);
-    var decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['serviceThing']);
-    var valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
-    var providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
-    var filterGenerator = helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
-    var modelGenerator = helpers.createGenerator('angular-xl:model', deps, ['wooopStuff']);
 
     angular.options['skip-install'] = true;
 
@@ -52,24 +43,38 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         ]
     });
 
-    //YEEeeaah.. I kid you not. TODO:
-    angular.run([], function () {
-        pageGenerator.run([], function () {
-            componentGenerator.run([], function () {
-                valueGenerator.run([], function () {
-                    serviceGenerator.run([], function () {
-                        providerGenerator.run([], function () {
-                            filterGenerator.run([], function () {
-                                factoryGenerator.run([], function () {
-                                    modelGenerator.run([], function () {
-                                    });
-                                });
-                            });
-                        });
-                    });
-                });
-            });
+    var generators = {};
+    var names = [
+        'page',
+        'component',
+        'service',
+        'factory',
+        'value',
+        'provider',
+        'filter',
+        'model'
+    ].forEach(function (name) {
+        generators[name] = helpers.createGenerator('angular-xl:' + name, deps, [ name + 'Test' ]);
+    });
+
+    var queue = names.slice(0); //Clone list of names
+
+    //Recursively do all tests
+    function testNext() {
+        if (queue.length == 0) {
+            return;
+        }
+
+        generators[queue.pop()].run([], function () {
+            //Do the next test in queue
+            testNext();
         });
+
+    }
+
+    //Run tests
+    angular.run([], function () {
+        testNext(); //Test all generators in queue recursively
     });
 });
 
