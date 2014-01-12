@@ -113,10 +113,10 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/school/details/one/index/details-controller.js'],
+                        ['app/pages/school/details/one/index/one-controller.js'],
                         ['app/pages/school/details/one/index/_styles.scss'],
                         ['app/pages/school/details/one/index/views/main-view.html'],
-                        ['test/unit/spec/pages/school/details/one/index/details-controller.js']
+                        ['test/unit/spec/pages/school/details/one/index/one-controller.js']
                     ]);
                     done();
                 });
