@@ -14,9 +14,10 @@ describe('Directive: <%= cameledName %>', function () {
 
     });
 
-    it('should make hidden element visible', function () {
+    it('should set text', function () {
         element = angular.element('<<%= _.dasherize(name) %>></<%= _.dasherize(name) %>>');
         element = $compile(element)(scope);
+        scope.$digest();
         expect(element.text()).toBe('this is the <%= cameledName %> directive');
     });
 });
