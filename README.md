@@ -418,7 +418,7 @@ The following packages are always installed by the [app](#app) generator:
 * angular-xeditable
 * angular-modelprovider
 
-The following additional modules are available as components on bower, and installable via `bower install`:
+The following additional modules are optional:
 
 * angular-cookies
 * angular-loader
@@ -458,6 +458,8 @@ Resource.json contains two sections. One for JS and one for SCSS.
 "scripts/**/*.js"
 ```
 Files will be matched only once, so in the aforementioned example the routes config will be loaded before everything else is included.
+
+Add a reference in resource to the **unminified** version of the library you want to use, as it will automatically use the library suffixed with `.min` during build time.
 
 ## manifest.appcache
 When you build your application, the will automatically be created a cache manifest file in the dist folder.
