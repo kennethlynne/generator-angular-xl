@@ -401,6 +401,32 @@ module.exports = function (grunt) {
             files: [
                 'test/**/*.js'
             ]
+        },
+        //The manifest file must be served with the MIME type text/cache-manifest.
+        manifest: {
+            generate: {
+                options: {
+                    basePath: '<%= yeoman.dist %>/',
+                    cache: ['<%= yeoman.dist %>/scripts/scripts.js', '<%= yeoman.dist %>/styles/main.css'],
+                    network: ['*', 'http://*', 'https://*'],
+                    fallback: ['/ /offline.html'],
+                    exclude: ['js/jquery.min.js'],
+                    preferOnline: true,
+                    verbose: true,
+                    timestamp: true,
+                    hash: true,
+                    master: ['index.html']
+                },
+                src: [ //TODO: Rev images, fonts, icons etc. to bust cache
+                    '**/*.html',
+                    '<%= yeoman.dist %>/scripts/**/*.js',
+                    '<%= yeoman.dist %>/styles/**/*.css',
+                    '*.{ico,png,txt}',
+                    'images/**/*',
+                    'fonts/*'
+                ],
+                dest: 'manifest.appcache'
+            }
         }
 
     });
@@ -437,7 +463,8 @@ module.exports = function (grunt) {
         'cssmin',
         'rev',
         'linkAssets-production',
-        'htmlmin'
+        'htmlmin',
+        'manifest'
     ]);
 
     grunt.registerTask('release', [

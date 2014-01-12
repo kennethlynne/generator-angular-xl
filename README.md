@@ -14,6 +14,7 @@ To sum up:
 - Build and minify the project with one command: ```grunt build```
 - Intercept calls to an API and provide a [mock API](#api) to do fast prototyping
 - Deploy site to your repos [GitHub page](http://pages.github.com/) branch with `grunt release`, automatically running tests, tagging your commits and bumping version numbers. This will also automatically generate your CHANGELOG.md using your commit history if you follow [these conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit).
+- Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
@@ -457,6 +458,11 @@ Resource.json contains two sections. One for JS and one for SCSS.
 "scripts/**/*.js"
 ```
 Files will be matched only once, so in the aforementioned example the routes config will be loaded before everything else is included.
+
+## manifest.appcache
+When you build your application, the will automatically be created a cache manifest file in the dist folder.
+The manifest file must be served with the MIME type text/cache-manifest.
+Read more about the HTML5 Appcache specification [here](http://appcachefacts.info/)
 
 ## Testing
 
