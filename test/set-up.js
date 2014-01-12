@@ -53,7 +53,9 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         'provider',
         'filter',
         'model'
-    ].forEach(function (name) {
+    ];
+
+    names.forEach(function (name) {
         generators[name] = helpers.createGenerator('angular-xl:' + name, deps, [ name + 'Test' ]);
     });
 
