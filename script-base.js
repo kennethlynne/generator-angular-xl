@@ -16,15 +16,38 @@ var Generator = module.exports = function Generator() {
     this.appname = this._.slugify(this._.humanize(this.appname));
     this.scriptAppName = this._.camelize(this.appname) + angularUtils.appName(this);
 
+    //TODO: sett this.name til det siste etter /, og alt foran til this.targetPath
+    this.name = this.name
+                    .replace(/^\//, '') //remove leading slashes
+                    .replace(/\/$/,''); //remove ending slashes
+
+    this.hierarchy = this.name.split('/');
+
+    this.slugifiedPath = this.hierarchy.map(function (folder) { //Generate a slugified name
+         return dasherize(folder);
+    });
+    this.slugifiedPath.pop(); //remove the last element in the array, namely the name
+
+    this.name =last(this.hierarchy);
+
+    function last(arr) {
+        return arr[arr.length-1];
+    }
+
+    function dasherize(str) {
+        return _.slugify(
+            str.replace(/(?:^[A-Z]{2,})/g, function (match) { //XMLfileIsCool -> xml-fileIsCool
+                return match.toLowerCase() + "-";
+            })
+            .replace(/(?:[A-Z]+)/g, function (match) { //camelCase -> snake-case
+                return "-" + match.toLowerCase();
+            })
+            .replace(/^-/, '')
+        ); // CamelCase -> -snake-case -> snake-case);
+    };
+
     this.cameledName = this._.camelize(this.name);
-    this.dasherizedName = this._.slugify(
-        this.name.replace(/(?:^[A-Z]{2,})/g, function (match) { //XMLfileIsCool -> xml-fileIsCool
-            return match.toLowerCase() + "-";
-        })
-        .replace(/(?:[A-Z]+)/g, function (match) { //camelCase -> snake-case
-            return "-" + match.toLowerCase();
-        })
-        .replace(/^-/, '')); // CamelCase -> -snake-case -> snake-case);
+    this.dasherizedName = dasherize(this.name);
 
     this.classedName = this._.classify(this.name);
 

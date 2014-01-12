@@ -16,11 +16,15 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
+    var path = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
+    this.statifiedPath = this.slugifiedPath.join('.') + '.' + this.dasherizedName;
+    this.pageUrl = path;
+
     this.generateSourceAndTest(
         'controller',
         'spec/controller',
-        ('../pages/' + this.dasherizedName + '/index'),
-        ('../unit/spec/pages/' + this.dasherizedName + '/index'),
-        'index'
+        ('../pages/' + path + '/index'),
+        ('../unit/spec/pages/' + path + '/index'),
+        this.dasherizedName + '-controller'
     );
 };

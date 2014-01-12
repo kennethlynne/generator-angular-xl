@@ -21,8 +21,19 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-    var action = 'index';
-    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', this.dasherizedName, action, 'views', action + '.html'));
-    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', this.dasherizedName, '_' + this.dasherizedName + '.scss'));
-    this.addStyleToPagesScss('../pages/' + this.dasherizedName + '/' + this.dasherizedName);
+
+    var classes = this.slugifiedPath.map(function (name) {
+        return name + '-page';
+    });
+    classes.push(this.dasherizedName + '-page');
+
+    this.viewClassesForScss = '.' + classes.join('.').trim();
+
+    this.viewClassesForHTML = classes.join(' ');
+
+    var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
+
+    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', targetPath, 'index', 'views', 'main-view.html'));
+    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_styles.scss'));
+    this.addStyleToPagesScss('../pages/' + targetPath + '/index/styles');
 };

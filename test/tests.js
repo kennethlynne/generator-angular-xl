@@ -43,7 +43,7 @@ describe('angular-xl generator', function () {
         });
     });
 
-    describe('Page', function () {
+    describe('Route', function () {
         //TODO: Test that it adds style import to _pages.scss
         it('should generate a new page', function (done) {
             var controllerGenerator;
@@ -51,8 +51,9 @@ describe('angular-xl generator', function () {
                 '../../controller',
                 '../../view',
                 '../../page',
+                '../../route'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['thingThing']);
+            controllerGenerator = helpers.createGenerator('angular-xl:route', deps, ['thingThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -64,6 +65,56 @@ describe('angular-xl generator', function () {
                         ['app/pages/thing-thing/_thing-thing.scss'],
                         ['app/pages/thing-thing/index/views/index.html'],
                         ['test/unit/spec/pages/thing-thing/index/index.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+
+        it('should generate a new sub-state', function (done) {
+            var controllerGenerator;
+            var deps = [
+                '../../controller',
+                '../../view',
+                '../../page',
+                '../../route'
+            ];
+            controllerGenerator = helpers.createGenerator('angular-xl:route', deps, ['school/details']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                controllerGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/pages/school/details/index/index.js'],
+                        ['app/pages/school/details/index/views/index.html'],
+                        ['test/unit/spec/pages/school/details/index/index.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+
+        it('should generate a new sub-state in a sub-state', function (done) {
+            var controllerGenerator;
+            var deps = [
+                '../../controller',
+                '../../view',
+                '../../page',
+                '../../route'
+            ];
+            controllerGenerator = helpers.createGenerator('angular-xl:route', deps, ['school/details/one']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                controllerGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/pages/school/details/one/index/index.js'],
+                        ['app/pages/school/details/one/index/views/index.html'],
+                        ['test/unit/spec/pages/school/details/one/index/index.js']
                     ]);
                     done();
                 });
