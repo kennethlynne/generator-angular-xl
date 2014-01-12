@@ -61,10 +61,10 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/thing-thing/index/index.js'],
-                        ['app/pages/thing-thing/_thing-thing.scss'],
-                        ['app/pages/thing-thing/index/views/index.html'],
-                        ['test/unit/spec/pages/thing-thing/index/index.js']
+                        ['app/pages/thing-thing/index/thing-thing-controller.js'],
+                        ['app/pages/thing-thing/index/_styles.scss'],
+                        ['app/pages/thing-thing/index/views/main-view.html'],
+                        ['test/unit/spec/pages/thing-thing/index/thing-thing-controller.js']
                     ]);
                     done();
                 });
@@ -87,9 +87,10 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/school/details/index/index.js'],
-                        ['app/pages/school/details/index/views/index.html'],
-                        ['test/unit/spec/pages/school/details/index/index.js']
+                        ['app/pages/school/details/index/details-controller.js'],
+                        ['app/pages/school/details/index/_styles.scss'],
+                        ['app/pages/school/details/index/views/main-view.html'],
+                        ['test/unit/spec/pages/school/details/index/details-controller.js']
                     ]);
                     done();
                 });
@@ -112,9 +113,10 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/school/details/one/index/index.js'],
-                        ['app/pages/school/details/one/index/views/index.html'],
-                        ['test/unit/spec/pages/school/details/one/index/index.js']
+                        ['app/pages/school/details/one/index/details-controller.js'],
+                        ['app/pages/school/details/one/index/_styles.scss'],
+                        ['app/pages/school/details/one/index/views/main-view.html'],
+                        ['test/unit/spec/pages/school/details/one/index/details-controller.js']
                     ]);
                     done();
                 });
