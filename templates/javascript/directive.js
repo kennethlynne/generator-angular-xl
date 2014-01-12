@@ -8,8 +8,7 @@ angular.module('<%= scriptAppName %>')
         };
 
         return {
-            template: '<div></div>',
-            restrict: 'E',
+            restrict: 'A',
             link: _linkFn
         };
         
