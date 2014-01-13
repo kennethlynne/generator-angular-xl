@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('<%= statifiedPath %>', stateFactoryProvider.$get()('<%= classedName %>', {url:'<%= pageUrl %>'})) })
+    .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('<%= statifiedPath %>', stateFactoryProvider.$get()('<%= classedName %>', {url:'<%= pageUrl %>'}, templateUrl: '<%= templateUrl %>')) })
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
         var _prepare = function () {
