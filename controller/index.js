@@ -20,13 +20,13 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
     if (this.slugifiedPath.length > 0) {
         this.statifiedPath = this.slugifiedPath.join('-') + '-' + this.dasherizedName;
-        this.templateUrl = 'pages/' + path + '/index/views/main-view.html';
+        this.viewTemplateUrl = 'pages/' + path + '/index/views/main-view.html';
         //TODO: Support view inheritance using dot notation
         //https://github.com/angular-ui/ui-router/wiki/Nested-States-%26-Nested-Views
     }
     else
     {
-        this.templateUrl = 'pages/' + this.dasherizedName + '/index/views/main-view.html';
+        this.viewTemplateUrl = 'pages/' + this.dasherizedName + '/index/views/main-view.html';
         this.statifiedPath = this.dasherizedName;
     }
 
