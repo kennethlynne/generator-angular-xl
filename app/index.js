@@ -168,9 +168,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
     this.template('../../templates/javascript/framework/mock-api.js', 'app/scripts/mock-api.js');
-    this.template('../../templates/javascript/framework/page-view-directory-factory.js', 'app/scripts/framework/page-view-directory-factory.js');
     this.template('../../templates/javascript/framework/state-factory.js', 'app/scripts/framework/state-factory.js');
-    this.template('../../templates/javascript/spec/page-view-directory-factory.js', 'test/unit/spec/framework/page-view-directory-factory.js');
     this.template('../../templates/javascript/spec/state-factory.js', 'test/unit/spec/framework/state-factory.js');
     this.template('../../templates/javascript/framework/dasherize.js', 'app/scripts/framework/dasherize.js');
     this.template('../../templates/javascript/spec/dasherize.js', 'test/unit/spec/framework/dasherize.js');

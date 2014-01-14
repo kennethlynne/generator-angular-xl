@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('Error', stateFactoryProvider.$get()('Error', {url:'/error?code'})) })
+    .config(function ($stateProvider, stateFactory) { $stateProvider.state('Error', stateFactory('Error', {url:'/error?code'})) })
     .service('ErrorCtrlInit', function ($q, $log) {
 
         var _prepare = function () {

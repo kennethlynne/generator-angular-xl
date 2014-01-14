@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function ($stateProvider, stateFactoryProvider) {
-        $stateProvider.state('Index', stateFactoryProvider.$get()('Index', {url:'/'}))
+    .config(function ($stateProvider, stateFactory) {
+        $stateProvider.state('Index', stateFactory('Index', {url:'/'}))
     })
     .service('IndexCtrlInit', function ($q, $log) {
 
