@@ -1,9 +1,8 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
-var util = require('util');
-var helpers = require('yeoman-generator').test;
-var _ = require('underscore.string');
+var path = require('path'),
+    util = require('util'),
+    helpers = require('yeoman-generator').test,
+    _ = require('underscore.string');
 
 var deps = [
     '../../app',
