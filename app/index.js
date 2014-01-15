@@ -172,4 +172,6 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/state-factory.js', 'test/unit/spec/framework/state-factory.js');
     this.template('../../templates/javascript/framework/dasherize.js', 'app/scripts/framework/dasherize.js');
     this.template('../../templates/javascript/spec/dasherize.js', 'test/unit/spec/framework/dasherize.js');
+    this.template('../../templates/javascript/framework/model-factory.js', 'app/scripts/framework/model-factory.js');
+    this.template('../../templates/javascript/spec/model-factory.js', 'test/unit/spec/framework/model-factory.js');
 };
