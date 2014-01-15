@@ -6,8 +6,7 @@ var fs = require('fs');
 module.exports = {
   rewrite: rewrite,
   rewriteFile: rewriteFile,
-  appendFile: appendFile,
-  appName: appName
+  appendFile: appendFile
 };
 
 function rewriteFile (args) {
