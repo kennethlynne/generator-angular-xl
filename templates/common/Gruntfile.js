@@ -237,13 +237,20 @@ module.exports = function (grunt) {
                 cwd: '<%%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '**/*.css'
+            },
+            dev: {
+                expand: true,
+                cwd: '<%%= yeoman.app %>/dev',
+                dest: '.tmp/scripts/',
+                src: '**/*.js'
             }
         },
         concurrent: {
             server: [
                 'coffee:dist',
                 'compass:server',
-                'copy:styles'
+                'copy:styles',
+                'copy:dev'
             ],
             dist: [
                 'coffee',
@@ -316,7 +323,7 @@ module.exports = function (grunt) {
                     appRoot: '<%%= yeoman.app %>'
                 },
                 files: {
-                    '<%%= yeoman.app %>/index.html': externalJsSrc.concat(appJs)
+                    '<%%= yeoman.app %>/index.html': externalJsSrc.concat(appJs).concat([yeomanConfig.app + '/dev/**/*.js'])
                 }
             },
 

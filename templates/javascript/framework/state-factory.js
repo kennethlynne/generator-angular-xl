@@ -3,8 +3,11 @@ angular.module('<%= scriptAppName %>')
 
         var _INITSERVICE = classedName + 'CtrlInit';
 
-        function camelize(input) {
+        function dasherize(input) {
             return input
+                .replace(/(?:^[A-Z]{2,})/g, function (match) { //XMLfileIsCool -> xml-fileIsCool
+                    return match.toLowerCase() + "-";
+                })
                 .replace(/(?:[A-Z]+)/g, function (match) { //camelCase -> snake-case
                     return "-" + match.toLowerCase();
                 })
@@ -12,8 +15,8 @@ angular.module('<%= scriptAppName %>')
         };
 
         var _defaults = {
-            url: '/' + camelize(classedName),
-            templateUrl: 'pages/' + camelize(classedName) + '/index/views/main-view.html',
+            url: '/' + dasherize(classedName),
+            templateUrl: 'pages/' + dasherize(classedName) + '/index/views/main-view.html',
             controller: classedName + 'Ctrl'
         };
 

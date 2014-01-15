@@ -160,6 +160,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
     this.template('../../templates/javascript/framework/api-base-url.js', 'app/scripts/framework/api-base-url.js');
     this.template('../../templates/javascript/framework/config.js', 'app/scripts/config/config.js');
+    this.template('../../templates/javascript/framework/guid.js', 'app/scripts/framework/guid.js');
     this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/regex-escape.js', 'app/scripts/framework/regex-escape.js');
     this.template('../../templates/javascript/navbar.js', 'app/components/components/navbar/navbar.js');
@@ -167,7 +168,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
-    this.template('../../templates/javascript/framework/mock-api.js', 'app/scripts/mock-api.js');
+    this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
     this.template('../../templates/javascript/framework/state-factory.js', 'app/scripts/framework/state-factory.js');
     this.template('../../templates/javascript/spec/state-factory.js', 'test/unit/spec/framework/state-factory.js');
     this.template('../../templates/javascript/framework/dasherize.js', 'app/scripts/framework/dasherize.js');

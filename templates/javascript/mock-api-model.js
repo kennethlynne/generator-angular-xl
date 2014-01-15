@@ -5,36 +5,40 @@ angular.module('<%= scriptAppName %>')
         //Only load mocks if config says so
         if(!Config.useMocks) return;
 
-        var <%= dasherizedName %> = {};
-        <%= dasherizedName %>.data = [{id: guid(), text:'Hello World'}];
-        <%= dasherizedName %>.index = {};
+        console.log('Stubbing <%= dasherizedName %> API');
+        console.log('************');
 
-        angular.forEach(<%= dasherizedName %>.data, function(item, key) {
-            <%= dasherizedName %>.index[item.id] = item; //Index messages to be able to do efficient lookups on id
+        var <%= classedName %> = {};
+        <%= classedName %>Repo.data = [{id: guid(), text:'Hello World'}];
+        <%= classedName %>Repo.index = {};
+
+        angular.forEach(<%= classedName %>.data, function(item, key) {
+            <%= classedName %>Repo.index[item.id] = item; //Index messages to be able to do efficient lookups on id
         });
 
-        //Message should return a list og messages
+        //GET <%= dasherizedName %>/ should return a list og messages
         $httpBackend.whenGET(APIBaseUrl + '<%= dasherizedName %>').respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>', data);
-            return [200, <%= dasherizedName %>.data, {/*headers*/}];
+            return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
+        //POST <%= dasherizedName %>/ should save a message and return the message with an id
         $httpBackend.whenPOST(APIBaseUrl + '<%= dasherizedName %>').respond(function(method, url, data, headers) {
             $log.log('Intercepted POST to <%= dasherizedName %>', data);
             var <%= classedName %> = angular.fromJson(data);
 
             <%= classedName %>.id = guid();
-            <%= dasherizedName %>.data.push(<%= classedName %>);
-            <%= dasherizedName %>.index[<%= dasherizedName %>.id] = <%= classedName %>;
+            <%= classedName %>Repo.data.push(<%= classedName %>);
+            <%= classedName %>Repo.index[<%= dasherizedName %>.id] = <%= classedName %>;
 
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //<%= dasherizedName %>/id should return a message
+        //GET <%= dasherizedName %>/id should return a message
         $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + '<%= dasherizedName %>/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>');
             var id = url.match( new RegExp(IdRegExp) )[0];
-            return [200, <%= dasherizedName %>.index[id] || null, {/*headers*/}];
+            return [200, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
     });

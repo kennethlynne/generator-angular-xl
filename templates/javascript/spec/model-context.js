@@ -1,15 +1,15 @@
-describe('Model Context: ReportContext', function () {
+describe('Model Context: <%= classedName %>Context', function () {
 
-    var ReportContext, $httpBackend, ReportModel, $rootScope;
+    var <%= classedName %>Context, $httpBackend, <%= classedName %>Model, $rootScope;
 
     beforeEach(function () {
 
-        module('nsbQualityOnBoard');
+        module('<%= scriptAppName %>');
 
-        inject(function (_ReportContext_, _$httpBackend_, _ReportModel_, _$rootScope_) {
-            ReportContext = _ReportContext_;
+        inject(function (_<%= classedName %>Context_, _$httpBackend_, _<%= classedName %>Model_, _$rootScope_) {
+            <%= classedName %>Context = _<%= classedName %>Context_;
             $httpBackend = _$httpBackend_;
-            ReportModel = _ReportModel_;
+            <%= classedName %>Model = _<%= classedName %>Model_;
             $rootScope = _$rootScope_;
         });
 
@@ -22,9 +22,9 @@ describe('Model Context: ReportContext', function () {
 
     describe('getById', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(ReportModel.$urlBase + '/5').respond(200, {id: 5, title:'Report title'});
+            $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
 
-            var promise = ReportContext.getById(5);
+            var promise = <%= classedName %>Context.getById(5);
 
             var response;
             promise.then(function (r) {
@@ -33,17 +33,17 @@ describe('Model Context: ReportContext', function () {
 
             $httpBackend.flush();
 
-            expect(response instanceof ReportModel).toBe(true);
+            expect(response instanceof <%= classedName %>Model).toBe(true);
             expect(response.id).toEqual(5);
-            expect(response.title).toEqual('Report title');
+            expect(response.title).toEqual('<%= classedName %> title');
         });
 
         it('should not do subsequent calls if model already exits in pool', function() {
-            $httpBackend.expectGET(ReportModel.$urlBase + '/5').respond(200, {id: 5, title:'Report title'});
-            ReportContext.getById(5);
+            $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            <%= classedName %>Context.getById(5);
             $httpBackend.flush();
 
-            var promise = ReportContext.getById(5);
+            var promise = <%= classedName %>Context.getById(5);
 
             var response;
             promise.then(function (r) {
@@ -52,15 +52,15 @@ describe('Model Context: ReportContext', function () {
 
             $rootScope.$digest();
 
-            expect(response instanceof ReportModel).toBe(true);
+            expect(response instanceof <%= classedName %>Model).toBe(true);
             expect(response.id).toEqual(5);
-            expect(response.title).toEqual('Report title');
+            expect(response.title).toEqual('<%= classedName %> title');
         });
 
         it('should handle rejects', function() {
-            $httpBackend.expectGET(ReportModel.$urlBase + '/5').respond(404, 'No such thang!');
+            $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(404, 'No such thang!');
 
-            var promise = ReportContext.getById(5),
+            var promise = <%= classedName %>Context.getById(5),
                 response,
                 success = jasmine.createSpy('success'),
                 error = jasmine.createSpy('error');
@@ -76,31 +76,31 @@ describe('Model Context: ReportContext', function () {
 
     describe('getAll', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(ReportModel.$urlBase).respond(200, [{id: 5, title:'Report title'},{id: 6, title:'Report title'}]);
+            $httpBackend.expectGET(<%= classedName %>Model.$urlBase).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
 
-            var promise = ReportContext.getAll();
+            var promise = <%= classedName %>Context.getAll();
 
-            var Report5, Report6;
+            var <%= classedName %>5, <%= classedName %>6;
             promise.then(function (r) {
-                Report5 = r[0];
-                Report6 = r[1];
+                <%= classedName %>5 = r[0];
+                <%= classedName %>6 = r[1];
             });
 
             $httpBackend.flush();
 
-            expect(Report5 instanceof ReportModel).toBe(true);
-            expect(Report5.id).toEqual(5);
-            expect(Report5.title).toEqual('Report title');
+            expect(<%= classedName %>5 instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %>5.id).toEqual(5);
+            expect(<%= classedName %>5.title).toEqual('<%= classedName %> title');
 
-            expect(Report6 instanceof ReportModel).toBe(true);
-            expect(Report6.id).toEqual(6);
-            expect(Report6.title).toEqual('Report title');
+            expect(<%= classedName %>6 instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %>6.id).toEqual(6);
+            expect(<%= classedName %>6.title).toEqual('<%= classedName %> title');
         });
 
         it('should handle rejects', function() {
-            $httpBackend.expectGET(ReportModel.$urlBase).respond(404, 'No such thang!');
+            $httpBackend.expectGET(<%= classedName %>Model.$urlBase).respond(404, 'No such thang!');
 
-            var promise = ReportContext.getAll(5),
+            var promise = <%= classedName %>Context.getAll(5),
                 success = jasmine.createSpy('success'),
                 error = jasmine.createSpy('error');
 
@@ -115,59 +115,59 @@ describe('Model Context: ReportContext', function () {
 
     describe('attach', function () {
 
-        var ReportModel;
+        var <%= classedName %>Model;
 
         beforeEach(function () {
-            inject(function (_ReportModel_) {
-                ReportModel = _ReportModel_;
+            inject(function (_<%= classedName %>Model_) {
+                <%= classedName %>Model = _<%= classedName %>Model_;
             });
         });
 
         it('should throw if trying to attach a model that is not of valid type', function() {
             function wrapper() {
-                ReportContext.attach({fails: true});
+                <%= classedName %>Context.attach({fails: true});
             }
             expect(wrapper).toThrow();
         });
 
         it('should return the attached model on subsequent requests', function() {
 
-            ReportContext.attach(new ReportModel({id: 5, title:'Report title'}));
+            <%= classedName %>Context.attach(new <%= classedName %>Model({id: 5, title:'<%= classedName %> title'}));
 
-            var Report;
+            var <%= classedName %>;
 
-            ReportContext.getById(5).then(function (response) {
-                Report = response;
+            <%= classedName %>Context.getById(5).then(function (response) {
+                <%= classedName %> = response;
             });
 
             $rootScope.$digest();
 
-            expect(Report instanceof ReportModel).toBe(true);
-            expect(Report.id).toEqual(5);
-            expect(Report.title).toEqual('Report title');
+            expect(<%= classedName %> instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %>.id).toEqual(5);
+            expect(<%= classedName %>.title).toEqual('<%= classedName %> title');
         });
     });
 
     describe('create', function () {
-        it('should return a newed up instance of the Report Model', function() {
-            var Report = ReportContext.create({title:'New title'});
-            expect(Report instanceof ReportModel).toBe(true);
-            expect(Report.title).toEqual('New title');
+        it('should return a newed up instance of the <%= classedName %> Model', function() {
+            var <%= classedName %> = <%= classedName %>Context.create({title:'New title'});
+            expect(<%= classedName %> instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %>.title).toEqual('New title');
         });
     });
 
     describe('_pool', function () {
         it('should return a reference to the pool', function() {
-            var newReport = {id:19, title:'Yeah!'};
-            ReportContext._pool[19] = newReport;
+            var new<%= classedName %> = {id:19, title:'Yeah!'};
+            <%= classedName %>Context._pool[19] = new<%= classedName %>;
 
-            var Report;
-            ReportContext.getById(19).then(function (response) {
-                Report = response;
+            var <%= classedName %>;
+            <%= classedName %>Context.getById(19).then(function (response) {
+                <%= classedName %> = response;
             });
             $rootScope.$digest();
 
-            expect(Report).toBe(newReport);
+            expect(<%= classedName %>).toBe(new<%= classedName %>);
         });
     });
 
