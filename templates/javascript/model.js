@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .factory('<%= classedName %>Model', function ($q, $http, $rootScope, ModelFactory) {
+    .factory('<%= classedName %>Model', function ($q, $http, $rootScope, ModelFactory, APIBaseUrl) {
 
         function <%= classedName %>Model(data) {
             data = data || {};
-            data.$urlBase = '/test-url';
+            data.$urlBase = APIBaseUrl + '/test-url';
             ModelFactory.call(this,data);
         };
 

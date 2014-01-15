@@ -2,16 +2,17 @@
 
 describe('Model: <%= classedName %>Model', function () {
 
-    var <%= classedName %>Model, $httpBackend, $rootScope;
+    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl;
 
     beforeEach(function () {
 
         module('<%= scriptAppName %>');
 
-        inject(function (_<%= classedName %>Model_, _$httpBackend_, _$rootScope_) {
+        inject(function (_<%= classedName %>Model_, _$httpBackend_, _$rootScope_, _APIBaseUrl_) {
             <%= classedName %>Model = _<%= classedName %>Model_;
             $httpBackend = _$httpBackend_;
             $rootScope = _$rootScope_;
+            APIBaseUrl = _APIBaseUrl_;
         });
 
     });
@@ -23,7 +24,7 @@ describe('Model: <%= classedName %>Model', function () {
 
     describe('$save', function () {
         it('should send its data on $save', function() {
-            $httpBackend.expectPUT('/test-url/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
+            $httpBackend.expectPUT( APIBaseUrl + '/test-url/5', {title:'New title', id:5} ).respond(200, {id: 5, title:'New title from server'});
             var model = new <%= classedName %>Model();
 
             model.title = 'New title';
@@ -65,7 +66,7 @@ describe('Model: <%= classedName %>Model', function () {
 
     describe('$delete', function () {
         it('should delete on $delete', function() {
-            $httpBackend.expectDELETE('/test-url/5').respond(200, {});
+            $httpBackend.expectDELETE( APIBaseUrl + '/test-url/5' ).respond(200, {});
 
             var model = new <%= classedName %>Model();
             model.id = 5;
@@ -103,7 +104,7 @@ describe('Model: <%= classedName %>Model', function () {
             $rootScope.$digest();
             model.thing = 'Data';
 
-            $httpBackend.expectPUT('/test-url/5', {thing:'Data', id:5}).respond(200, {id: 5, thing:'Data'});
+            $httpBackend.expectPUT( APIBaseUrl + '/test-url/5', {thing:'Data', id:5}).respond(200, {id: 5, thing:'Data'} );
             model.$save();
 
             $httpBackend.flush();

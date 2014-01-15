@@ -54,11 +54,11 @@ angular.module('<%= scriptAppName %>')
         passThrough(Config.viewsDir);
 
         //Message should return a list og messages
-        $httpBackend.whenGET(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
+        $httpBackend.whenGET(APIBaseUrl + 'test-url').respond(function(method, url, data, headers) {
             return [200, messages.data, {/*headers*/}];
         });
 
-        $httpBackend.whenPOST(APIBaseUrl + 'messages').respond(function(method, url, data, headers) {
+        $httpBackend.whenPOST(APIBaseUrl + 'test-url').respond(function(method, url, data, headers) {
             var message = angular.fromJson(data);
 
             messages.data.push(message);
@@ -69,7 +69,7 @@ angular.module('<%= scriptAppName %>')
         });
 
         //Message/id should return a message
-        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + 'messages/') + '\\d+$' ) ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + 'test-url/') + '\\d+$' ) ).respond(function(method, url, data, headers) {
             var id = url.match(/\d+$/)[0];
             return [200, messages.index[id] || null, {/*headers*/}];
         });
