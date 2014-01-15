@@ -23,11 +23,8 @@ describe('Model: ModelFactory', function () {
 
     describe('$save', function () {
         it('should send its data on $save', function() {
-            $httpBackend.expectPUT('test-url/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
-            var model = new ModelFactory({$urlBase:'test-url'});
-
-            model.title = 'New title';
-            model.id = 5;
+            $httpBackend.expectPUT( 'test-url/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
+            var model = new ModelFactory({$urlBase:'test-url', title:'New title', id:5});
 
             var promise = model.$save();
             $httpBackend.flush();
@@ -46,10 +43,7 @@ describe('Model: ModelFactory', function () {
         });
 
         it('should load instance and override with new data', function() {
-            var model = new ModelFactory({$urlBase:'url'});
-
-            model.title = 'New title';
-            model.id = 5;
+            var model = new ModelFactory({$urlBase:'url', title: 'New title', id: 5});
 
             model.$set({id:1});
 
@@ -58,10 +52,7 @@ describe('Model: ModelFactory', function () {
         });
 
         it('should remove properties missing in new object', function() {
-            var model = new ModelFactory({$urlBase:'test-url'});
-
-            model.title = 'New title';
-            model.id = 5;
+            var model = new ModelFactory({$urlBase:'test-url', title: 'New title', id: 5});
 
             model.$set({id:1});
 
@@ -74,8 +65,7 @@ describe('Model: ModelFactory', function () {
         it('should delete on $delete', function() {
             $httpBackend.expectDELETE('test-url/5').respond(200, {});
 
-            var model = new ModelFactory({$urlBase:'test-url'});
-            model.id = 5;
+            var model = new ModelFactory({$urlBase:'test-url', id: 5});
 
             var promise = model.$delete();
             $httpBackend.flush();

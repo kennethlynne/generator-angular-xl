@@ -25,10 +25,7 @@ describe('Model: <%= classedName %>Model', function () {
     describe('$save', function () {
         it('should send its data on $save', function() {
             $httpBackend.expectPUT( APIBaseUrl + '/test-url/5', {title:'New title', id:5} ).respond(200, {id: 5, title:'New title from server'});
-            var model = new <%= classedName %>Model();
-
-            model.title = 'New title';
-            model.id = 5;
+            var model = new <%= classedName %>Model({title:'New title', id:5});
 
             var promise = model.$save();
             $httpBackend.flush();
@@ -40,10 +37,7 @@ describe('Model: <%= classedName %>Model', function () {
 
     describe('$set', function () {
         it('should load instance and override with new data', function() {
-            var model = new <%= classedName %>Model();
-
-            model.title = 'New title';
-            model.id = 5;
+            var model = new <%= classedName %>Model({title:'New title', id:5});
 
             model.$set({id:1});
 
@@ -68,8 +62,7 @@ describe('Model: <%= classedName %>Model', function () {
         it('should delete on $delete', function() {
             $httpBackend.expectDELETE( APIBaseUrl + '/test-url/5' ).respond(200, {});
 
-            var model = new <%= classedName %>Model();
-            model.id = 5;
+            var model = new <%= classedName %>Model({id:5});
 
             var promise = model.$delete();
             $httpBackend.flush();
