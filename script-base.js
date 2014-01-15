@@ -14,7 +14,7 @@ var Generator = module.exports = function Generator() {
         this.appname = path.basename(process.cwd());
     }
     this.appname = this._.slugify(this._.humanize(this.appname));
-    this.scriptAppName = this._.camelize(this.appname) + angularUtils.appName(this);
+    this.scriptAppName = this._.camelize(this.appname);
 
     //TODO: sett this.name til det siste etter /, og alt foran til this.targetPath
     this.name = this.name

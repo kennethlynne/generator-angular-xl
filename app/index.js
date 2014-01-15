@@ -17,7 +17,7 @@ var Generator = module.exports = function Generator(args, options) {
     type: String,
     required: 'false'
   });
-  this.scriptAppName = this.appname + angularUtils.appName(this);
+  this.scriptAppName = this.appname;
 
   args = ['index'];
 
