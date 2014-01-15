@@ -7,7 +7,7 @@
                 host:               'api.example.com',
                 port:               '8080',
                 path:               '/api',
-                fakeDelay:          2000
+                fakeDelay:          800
             }
         })
         .config(function (componentFactoryProvider) { componentFactoryProvider.setViewPath(function (componentSnakeName, componentName) {
