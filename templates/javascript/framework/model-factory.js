@@ -60,10 +60,20 @@ angular.module('<%= scriptAppName %>')
             },
             $save: function () {
                 var model = this;
-                return $http.put(model.$urlBase + '/' + model.id, model).then(function (response) {
+
+                function handler(response) {
                     model.$set(response.data, true);
                     return response;
-                });
+                }
+
+                if(model.id)
+                {
+                    return $http.put(model.$urlBase + '/' + model.id, model).then(handler);
+                }
+                else
+                {
+                    return $http.post(model.$urlBase, model).then(handler);
+                }
             },
             $_changeSubscribers: [],
             $isDirty: false,

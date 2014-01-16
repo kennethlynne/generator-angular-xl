@@ -22,14 +22,30 @@ describe('Model: ModelFactory', function () {
     });
 
     describe('$save', function () {
-        it('should send its data on $save', function() {
-            $httpBackend.expectPUT( 'test-url/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
-            var model = new ModelFactory({$urlBase:'test-url', title:'New title', id:5});
+        it('should PUT its data on $save when it has an ID (update existing)', function() {
+            $httpBackend.expectPUT('test-url/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
+            var model = new ModelFactory({$urlBase:'test-url'});
+
+            model.title = 'New title';
+            model.id = 5;
 
             var promise = model.$save();
             $httpBackend.flush();
 
             expect(model.title).toBe('New title from server');
+            expect(typeof promise.then).toBe('function');
+        });
+
+        it('should POST its data on $save if does not have an ID (new)', function() {
+            $httpBackend.expectPOST('test-url', {title:'New title'}).respond(200, {id: 5, title:'New title from server'});
+            var model = new ModelFactory({$urlBase:'test-url'});
+            model.title = 'New title';
+
+            var promise = model.$save();
+            $httpBackend.flush();
+
+            expect(model.title).toBe('New title from server');
+            expect(model.id).toBe(5);
             expect(typeof promise.then).toBe('function');
         });
     });
