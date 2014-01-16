@@ -8,11 +8,11 @@ angular.module('<%= scriptAppName %>')
         console.log('Stubbing <%= dasherizedName %> API');
         console.log('************');
 
-        var <%= classedName %> = {};
+        var <%= classedName %>Repo = {};
         <%= classedName %>Repo.data = [{id: guid(), text:'Hello World'}];
         <%= classedName %>Repo.index = {};
 
-        angular.forEach(<%= classedName %>.data, function(item, key) {
+        angular.forEach(<%= classedName %>Repo.data, function(item, key) {
             <%= classedName %>Repo.index[item.id] = item; //Index messages to be able to do efficient lookups on id
         });
 
@@ -29,7 +29,7 @@ angular.module('<%= scriptAppName %>')
 
             <%= classedName %>.id = guid();
             <%= classedName %>Repo.data.push(<%= classedName %>);
-            <%= classedName %>Repo.index[<%= dasherizedName %>.id] = <%= classedName %>;
+            <%= classedName %>Repo.index[<%= classedName %>.id] = <%= classedName %>;
 
             return [200, <%= classedName %>, {/*headers*/}];
         });
