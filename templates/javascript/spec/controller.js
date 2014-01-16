@@ -36,9 +36,12 @@ describe('Service(<%= pageUrl %>): <%= classedName %>CtrlInit', function () {
 
     });
 
-
     it('should have a prepare function', function () {
         expect(typeof <%= classedName %>CtrlInit.prepare).toEqual('function');
+    });
+
+    it('should return a promise', function () {
+        expect(typeof <%= classedName %>CtrlInit.prepare().then).toEqual('function');
     });
 
 });
