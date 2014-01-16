@@ -1,11 +1,13 @@
 angular.module('<%= scriptAppName %>')
     .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape, guid) {
 
-        var IdRegExp = '[\\d\\w-_]+$';
         //Only load mocks if config says so
         if(!Config.useMocks) return;
 
-        console.log('Stubbing <%= dasherizedName %> API');
+        var collectionUrl = '<%= dasherizedName %>';
+        var IdRegExp = /[\d\w-_]+$/;
+
+        console.log('Stubbing <%= dasherizedName %> API - ' + APIBaseUrl + collectionUrl);
         console.log('************');
 
         var <%= classedName %>Repo = {};
@@ -17,13 +19,13 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= dasherizedName %>/ should return a list og messages
-        $httpBackend.whenGET(APIBaseUrl + '<%= dasherizedName %>').respond(function(method, url, data, headers) {
+        $httpBackend.whenGET(APIBaseUrl + collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
         //POST <%= dasherizedName %>/ should save a message and return the message with an id
-        $httpBackend.whenPOST(APIBaseUrl + '<%= dasherizedName %>').respond(function(method, url, data, headers) {
+        $httpBackend.whenPOST(APIBaseUrl + collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted POST to <%= dasherizedName %>', data);
             var <%= classedName %> = angular.fromJson(data);
 
@@ -35,9 +37,9 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= dasherizedName %>/id should return a message
-        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + '<%= dasherizedName %>/') + IdRegExp ) ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + collectionUrl + '/') + IdRegExp.toString() ) ).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>');
-            var id = url.match( new RegExp(IdRegExp) )[0];
+            var id = url.match( IdRegExp )[0];
             return [200, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 

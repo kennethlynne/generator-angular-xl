@@ -2,7 +2,7 @@
 
 describe('Model: <%= classedName %>Model', function () {
 
-    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl, <%= classedName %>Context;
+    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl, <%= classedName %>Context, collectionUrl = '<%= dasherizedName %>';
 
     beforeEach(function () {
 
@@ -28,12 +28,12 @@ describe('Model: <%= classedName %>Model', function () {
     });
 
     it('should have the $urlBase property set', function() {
-        expect(<%= classedName %>Model.$urlBase).toBe(APIBaseUrl + '<%= dasherizedName %>');
+        expect(<%= classedName %>Model.$urlBase).toBe(APIBaseUrl + collectionUrl);
     });
 
     describe('$save', function () {
         it('should PUT its data on $save when it has an ID (update existing)', function() {
-            $httpBackend.expectPUT( APIBaseUrl + '<%= dasherizedName %>/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
+            $httpBackend.expectPUT( APIBaseUrl + collectionUrl + '/5', {title:'New title', id:5} ).respond(200, {id: 5, title:'New title from server'});
             var model = new <%= classedName %>Model({title: 'New title', id: 5});
 
             var promise = model.$save();
@@ -44,7 +44,7 @@ describe('Model: <%= classedName %>Model', function () {
         });
 
         it('should POST its data on $save if does not have an ID (new)', function() {
-            $httpBackend.expectPOST( APIBaseUrl + '<%= dasherizedName %>', {title:'New title'}).respond(200, {id: 5, title:'New title from server'});
+            $httpBackend.expectPOST( APIBaseUrl + collectionUrl, {title:'New title'} ).respond(200, {id: 5, title:'New title from server'});
             var model = new <%= classedName %>Model({title: 'New title'});
 
             var promise = model.$save();
@@ -55,7 +55,7 @@ describe('Model: <%= classedName %>Model', function () {
         });
 
         it('should attach itself to the context on save', function() {
-            $httpBackend.expectPUT( APIBaseUrl + '<%= dasherizedName %>/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
+            $httpBackend.expectPUT( APIBaseUrl + collectionUrl + '/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
             var model = new <%= classedName %>Model({title: 'New title', id: 5});
             expect(<%= classedName %>Context.attach).not.toHaveBeenCalled();
             var promise = model.$save();
@@ -89,7 +89,7 @@ describe('Model: <%= classedName %>Model', function () {
 
     describe('$delete', function () {
         it('should delete on $delete', function() {
-            $httpBackend.expectDELETE( APIBaseUrl + '<%= dasherizedName %>/5').respond(200, {});
+            $httpBackend.expectDELETE( APIBaseUrl + collectionUrl + '/5').respond(200, {});
 
             var model = new <%= classedName %>Model();
             model.id = 5;
@@ -127,7 +127,7 @@ describe('Model: <%= classedName %>Model', function () {
             $rootScope.$digest();
             model.thing = 'Data';
 
-            $httpBackend.expectPUT( APIBaseUrl + '<%= dasherizedName %>/5', {thing:'Data', id:5}).respond(200, {id: 5, thing:'Data'});
+            $httpBackend.expectPUT( APIBaseUrl + collectionUrl + '/5', {thing:'Data', id:5}).respond(200, {id: 5, thing:'Data'});
             model.$save();
 
             $httpBackend.flush();
