@@ -5,7 +5,7 @@ angular.module('<%= scriptAppName %>')
         if(!Config.useMocks) return;
 
         var collectionUrl = '<%= dasherizedName %>';
-        var IdRegExp = /[\d\w-_]+$/;
+        var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
         console.log('Stubbing <%= dasherizedName %> API - ' + APIBaseUrl + collectionUrl);
         console.log('************');
@@ -37,9 +37,9 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= dasherizedName %>/id should return a message
-        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + collectionUrl + '/') + IdRegExp.toString() ) ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>');
-            var id = url.match( IdRegExp )[0];
+            var id = url.match( new RegExp(IdRegExp) )[0];
             return [200, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
