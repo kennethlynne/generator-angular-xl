@@ -9,7 +9,7 @@ describe('Model: <%= classedName %>Model', function () {
         <%= classedName %>Context = jasmine.createSpy('<%= classedName %>Context');
         <%= classedName %>Context.attach = jasmine.createSpy('<%= classedName %>Context.attach');
 
-        module('nsbQualityOnBoard', function ($provide) {
+        module('<%= scriptAppName %>', function ($provide) {
             $provide.value('<%= classedName %>Context', <%= classedName %>Context);
         });
 
