@@ -11,7 +11,7 @@
     "angular-promise-tracker": "~1.5.0",
     "angular-loading-bar": "~0.1.1",
     "angular-animate": "~1.2.7",
-    "angular-ui-router": "~0.2.6",
+    "angular-ui-router": "0.2.7",
     "es5-shim": "~2.1.0"<% if (resourceModule) { %>,
     "angular-resource": "~1.2.6"<% } %><% if (restangularModule) { %>,
     "restangular": "~1.1.8"<% } %><% if (cookiesModule) { %>,
