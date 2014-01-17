@@ -150,6 +150,21 @@ This will scaffold a structure like this:
 
 ```
 
+# Developing with the generator
+
+## Building
+The following commands will build the application into the `/dist` folder.
+* `grunt build` - production profile, minified, concatinated and awesomified for production
+* `grunt build:dev` - development profile, unminified code
+* `grunt build:prototype` - same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
+
+# Release
+* `grunt release` - bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
+* `grunt deploy` - takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at <your-username>.github.io/<your-repository>/
+
+
+
+
 ## Generators
 
 Available generators:

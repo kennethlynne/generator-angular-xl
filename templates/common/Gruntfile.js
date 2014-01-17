@@ -202,7 +202,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%%= yeoman.app %>',
-                    src: ['*.html', 'views/**/*.html', 'pages/**/*.html', 'components/**/*.html'],
+                    src: ['*.html', '!index.html', '../.tmp/index.html', 'views/**/*.html', 'pages/**/*.html', 'components/**/*.html'],
                     dest: '<%%= yeoman.dist %>'
                 }]
             }
@@ -238,11 +238,29 @@ module.exports = function (grunt) {
                 dest: '.tmp/styles/',
                 src: '**/*.css'
             },
+            tmpStyles2dist: {
+                expand: true,
+                cwd: '.tmp/styles/',
+                dest: '<%%= yeoman.dist %>/styles/',
+                src: '**/*.css'
+            },
             dev: {
                 expand: true,
                 cwd: '<%%= yeoman.app %>/dev',
-                dest: '.tmp/scripts/',
+                dest: '<%%= yeoman.dist %>/dev',
                 src: '**/*.js'
+            },
+            indexHTML: {
+                expand: true,
+                cwd: '<%%= yeoman.app %>/',
+                dest: '<%%= yeoman.dist %>/',
+                src: ['./index.html']
+            },
+            app: {
+                expand: true,
+                cwd: '<%%= yeoman.app %>/',
+                dest: '<%%= yeoman.dist %>/',
+                src: ['**/*', '!**/*.{scss,sass,coffee}', '!dev/**/*']
             }
         },
         concurrent: {
@@ -320,10 +338,11 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT SCRIPTS-->',
                     endTag: '<!--/INJECT SCRIPTS-->',
                     fileTmpl: '<script src="%s"></script>',
-                    appRoot: '<%%= yeoman.app %>'
+                    appRoot: '<%= yeoman.app %>',
+                    relative: true
                 },
                 files: {
-                    '<%%= yeoman.app %>/index.html': externalJsSrc.concat(appJs).concat([yeomanConfig.app + '/dev/**/*.js'])
+                    '<%= yeoman.app %>/index.html': externalJsSrc.concat(appJs).concat([yeomanConfig.app + '/dev/**/*.js'])
                 }
             },
 
@@ -332,10 +351,11 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT SCRIPTS-->',
                     endTag: '<!--/INJECT SCRIPTS-->',
                     fileTmpl: '<script src="%s"></script>',
-                    appRoot: '<%%= yeoman.dist %>/'
+                    appRoot: '<%%= yeoman.dist %>',
+                    relative: true
                 },
                 files: {
-                    '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/scripts/*.js']
+                    '<%%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/scripts/*.js']
                 }
             },
 
@@ -344,7 +364,8 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT STYLES-->',
                     endTag: '<!--/INJECT STYLES-->',
                     fileTmpl: '<link rel="stylesheet" href="%s">',
-                    appRoot: '.tmp'
+                    appRoot: '.tmp',
+                    relative: true
                 },
 
                 files: {
@@ -357,10 +378,11 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT STYLES-->',
                     endTag: '<!--/INJECT STYLES-->',
                     fileTmpl: '<link rel="stylesheet" href="%s">',
-                    appRoot: '<%%= yeoman.dist %>/'
+                    appRoot: '<%%= yeoman.dist %>',
+                    relative: true
                 },
                 files: {
-                    '<%%= yeoman.app %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
+                    '<%%= yeoman.dist %>/index.html': ['<%%= yeoman.dist %>/styles/*.css']
                 }
             }
 
@@ -460,32 +482,58 @@ module.exports = function (grunt) {
         'protractor'
     ]);
 
-    grunt.registerTask('build', [
-        'clean',
-        'concurrent:dist',
-        'ngmin',
-        'uglify',
-        'concat',
-        'copy:dist',
-        'cssmin',
-        'rev',
-        'linkAssets-production',
-        'htmlmin',
-        'manifest'
-    ]);
+    grunt.registerTask('build', function (target) {
+
+        if (target === 'dev') {
+            console.log('Building using development profile');
+            grunt.task.run([
+                'clean',
+                'compass:server',
+                'copy:styles',
+                'copy:tmpStyles2dist',
+                'copy:app',
+                'linkAssets-dev'
+            ]);
+        }
+        else if (target === 'prototype') {
+            console.log('Building using prototype profile');
+            grunt.task.run([
+                'clean',
+                'concurrent:server',
+                'copy',
+                'linkAssets-dev'
+            ]);
+        }
+        else
+        {
+            console.log('Building using production profile');
+            grunt.task.run([
+                'ddescribe-iit',
+                'test-e2e',
+                'test',
+                'clean',
+                'concurrent:dist',
+                'ngmin',
+                'uglify',
+                'concat:js',
+                'concat:css',
+                'copy:dist',
+                'cssmin',
+                'rev',
+                'copy:indexHTML',
+                'linkAssets-production',
+                'htmlmin',
+                'manifest'
+            ]);
+        }
+    });
 
     grunt.registerTask('release', [
-        'ddescribe-iit',
         'changelog',
-        'deploy',
         'bump'
     ]);
 
     grunt.registerTask('deploy', [
-        'ddescribe-iit',
-        'test',
-        'build',
-        'test-e2e',
         'gh-pages'
     ]);
 
