@@ -4,10 +4,10 @@ angular.module('<%= scriptAppName %>')
         //Only load mocks if config says so
         if(!Config.useMocks) return;
 
-        var collectionUrl = '<%= dasherizedName %>';
+        var collectionUrl = APIBaseUrl + '<%= dasherizedName %>';
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
-        console.log('Stubbing <%= dasherizedName %> API - ' + APIBaseUrl + collectionUrl);
+        console.log('Stubbing <%= dasherizedName %> API - ' + collectionUrl);
         console.log('************');
 
         var <%= classedName %>Repo = {};
@@ -19,13 +19,13 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= dasherizedName %>/ should return a list og messages
-        $httpBackend.whenGET(APIBaseUrl + collectionUrl).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
         //POST <%= dasherizedName %>/ should save a message and return the message with an id
-        $httpBackend.whenPOST(APIBaseUrl + collectionUrl).respond(function(method, url, data, headers) {
+        $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted POST to <%= dasherizedName %>', data);
             var <%= classedName %> = angular.fromJson(data);
 
@@ -37,7 +37,7 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= dasherizedName %>/id should return a message
-        $httpBackend.whenGET( new RegExp(regexEscape(APIBaseUrl + collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>');
             var id = url.match( new RegExp(IdRegExp) )[0];
             return [200, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
