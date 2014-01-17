@@ -211,7 +211,7 @@ angular.module('yourModule')
     }
 })
 ```
-it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/scripts/mock-api.js` after the given delay, when ever you are ready to implement with a real API set ```useMocks: false```
+it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/dev/` after the given delay, when ever you are ready to implement with a real API set ```useMocks: false```
 
 ### Page
 Pages are located under `app/pages`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
