@@ -175,4 +175,6 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/dasherize.js', 'test/unit/spec/framework/dasherize.js');
     this.template('../../templates/javascript/framework/model-factory.js', 'app/scripts/framework/model-factory.js');
     this.template('../../templates/javascript/spec/model-factory.js', 'test/unit/spec/framework/model-factory.js');
+    this.template('../../templates/javascript/framework/offset-filter.js', 'app/scripts/filters/offset.js');
+    this.template('../../templates/javascript/spec/offset-filter.js', 'test/unit/spec/filters/offset.js');
 };

@@ -1,3 +1,6 @@
-/**
- * Created by Kenneth on 18.01.14.
- */
+'use strict';
+
+angular.module('<%= scriptAppName %>')
+    .filter('offset', function (input, offset) {
+        return input.slice(+offset);
+    });
