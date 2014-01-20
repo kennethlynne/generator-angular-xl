@@ -338,11 +338,11 @@ module.exports = function (grunt) {
                     startTag: '<!--INJECT SCRIPTS-->',
                     endTag: '<!--/INJECT SCRIPTS-->',
                     fileTmpl: '<script src="%s"></script>',
-                    appRoot: '<%= yeoman.app %>',
+                    appRoot: '<%%= yeoman.app %>',
                     relative: true
                 },
                 files: {
-                    '<%= yeoman.app %>/index.html': externalJsSrc.concat(appJs).concat([yeomanConfig.app + '/dev/**/*.js'])
+                    '<%%= yeoman.app %>/index.html': externalJsSrc.concat(appJs).concat([yeomanConfig.app + '/dev/**/*.js'])
                 }
             },
 
