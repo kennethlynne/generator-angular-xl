@@ -1,8 +1,7 @@
 # generator-angular-xl [[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-xl)](https://travis-ci.org/kennethlynne/generator-angular-xl) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-xl.png)](https://codeclimate.com/github/kennethlynne/generator-angular-xl)
 
-Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.
-This generator and framework is a seed and basic framework for developing AngularJS applications.
-Stay in the zone, spend more time flowing and less time doing the boring stuff.
+An opinionated kickstarter for your next large scale AngularJS application.
+Avoid boilerplate and improve productivity and consistency. 
 
 To sum up:
 - All scripts in `app/scrips`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
@@ -22,7 +21,7 @@ Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator
 
 ## Usage
 
-Install `generator-angular-xl`:
+Install Node.js with npm, then run:
 
 ```
 npm install -g generator-angular-xl
@@ -33,12 +32,14 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular-xl`, optionally passing an app name:
+Run `yo angular-xl`, with your application name:
 ```
-yo angular-xl [app-name]
+yo angular-xl app-name
 ```
 
-This will scaffold a structure like this:
+*Awesomeness ensues*
+
+## Generated directory structure
 
 ``` bash
 .
