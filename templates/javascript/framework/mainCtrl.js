@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function ($stateProvider, stateFactory) {
-        $stateProvider.state('Index', stateFactory('Index', {url:'/'}))
+        $stateProvider.state('Index', stateFactory('index', {url:'/'}))
     })
     .service('IndexCtrlInit', function ($q, $log) {
 
