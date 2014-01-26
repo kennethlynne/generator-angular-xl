@@ -64,7 +64,7 @@ Available generators:
 * [angular-xl:service](#service)
 * [angular-xl:provider](#service)
 * [angular-xl:factory](#service)
-* [angular-xl:model](#model)
+* [angular-xl:repository](#repository)
 * [angular-xl:value](#service)
 * [angular-xl:constant](#service)
 * [angular-xl:decorator](#decorator)
@@ -374,21 +374,21 @@ angular.module('myMod').service('myService', function () {
 
 You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`, and `yo angular:constant` for other types of services.
 
-### Model
-Generates an AngularJS factory that returns a class that has `$save` and `$delete` methods and more, and an accompanying context to handle client side caching and change tracking.
-It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
+### Repository
+Generates an AngularJS factory that returns a class that has `$save` and `$delete` methods and more, and an accompanying repository to handle client side caching and change tracking.
+It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good. This
 
 Example:
 ```bash
-yo angular-xl:model school
+yo angular-xl:repository school
 ```
 
-Produces `app/scripts/models/school.js` and an accompanying test. Then you will be able to use this model in your application like this:
+Produces `app/scripts/models/school.js`, `app/scripts/repositories/school.js` and an accompanying tests and mock data. Then you will be able to use this model in your application like this:
 
 ```javascript
-angular.module('myMod').service('myService', function (SchoolModel) {
-  var school = new SchoolModel({id:5, title:'Awesomesauce'});
-  school.$save(); //This can for example do a PUT to api/schools/5
+angular.module('myMod').service('myService', function (SchoolRepository) {
+  var school = SchoolRepository.create({id:5, title:'Awesomesauce'});
+  school.$save();
 });
 ```
 
