@@ -140,8 +140,8 @@ describe('angular-xl generator', function () {
                 componentGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/components/thing-thing/thing-thing.js'],
-                        ['app/components/thing-thing/styles/_thing-thing.scss'],
-                        ['app/components/thing-thing/views/thing-thing.html'],
+                        ['app/components/thing-thing/_thing-thing.scss'],
+                        ['app/components/thing-thing/thing-thing.html'],
                         ['test/unit/spec/components/thing-thing.js']
                     ]);
                     done();
