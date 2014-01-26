@@ -324,8 +324,10 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 repositoryGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/repositories/super-thang.js'],
-                        ['test/unit/spec/repositories/super-thang.js']
+                        ['app/scripts/models/super-thang.js'],
+                        ['test/unit/spec/models/super-thang.js'],
+                        ['app/scripts/repositories/super-thang-repository.js'],
+                        ['test/unit/spec/repositories/super-thang-repository.js']
                     ]);
                     done();
                 });
