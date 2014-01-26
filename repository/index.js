@@ -18,12 +18,12 @@ Generator.prototype.createModelFiles = function createModelFiles() {
     );
 
     this.generateSourceAndTest(
-        'model-context',
-        'spec/model-context',
-        'contexts/',
-        '../unit/spec/contexts/',
-        this.dasherizedName + '-context'
+        'model-repository',
+        'spec/model-repository',
+        'repositories/',
+        '../unit/spec/repositories/',
+        this.dasherizedName + '-repository'
     );
 
-    this.template('mock-api-model.js', path.join(this.env.options.appPath, 'dev', 'models', this.dasherizedName + '-mocks.js'));
+    this.template('mock-api-model.js', path.join(this.env.options.appPath, 'dev', 'repositories', this.dasherizedName + '-mocks.js'));
 };
