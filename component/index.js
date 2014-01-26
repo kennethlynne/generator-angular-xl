@@ -31,8 +31,8 @@ Generator.prototype.createComponentFiles = function createComponentFiles() {
         '../unit/spec/components'
     );
 
-    this.template('../common/component.scss', path.join(this.env.options.appPath, 'components', this.dasherizedName, 'styles', '_' + this.dasherizedName + '.scss'));
-    this.addStyleToComponentScss('../components/' + _.dasherize(this.name) + '/styles/' + _.dasherize(this.name));
+    this.template('../common/component.scss', path.join(this.env.options.appPath, 'components', this.dasherizedName, '_' + this.dasherizedName + '.scss'));
+    this.addStyleToComponentScss('../components/' + _.dasherize(this.name) + _.dasherize(this.name));
 
-    this.template('../common/component.html', path.join(this.env.options.appPath, 'components', this.dasherizedName, 'views', this.dasherizedName + '.html'));
+    this.template('../common/component.html', path.join(this.env.options.appPath, 'components', this.dasherizedName, this.dasherizedName + '.html'));
 };
