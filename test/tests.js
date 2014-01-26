@@ -310,22 +310,22 @@ describe('angular-xl generator', function () {
         });
     });
 
-    describe('Model', function () {
-        it('should generate a new model', function (done) {
-            var modelGenerator;
+    describe('Repository', function () {
+        it('should generate a new repository', function (done) {
+            var repositoryGenerator;
             var deps = [
-                '../../model'
+                '../../repository'
             ];
-            modelGenerator = helpers.createGenerator('angular-xl:model', deps, ['superThang']);
+            repositoryGenerator = helpers.createGenerator('angular-xl:repository', deps, ['superThang']);
 
             helpers.mockPrompt(angular, {
                 modules: []
             });
             angular.run([], function () {
-                modelGenerator.run([], function () {
+                repositoryGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/models/super-thang.js'],
-                        ['test/unit/spec/models/super-thang.js']
+                        ['app/scripts/repositories/super-thang.js'],
+                        ['test/unit/spec/repositories/super-thang.js']
                     ]);
                     done();
                 });
