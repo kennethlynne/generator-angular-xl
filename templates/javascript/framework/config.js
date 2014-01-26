@@ -11,7 +11,7 @@
             }
         })
         .config(function (componentFactoryProvider) { componentFactoryProvider.setViewPath(function (componentSnakeName, componentName) {
-            return 'components/' + componentSnakeName + '/views/' + componentSnakeName + '.html';
+            return 'components/' + componentSnakeName + '/' + componentSnakeName + '.html';
         })})
         .value('cgBusyTemplateName','views/angular-busy/default-spinner.html')<% if (xeditableModule) { %>
         .run(function(editableOptions) {editableOptions.theme = 'bs3'})<% } %>;
