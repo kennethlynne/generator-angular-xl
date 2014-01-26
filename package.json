@@ -22,7 +22,8 @@
     "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd test/temp && npm install && bower install && grunt test && grunt test-e2e"
   },
   "dependencies": {
-    "yeoman-generator": "~0.13.0"
+    "yeoman-generator": "~0.13.0",
+    "underscore.string": "~2.3.1"
   },
   "peerDependencies": {
     "generator-karma": "~0.6.0",
@@ -36,7 +37,6 @@
     "load-grunt-tasks": "~0.1.0",
     "marked": "~0.2.8",
     "semver": "~2.1.0",
-    "underscore.string": "~2.3.1",
     "grunt-release": "~0.6.0"
   },
   "engines": {
