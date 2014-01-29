@@ -31,9 +31,6 @@ angular.module('<%= scriptAppName %>')
 
                             return service.prepare();
                         }
-                        else {
-                            throw 'Serious error occurred trying to load controller. No such service: ' + _INITSERVICE;
-                        }
                     }]
                 }
             }
