@@ -4,23 +4,27 @@ angular.module('<%= scriptAppName %>')
     .config(function ($stateProvider, stateFactory) { $stateProvider.state('<%= statifiedPath %>', stateFactory('<%= classedName %>', {url:'<%= pageUrl %>', templateUrl: '<%= viewTemplateUrl %>'})) })
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
-        var _prepare = function () {
-            $log.log("<%= classedName %>Ctrl loading");
+        /**
+         * An array of functions that return either a value or a promise.
+         * For example:
+         * UserReposiitory.getAll()
+         * 'Hello world'
+         */
+        var dependancies = [],
 
-            return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
+            /**
+             * Callback that is called when all promises and values are resolved
+             */
+            finishedCb = function (reponse) {
                 $log.log("<%= classedName %>Ctrl loaded!");
-
-                var init = {
-                    message1: data[0],
-                    message2: data[1]
-                };
-
-                return init;
-            });
-        };
+                return {};
+            };
 
         return {
-            prepare: _prepare
+            prepare: function () {
+                $log.log("<%= classedName %>Ctrl loading");
+                return $q.all(dependancies).then(finishedCb);
+            }
         }
 
     })
