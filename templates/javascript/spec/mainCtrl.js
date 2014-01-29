@@ -11,34 +11,12 @@ describe('Controller: IndexCtrl', function () {
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
             IndexCtrl = $controller('IndexCtrl', {
-                $scope: scope,
-                init: 'DATA'
+                $scope: scope
             });
         });
     });
 
     it('should attach init data to scope', function () {
-        expect(scope.data).toEqual('DATA');
+        expect(scope.message).toEqual('Hello world!');
     });
-});
-
-describe('Service: IndexCtrlInit', function () {
-
-    var IndexCtrlInit;
-
-    beforeEach(function () {
-
-        module('<%= scriptAppName %>');
-
-        inject(function (_IndexCtrlInit_) {
-            IndexCtrlInit = _IndexCtrlInit_;
-        });
-
-    });
-
-
-    it('should have a prepare function', function () {
-        expect(typeof IndexCtrlInit.prepare).toEqual('function');
-    });
-
 });

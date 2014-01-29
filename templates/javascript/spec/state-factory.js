@@ -2,23 +2,23 @@
 
 describe('stateFactory', function () {
 
-    var stateFactoryProvider;
+    var stateFactoryProvider, $stateProvider;
 
     beforeEach(function () {
 
+        $stateProvider = {
+            state: jasmine.createSpy('$stateProvider.state')
+        };
+
         module('<%= scriptAppName %>', function ($provide) {
-            $provide.value('$stateProvider', {
-                state: jasmine.createSpy('$stateProvider.state')
-            });
+            $provide.value('$stateProvider', $stateProvider);
         });
 
         module('<%= scriptAppName %>', function (_stateFactoryProvider_) {
             stateFactoryProvider = _stateFactoryProvider_;
         });
 
-        inject(function (_stateFactory_) {
-
-        });
+        inject(function (_stateFactory_) {});
 
     });
 

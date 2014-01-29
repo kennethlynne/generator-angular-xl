@@ -7,4 +7,5 @@ angular.module('<%= scriptAppName %>')
         })
     })
     .controller('IndexCtrl', function ($scope) {
+        $scope.message = 'Hello world!';
     });
