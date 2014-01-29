@@ -1,6 +1,7 @@
     angular.module('<%= scriptAppName %>')
         .constant('Config', {
             viewsDir:               'views/',
+            componentsDir:      'components/',
             useMocks:               true,
             API: {
                 protocol:           'http',
