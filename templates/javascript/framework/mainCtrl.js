@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function (stateFactory) {
-        stateFactory.register('Index', {
+    .config(function (stateFactoryProvider) {
+        stateFactoryProvider.register('Index', {
             url: '/'
         })
     })
