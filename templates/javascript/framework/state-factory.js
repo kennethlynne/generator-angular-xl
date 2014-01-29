@@ -39,5 +39,5 @@ angular.module('<%= scriptAppName %>')
             throw 'Serious error occurred trying to load controller.: ' + e;
         }
 
-        return angular.extend(_defaults, params);
+        $stateProvider.state(classedName, angular.extend(_defaults, params));
     });

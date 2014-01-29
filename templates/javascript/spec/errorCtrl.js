@@ -13,14 +13,9 @@ describe('Controller: ErrorCtrl', function () {
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
             ErrorCtrl = $controller('ErrorCtrl', {
-                $scope: scope,
-                init: 'DATA'
+                $scope: scope
             });
         });
-    });
-
-    it('should attach init data to scope', function () {
-        expect(scope.data).toEqual('DATA');
     });
 
     it('should attach error code', function() {
@@ -41,7 +36,6 @@ describe('Service: ErrorCtrlInit', function () {
         });
 
     });
-
 
     it('should have a prepare function', function () {
         expect(typeof ErrorCtrlInit.prepare).toEqual('function');

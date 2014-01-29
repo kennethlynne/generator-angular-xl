@@ -1,19 +1,26 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function ($stateProvider, stateFactory) { $stateProvider.state('<%= statifiedPath %>', stateFactory('<%= classedName %>', {url:'<%= pageUrl %>', templateUrl: '<%= viewTemplateUrl %>'})) })
+    .config(function (stateFactory) {
+        stateFactory('<%= classedName %>', {
+            url:'<%= pageUrl %>',
+            templateUrl: '<%= viewTemplateUrl %>'
+        })
+    })
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
         /**
          * An array of functions that return either a value or a promise.
          * For example:
-         * UserReposiitory.getAll()
-         * 'Hello world'
+         *      UserReposiitory.getAll()
+         *      'Hello world'
          */
         var dependancies = [],
 
             /**
-             * Callback that is called when all promises and values are resolved
+             * Callback that is called when all promises and values are resolved.
+             * It is called with an array with the resolved values corresponding to the dependancy array.
+             * The data returned from this function is injected into the controller as 'init'
              */
             finishedCb = function (reponse) {
                 $log.log("<%= classedName %>Ctrl loaded!");
