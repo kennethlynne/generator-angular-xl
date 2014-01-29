@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function (stateFactory) {
-        stateFactory('<%= classedName %>', {
+        stateFactory.register('<%= classedName %>', {
             url:'<%= pageUrl %>',
             templateUrl: '<%= viewTemplateUrl %>'
         })
