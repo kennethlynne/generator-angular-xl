@@ -1,20 +1,9 @@
 angular.module('<%= scriptAppName %>')
-    .provider('stateFactory', function ($stateProvider) {
+    .provider('stateFactory', function ($stateProvider, dasherize) {
 
         this.register = function stateFactory(classedName, params) {
 
             var _INITSERVICE = classedName + 'CtrlInit';
-
-            function dasherize(input) {
-                return input
-                    .replace(/(?:^[A-Z]{2,})/g, function (match) { //XMLfileIsCool -> xml-fileIsCool
-                        return match.toLowerCase() + "-";
-                    })
-                    .replace(/(?:[A-Z]+)/g, function (match) { //camelCase -> snake-case
-                        return "-" + match.toLowerCase();
-                    })
-                    .replace(/^-/, ''); // CamelCase -> -snake-case -> snake-case
-            };
 
             var _defaults = {
                 url: '/' + dasherize(classedName),
