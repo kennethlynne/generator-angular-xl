@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function (stateFactory) {
-        stateFactory('Index', {
+        stateFactory.register('Index', {
             url: '/'
         })
     })

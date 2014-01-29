@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function (stateFactory) {
-        stateFactory('Error',{
+        stateFactory.register('Error',{
             url:'/error?code'
         })
     })
