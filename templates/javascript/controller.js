@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function (stateFactory) {
-        stateFactory.register('<%= classedName %>', {
+    .config(function (stateFactoryProvider) {
+        stateFactoryProvider.register('<%= classedName %>', {
             url:'<%= pageUrl %>',
             templateUrl: '<%= viewTemplateUrl %>'
         })

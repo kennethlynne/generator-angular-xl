@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function (stateFactory) {
-        stateFactory.register('Error',{
+    .config(function (stateFactoryProvider) {
+        stateFactoryProvider.register('Error',{
             url:'/error?code'
         })
     })

@@ -2,7 +2,7 @@
 
 describe('stateFactory', function () {
 
-    var stateFactory;
+    var stateFactoryProvider;
 
     beforeEach(function () {
 
@@ -12,14 +12,18 @@ describe('stateFactory', function () {
             });
         });
 
+        module('<%= scriptAppName %>', function (_stateFactoryProvider_) {
+            stateFactoryProvider = _stateFactoryProvider_;
+        });
+
         inject(function (_stateFactory_) {
-            stateFactory = _stateFactory_;
+
         });
 
     });
 
     it('should register a default state', function () {
-        stateFactory('Example');
+        stateFactoryProvider.register('Example');
         var name = $stateProvider.state.mostRecentCall.args[1];
         var callArgs = $stateProvider.state.mostRecentCall.args[1];
 
@@ -30,13 +34,13 @@ describe('stateFactory', function () {
     });
 
     it('should override defaults', function() {
-        stateFactory('Example', {url:'/something'});
+        stateFactoryProvider.register('Example', {url:'/something'});
         expect($stateProvider.state.mostRecentCall.args[1].url).toEqual('/something');
 
-        stateFactory('Example', {templateUrl:'/something'});
+        stateFactoryProvider.register('Example', {templateUrl:'/something'});
         expect($stateProvider.state.mostRecentCall.args[1].templateUrl).toEqual('/something');
 
-        stateFactory('Example', {controller:'something'});
+        stateFactoryProvider.register('Example', {controller:'something'});
         expect($stateProvider.state.mostRecentCall.args[1].controller).toEqual('something');
     });
 

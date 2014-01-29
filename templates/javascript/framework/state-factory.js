@@ -1,5 +1,5 @@
 angular.module('<%= scriptAppName %>')
-    .constant('stateFactory', function ($stateProvider) {
+    .provider('stateFactory', function ($stateProvider) {
 
         this.register = function stateFactory(classedName, params) {
 
@@ -44,5 +44,7 @@ angular.module('<%= scriptAppName %>')
             $stateProvider.state(classedName, angular.extend(_defaults, params));
         };
 
-        this.$get = function () {}
+        this.$get = function () {
+            return {};
+        }
     });
