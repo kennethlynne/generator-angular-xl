@@ -15,7 +15,7 @@ angular.module('<%= scriptAppName %>')
                     message2: data[1]
                 };
 
-                return init;  //This is the same init that is sent to the controller when it is initialized
+                return init;
             });
         };
 
