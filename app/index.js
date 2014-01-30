@@ -159,7 +159,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
     this.template('../../templates/javascript/framework/api-base-url.js', 'app/scripts/framework/api-base-url.js');
-    this.template('../../templates/javascript/framework/config.js', 'app/scripts/config/config.js');
+    this.template('../../templates/javascript/framework/config.js', 'app/config/config.js');
     this.template('../../templates/javascript/framework/guid.js', 'app/scripts/framework/guid.js');
     this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/regex-escape.js', 'app/scripts/framework/regex-escape.js');

@@ -26,7 +26,7 @@
         ],
         "app" : [
             "scripts/module.js",
-            "scripts/config/*.js",
+            "config/*.js",
             "scripts/framework/**/*.js",
             "components/**/*.js",
             "pages/**/*.js",
