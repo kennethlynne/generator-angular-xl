@@ -1,11 +1,12 @@
 .view-change-animation
 {
   &.ng-enter, &.ng-leave {
-    -webkit-transition: -webkit-transform .8s, opacity .8s;
-    -moz-transition: -moz-transform .8s, opacity .8s;
-    -ms-transition: -ms-transform .8s, opacity .8s;
-    -o-transition: -o-transform .8s, opacity .8s;
-    transition: transform .8s, opacity .8s;
+    $duration: 400ms;
+    -webkit-transition: -webkit-transform ease $duration, opacity $duration;
+    -moz-transition: -moz-transform ease $duration, opacity $duration;
+    -ms-transition: -ms-transform ease $duration, opacity $duration;
+    -o-transition: -o-transform ease $duration, opacity $duration;
+    transition: transform ease $duration, opacity $duration;
 
     position: absolute;
     top: 0;
