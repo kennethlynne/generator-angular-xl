@@ -1,13 +1,13 @@
-describe('Model Context: <%= classedName %>Context', function () {
+describe('Model Repository: <%= classedName %>Repository', function () {
 
-    var <%= classedName %>Context, $httpBackend, <%= classedName %>Model, $rootScope;
+    var <%= classedName %>Repository, $httpBackend, <%= classedName %>Model, $rootScope;
 
     beforeEach(function () {
 
         module('<%= scriptAppName %>');
 
-        inject(function (_<%= classedName %>Context_, _$httpBackend_, _<%= classedName %>Model_, _$rootScope_) {
-            <%= classedName %>Context = _<%= classedName %>Context_;
+        inject(function (_<%= classedName %>Repository_, _$httpBackend_, _<%= classedName %>Model_, _$rootScope_) {
+            <%= classedName %>Repository = _<%= classedName %>Repository_;
             $httpBackend = _$httpBackend_;
             <%= classedName %>Model = _<%= classedName %>Model_;
             $rootScope = _$rootScope_;
@@ -24,7 +24,7 @@ describe('Model Context: <%= classedName %>Context', function () {
         it('should return models by id', function() {
             $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
 
-            var promise = <%= classedName %>Context.getById(5);
+            var promise = <%= classedName %>Repository.getById(5);
 
             var response;
             promise.then(function (r) {
@@ -40,10 +40,10 @@ describe('Model Context: <%= classedName %>Context', function () {
 
         it('should not do subsequent calls if model already exits in pool', function() {
             $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
-            <%= classedName %>Context.getById(5);
+            <%= classedName %>Repository.getById(5);
             $httpBackend.flush();
 
-            var promise = <%= classedName %>Context.getById(5);
+            var promise = <%= classedName %>Repository.getById(5);
 
             var response;
             promise.then(function (r) {
@@ -60,7 +60,7 @@ describe('Model Context: <%= classedName %>Context', function () {
         it('should handle rejects', function() {
             $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(404, 'No such thang!');
 
-            var promise = <%= classedName %>Context.getById(5),
+            var promise = <%= classedName %>Repository.getById(5),
                 response,
                 success = jasmine.createSpy('success'),
                 error = jasmine.createSpy('error');
@@ -78,7 +78,7 @@ describe('Model Context: <%= classedName %>Context', function () {
         it('should return models by id', function() {
             $httpBackend.expectGET(<%= classedName %>Model.$urlBase).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
 
-            var promise = <%= classedName %>Context.getAll();
+            var promise = <%= classedName %>Repository.getAll();
 
             var <%= classedName %>5, <%= classedName %>6;
             promise.then(function (r) {
@@ -100,7 +100,7 @@ describe('Model Context: <%= classedName %>Context', function () {
         it('should handle rejects', function() {
             $httpBackend.expectGET(<%= classedName %>Model.$urlBase).respond(404, 'No such thang!');
 
-            var promise = <%= classedName %>Context.getAll(5),
+            var promise = <%= classedName %>Repository.getAll(5),
                 success = jasmine.createSpy('success'),
                 error = jasmine.createSpy('error');
 
@@ -125,18 +125,18 @@ describe('Model Context: <%= classedName %>Context', function () {
 
         it('should throw if trying to attach a model that is not of valid type', function() {
             function wrapper() {
-                <%= classedName %>Context.attach({fails: true});
+                <%= classedName %>Repository.attach({fails: true});
             }
             expect(wrapper).toThrow();
         });
 
         it('should return the attached model on subsequent requests', function() {
 
-            <%= classedName %>Context.attach(new <%= classedName %>Model({id: 5, title:'<%= classedName %> title'}));
+            <%= classedName %>Repository.attach(new <%= classedName %>Model({id: 5, title:'<%= classedName %> title'}));
 
             var <%= classedName %>;
 
-            <%= classedName %>Context.getById(5).then(function (response) {
+            <%= classedName %>Repository.getById(5).then(function (response) {
                 <%= classedName %> = response;
             });
 
@@ -150,7 +150,7 @@ describe('Model Context: <%= classedName %>Context', function () {
 
     describe('create', function () {
         it('should return a newed up instance of the <%= classedName %> Model', function() {
-            var <%= classedName %> = <%= classedName %>Context.create({title:'New title'});
+            var <%= classedName %> = <%= classedName %>Repository.create({title:'New title'});
             expect(<%= classedName %> instanceof <%= classedName %>Model).toBe(true);
             expect(<%= classedName %>.title).toEqual('New title');
         });
@@ -159,10 +159,10 @@ describe('Model Context: <%= classedName %>Context', function () {
     describe('_pool', function () {
         it('should return a reference to the pool', function() {
             var new<%= classedName %> = {id:19, title:'Yeah!'};
-            <%= classedName %>Context._pool[19] = new<%= classedName %>;
+            <%= classedName %>Repository._pool[19] = new<%= classedName %>;
 
             var <%= classedName %>;
-            <%= classedName %>Context.getById(19).then(function (response) {
+            <%= classedName %>Repository.getById(19).then(function (response) {
                 <%= classedName %> = response;
             });
             $rootScope.$digest();
@@ -172,6 +172,6 @@ describe('Model Context: <%= classedName %>Context', function () {
     });
 
     describe('saveChanges', function () {
-       it('should save all changes in current context to the server');
+       it('should save all changes in current Repository to the server');
     });
 });

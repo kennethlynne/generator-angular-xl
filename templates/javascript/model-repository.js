@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .factory('<%= classedName %>Context', function ($q, $http, $injector) {
+    .factory('<%= classedName %>Repository', function ($q, $http, $injector) {
         var _pool = {};
 
         var _getById = function (id) {
@@ -42,7 +42,7 @@ angular.module('<%= scriptAppName %>')
             });
         };
 
-        //This is to attach new models to the context
+        //This is to attach new models to the Repository
         var _attach = function (item) {
             var <%= classedName %>Model = $injector.get('<%= classedName %>Model');
 
