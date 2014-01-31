@@ -13,8 +13,8 @@ Generator.prototype.createServiceFiles = function createServiceFiles() {
   this.generateSourceAndTest(
       'service/constant',
       'spec/service',
-      '../services/',
-      'unit/services'
+      'constants/',
+      '../unit/spec/constants/'
   );
 };
 
