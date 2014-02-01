@@ -7,6 +7,7 @@
         "bower": "~1.2.8",
         "grunt": "~0.4.1",
         "grunt-concurrent": "~0.4.1",
+        "grunt-autoprefixer": "~0.4.0",
         "grunt-contrib-clean": "~0.5.0",
         "grunt-contrib-coffee": "~0.7.0",
         "grunt-contrib-compass": "~0.6.0",

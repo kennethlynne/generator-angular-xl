@@ -434,6 +434,21 @@ module.exports = function (grunt) {
                 'test/**/*.js'
             ]
         },
+
+        autoprefixer: {
+            options: {
+                browsers: ['last 1 version']
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/',
+                    src: '**/*.css',
+                    dest: '.tmp/styles/'
+                }]
+            }
+        },
+
         //The manifest file must be served with the MIME type text/cache-manifest.
         manifest: {
             generate: {
@@ -471,6 +486,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'concurrent:server',
+            'autoprefixer',
             'connect:livereload',
             'linkAssets-dev',
             'watch'
@@ -492,6 +508,7 @@ module.exports = function (grunt) {
             grunt.task.run([
                 'clean',
                 'compass:server',
+                'autoprefixer',
                 'copy:styles',
                 'copy:tmpStyles2dist',
                 'copy:app',
@@ -503,6 +520,7 @@ module.exports = function (grunt) {
             grunt.task.run([
                 'clean',
                 'concurrent:server',
+                'autoprefixer',
                 'copy',
                 'linkAssets-dev'
             ]);
@@ -516,6 +534,7 @@ module.exports = function (grunt) {
                 'test',
                 'clean',
                 'concurrent:dist',
+                'autoprefixer',
                 'ngmin',
                 'uglify',
                 'concat:js',
