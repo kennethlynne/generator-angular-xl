@@ -22,18 +22,14 @@ util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
 
-    var classes = this.slugifiedPath.map(function (name) {
-        return name + '-page';
-    });
-    classes.push(this.dasherizedName + '-page');
+    var dasherizedPath = this.slugifiedPath.concat([this.dasherizedName + '-page']).join('-').trim();
 
-    this.viewClassesForScss = '.' + classes.join('.').trim();
-
-    this.viewClassesForHTML = classes.join(' ');
+    this.viewClassesForHTML =  dasherizedPath;
+    this.viewClassesForScss = '.' + dasherizedPath;
 
     var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
 
-    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', targetPath, 'index', 'views', 'main-view.html'));
-    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_styles.scss'));
-    this.addStyleToPagesScss('../pages/' + targetPath + '/index/styles');
+    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', targetPath, 'index', 'main-view.html'));
+    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_' + dasherizedPath + '-page.scss'));
+    this.addStyleToPagesScss('../pages/' + targetPath + '/index/' + dasherizedPath + '-page');
 };

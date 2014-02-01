@@ -62,8 +62,8 @@ describe('angular-xl generator', function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/pages/thing-thing/index/thing-thing-controller.js'],
-                        ['app/pages/thing-thing/index/_styles.scss'],
-                        ['app/pages/thing-thing/index/views/main-view.html'],
+                        ['app/pages/thing-thing/index/_thing-thing-page.scss'],
+                        ['app/pages/thing-thing/index/main-view.html'],
                         ['test/unit/spec/pages/thing-thing/index/thing-thing-controller.js']
                     ]);
                     done();
@@ -88,8 +88,8 @@ describe('angular-xl generator', function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/pages/school/details/index/details-controller.js'],
-                        ['app/pages/school/details/index/_styles.scss'],
-                        ['app/pages/school/details/index/views/main-view.html'],
+                        ['app/pages/school/details/index/_school-details-page.scss'],
+                        ['app/pages/school/details/index/main-view.html'],
                         ['test/unit/spec/pages/school/details/index/details-controller.js']
                     ]);
                     done();
@@ -114,8 +114,8 @@ describe('angular-xl generator', function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/pages/school/details/one/index/one-controller.js'],
-                        ['app/pages/school/details/one/index/_styles.scss'],
-                        ['app/pages/school/details/one/index/views/main-view.html'],
+                        ['app/pages/school/details/one/index/_school-details-one-page.scss'],
+                        ['app/pages/school/details/one/index/main-view.html'],
                         ['test/unit/spec/pages/school/details/one/index/one-controller.js']
                     ]);
                     done();
