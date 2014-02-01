@@ -1,7 +1,8 @@
     angular.module('<%= scriptAppName %>')
         .constant('Config', {
             viewsDir:               'views/',
-            componentsDir:      'components/',
+            componentsDir:          'components/',
+            pagesDir:               'pages/',
             useMocks:               true,
             API: {
                 protocol:           'http',
