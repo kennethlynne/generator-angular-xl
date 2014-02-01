@@ -16,7 +16,7 @@ angular.module('<%= scriptAppName %>')
 
         var _defaults = {
             url: '/' + dasherize(classedName),
-            templateUrl: 'pages/' + dasherize(classedName) + '/index/views/main-view.html',
+            templateUrl: 'pages/' + dasherize(classedName) + '/index/main-view.html',
             controller: classedName + 'Ctrl'
         };
 

@@ -16,7 +16,7 @@ describe('stateFactory', function () {
 
     it('should register a default state', function () {
         expect(stateFactory('Example').url).toEqual('/example');
-        expect(stateFactory('Example').templateUrl).toEqual('pages/example/index/views/main-view.html');
+        expect(stateFactory('Example').templateUrl).toEqual('pages/example/index/main-view.html');
         expect(stateFactory('Example').controller).toEqual('ExampleCtrl');
     });
 
