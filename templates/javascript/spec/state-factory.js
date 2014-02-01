@@ -2,20 +2,12 @@
 
 describe('stateFactory', function () {
 
-    var stateFactoryProvider, $stateProvider;
+    var stateFactory;
 
     beforeEach(function () {
 
-        $stateProvider = {
-            state: jasmine.createSpy('$stateProvider.state')
-        };
-
-        module('<%= scriptAppName %>', function ($provide) {
-            $provide.value('$stateProvider', $stateProvider);
-        });
-
-        module('<%= scriptAppName %>', function (_stateFactoryProvider_) {
-            stateFactoryProvider = _stateFactoryProvider_;
+        module('<%= scriptAppName %>', function (_stateFactory_) {
+            stateFactory = _stateFactory_;
         });
 
         inject(function (_stateFactory_) {});
@@ -23,7 +15,7 @@ describe('stateFactory', function () {
     });
 
     it('should register a default state', function () {
-        stateFactoryProvider.register('Example');
+        stateFactory('Example');
         var name = $stateProvider.state.mostRecentCall.args[1];
         var callArgs = $stateProvider.state.mostRecentCall.args[1];
 
@@ -34,13 +26,13 @@ describe('stateFactory', function () {
     });
 
     it('should override defaults', function() {
-        stateFactoryProvider.register('Example', {url:'/something'});
+        stateFactory('Example', {url:'/something'});
         expect($stateProvider.state.mostRecentCall.args[1].url).toEqual('/something');
 
-        stateFactoryProvider.register('Example', {templateUrl:'/something'});
+        stateFactory('Example', {templateUrl:'/something'});
         expect($stateProvider.state.mostRecentCall.args[1].templateUrl).toEqual('/something');
 
-        stateFactoryProvider.register('Example', {controller:'something'});
+        stateFactory('Example', {controller:'something'});
         expect($stateProvider.state.mostRecentCall.args[1].controller).toEqual('something');
     });
 
