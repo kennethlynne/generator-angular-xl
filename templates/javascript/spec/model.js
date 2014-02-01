@@ -2,15 +2,15 @@
 
 describe('Model: <%= classedName %>Model', function () {
 
-    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl, <%= classedName %>Context, collectionUrl = '<%= dasherizedName %>';
+    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl, <%= classedName %>Repository, collectionUrl = '<%= dasherizedName %>';
 
     beforeEach(function () {
 
-        <%= classedName %>Context = jasmine.createSpy('<%= classedName %>Context');
-        <%= classedName %>Context.attach = jasmine.createSpy('<%= classedName %>Context.attach');
+        <%= classedName %>Repository = jasmine.createSpy('<%= classedName %>Repository');
+        <%= classedName %>Repository.attach = jasmine.createSpy('<%= classedName %>Repository.attach');
 
         module('<%= scriptAppName %>', function ($provide) {
-            $provide.value('<%= classedName %>Context', <%= classedName %>Context);
+            $provide.value('<%= classedName %>Repository', <%= classedName %>Repository);
         });
 
         inject(function (_<%= classedName %>Model_, _$httpBackend_, _$rootScope_, _APIBaseUrl_) {
@@ -54,13 +54,13 @@ describe('Model: <%= classedName %>Model', function () {
             expect(typeof promise.then).toBe('function');
         });
 
-        it('should attach itself to the context on save', function() {
+        it('should attach itself to the Repository on save', function() {
             $httpBackend.expectPUT( APIBaseUrl + collectionUrl + '/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
             var model = new <%= classedName %>Model({title: 'New title', id: 5});
-            expect(<%= classedName %>Context.attach).not.toHaveBeenCalled();
+            expect(<%= classedName %>Repository.attach).not.toHaveBeenCalled();
             var promise = model.$save();
             $httpBackend.flush();
-            expect(<%= classedName %>Context.attach).toHaveBeenCalledWith(model);
+            expect(<%= classedName %>Repository.attach).toHaveBeenCalledWith(model);
         });
     });
 
