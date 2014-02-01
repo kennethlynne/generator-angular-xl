@@ -57,23 +57,23 @@ Generator.prototype.askForModules = function askForModules() {
             message: 'Which modules would you like to include?',
             choices: [
                 {
-                    value: 'ngStorageModule',
-                    name: 'angular-storage.js',
-                    checked: true
+                    value: 'angularUIBootstrapModule',
+                    name: 'angular-ui-bootstrap.js',
+                    checked: false
                 },
                 {
-                    value: 'restangularModule',
-                    name: 'restangular.js',
-                    checked: true
+                    value: 'ngStorageModule',
+                    name: 'angular-storage.js',
+                    checked: false
                 },
                 {
                     value: 'touchModule',
                     name: 'angular-touch.js',
-                    checked: true
+                    checked: false
                 },
                 {
-                    value: 'angularUIBootstrapModule',
-                    name: 'angular-ui-bootstrap.js',
+                    value: 'restangularModule',
+                    name: 'restangular.js',
                     checked: false
                 },
                 {
