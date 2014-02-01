@@ -8,7 +8,7 @@ angular.module('<%= scriptAppName %>')
 
             if (!data.$urlBase) {
                 throw new Error('You must specify an $urlBase property');
-            };
+            }
 
             this.$urlBase = data.$urlBase;
 
