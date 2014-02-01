@@ -339,7 +339,7 @@ describe('angular-xl generator', function () {
 
         // read JS Files
         var module_js = fs.readFileSync('app/scripts/module.js', 'utf8');
-        var route_js = fs.readFileSync('app/scripts/config/routes.js', 'utf8');
+        var route_js = fs.readFileSync('app/config/routes.js', 'utf8');
         var main_js = fs.readFileSync('app/scripts/controllers/main.js', 'utf8');
         var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
 

@@ -123,7 +123,7 @@ yo angular-xl:page user
 Produces `app/pages/user/index/user.js`, `test/spec/pages/user/index/user.js`, `app/pages/user/index/views/user.html` and `app/pages/user/styles/_user.scss`
 
 ### Routing
-Routes are configured in `app/scripts/config/routes.js`. Each individual controller registers its own route.
+Routes are configured in `app/config/routes.js`. Each individual controller registers its own route.
 
 ### Controller
 Generates a controller in `app/pages` and an accompanying test in `test/spec/pages`.
@@ -365,7 +365,7 @@ This configuration is shared between both jasmine, minifiers and index.html.
 
 Resource.json contains two sections. One for JS and one for SCSS.
 ```
-"scripts/config/routes.js",
+"config/routes.js",
 "scripts/**/*.js"
 ```
 Files will be matched only once, so in the aforementioned example the routes config will be loaded before everything else is included.
