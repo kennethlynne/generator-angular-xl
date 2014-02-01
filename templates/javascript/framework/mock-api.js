@@ -48,5 +48,6 @@ angular.module('<%= scriptAppName %>')
         //When backend receives a request to the views folder, pass it through
         passThrough(Config.viewsDir);
         passThrough(Config.componentsDir);
+        passThrough(Config.pagesDir);
 
      });
