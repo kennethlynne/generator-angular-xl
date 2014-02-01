@@ -57,11 +57,6 @@ Generator.prototype.askForModules = function askForModules() {
             message: 'Which modules would you like to include?',
             choices: [
                 {
-                    value: 'angularUIBootstrapModule',
-                    name: 'angular-ui-bootstrap.js',
-                    checked: false
-                },
-                {
                     value: 'ngStorageModule',
                     name: 'angular-storage.js',
                     checked: false
@@ -108,10 +103,9 @@ Generator.prototype.askForModules = function askForModules() {
     this.restangularModule = hasMod('restangularModule');
     this.touchModule = hasMod('touchModule');
     this.xeditableModule = hasMod('xeditableModule');
-    this.angularUIBootstrapModule = hasMod('angularUIBootstrapModule');
     this.ngStorageModule = hasMod('ngStorageModule');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'"];
+    var angMods = ["'kennethlynne.componentFactory'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
@@ -131,10 +125,6 @@ Generator.prototype.askForModules = function askForModules() {
       if (this.xeditableModule)
       {
           angMods.push("'xeditable'");
-      }
-      if (this.angularUIBootstrapModule)
-      {
-          angMods.push("'ui.bootstrap'");
       }
       if (this.ngStorageModule) {
           angMods.push("'ngStorage'");

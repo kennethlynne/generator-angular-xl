@@ -327,7 +327,7 @@ The following packages are always installed by the [app](#app) generator:
 * angular-promise-tracker
 * angular-loading-bar
 * angular-xeditable
-* angular-modelprovider
+* angular-ui-bootstrap
 
 The following additional modules are optional:
 
@@ -336,7 +336,6 @@ The following additional modules are optional:
 * angular-touch
 * angular-resource
 * angular-sanitize
-* angular-ui-bootstrap
 * ngStorage
 
 All of these can be updated with `bower update` as new versions of AngularJS are released.
