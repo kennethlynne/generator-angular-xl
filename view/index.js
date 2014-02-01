@@ -30,6 +30,6 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
 
     this.template('common/view.html', path.join(this.env.options.appPath, 'pages', targetPath, 'index', 'main-view.html'));
-    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_' + dasherizedPath + '-page.scss'));
-    this.addStyleToPagesScss('../pages/' + targetPath + '/index/' + dasherizedPath + '-page');
+    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_' + dasherizedPath + '.scss'));
+    this.addStyleToPagesScss('../pages/' + targetPath + '/index/' + dasherizedPath);
 };
