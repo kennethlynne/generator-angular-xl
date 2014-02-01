@@ -1,21 +1,21 @@
 <header class="navbar-component navbar navbar-inverse navbar-fixed-top" role="banner">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button">
+            <button class="navbar-toggle" type="button" ng-init="isCollapsed=true" ng-click="isCollapsed=!isCollapsed">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a ui-sref="Index" class="navbar-brand">Brand</a>
+            <a ui-sref="index" class="navbar-brand">Brand</a>
         </div>
-        <nav class="collapse navbar-collapse nsb-navbar-collapse" role="navigation">
-            <ul class="nav navbar-nav">
+        <nav class="collapse navbar-collapse nsb-navbar-collapse" role="navigation" collapse="isCollapsed">
+            <ul class="nav navbar-nav" ui-sref-active="active">
                 <li class="active">
                     <a ui-sref="index">Home</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ui-sref-active="active">
                 <li>
                     <a ui-sref="error">Error</a>
                 </li>
