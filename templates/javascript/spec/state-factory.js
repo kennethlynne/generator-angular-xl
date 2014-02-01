@@ -15,25 +15,17 @@ describe('stateFactory', function () {
     });
 
     it('should register a default state', function () {
-        stateFactory('Example');
-        var name = $stateProvider.state.mostRecentCall.args[1];
-        var callArgs = $stateProvider.state.mostRecentCall.args[1];
+        var state = stateFactory('Example');
 
-        expect(name).toEqual('example');
-        expect(callArgs.url).toEqual('/example');
-        expect(callArgs.templateUrl).toEqual('pages/example/index/views/main-view.html');
-        expect(callArgs.controller).toEqual('ExampleCtrl');
+        expect(state.url).toEqual('/example');
+        expect(state.templateUrl).toEqual('pages/example/index/views/main-view.html');
+        expect(state.controller).toEqual('ExampleCtrl');
     });
 
     it('should override defaults', function() {
-        stateFactory('Example', {url:'/something'});
-        expect($stateProvider.state.mostRecentCall.args[1].url).toEqual('/something');
-
-        stateFactory('Example', {templateUrl:'/something'});
-        expect($stateProvider.state.mostRecentCall.args[1].templateUrl).toEqual('/something');
-
-        stateFactory('Example', {controller:'something'});
-        expect($stateProvider.state.mostRecentCall.args[1].controller).toEqual('something');
+        expect(stateFactory('Example', {url:'/something'}).url).toEqual('/something');
+        expect(stateFactory('Example', {templateUrl:'/something'}).templateUrl).toEqual('/something');
+        expect(stateFactory('Example', {controller:'something'}).controller).toEqual('something');
     });
 
     it('should attach init service if found');
