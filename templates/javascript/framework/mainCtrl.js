@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function (stateFactory) {
-        stateFactory('Index', {
-            url: '/'
-        })
+    .config(function ($stateProvider, stateFactory) {
+        $stateProvider.state('index', stateFactory('Index', {
+            url:'/'
+        }));
     })
     .controller('IndexCtrl', function ($scope) {
         $scope.message = 'Hello world!';

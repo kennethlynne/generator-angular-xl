@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .config(function (stateFactory) {
-        stateFactory('<%= classedName %>', {
+    .config(function ($stateProvider, stateFactory) {
+        $stateProvider.state('<%= cameledName %>', stateFactory('<%= classedName %>', {
             url:'<%= pageUrl %>',
             templateUrl: '<%= viewTemplateUrl %>'
-        })
+        }));
     })
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
