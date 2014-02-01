@@ -9,6 +9,8 @@ Avoid boilerplate and improve productivity and consistency.
 
 <img height="250" align="left" src="https://s3.amazonaws.com/media-p.slid.es/uploads/hugojosefson/images/86267/angularjs-logo.png">
 
+---
+
 To sum up:
 - All scripts in `app/scrips`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
 - Controllers, views and styling for components and pages are grouped together to facilitate reuse and order.
