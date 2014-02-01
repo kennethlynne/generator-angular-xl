@@ -27,7 +27,7 @@ Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
 Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator-angular](https://github.com/yeoman/generator-angular).
 
-## Usage
+## Quick start
 
 Install Node.js with npm, then run:
 
