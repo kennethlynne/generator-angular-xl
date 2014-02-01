@@ -15,11 +15,9 @@ describe('stateFactory', function () {
     });
 
     it('should register a default state', function () {
-        var state = stateFactory('Example');
-
-        expect(state.url).toEqual('/example');
-        expect(state.templateUrl).toEqual('pages/example/index/views/main-view.html');
-        expect(state.controller).toEqual('ExampleCtrl');
+        expect(stateFactory('Example').url).toEqual('/example');
+        expect(stateFactory('Example').templateUrl).toEqual('pages/example/index/views/main-view.html');
+        expect(stateFactory('Example').controller).toEqual('ExampleCtrl');
     });
 
     it('should override defaults', function() {
