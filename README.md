@@ -45,6 +45,8 @@ Run `yo angular-xl`, with your application name:
 yo angular-xl app-name
 ```
 
+Run `grunt server` to start the local server.
+
 *Awesomeness ensues*
 
 # Developing with the generator
