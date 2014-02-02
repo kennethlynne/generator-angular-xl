@@ -51,6 +51,9 @@ yo angular-xl app-name
 
 ## Available Grunt tasks
 
+`grunt server` to run a test server with live reload.
+`grunt test` to run tests once (`karma start` to run tests coninously and rerun tests on file change)
+
 The following commands will build the application into the `/dist` folder.
 * `grunt build` - production profile, minified, concatinated and awesomified for production
 * `grunt build:dev` - development profile, unminified code
