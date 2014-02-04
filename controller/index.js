@@ -20,11 +20,11 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
     if (this.slugifiedPath.length > 0) {
         this.statifiedPath = this.slugifiedPath.join('-') + '-' + this.dasherizedName;
-        this.viewTemplateUrl = 'pages/' + path + '/index/views/main-view.html';
+        this.viewTemplateUrl = 'pages/' + path + '/index/main-view.html';
     }
     else
     {
-        this.viewTemplateUrl = 'pages/' + this.dasherizedName + '/index/views/main-view.html';
+        this.viewTemplateUrl = 'pages/' + this.dasherizedName + '/index/main-view.html';
         this.statifiedPath = this.dasherizedName;
     }
 
