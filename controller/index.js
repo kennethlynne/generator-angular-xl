@@ -30,6 +30,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
     this.pageUrl = path;
 
+    this.initService = false;
 
     this.generateSourceAndTest(
         'controller',
