@@ -15,16 +15,16 @@ angular.module('<%= scriptAppName %>')
         <%= classedName %>Repo.index = {};
 
         angular.forEach(<%= classedName %>Repo.data, function(item, key) {
-            <%= classedName %>Repo.index[item.id] = item; //Index messages to be able to do efficient lookups on id
+            <%= classedName %>Repo.index[item.id] = item;
         });
 
-        //GET <%= dasherizedName %>/ should return a list og messages
+        //GET <%= dasherizedName %>/ should return a list
         $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
-        //POST <%= dasherizedName %>/ should save a message and return the message with an id
+        //POST <%= dasherizedName %>/ should save
         $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted POST to <%= dasherizedName %>', data);
             var <%= classedName %> = angular.fromJson(data);
@@ -36,7 +36,7 @@ angular.module('<%= scriptAppName %>')
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //GET <%= dasherizedName %>/id should return a message
+        //GET <%= dasherizedName %>/id should return one
         $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>');
             var id = url.match( new RegExp(IdRegExp) )[0];
