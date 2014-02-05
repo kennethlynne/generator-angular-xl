@@ -6,7 +6,7 @@ angular.module('<%= scriptAppName %>')
             url:'/<%= pageUrl %>',
             templateUrl: '<%= viewTemplateUrl %>'
         }));
-    })
+    })<% if (initService) { %>
     .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
         /**
@@ -34,7 +34,7 @@ angular.module('<%= scriptAppName %>')
             }
         }
 
-    })
-    .controller('<%= classedName %>Ctrl', function ($scope, init) {
-        $scope.data = init;
+    })<% } %>
+    .controller('<%= classedName %>Ctrl', function ($scope<% if (initService) { %>, init<% } %>) {
+        $scope.foo = 'bar';
     });

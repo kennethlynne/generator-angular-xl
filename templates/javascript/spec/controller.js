@@ -11,17 +11,16 @@ describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
             <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
-                $scope: scope,
-                init: 'DATA'
+                $scope: scope
             });
         });
     });
 
     it('should attach init data to scope', function () {
-        expect(scope.data).toEqual('DATA');
+        expect(scope.foo).toEqual('bar');
     });
 });
-
+<% if (initService) { %>
 describe('Service(<%= pageUrl %>): <%= classedName %>CtrlInit', function () {
 
     var <%= classedName %>CtrlInit;
@@ -44,4 +43,4 @@ describe('Service(<%= pageUrl %>): <%= classedName %>CtrlInit', function () {
         expect(typeof <%= classedName %>CtrlInit.prepare().then).toEqual('function');
     });
 
-});
+});<% } %>
