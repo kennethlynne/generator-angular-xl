@@ -26,7 +26,7 @@ angular.module('<%= scriptAppName %>')
             }
             else
             {
-                return $http.get(<%= classedName %>Model.$urlBase + '/' + id).then(function (response) {
+                return $http.get(<%= classedName %>Model.$urlBase + '/' + id, {tracker:'<%= classedName %>.getById'}).then(function (response) {
                     var <%= classedName %> = new <%= classedName %>Model(response.data);
                     _cache[id] = <%= classedName %>;
                     return <%= classedName %>;
@@ -38,7 +38,7 @@ angular.module('<%= scriptAppName %>')
         var _getAll = function () {
             var <%= classedName %>Model = $injector.get('<%= classedName %>Model');
             //TODO: Max length of pool, to not manage to many instances in memory?
-            return $http.get(<%= classedName %>Model.$urlBase).then(function (response) {
+            return $http.get(<%= classedName %>Model.$urlBase, {tracker:'<%= classedName %>.getAll'}).then(function (response) {
                 if(Array.isArray(response.data))
                 {
                     _cache.length = 0; //empty pool
