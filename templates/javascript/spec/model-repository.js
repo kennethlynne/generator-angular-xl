@@ -156,10 +156,10 @@ describe('Model Repository: <%= classedName %>Repository', function () {
         });
     });
 
-    describe('_pool', function () {
+    describe('_cache', function () {
         it('should return a reference to the pool', function() {
             var new<%= classedName %> = {id:19, title:'Yeah!'};
-            <%= classedName %>Repository._pool[19] = new<%= classedName %>;
+            <%= classedName %>Repository._cache[19] = new<%= classedName %>;
 
             var <%= classedName %>;
             <%= classedName %>Repository.getById(19).then(function (response) {

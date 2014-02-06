@@ -2,12 +2,25 @@
 
 angular.module('<%= scriptAppName %>')
     .factory('<%= classedName %>Repository', function ($q, $http, $injector) {
-        var _pool = {};
+
+        var _cache;
+
+        var $localStorage = $injector.has('$localStorage')?$injector.get('$localStorage'):null;
+        if($localStorage)
+        {
+            $localStorage.repositories = $localStorage.repositories || {};
+            $localStorage.repositories['<%= classedName %>'] = $localStorage.repositories['<%= classedName %>'] || [];
+            _cache = $localStorage.repositories['category'];
+        }
+        else
+        {
+            _cache = {};
+        }
 
         var _getById = function (id) {
             var <%= classedName %>Model = $injector.get('<%= classedName %>Model');
             var deferred = $q.defer();
-            var instance = _pool[id];
+            var instance = _cache[id];
             if(instance)
             {
                 deferred.resolve(instance);
@@ -17,7 +30,7 @@ angular.module('<%= scriptAppName %>')
             {
                 return $http.get(<%= classedName %>Model.$urlBase + '/' + id).then(function (response) {
                     var <%= classedName %> = new <%= classedName %>Model(response.data);
-                    _pool[id] = <%= classedName %>;
+                    _cache[id] = <%= classedName %>;
                     return <%= classedName %>;
                 });
             }
@@ -30,9 +43,10 @@ angular.module('<%= scriptAppName %>')
             return $http.get(<%= classedName %>Model.$urlBase).then(function (response) {
                 if(Array.isArray(response.data))
                 {
+                    _cache.length = 0; //empty pool
                     return response.data.map(function (item) {
                         var <%= classedName %> = new <%= classedName %>Model(item);
-                        _pool[item.id] = <%= classedName %>;
+                        _cache[item.id] = <%= classedName %>;
                         return <%= classedName %>;
                     });
                 }
@@ -47,7 +61,7 @@ angular.module('<%= scriptAppName %>')
             var <%= classedName %>Model = $injector.get('<%= classedName %>Model');
 
             if(!(item instanceof <%= classedName %>Model)) throw new Error('You must provide a valid <%= classedName %>Model');
-            _pool[item.id] = item;
+            _cache[item.id] = item;
         };
 
         var _create = function (data) {
@@ -60,6 +74,6 @@ angular.module('<%= scriptAppName %>')
             getAll: _getAll,
             attach: _attach,
             create: _create,
-            _pool: _pool
+            _cache: _cache
         }
     });
