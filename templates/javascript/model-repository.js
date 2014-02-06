@@ -3,18 +3,16 @@
 angular.module('<%= scriptAppName %>')
     .factory('<%= classedName %>Repository', function ($q, $http, $injector) {
 
-        var _cache;
+        var _cache = [];
 
         var $localStorage = $injector.has('$localStorage')?$injector.get('$localStorage'):null;
+
+        //Use local storage to store cache, if available
         if($localStorage)
         {
             $localStorage.repositories = $localStorage.repositories || {};
             $localStorage.repositories['<%= classedName %>'] = $localStorage.repositories['<%= classedName %>'] || [];
             _cache = $localStorage.repositories['category'];
-        }
-        else
-        {
-            _cache = {};
         }
 
         var _getById = function (id) {
