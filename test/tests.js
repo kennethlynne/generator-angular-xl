@@ -60,10 +60,10 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/thing-thing/index/thing-controller.js'],
-                        ['app/pages/thing-thing/index/_thing-page.scss'],
-                        ['app/pages/thing-thing/index/main-view.html'],
-                        ['test/unit/spec/pages/thing-thing/index/thing-controller.js']
+                        ['app/pages/thing/index/thing-controller.js'],
+                        ['app/pages/thing/index/_thing-page.scss'],
+                        ['app/pages/thing/index/main-view.html'],
+                        ['test/unit/spec/pages/thing/index/thing-controller.js']
                     ]);
 
                     var controllerSrc = fs.readFileSync('app/pages/thing-thing/index/thing-controller.js', 'utf8');
