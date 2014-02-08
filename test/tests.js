@@ -76,8 +76,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../controller',
                 '../../view',
-                '../../page',
-                '../../route'
+                '../../page'
             ];
             controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details']);
 
@@ -103,7 +102,7 @@ describe('angular-xl generator', function () {
                 '../../controller',
                 '../../view',
                 '../../page',
-                '../../route'
+                '../../page'
             ];
             controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details/one']);
 
