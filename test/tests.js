@@ -43,7 +43,7 @@ describe('angular-xl generator', function () {
         });
     });
 
-    describe('Route', function () {
+    describe('Page', function () {
         //TODO: Test that it adds style import to _pages.scss
         it('should generate a new page', function (done) {
             var controllerGenerator;
@@ -51,9 +51,9 @@ describe('angular-xl generator', function () {
                 '../../controller',
                 '../../view',
                 '../../page',
-                '../../route'
+                '../../page'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:route', deps, ['thingThing']);
+            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['thingThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -79,7 +79,7 @@ describe('angular-xl generator', function () {
                 '../../page',
                 '../../route'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:route', deps, ['school/details']);
+            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -105,7 +105,7 @@ describe('angular-xl generator', function () {
                 '../../page',
                 '../../route'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:route', deps, ['school/details/one']);
+            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details/one']);
 
             helpers.mockPrompt(angular, {
                 modules: []
