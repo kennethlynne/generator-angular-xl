@@ -7,7 +7,6 @@ angular.module('<%= scriptAppName %>')
         console.log('Stubbing API');
         console.log('************');
 
-        //Decorate httpBackend with awesomesauce
         $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 
         var APIUrl = (Config.API.protocol + '://' + Config.API.host + ':' + Config.API.port + Config.API.path + '/');
@@ -36,16 +35,13 @@ angular.module('<%= scriptAppName %>')
         })
 
     })
-    .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape, guid) {
-
-        //Only load mocks if config says so
+    .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape) {
         if(!Config.useMocks) return;
 
         function passThrough(url) {
             $httpBackend.whenGET( new RegExp( regexEscape( url ) ) ).passThrough();
         }
 
-        //When backend receives a request to the views folder, pass it through
         passThrough(Config.viewsDir);
         passThrough(Config.componentsDir);
         passThrough(Config.pagesDir);
