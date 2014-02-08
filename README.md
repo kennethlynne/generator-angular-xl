@@ -58,14 +58,14 @@ Run `grunt server` to start the local server.
 
 `grunt server` to run a test server with live reload.
 `grunt test` to run tests once (`karma start` to run tests coninously and rerun tests on file change)
+`grunt changelog` - bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
 
 The following commands will build the application into the `/dist` folder.
 * `grunt build` - production profile, minified, concatinated and awesomified for production
 * `grunt build:dev` - development profile, unminified code
 * `grunt build:prototype` - same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
 
-# Release
-* `grunt release` - bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
+# Deploy
 * `grunt deploy` - takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
 
 ## Generators
@@ -73,6 +73,7 @@ The following commands will build the application into the `/dist` folder.
 Available generators:
 
 * [angular-xl](#app) (aka [angular-xl:app](#app))
+* [angular-xl:crud-mock](#crud-mock)
 * [angular-xl:controller](#controller)
 * [angular-xl:directive](#directive)
 * [angular-xl:component](#component)
@@ -85,7 +86,6 @@ Available generators:
 * [angular-xl:value](#service)
 * [angular-xl:constant](#service)
 * [angular-xl:decorator](#decorator)
-* [angular-xl:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -132,38 +132,6 @@ Example:
 ```bash
 yo angular-xl:controller user
 ```
-
-Produces `app/scripts/controllers/user.js` and `test/spec/controllers/user.js`.
-
-`app/scripts/controllers/user.js`:
-```javascript
-angular.module('yourModule')
-    .config(function ($stateProvider, stateFactoryProvider) { $stateProvider.state('User', stateFactoryProvider.$get()('User')) })
-    .service('UserCtrlInit', function ($q, $log) {
-
-        var _prepare = function () {
-            $log.log("UserCtrl loading");
-
-            return $q.all(['Data from service 1', 'Data from service 2']).then(function (data) {
-                $log.log("UserCtrl loaded!");
-
-                return {
-                    message1: data[0],
-                    message2: data[1]
-                }
-            });
-        };
-
-        return {
-            prepare: _prepare
-        }
-
-    })
-    .controller('UserCtrl', function ($scope, init) {
-        $scope.data = init; //Now init.message1 is 'Data from service 1', and init.message2 is 'Data from service 2'
-    });
-```
-This helps keep the code testable (test data fetching separate from controller logic and easily inject mock data in tests). ```$q.all()``` takes a list of functions, awaits all functions that returns a promise and wraps the returned data in a promise. All services must return successfully before it will resolve the returned promise with the data from the services. Nice.
 
 ### Directive
 Generates a directive in `app/scripts/directives`.
@@ -238,19 +206,6 @@ angular.module('myMod').filter('myFilter', function () {
     return 'myFilter filter:' + input;
   };
 });
-```
-
-### View
-Generates an HTML view file in `app/views`.
-
-Example:
-```bash
-yo angular-xl:view user
-```
-
-Produces `app/views/user.html`:
-```html
-<p>This is the user view</p>
 ```
 
 ### Service

@@ -550,7 +550,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('release', [
+    grunt.registerTask('changelog', [
         'changelog',
         'bump'
     ]);
