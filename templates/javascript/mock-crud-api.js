@@ -18,13 +18,13 @@ angular.module('<%= scriptAppName %>')
             <%= classedName %>Repo.index[item.id] = item;
         });
 
-        //GET <%= dasherizedName %>/ should return a list
+        //GET <%= dasherizedName %>/
         $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
-        //POST <%= dasherizedName %>/ should save
+        //POST <%= dasherizedName %>/
         $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
             $log.log('Intercepted POST to <%= dasherizedName %>', data);
             var <%= classedName %> = angular.fromJson(data);
@@ -36,11 +36,40 @@ angular.module('<%= scriptAppName %>')
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //GET <%= dasherizedName %>/id should return one
+        //GET <%= dasherizedName %>/id
         $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.log('Intercepted GET to <%= dasherizedName %>');
             var id = url.match( new RegExp(IdRegExp) )[0];
-            return [200, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
+            return [<%= classedName %>Repo.index[id]?200:404, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
+        });
+
+        //PUT <%= dasherizedName %>/id
+        $httpBackend.whenPUT( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
+            $log.log('Intercepted PUT to <%= dasherizedName %>');
+            var id = url.match( new RegExp(IdRegExp) )[0];
+
+            if (!<%= classedName %>Repo.index[id]) {
+                return [404, {} , {/*headers*/}];
+            }
+
+            var <%= classedName %> = <%= classedName %>Repo.index[id] = angular.fromJson(data);
+
+            return [200, <%= classedName %>, {/*headers*/}];
+        });
+
+        //DELETE <%= dasherizedName %>/id
+        $httpBackend.whenDELETE( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
+            $log.log('Intercepted DELETE to <%= dasherizedName %>');
+            var id = url.match( new RegExp(IdRegExp) )[0];
+
+            var <%= classedName %> = <%= classedName %>Repo.index[id];
+            if (!<%= classedName %>) {
+                return [404, {} , {/*headers*/}];
+            }
+            delete <%= classedName %>Repo.index[<%= classedName %>.id];
+            var index = <%= classedName %>Repo.data.indexOf(<%= classedName %>);
+            <%= classedName %>Repo.data.splice(index, 1);
+            return [200, <%= classedName %> , {/*headers*/}];
         });
 
     });
