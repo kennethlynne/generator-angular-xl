@@ -8,7 +8,6 @@ var deps = [
     '../../app',
     '../../common',
     '../../controller',
-    '../../view',
     '../../page',
     '../../component',
     '../../decorator',
@@ -54,7 +53,6 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         'filter',
         'repository',
         'directive',
-        'view',
         'controller',
         'crud-mock'
     ];
