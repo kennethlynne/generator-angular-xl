@@ -1,8 +1,6 @@
 angular.module('<%= scriptAppName %>')
     .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape, guid) {
-
-        //Only load mocks if config says so
-        if(!Config.useMocks) return;
+        if(!Config.API.useMocks) return;
 
         var collectionUrl = APIBaseUrl + '<%= dasherizedName %>';
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);

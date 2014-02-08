@@ -3,8 +3,8 @@
             viewsDir:               'views/',
             componentsDir:          'components/',
             pagesDir:               'pages/',
-            useMocks:               true,
             API: {
+                useMocks:           true,
                 protocol:           'http',
                 host:               'api.example.com',
                 port:               '8080',

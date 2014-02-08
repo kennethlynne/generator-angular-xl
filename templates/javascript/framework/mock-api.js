@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function ($httpProvider, Config, $provide) {
-        if(!Config.useMocks) return;
+        if(!Config.API.useMocks) return;
 
         console.log('Stubbing API');
         console.log('************');
@@ -36,7 +36,7 @@ angular.module('<%= scriptAppName %>')
 
     })
     .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape) {
-        if(!Config.useMocks) return;
+        if(!Config.API.useMocks) return;
 
         function passThrough(url) {
             $httpBackend.whenGET( new RegExp( regexEscape( url ) ) ).passThrough();
