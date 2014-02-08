@@ -66,7 +66,7 @@ describe('angular-xl generator', function () {
                         ['test/unit/spec/pages/thing/index/thing-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/pages/thing-thing/index/thing-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('app/pages/thing/index/thing-controller.js', 'utf8');
 
                     var regex = /url\: \'\/thing\'\,/;
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url');
