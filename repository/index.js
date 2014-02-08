@@ -19,8 +19,8 @@ Generator.prototype.createRepositoryFiles = function createRepositoryFiles() {
     );
 
     this.generateSourceAndTest(
-        'model-repository',
-        'spec/model-repository',
+        'repository',
+        'spec/repository',
         'repositories/',
         '../unit/spec/repositories/',
         this.dasherizedName + '-repository'

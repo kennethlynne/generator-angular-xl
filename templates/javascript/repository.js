@@ -5,16 +5,6 @@ angular.module('<%= scriptAppName %>')
 
         var _cache = [];
 
-        var $localStorage = $injector.has('$localStorage')?$injector.get('$localStorage'):null;
-
-        //Use local storage to store cache, if available
-        if($localStorage)
-        {
-            $localStorage.repositories = $localStorage.repositories || {};
-            $localStorage.repositories['<%= classedName %>'] = $localStorage.repositories['<%= classedName %>'] || [];
-            _cache = $localStorage.repositories['category'];
-        }
-
         var _getById = function (id) {
             var <%= classedName %>Model = $injector.get('<%= classedName %>Model');
             var deferred = $q.defer();
