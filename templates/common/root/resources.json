@@ -22,7 +22,8 @@
             "bower_components/angular-ui-router/release/angular-ui-router.js",
             "bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js",
             "bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
-            "bower_components/ngstorage/ngStorage.js"
+            "bower_components/ngstorage/ngStorage.js",
+            "bower_components/ng-symbiosis-utils/ng-symbiosis-utils.src.js"
         ],
         "app" : [
             "scripts/module.js",
