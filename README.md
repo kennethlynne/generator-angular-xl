@@ -15,14 +15,15 @@ Avoid boilerplate and improve productivity and consistency.
 
 ## Features
 - All scripts in `app/scrips`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
-- Controllers, views and styling for components and pages are grouped together to facilitate reuse and order.
+- Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.
 - Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
-- Use [components](#component) as syntactic sugar to help reduce complexity and improve re-usability of code
-- Start a server with live reload easily monitoring your progress with ```grunt server```
-- Run tests continually when implementing using KarmaJS using ```grunt start```, btw templates are automatically injected to handle mock backend issues.
+- Use [components](#component) as syntactic sugar to use directives as web components with a convention over configuration approach
+- Start a server with live reload, easily monitoring your progress with ```grunt server```
+- Run tests continually when implementing using KarmaJS using ```grunt test```
 - Build and minify the project with one command: ```grunt build```
-- Intercept calls to an API and provide a [mock API](#api) to do fast prototyping
-- Deploy site to your repos [GitHub page](http://pages.github.com/) branch with `grunt build && grunt deploy && grunt release`, automatically running tests, tagging your commits and bumping version numbers. This will also automatically generate your CHANGELOG.md using your commit history if you follow [these conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit).
+- Deploy to your [GitHub page](http://pages.github.com/) in one command: ```grunt deploy```
+- Intercept calls to an API and provide a [mock API](#crud-mock) to do fast prototyping
+
 - Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
@@ -100,24 +101,15 @@ Example:
 yo angular-xl
 ```
 
-### API
+### CRUD-Mock
 This helps out if you need to develop and prototype fast before the API is implemented.
-If you have specified that mocks should be used in `app/scripts/config/application-config.js`
-```javascript
-angular.module('yourModule')
-.constant('Config', {
-    useMocks:               true,
-    viewsDir:               'views/',
-    API: {
-        protocol:           'http',
-        host:               'api.example.com',
-        port:               '8080',
-        path:               '/api',
-        fakeDelay:          2000
-    }
-})
+
+```bash
+yo angular-xl:crod-mock user
 ```
-it will automatically intercept all calls to the given API when using ```$http``` or ```$resource```, and reply with data specified in `app/dev/` after the given delay, when ever you are ready to implement with a real API set ```useMocks: false```
+
+Creates a mock CRUD API in the dev folder of your project.
+It will automatically intercept all calls done through ```$http``` to the API and reply with data after the given delay, when ever you are ready to implement with a real API set ```useMocks: false``` in `config/config.js`
 
 ### Page
 Pages are located under `app/pages`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
