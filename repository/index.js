@@ -4,12 +4,13 @@ var ScriptBase = require('../script-base.js');
 var path = require('path');
 
 var Generator = module.exports = function Generator() {
-  ScriptBase.apply(this, arguments);
+    ScriptBase.apply(this, arguments);
+    this.hookFor('angular-xl:crud-mock');
 };
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.createModelFiles = function createModelFiles() {
+Generator.prototype.createRepositoryFiles = function createRepositoryFiles() {
     this.generateSourceAndTest(
         'model',
         'spec/model',
@@ -24,6 +25,4 @@ Generator.prototype.createModelFiles = function createModelFiles() {
         '../unit/spec/repositories/',
         this.dasherizedName + '-repository'
     );
-
-    this.template('mock-api-model.js', path.join(this.env.options.appPath, 'dev', 'repositories', this.dasherizedName + '-mocks.js'));
 };

@@ -314,7 +314,8 @@ describe('angular-xl generator', function () {
         it('should generate a new repository', function (done) {
             var repositoryGenerator;
             var deps = [
-                '../../repository'
+                '../../repository',
+                '../../crud-mock'
             ];
             repositoryGenerator = helpers.createGenerator('angular-xl:repository', deps, ['superThang']);
 
@@ -328,6 +329,29 @@ describe('angular-xl generator', function () {
                         ['test/unit/spec/models/super-thang.js'],
                         ['app/scripts/repositories/super-thang-repository.js'],
                         ['test/unit/spec/repositories/super-thang-repository.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
+
+    describe('CRUD mock', function () {
+        it('should generate a new CRUD mock', function (done) {
+            var crudMockGenerator;
+            var deps = [
+                '../../crud-mock'
+            ];
+            crudMockGenerator = helpers.createGenerator('angular-xl:crud-mock', deps, ['superMock']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                crudMockGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/dev/super-mock-mock.js']
                     ]);
                     done();
                 });

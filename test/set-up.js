@@ -19,7 +19,7 @@ var deps = [
     '../../repository',
     '../../filter',
     '../../directive',
-    '../../route',
+    '../../crud-mock',
     '../../main', [
         helpers.createDummyGenerator(),
         'karma:app'
@@ -56,7 +56,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         'directive',
         'view',
         'controller',
-        'route'
+        'crud-mock'
     ];
 
     //Recursively do all tests
