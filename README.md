@@ -1,7 +1,9 @@
-# generator-angular-xl [[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-xl)](https://travis-ci.org/kennethlynne/generator-angular-xl) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-xl.png)](https://codeclimate.com/github/kennethlynne/generator-angular-xl)
+[![generator-angular-xl logo](https://raw2.github.com/kennethlynne/generator-angular-xl/master/logo.png)](https://github.com/kennethlynne/generator-angular-xl/)
 
 An opinionated kickstarter for your next large scale AngularJS application.
-Avoid boilerplate and improve productivity and consistency. 
+Avoid boilerplate and improve productivity and consistency.
+
+[[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-xl)](https://travis-ci.org/kennethlynne/generator-angular-xl) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-xl.png)](https://codeclimate.com/github/kennethlynne/generator-angular-xl)
 
 <img height="250" align="left" src="http://gruntjs.com/img/grunt-logo.svg">
 
