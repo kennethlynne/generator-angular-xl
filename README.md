@@ -227,7 +227,7 @@ You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`,
 
 ### Repository
 Generates an AngularJS factory that returns a class that has `$save` and `$delete` methods and more, and an accompanying repository to handle client side caching and change tracking.
-It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good. This
+It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
 
 Example:
 ```bash
@@ -242,7 +242,6 @@ angular.module('myMod').service('myService', function (SchoolRepository) {
   school.$save();
 });
 ```
-
 
 ### Decorator
 Generates an AngularJS service decorator.
