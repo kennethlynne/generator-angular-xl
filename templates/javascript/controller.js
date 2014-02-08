@@ -3,7 +3,7 @@
 angular.module('<%= scriptAppName %>')
     .config(function ($stateProvider, stateFactory) {
         $stateProvider.state('<%= cameledName %>', stateFactory('<%= classedName %>', {
-            url:'/<%= pageUrl %>',
+            url: '/<%= pageUrl %>',
             templateUrl: '<%= viewTemplateUrl %>'
         }));
     })<% if (initService) { %>

@@ -52,7 +52,7 @@ describe('angular-xl generator', function () {
                 '../../page',
                 '../../page'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['thingThing']);
+            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['thing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -60,11 +60,17 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/thing-thing/index/thing-thing-controller.js'],
-                        ['app/pages/thing-thing/index/_thing-thing-page.scss'],
+                        ['app/pages/thing-thing/index/thing-controller.js'],
+                        ['app/pages/thing-thing/index/_thing-page.scss'],
                         ['app/pages/thing-thing/index/main-view.html'],
-                        ['test/unit/spec/pages/thing-thing/index/thing-thing-controller.js']
+                        ['test/unit/spec/pages/thing-thing/index/thing-controller.js']
                     ]);
+
+                    var controllerSrc = fs.readFileSync('app/pages/thing-thing/index/thing-controller.js', 'utf8');
+
+                    var regex = /url\: \'\/thing\'\,/;
+                    assert.ok(regex.test(controllerSrc), 'controller registers on wrong url');
+
                     done();
                 });
             });
