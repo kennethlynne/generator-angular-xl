@@ -281,7 +281,7 @@ The following packages are always installed by the [app](#app) generator:
 * angular-loading-bar
 * angular-xeditable
 * angular-ui-bootstrap
-* ngSymbiosis.utils
+* ng-symbiosis-utils
 
 The following additional modules are optional:
 
