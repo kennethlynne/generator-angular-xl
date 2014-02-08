@@ -102,10 +102,10 @@ yo angular-xl
 ```
 
 ### CRUD-Mock
-This helps out if you need to develop and prototype fast before the API is implemented.
+Prototype fast before the API is implemented, but implement like the API already exists.
 
 ```bash
-yo angular-xl:crod-mock user
+yo angular-xl:crud-mock user
 ```
 
 Creates a mock CRUD API in the dev folder of your project.
