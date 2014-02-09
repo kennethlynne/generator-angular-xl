@@ -105,7 +105,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.xeditableModule = hasMod('xeditableModule');
     this.ngStorageModule = hasMod('ngStorageModule');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'" + this.scriptAppName + ".components'", /*"'kennethlynne.angular-modelprovider'", */"'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
+    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
