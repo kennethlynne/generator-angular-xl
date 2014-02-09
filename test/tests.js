@@ -70,7 +70,7 @@ describe('angular-xl generator', function () {
                     var urlRegex = new RegExp('url: \'/thing\'');
                     assert.ok(urlRegex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
-                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/thing/index/main-view.html\';');
+                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/thing/index/main-view.html\'');
                     assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
@@ -102,7 +102,7 @@ describe('angular-xl generator', function () {
                     var regex = new RegExp('url: \'/school/details\'');
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
-                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/index/main-view.html\';');
+                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/index/main-view.html\'');
                     assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
@@ -135,7 +135,7 @@ describe('angular-xl generator', function () {
                     var regex = new RegExp('url: \'/school/details/one\'');
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
-                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/one/index/main-view.html\';');
+                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/one/index/main-view.html\'');
                     assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
