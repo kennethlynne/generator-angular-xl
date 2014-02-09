@@ -67,13 +67,13 @@ describe('angular-xl generator', function () {
                     ]);
 
                     var controllerSrc = fs.readFileSync('app/pages/thing/index/thing-controller.js', 'utf8');
-                    var regex = new RegExp('url: \'/thing\'');
+                    var regex = new RegExp('url: \'//thing\'');
 
                     var valid = regex.test(controllerSrc);
 
                     if(!valid) console.log(controllerSrc);
 
-                    assert.ok(regex.test(controllerSrc), 'index.html template using a wrong appName');
+                    assert.ok(regex.test(controllerSrc), 'controller registers on wrong url');
 
                     done();
                 });
