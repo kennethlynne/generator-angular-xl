@@ -68,10 +68,10 @@ describe('angular-xl generator', function () {
 
                     var controllerSrc = fs.readFileSync('app/pages/thing/index/thing-controller.js', 'utf8');
                     var urlRegex = new RegExp('url: \'/thing\'');
-                    assert.ok(urlRegex.test(controllerSrc), 'controller registers on wrong url');
+                    assert.ok(urlRegex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
                     var viewTemplateRegex = new RegExp('templateUrl: \'pages/thing/index/main-view.html\';');
-                    assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url');
+                    assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
                 });
@@ -100,10 +100,10 @@ describe('angular-xl generator', function () {
 
                     var controllerSrc = fs.readFileSync('app/pages/school/details/index/details-controller.js', 'utf8');
                     var regex = new RegExp('url: \'/school/details\'');
-                    assert.ok(regex.test(controllerSrc), 'controller registers on wrong url');
+                    assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
                     var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/index/main-view.html\';');
-                    assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url');
+                    assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
                 });
@@ -133,10 +133,10 @@ describe('angular-xl generator', function () {
 
                     var controllerSrc = fs.readFileSync('app/pages/school/details/one/index/one-controller.js', 'utf8');
                     var regex = new RegExp('url: \'/school/details/one\'');
-                    assert.ok(regex.test(controllerSrc), 'controller registers on wrong url');
+                    assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
                     var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/one/index/main-view.html\';');
-                    assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url');
+                    assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
                 });
