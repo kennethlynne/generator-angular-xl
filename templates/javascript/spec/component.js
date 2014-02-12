@@ -7,7 +7,7 @@ describe('Component: <%= cameledName %>Component', function () {
 
         beforeEach(function () {
 
-            module('<%= scriptAppName %>');
+            module('<%= scriptAppName %>.components');
 
             inject(function ($rootScope, _$compile_) {
                 scope = $rootScope.$new();
