@@ -6,11 +6,11 @@ angular.module('<%= scriptAppName %>')
         function ModelFactory(data) {
             var model = this;
 
-            if (!data.$urlBase) {
-                throw new Error('You must specify an $urlBase property');
+            if (!data.url) {
+                throw new Error('You must specify an url property');
             }
 
-            this.$urlBase = data.$urlBase;
+            this.$settings.urlBase = data.url;
 
             this.$set(data);
 
@@ -18,11 +18,8 @@ angular.module('<%= scriptAppName %>')
                 var copy = angular.copy(model);
 
                 //Remove all properties prefixed with $
-                for(var key in copy)
-                {
-                    //More efficient than indexOf
-                    if(key.substr(0,1) === '$') delete copy[key];
-                }
+                for(var key in copy) if(key.substr(0,1) === '$') delete copy[key];
+                
                 return copy;
             }, function (newVal, oldVal) {
                 if(newVal !== oldVal) {
@@ -53,7 +50,7 @@ angular.module('<%= scriptAppName %>')
             },
             $delete: function () {
                 var model = this;
-                return $http.delete(model.$urlBase + '/' + model.id, model).then(function (response) {
+                return $http.delete(model.$settings.urlBase + '/' + model.id, model).then(function (response) {
                     model.$set(response.data, true);
                     return response;
                 });
@@ -68,11 +65,11 @@ angular.module('<%= scriptAppName %>')
 
                 if(model.id)
                 {
-                    return $http.put(model.$urlBase + '/' + model.id, model).then(handler);
+                    return $http.put(model.$settings.urlBase + '/' + model.id, model).then(handler);
                 }
                 else
                 {
-                    return $http.post(model.$urlBase, model).then(handler);
+                    return $http.post(model.$settings.urlBase, model).then(handler);
                 }
             },
             $_changeSubscribers: [],

@@ -24,7 +24,7 @@ describe('Model: ModelFactory', function () {
     describe('$save', function () {
         it('should PUT its data on $save when it has an ID (update existing)', function() {
             $httpBackend.expectPUT('test-url/5', {title:'New title', id:5}).respond(200, {id: 5, title:'New title from server'});
-            var model = new ModelFactory({$urlBase:'test-url'});
+            var model = new ModelFactory({url:'test-url'});
 
             model.title = 'New title';
             model.id = 5;
@@ -38,7 +38,7 @@ describe('Model: ModelFactory', function () {
 
         it('should POST its data on $save if does not have an ID (new)', function() {
             $httpBackend.expectPOST('test-url', {title:'New title'}).respond(200, {id: 5, title:'New title from server'});
-            var model = new ModelFactory({$urlBase:'test-url'});
+            var model = new ModelFactory({url:'test-url'});
             model.title = 'New title';
 
             var promise = model.$save();
@@ -59,7 +59,7 @@ describe('Model: ModelFactory', function () {
         });
 
         it('should load instance and override with new data', function() {
-            var model = new ModelFactory({$urlBase:'url', title: 'New title', id: 5});
+            var model = new ModelFactory({url:'url', title: 'New title', id: 5});
 
             model.$set({id:1});
 
@@ -68,7 +68,7 @@ describe('Model: ModelFactory', function () {
         });
 
         it('should remove properties missing in new object', function() {
-            var model = new ModelFactory({$urlBase:'test-url', title: 'New title', id: 5});
+            var model = new ModelFactory({url:'test-url', title: 'New title', id: 5});
 
             model.$set({id:1});
 
@@ -81,7 +81,7 @@ describe('Model: ModelFactory', function () {
         it('should delete on $delete', function() {
             $httpBackend.expectDELETE('test-url/5').respond(200, {});
 
-            var model = new ModelFactory({$urlBase:'test-url', id: 5});
+            var model = new ModelFactory({url:'test-url', id: 5});
 
             var promise = model.$delete();
             $httpBackend.flush();
@@ -92,19 +92,19 @@ describe('Model: ModelFactory', function () {
 
     describe('$isDirty', function () {
         it('should return false if object is not changed since last save or delete ', function() {
-            var model = new ModelFactory({id:1, $urlBase:'test-url'});
+            var model = new ModelFactory({id:1, url:'test-url'});
             expect(model.$isDirty).toBeFalsy();
         });
 
         it('should not be dirty initially', function() {
-            var model = new ModelFactory({id:5, $urlBase:'test-url'});
+            var model = new ModelFactory({id:5, url:'test-url'});
             expect(model.$isDirty).toBeFalsy();
             $rootScope.$digest();
             expect(model.$isDirty).toBeFalsy();
         });
 
         it('should be dirty on change', function() {
-            var model = new ModelFactory({id:5, $urlBase:'test-url'});
+            var model = new ModelFactory({id:5, url:'test-url'});
             $rootScope.$digest();
             model.thing = 'Data';
             $rootScope.$digest();
@@ -112,7 +112,7 @@ describe('Model: ModelFactory', function () {
         });
 
         it('should not be dirty after save', function() {
-            var model = new ModelFactory({id:5, $urlBase:'test-url'});
+            var model = new ModelFactory({id:5, url:'test-url'});
             $rootScope.$digest();
             model.thing = 'Data';
 
@@ -128,7 +128,7 @@ describe('Model: ModelFactory', function () {
         it('should call all registered callbacks on change', function() {
             var cb = jasmine.createSpy('callback1');
 
-            var model = new ModelFactory({id:5, $urlBase:'test-url'});
+            var model = new ModelFactory({id:5, url:'test-url'});
             model.$onChange(cb);
             $rootScope.$digest();
             expect(cb).not.toHaveBeenCalled();

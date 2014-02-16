@@ -28,7 +28,7 @@ describe('Model: <%= classedName %>Model', function () {
     });
 
     it('should have the $urlBase property set', function() {
-        expect(<%= classedName %>Model.$urlBase).toBe(APIBaseUrl + collectionUrl);
+        expect(<%= classedName %>Model.$settings.urlBase).toBe(APIBaseUrl + collectionUrl);
     });
 
     describe('$save', function () {
