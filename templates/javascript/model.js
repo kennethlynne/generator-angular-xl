@@ -3,7 +3,7 @@
 angular.module('<%= scriptAppName %>')
     .factory('<%= classedName %>Model', function ($q, $http, $rootScope, ModelFactory, APIBaseUrl, <%= classedName %>Repository) {
 
-        var url = APIBaseUrl + '<%= dasherizedName %>';
+        var url = APIBaseUrl + '<%= pluralizedName %>';
 
         function <%= classedName %>Model(data) {
             data = data || {};

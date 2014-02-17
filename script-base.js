@@ -4,6 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var angularUtils = require('./util.js');
 var _ = require('underscore.string');
+var inflection = require( 'inflection' );
 
 var Generator = module.exports = function Generator() {
     yeoman.generators.NamedBase.apply(this, arguments);
@@ -16,7 +17,6 @@ var Generator = module.exports = function Generator() {
     this.appname = this._.slugify(this._.humanize(this.appname));
     this.scriptAppName = this._.camelize(this.appname);
 
-    //TODO: sett this.name til det siste etter /, og alt foran til this.targetPath
     this.name = this.name
                     .replace(/^\//, '') //remove leading slashes
                     .replace(/\/$/,''); //remove ending slashes
@@ -48,6 +48,7 @@ var Generator = module.exports = function Generator() {
 
     this.cameledName = this._.camelize(this.name);
     this.dasherizedName = dasherize(this.name);
+    this.pluralizedName = inflection.pluralize(this.name);
 
     this.classedName = this._.classify(this.name);
 

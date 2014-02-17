@@ -2,7 +2,7 @@
 
 describe('Model: <%= classedName %>Model', function () {
 
-    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl, <%= classedName %>Repository, collectionUrl = '<%= dasherizedName %>';
+    var <%= classedName %>Model, $httpBackend, $rootScope, APIBaseUrl, <%= classedName %>Repository, collectionUrl = '<%= pluralizedName %>';
 
     beforeEach(function () {
 
