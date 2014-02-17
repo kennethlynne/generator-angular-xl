@@ -27,8 +27,8 @@ describe('Model: <%= classedName %>Model', function () {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('should have the $urlBase property set', function() {
-        expect(<%= classedName %>Model.$settings.urlBase).toBe(APIBaseUrl + collectionUrl);
+    it('should have the url property set', function() {
+        expect(<%= classedName %>Model.$settings.url).toBe(APIBaseUrl + collectionUrl);
     });
 
     describe('$save', function () {

@@ -3,15 +3,15 @@
 angular.module('<%= scriptAppName %>')
     .factory('<%= classedName %>Model', function ($q, $http, $rootScope, ModelFactory, APIBaseUrl, <%= classedName %>Repository) {
 
-        var collectionUrl = '<%= dasherizedName %>';
+        var url = APIBaseUrl + '<%= dasherizedName %>';
 
         function <%= classedName %>Model(data) {
             data = data || {};
-            data.$urlBase = APIBaseUrl + collectionUrl;
+            data.url = url;
             ModelFactory.call(this,data);
         };
 
-        <%= classedName %>Model.$urlBase = APIBaseUrl + collectionUrl;
+        <%= classedName %>Model.$settings = {url:url};
         <%= classedName %>Model.prototype = Object.create(ModelFactory.prototype);
 
         //Decorate save to attach this item to the Repository on successful save
