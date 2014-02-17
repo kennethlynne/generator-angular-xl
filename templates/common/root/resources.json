@@ -24,7 +24,9 @@
             "bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
             "bower_components/ngstorage/ngStorage.js",
             "bower_components/ng-symbiosis-utils/ng-symbiosis-utils.src.js",
-            "bower_components/ng-symbiosis-routeprovider/ng-symbiosis-routeprovider.src.js"
+            "bower_components/ng-symbiosis-routeprovider/ng-symbiosis-routeprovider.src.js",
+            "bower_components/ng-symbiosis-repository/ng-symbiosis-repository.src.js",
+            "bower_components/ng-symbiosis-model/ng-symbiosis-model.src.js"
         ],
         "app" : [
             "scripts/module.js",

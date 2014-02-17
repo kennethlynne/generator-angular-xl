@@ -105,7 +105,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.xeditableModule = hasMod('xeditableModule');
     this.ngStorageModule = hasMod('ngStorageModule');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'ngSymbiosis.routeProvider'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
+    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'ngSymbiosis.routeProvider'", "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
@@ -156,6 +156,4 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
-    this.template('../../templates/javascript/framework/model-factory.js', 'app/scripts/framework/model-factory.js');
-    this.template('../../templates/javascript/spec/model-factory.js', 'test/unit/spec/framework/model-factory.js');
 };

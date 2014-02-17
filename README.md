@@ -282,6 +282,9 @@ The following packages are always installed by the [app](#app) generator:
 * angular-xeditable
 * angular-ui-bootstrap
 * ng-symbiosis-utils
+* ng-symbiosis-routeprovider
+* ng-symbiosis-repository
+* ng-symbiosis-model
 
 The following additional modules are optional:
 
