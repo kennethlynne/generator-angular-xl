@@ -2,7 +2,7 @@
 
 describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
 
-    var <%= classedName %>Ctrl, scope;
+    var <%= classedName %>, scope;
 
     beforeEach(function () {
 
@@ -10,7 +10,7 @@ describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
 
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
-            <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
+            <%= classedName %> = $controller('<%= classedName %>', {
                 $scope: scope
             });
         });
@@ -21,26 +21,26 @@ describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
     });
 });
 <% if (initService) { %>
-describe('Service(<%= pageUrl %>): <%= classedName %>CtrlInit', function () {
+describe('Service(<%= pageUrl %>): <%= classedName %>Init', function () {
 
-    var <%= classedName %>CtrlInit;
+    var <%= classedName %>Init;
 
     beforeEach(function () {
 
         module('<%= scriptAppName %>');
 
-        inject(function (_<%= classedName %>CtrlInit_) {
-            <%= classedName %>CtrlInit = _<%= classedName %>CtrlInit_;
+        inject(function (_<%= classedName %>Init_) {
+            <%= classedName %>Init = _<%= classedName %>Init_;
         });
 
     });
 
     it('should have a prepare function', function () {
-        expect(typeof <%= classedName %>CtrlInit.prepare).toEqual('function');
+        expect(typeof <%= classedName %>Init.prepare).toEqual('function');
     });
 
     it('should return a promise', function () {
-        expect(typeof <%= classedName %>CtrlInit.prepare().then).toEqual('function');
+        expect(typeof <%= classedName %>Init.prepare().then).toEqual('function');
     });
 
 });<% } %>

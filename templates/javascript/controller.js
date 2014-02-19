@@ -7,7 +7,7 @@ angular.module('<%= scriptAppName %>')
             templateUrl: '<%= viewTemplateUrl %>'
         }));
     })<% if (initService) { %>
-    .service('<%= classedName %>CtrlInit', function ($q, $log) {
+    .service('<%= classedName %>Init', function ($q, $log) {
 
         /**
          * An array of functions that return either a value or a promise.
@@ -23,18 +23,18 @@ angular.module('<%= scriptAppName %>')
              * The data returned from this function is injected into the controller as 'init'
              */
             finishedCb = function (reponse) {
-                $log.log('<%= classedName %>Ctrl loaded. Data:', response);
+                $log.log('<%= classedName %> loaded. Data:', response);
                 return {};
             };
 
         return {
             prepare: function () {
-                $log.log('<%= classedName %>Ctrl loading');
+                $log.log('<%= classedName %> loading');
                 return $q.all(dependancies).then(finishedCb);
             }
         }
 
     })<% } %>
-    .controller('<%= classedName %>Ctrl', function ($scope<% if (initService) { %>, init<% } %>) {
+    .controller('<%= classedName %>', function ($scope<% if (initService) { %>, init<% } %>) {
         $scope.foo = 'bar';
     });
