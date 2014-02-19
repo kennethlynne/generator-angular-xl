@@ -1,15 +1,25 @@
 describe('Model Repository: <%= classedName %>Repository', function () {
 
-    var <%= classedName %>Repository, $httpBackend, <%= classedName %>Model, $rootScope;
+    var <%= classedName %>Repository, $httpBackend, Model, $rootScope, BaseRepository;
 
     beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+        Model = function (p) {
+            this.id = p.id;
+        };
 
-        inject(function (_<%= classedName %>Repository_, _$httpBackend_, _<%= classedName %>Model_, _$rootScope_) {
+        Model.$settings = {
+            url: 'URL'
+        };
+
+        module('<%= scriptAppName %>', function ($provide) {
+            $provide.value('<%= classedName %>Model', Model);
+        });
+
+        inject(function (_<%= classedName %>Repository_, _$httpBackend_, _$rootScope_, $injector) {
             <%= classedName %>Repository = _<%= classedName %>Repository_;
             $httpBackend = _$httpBackend_;
-            <%= classedName %>Model = _<%= classedName %>Model_;
+            BaseRepository = $injector.get('BaseRepository');
             $rootScope = _$rootScope_;
         });
 
@@ -20,9 +30,13 @@ describe('Model Repository: <%= classedName %>Repository', function () {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
+    it('should be an instance of BaseRepository', function() {
+        expect(<%= classedName %>Repository instanceof BaseRepository).toBeTruthy();
+    });
+
     describe('getById', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            $httpBackend.expectGET(<%= classedName %>Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
 
             var promise = <%= classedName %>Repository.getById(5);
 
@@ -39,7 +53,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
         });
 
         it('should not do subsequent calls if model already exits in pool', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            $httpBackend.expectGET(<%= classedName %>Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
             <%= classedName %>Repository.getById(5);
             $httpBackend.flush();
 
@@ -58,7 +72,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
         });
 
         it('should handle rejects', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$urlBase + '/5').respond(404, 'No such thang!');
+            $httpBackend.expectGET(<%= classedName %>Model.$settings.url + '/5').respond(404, 'No such thang!');
 
             var promise = <%= classedName %>Repository.getById(5),
                 response,
@@ -76,7 +90,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
     describe('getAll', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$urlBase).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
+            $httpBackend.expectGET(<%= classedName %>Model.$settings.url).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
 
             var promise = <%= classedName %>Repository.getAll();
 
@@ -98,7 +112,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
         });
 
         it('should handle rejects', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$urlBase).respond(404, 'No such thang!');
+            $httpBackend.expectGET(<%= classedName %>Model.$settings.url).respond(404, 'No such thang!');
 
             var promise = <%= classedName %>Repository.getAll(5),
                 success = jasmine.createSpy('success'),
