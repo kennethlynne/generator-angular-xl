@@ -36,7 +36,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
     describe('getById', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
 
             var promise = <%= classedName %>Repository.getById(5);
 
@@ -49,11 +49,10 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             expect(response instanceof <%= classedName %>Model).toBe(true);
             expect(response.id).toEqual(5);
-            expect(response.title).toEqual('<%= classedName %> title');
         });
 
         it('should not do subsequent calls if model already exits in pool', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
             <%= classedName %>Repository.getById(5);
             $httpBackend.flush();
 
@@ -68,11 +67,10 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             expect(response instanceof <%= classedName %>Model).toBe(true);
             expect(response.id).toEqual(5);
-            expect(response.title).toEqual('<%= classedName %> title');
         });
 
         it('should handle rejects', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$settings.url + '/5').respond(404, 'No such thang!');
+            $httpBackend.expectGET(Model.$settings.url + '/5').respond(404, 'No such thang!');
 
             var promise = <%= classedName %>Repository.getById(5),
                 response,
@@ -90,7 +88,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
     describe('getAll', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$settings.url).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
+            $httpBackend.expectGET(Model.$settings.url).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
 
             var promise = <%= classedName %>Repository.getAll();
 
@@ -102,17 +100,15 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             $httpBackend.flush();
 
-            expect(<%= classedName %>5 instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %>5 instanceof Model).toBe(true);
             expect(<%= classedName %>5.id).toEqual(5);
-            expect(<%= classedName %>5.title).toEqual('<%= classedName %> title');
 
-            expect(<%= classedName %>6 instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %>6 instanceof Model).toBe(true);
             expect(<%= classedName %>6.id).toEqual(6);
-            expect(<%= classedName %>6.title).toEqual('<%= classedName %> title');
         });
 
         it('should handle rejects', function() {
-            $httpBackend.expectGET(<%= classedName %>Model.$settings.url).respond(404, 'No such thang!');
+            $httpBackend.expectGET(Model.$settings.url).respond(404, 'No such thang!');
 
             var promise = <%= classedName %>Repository.getAll(5),
                 success = jasmine.createSpy('success'),
@@ -129,14 +125,6 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
     describe('attach', function () {
 
-        var <%= classedName %>Model;
-
-        beforeEach(function () {
-            inject(function (_<%= classedName %>Model_) {
-                <%= classedName %>Model = _<%= classedName %>Model_;
-            });
-        });
-
         it('should throw if trying to attach a model that is not of valid type', function() {
             function wrapper() {
                 <%= classedName %>Repository.attach({fails: true});
@@ -146,7 +134,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
         it('should return the attached model on subsequent requests', function() {
 
-            <%= classedName %>Repository.attach(new <%= classedName %>Model({id: 5, title:'<%= classedName %> title'}));
+            <%= classedName %>Repository.attach(new Model({id: 5, title:'<%= classedName %> title'}));
 
             var <%= classedName %>;
 
@@ -156,17 +144,15 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             $rootScope.$digest();
 
-            expect(<%= classedName %> instanceof <%= classedName %>Model).toBe(true);
+            expect(<%= classedName %> instanceof Model).toBe(true);
             expect(<%= classedName %>.id).toEqual(5);
-            expect(<%= classedName %>.title).toEqual('<%= classedName %> title');
         });
     });
 
     describe('create', function () {
         it('should return a newed up instance of the <%= classedName %> Model', function() {
             var <%= classedName %> = <%= classedName %>Repository.create({title:'New title'});
-            expect(<%= classedName %> instanceof <%= classedName %>Model).toBe(true);
-            expect(<%= classedName %>.title).toEqual('New title');
+            expect(<%= classedName %> instanceof Model).toBe(true);
         });
     });
 
