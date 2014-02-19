@@ -36,7 +36,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
     describe('getById', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5});
 
             var promise = <%= classedName %>Repository.getById(5);
 
@@ -47,12 +47,12 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             $httpBackend.flush();
 
-            expect(response instanceof <%= classedName %>Model).toBe(true);
+            expect(response instanceof Model).toBeTruthy();
             expect(response.id).toEqual(5);
         });
 
         it('should not do subsequent calls if model already exits in pool', function() {
-            $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5, title:'<%= classedName %> title'});
+            $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5});
             <%= classedName %>Repository.getById(5);
             $httpBackend.flush();
 
@@ -65,7 +65,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             $rootScope.$digest();
 
-            expect(response instanceof <%= classedName %>Model).toBe(true);
+            expect(response instanceof Model).toBeTruthy();
             expect(response.id).toEqual(5);
         });
 
@@ -88,7 +88,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
     describe('getAll', function () {
         it('should return models by id', function() {
-            $httpBackend.expectGET(Model.$settings.url).respond(200, [{id: 5, title:'<%= classedName %> title'},{id: 6, title:'<%= classedName %> title'}]);
+            $httpBackend.expectGET(Model.$settings.url).respond(200, [{id: 5},{id: 6}]);
 
             var promise = <%= classedName %>Repository.getAll();
 
@@ -100,10 +100,10 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             $httpBackend.flush();
 
-            expect(<%= classedName %>5 instanceof Model).toBe(true);
+            expect(<%= classedName %>5 instanceof Model).toBeTruthy();
             expect(<%= classedName %>5.id).toEqual(5);
 
-            expect(<%= classedName %>6 instanceof Model).toBe(true);
+            expect(<%= classedName %>6 instanceof Model).toBeTruthy();
             expect(<%= classedName %>6.id).toEqual(6);
         });
 
@@ -134,7 +134,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
         it('should return the attached model on subsequent requests', function() {
 
-            <%= classedName %>Repository.attach(new Model({id: 5, title:'<%= classedName %> title'}));
+            <%= classedName %>Repository.attach(new Model({id: 5}));
 
             var <%= classedName %>;
 
@@ -144,7 +144,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
 
             $rootScope.$digest();
 
-            expect(<%= classedName %> instanceof Model).toBe(true);
+            expect(<%= classedName %> instanceof Model).toBeTruthy();
             expect(<%= classedName %>.id).toEqual(5);
         });
     });
@@ -152,7 +152,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
     describe('create', function () {
         it('should return a newed up instance of the <%= classedName %> Model', function() {
             var <%= classedName %> = <%= classedName %>Repository.create({title:'New title'});
-            expect(<%= classedName %> instanceof Model).toBe(true);
+            expect(<%= classedName %> instanceof Model).toBeTruthy();
         });
     });
 
