@@ -3,8 +3,6 @@
 angular.module('<%= scriptAppName %>')
     .factory('<%= classedName %>Model', function ($q, $http, $rootScope, BaseModel, APIBaseUrl, $injector) {
 
-        var Repository = $injector.get('<%= classedName %>Repository');
-
         var url = APIBaseUrl + '<%= pluralizedName %>';
 
         function Model(data) {
@@ -21,6 +19,7 @@ angular.module('<%= scriptAppName %>')
         Model.prototype.$save = function () {
             var self = this;
             return _$save.apply(this, arguments).then(function (response) {
+                var Repository = $injector.get('<%= classedName %>Repository');
                 Repository.attach(self);
                 return response;
             });
