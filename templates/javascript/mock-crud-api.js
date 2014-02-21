@@ -2,7 +2,7 @@ angular.module('<%= scriptAppName %>')
     .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape, guid) {
         if(!Config.API.useMocks) return;
 
-        var collectionUrl = APIBaseUrl + '<%= dasherizedName %>';
+        var collectionUrl = APIBaseUrl + '<%= pluralizedName %>';
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
         console.log('Stubbing <%= dasherizedName %> API - ' + collectionUrl);
