@@ -5,9 +5,9 @@
             pagesDir:               'pages/',
             API: {
                 useMocks:           true,
-                protocol:           'http',
-                host:               'api.example.com',
-                port:               '8080',
+                protocol:           window.location.protocol.split(':')[0],
+                host:               window.location.hostname,
+                port:               String(window.location.port || 80),
                 path:               '/api',
                 fakeDelay:          800
             }
