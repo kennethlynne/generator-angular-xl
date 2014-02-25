@@ -24,11 +24,10 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-    var dasherizedPath = this.slugifiedPath.concat([this.dasherizedName + '-page']).join('-').trim();
-    this.viewClassesForHTML =  dasherizedPath;
-    this.viewClassesForScss = '.' + dasherizedPath;
+    this.viewClassesForHTML = this.dasherizedName + '-page';
+    this.viewClassesForScss = '.' + this.dasherizedName + '-page';
     var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
     this.template('common/view.html', path.join(this.env.options.appPath, 'pages', targetPath, 'index', 'main-view.html'));
-    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_' + dasherizedPath + '.scss'));
-    this.addStyleToPagesScss('../pages/' + targetPath + '/index/' + dasherizedPath);
+    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_' + this.dasherizedName + '-page' + '.scss'));
+    this.addStyleToPagesScss('../pages/' + targetPath + '/index/' + this.dasherizedName + '-page');
 };
