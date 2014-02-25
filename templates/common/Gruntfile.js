@@ -221,8 +221,8 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'images/**/*.{gif,webp}',
-                        'fonts/*',
+                        'assets/images/**/*.{gif,webp}',
+                        'assets/fonts/**/*',
                         'CNAME',
                         'package.json'
                     ]
@@ -469,8 +469,8 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/scripts/**/*.js',
                     '<%= yeoman.dist %>/styles/**/*.css',
                     '*.{ico,png,txt}',
-                    'images/**/*',
-                    'fonts/*'
+                    'assets/images/**/*',
+                    'assets/fonts/**/*'
                 ],
                 dest: 'manifest.appcache'
             }
