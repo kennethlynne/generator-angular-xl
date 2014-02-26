@@ -1,6 +1,6 @@
 {
-  "name": "generator-angular-xl",
-  "version": "0.2.20",
+  "name": "generator-angular-xl-lite",
+  "version": "0.1.0",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -10,13 +10,13 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/kennethlynne/generator-angular-xl",
-  "bugs": "https://github.com/kennethlynne/generator-angular-xl/issues",
-  "author": "Kenneth Lynne",
+  "homepage": "https://github.com/cmelion/generator-angular-xl-lite",
+  "bugs": "https://github.com/cmelion/generator-angular-xl-lite/issues",
+  "author": "Charles Fulnecky",
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kennethlynne/generator-angular-xl.git"
+    "url": "git://github.com/cmelion/generator-angular-xl-lite.git"
   },
   "scripts": {
     "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd test/temp && npm install && bower install && grunt test && grunt test-e2e"
