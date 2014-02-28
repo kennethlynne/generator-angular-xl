@@ -101,51 +101,6 @@ module.exports = function (grunt) {
                 '<%%= yeoman.app %>/scripts/**/*.js'
             ]
         },
-        coffee: {
-            options: {
-                sourceMap: true,
-                sourceRoot: ''
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%%= yeoman.app %>/scripts',
-                    src: '**/*.coffee',
-                    dest: '.tmp/scripts',
-                    ext: '.js'
-                }]
-            },
-            test: {
-                files: [{
-                    expand: true,
-                    cwd: 'test/spec',
-                    src: '**/*.coffee',
-                    dest: '.tmp/spec',
-                    ext: '.js'
-                }]
-            }
-        },
-        compass: {
-            options: {
-                sassDir: '<%%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/assets/images/generated',
-                imagesDir: '<%%= yeoman.app %>/assets/images',
-                javascriptsDir: '<%%= yeoman.app %>/scripts',
-                fontsDir: '<%%= yeoman.app %>/assets/fonts',
-                importPath: '<%%= yeoman.app %>/bower_components',
-                httpImagesPath: '/assets/images',
-                httpGeneratedImagesPath: '/assets/images/generated',
-                httpFontsPath: '/assets/fonts',
-                relativeAssets: false
-            },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
-            }
-        },
         rev: {
             dist: {
                 files: {
@@ -267,7 +222,7 @@ module.exports = function (grunt) {
         },
         exec: {
           sass_dev: {
-              command: 'sass --load-path <%%= yeoman.dist %>/bower_components/ --watch <%%= yeoman.dist %>/styles/ '
+              command: 'sass --load-path <%%= yeoman.app %>/bower_components/ --watch <%%= yeoman.app %>/styles/ '
           },
             sass_dist: {
                 command: ''
