@@ -4,7 +4,7 @@ describe('Index route', function () {
     describe('index', function () {
         it('should display the correct title', function() {
             protractor.get('/#');
-            expect(protractor.getTitle()).toContain('generator-angular-xl');
+            expect(protractor.getTitle()).toContain('generator-angular-cmelion');
         });
     })
 });

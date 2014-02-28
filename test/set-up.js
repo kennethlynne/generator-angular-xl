@@ -26,7 +26,7 @@ var deps = [
 ];
 
 helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-    var angular = helpers.createGenerator('angular-xl:app', deps);
+    var angular = helpers.createGenerator('angular-cmelion:app', deps);
 
     angular.options['skip-install'] = true;
 
@@ -63,7 +63,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             return;
         }
         var name = queue.pop(); //Get next generator in line
-        var generator = helpers.createGenerator('angular-xl:' + name, deps, [ name + 'Test' ]);
+        var generator = helpers.createGenerator('angular-cmelion:' + name, deps, [ name + 'Test' ]);
 
         generator.run([], function () {
             //Do the next test in queue

@@ -5,7 +5,7 @@ var path = require('path');
 
 var Generator = module.exports = function Generator() {
     ScriptBase.apply(this, arguments);
-    this.hookFor('angular-xl:crud-mock');
+    this.hookFor('angular-cmelion:crud-mock');
 };
 
 util.inherits(Generator, ScriptBase);

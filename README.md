@@ -1,9 +1,9 @@
-[![generator-angular-xl logo](https://raw2.github.com/kennethlynne/generator-angular-xl/master/logo.png)](https://github.com/kennethlynne/generator-angular-xl/)
+[![generator-angular-cmelion logo](https://raw2.github.com/kennethlynne/generator-angular-cmelion/master/logo.png)](https://github.com/kennethlynne/generator-angular-cmelion/)
 
 An opinionated kickstarter for your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
 
-[[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-xl)](https://travis-ci.org/kennethlynne/generator-angular-xl) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-xl.png)](https://codeclimate.com/github/kennethlynne/generator-angular-xl)
+[[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-cmelion)](https://travis-ci.org/kennethlynne/generator-angular-cmelion) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion.png)](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion)
 
 <img height="250" align="left" src="http://gruntjs.com/img/grunt-logo.svg">
 
@@ -35,7 +35,7 @@ Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator
 Install Node.js with npm, then run:
 
 ```
-npm install -g generator-angular-xl
+npm install -g generator-angular-cmelion
 ```
 
 Make a new directory, and `cd` into it:
@@ -43,9 +43,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular-xl`, with your application name:
+Run `yo angular-cmelion`, with your application name:
 ```
-yo angular-xl app-name
+yo angular-cmelion app-name
 ```
 
 Run `grunt server` to start the local server.
@@ -72,20 +72,20 @@ The following commands will build the application into the `/dist` folder.
 
 Available generators:
 
-* [angular-xl](#app) (aka [angular-xl:app](#app))
-* [angular-xl:crud-mock](#crud-mock)
-* [angular-xl:controller](#controller)
-* [angular-xl:directive](#directive)
-* [angular-xl:component](#component)
-* [angular-xl:filter](#filter)
-* [angular-xl:page](#page)
-* [angular-xl:service](#service)
-* [angular-xl:provider](#service)
-* [angular-xl:factory](#service)
-* [angular-xl:repository](#repository)
-* [angular-xl:value](#service)
-* [angular-xl:constant](#service)
-* [angular-xl:decorator](#decorator)
+* [angular-cmelion](#app) (aka [angular-cmelion:app](#app))
+* [angular-cmelion:crud-mock](#crud-mock)
+* [angular-cmelion:controller](#controller)
+* [angular-cmelion:directive](#directive)
+* [angular-cmelion:component](#component)
+* [angular-cmelion:filter](#filter)
+* [angular-cmelion:page](#page)
+* [angular-cmelion:service](#service)
+* [angular-cmelion:provider](#service)
+* [angular-cmelion:factory](#service)
+* [angular-cmelion:repository](#repository)
+* [angular-cmelion:value](#service)
+* [angular-cmelion:constant](#service)
+* [angular-cmelion:decorator](#decorator)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -98,14 +98,14 @@ Sets up a new AngularJS app, generating all the boilerplate you need to get star
 
 Example:
 ```bash
-yo angular-xl
+yo angular-cmelion
 ```
 
 ### CRUD-Mock
 Prototype fast before the API is implemented, but implement like the API already exists.
 
 ```bash
-yo angular-xl:crud-mock user
+yo angular-cmelion:crud-mock user
 ```
 
 Creates a mock CRUD API in the dev folder of your project.
@@ -116,7 +116,7 @@ Pages are located under `app/pages`. A page basically is a controller, with a vi
 
 Example:
 ```bash
-yo angular-xl:page user
+yo angular-cmelion:page user
 ```
 
 Produces `app/pages/user/index/user.js`, `test/spec/pages/user/index/user.js`, `app/pages/user/index/views/user.html` and `app/pages/user/styles/_user.scss`
@@ -130,7 +130,7 @@ Every controller is generated with an accompanying initService, that is responsi
 
 Example:
 ```bash
-yo angular-xl:controller user
+yo angular-cmelion:controller user
 ```
 
 ### Directive
@@ -138,7 +138,7 @@ Generates a directive in `app/scripts/directives`.
 
 Example:
 ```bash
-yo angular-xl:directive myDirective
+yo angular-cmelion:directive myDirective
 ```
 
 Produces `app/scripts/directives/my-directive.js`:
@@ -160,7 +160,7 @@ Generates a directive in `app/scripts/components` that uses a factory called `co
 
 Example:
 ```bash
-yo angular-xl:component awesomeUnicorn
+yo angular-cmelion:component awesomeUnicorn
 ```
 Produces these files:
 `app/scripts/components/awesome-unicorn.js`:
@@ -196,7 +196,7 @@ Generates a filter in `app/scripts/filters`.
 
 Example:
 ```bash
-yo angular-xl:filter myFilter
+yo angular-cmelion:filter myFilter
 ```
 
 Produces `app/scripts/filters/my-filter.js`:
@@ -213,7 +213,7 @@ Generates an AngularJS service.
 
 Example:
 ```bash
-yo angular-xl:service myService
+yo angular-cmelion:service myService
 ```
 
 Produces `app/scripts/services/my-service.js`:
@@ -231,7 +231,7 @@ It uses $http by default, but you should override the methods for your own imple
 
 Example:
 ```bash
-yo angular-xl:repository school
+yo angular-cmelion:repository school
 ```
 
 Produces `app/scripts/models/school.js`, `app/scripts/repositories/school.js` and an accompanying tests and mock data. Then you will be able to use this model in your application like this:
@@ -248,7 +248,7 @@ Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular-xl:decorator serviceName
+yo angular-cmelion:decorator serviceName
 ```
 
 Produces `app/scripts/decorators/servicename-decorator.js`:
@@ -354,4 +354,4 @@ When submitting a new feature, add tests that cover the feature.
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
 
-[![Analytics](https://ga-beacon.appspot.com/UA-46835353-1/generator-angular-xl/README)](https://github.com/igrigorik/ga-beacon)
+[![Analytics](https://ga-beacon.appspot.com/UA-46835353-1/generator-angular-cmelion/README)](https://github.com/igrigorik/ga-beacon)

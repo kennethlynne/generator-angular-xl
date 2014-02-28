@@ -37,18 +37,6 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         yeoman: yeomanConfig,
         watch: {
-            coffee: {
-                files: ['<%%= yeoman.app %>/scripts/**/*.coffee'],
-                tasks: ['coffee:dist']
-            },
-            coffeeTest: {
-                files: ['test/spec/**/*.coffee'],
-                tasks: ['coffee:test']
-            },
-            compass: {
-                files: ['<%%= yeoman.app %>/styles/**/*.{scss,sass}', '<%%= yeoman.app %>/components/**/*.{scss,sass}', '<%%= yeoman.app %>/pages/**/*.{scss,sass}'],
-                tasks: ['compass:server']
-            },
             styles: {
                 files: ['<%%= yeoman.app %>/styles/**/*.css'],
                 tasks: ['copy:styles']
@@ -65,7 +53,7 @@ module.exports = function (grunt) {
                 ]
             },
             sailslinker: {
-                files: ['<%%= yeoman.app %>/**/*.{scss,sass,js}'],
+                files: ['<%%= yeoman.app %>/**/*.{js}'],
                 tasks: ['linkAssets-dev']
             }
         },
@@ -268,16 +256,22 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
-                'compass:server',
                 'copy:styles',
                 'copy:dev'
             ],
             dist: [
-                'compass:dist',
                 'copy:styles',
                 'imagemin',
                 'htmlmin'
             ]
+        },
+        exec: {
+          sass_dev: {
+              command: 'sass --load-path <%%= yeoman.dist %>/bower_components/ --watch <%%= yeoman.dist %>/styles/ '
+          },
+            sass_dist: {
+                command: ''
+            }
         },
         karma: {
             unit: {

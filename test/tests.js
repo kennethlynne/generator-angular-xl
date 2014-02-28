@@ -8,7 +8,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('angular-xl generator', function () {
+describe('angular-cmelion generator', function () {
     var angular;
     var folderName = 'temp';
 
@@ -26,7 +26,7 @@ describe('angular-xl generator', function () {
             if (err) {
                 done(err);
             }
-            angular = helpers.createGenerator('angular-xl:app', deps, ['test']);
+            angular = helpers.createGenerator('angular-cmelion:app', deps, ['test']);
             angular.options['skip-install'] = true;
             done();
         });
@@ -52,7 +52,7 @@ describe('angular-xl generator', function () {
                 '../../page',
                 '../../page'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['thing']);
+            controllerGenerator = helpers.createGenerator('angular-cmelion:page', deps, ['thing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -84,7 +84,7 @@ describe('angular-xl generator', function () {
                 '../../controller',
                 '../../page'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details']);
+            controllerGenerator = helpers.createGenerator('angular-cmelion:page', deps, ['school/details']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -117,7 +117,7 @@ describe('angular-xl generator', function () {
                 '../../page',
                 '../../page'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details/one']);
+            controllerGenerator = helpers.createGenerator('angular-cmelion:page', deps, ['school/details/one']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -151,7 +151,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../component'
             ];
-            componentGenerator = helpers.createGenerator('angular-xl:component', deps, ['thingThing']);
+            componentGenerator = helpers.createGenerator('angular-cmelion:component', deps, ['thingThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -176,7 +176,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../service'
             ];
-            serviceGenerator = helpers.createGenerator('angular-xl:service', deps, ['serviceThing']);
+            serviceGenerator = helpers.createGenerator('angular-cmelion:service', deps, ['serviceThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -199,7 +199,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../factory'
             ];
-            factoryGenerator = helpers.createGenerator('angular-xl:factory', deps, ['factoryThing']);
+            factoryGenerator = helpers.createGenerator('angular-cmelion:factory', deps, ['factoryThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -222,7 +222,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../filter'
             ];
-            filterGenerator = helpers.createGenerator('angular-xl:filter', deps, ['filterThing']);
+            filterGenerator = helpers.createGenerator('angular-cmelion:filter', deps, ['filterThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -245,7 +245,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../provider'
             ];
-            providerGenerator = helpers.createGenerator('angular-xl:provider', deps, ['providerThing']);
+            providerGenerator = helpers.createGenerator('angular-cmelion:provider', deps, ['providerThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -268,7 +268,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../value'
             ];
-            valueGenerator = helpers.createGenerator('angular-xl:value', deps, ['valueThing']);
+            valueGenerator = helpers.createGenerator('angular-cmelion:value', deps, ['valueThing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -291,7 +291,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../directive'
             ];
-            directiveGenerator = helpers.createGenerator('angular-xl:directive', deps, ['superDirective']);
+            directiveGenerator = helpers.createGenerator('angular-cmelion:directive', deps, ['superDirective']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -314,7 +314,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../decorator'
             ];
-            decoratorGenerator = helpers.createGenerator('angular-xl:decorator', deps, ['super']);
+            decoratorGenerator = helpers.createGenerator('angular-cmelion:decorator', deps, ['super']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -337,7 +337,7 @@ describe('angular-xl generator', function () {
                 '../../repository',
                 '../../crud-mock'
             ];
-            repositoryGenerator = helpers.createGenerator('angular-xl:repository', deps, ['superThang']);
+            repositoryGenerator = helpers.createGenerator('angular-cmelion:repository', deps, ['superThang']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -363,7 +363,7 @@ describe('angular-xl generator', function () {
             var deps = [
                 '../../crud-mock'
             ];
-            crudMockGenerator = helpers.createGenerator('angular-xl:crud-mock', deps, ['superMock']);
+            crudMockGenerator = helpers.createGenerator('angular-cmelion:crud-mock', deps, ['superMock']);
 
             helpers.mockPrompt(angular, {
                 modules: []

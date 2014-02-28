@@ -30,11 +30,11 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
-  this.hookFor('angular-xl:common', {
+  this.hookFor('angular-cmelion:common', {
     args: args
   });
 
-  this.hookFor('angular-xl:main', {
+  this.hookFor('angular-cmelion:main', {
     args: args
   });
 

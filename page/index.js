@@ -9,7 +9,7 @@ var Generator = module.exports = function Generator() {
     ScriptBase.apply(this, arguments);
     yeoman.generators.NamedBase.apply(this, arguments);
 
-    this.hookFor('angular-xl:controller');
+    this.hookFor('angular-cmelion:controller');
 
     this.sourceRoot(path.join(__dirname, '../templates'));
 
