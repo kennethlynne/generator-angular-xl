@@ -89,6 +89,7 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
+            coverage: 'test/coverage/*',
             server: '.tmp'
         },
         jshint: {
@@ -220,13 +221,25 @@ module.exports = function (grunt) {
                 'htmlmin'
             ]
         },
+        sass: {                              // Task
+            dist: {                            // Target
+                options: {                       // Target options
+                    style: 'compressed',
+                    loadPath: '<%%= yeoman.app %>/bower_components/',
+                    noCache: true
+                },
+                files: {                         // Dictionary of files
+                    '<%%= yeoman.app %>/styles/main.css': '<%%= yeoman.dist %>/styles/main.scss'       // 'destination': 'source'
+                }
+            }
+        },
         exec: {
           sass_dev: {
               command: 'sass --load-path <%%= yeoman.app %>/bower_components/ --watch <%%= yeoman.app %>/styles/ '
           },
-            sass_dist: {
-                command: ''
-            }
+          sass_dist: {
+              command: ''
+          }
         },
         karma: {
             unit: {
@@ -378,7 +391,8 @@ module.exports = function (grunt) {
         },
         "ddescribe-iit": {
             files: [
-                'test/**/*.js'
+                'test/**/*.js',
+                '!test/coverage/**/*.js' // ignore this guy
             ]
         },
 
@@ -400,26 +414,26 @@ module.exports = function (grunt) {
         manifest: {
             generate: {
                 options: {
-                    basePath: '<%= yeoman.dist %>/',
-                    cache: ['<%= yeoman.dist %>/scripts/scripts.js', '<%= yeoman.dist %>/styles/main.css'],
+                    basePath: '<%%= yeoman.dist %>/',
+                    cache: ['<%%= yeoman.dist %>/scripts/scripts.js', '<%%= yeoman.dist %>/styles/main.css'],
                     network: ['*', 'http://*', 'https://*'],
                     fallback: ['/ /offline.html'],
                     exclude: ['js/jquery.min.js'],
                     preferOnline: true,
                     verbose: true,
                     timestamp: true,
-                    hash: true,
+                    hash: false,
                     master: ['index.html']
                 },
                 src: [ //TODO: Rev images, fonts, icons etc. to bust cache
                     '**/*.html',
-                    '<%= yeoman.dist %>/scripts/**/*.js',
-                    '<%= yeoman.dist %>/styles/**/*.css',
+                    '<%%= yeoman.dist %>/scripts/**/*.js',
+                    '<%%= yeoman.dist %>/styles/**/*.css',
                     '*.{ico,png,txt}',
                     'assets/images/**/*',
                     'assets/fonts/**/*'
                 ],
-                dest: 'manifest.appcache'
+                dest: '<%%= yeoman.dist %>/manifest.appcache'
             }
         }
 
@@ -433,7 +447,6 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'concurrent:server',
-            'autoprefixer',
             'connect:livereload',
             'linkAssets-dev',
             'watch'
@@ -454,8 +467,6 @@ module.exports = function (grunt) {
             console.log('Building using development profile');
             grunt.task.run([
                 'clean',
-                'compass:server',
-                'autoprefixer',
                 'copy:styles',
                 'copy:tmpStyles2dist',
                 'copy:app',
@@ -467,7 +478,6 @@ module.exports = function (grunt) {
             grunt.task.run([
                 'clean',
                 'concurrent:server',
-                'autoprefixer',
                 'copy',
                 'linkAssets-dev'
             ]);
@@ -481,14 +491,12 @@ module.exports = function (grunt) {
                 'test',
                 'clean',
                 'concurrent:dist',
-                'autoprefixer',
                 'ngmin',
                 'uglify',
                 'concat:js',
                 'concat:css',
                 'copy:dist',
                 'cssmin',
-                'rev',
                 'copy:indexHTML',
                 'linkAssets-production',
                 'htmlmin',

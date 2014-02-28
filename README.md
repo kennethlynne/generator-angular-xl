@@ -1,9 +1,9 @@
-[![generator-angular-cmelion logo](https://raw2.github.com/kennethlynne/generator-angular-cmelion/master/logo.png)](https://github.com/kennethlynne/generator-angular-cmelion/)
+[![generator-angular-cmelion logo](https://raw2.github.com/cmelion/generator-angular-cmelion/master/logo.png)](https://github.com/cmelion/generator-angular-cmelion/)
 
 An opinionated kickstarter for your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
 
-[[![Build Status](https://travis-ci.org/kennethlynne/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/kennethlynne/generator-angular-cmelion)](https://travis-ci.org/kennethlynne/generator-angular-cmelion) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion.png)](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion)
+[[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)](https://travis-ci.org/cmelion/generator-angular-cmelion) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion.png)](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion)
 
 <img height="250" align="left" src="http://gruntjs.com/img/grunt-logo.svg">
 
@@ -14,6 +14,8 @@ Avoid boilerplate and improve productivity and consistency.
 ---
 
 ## Features
+- Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl
+- Additional `optimizations` are pending
 - All scripts in `app/scrips`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
 - Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.
 - Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
@@ -26,11 +28,13 @@ Avoid boilerplate and improve productivity and consistency.
 
 - Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
 
-Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
+Maintainer: [Charles Fulnecky](https://github.com/cmelion)
 
-Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator-angular](https://github.com/yeoman/generator-angular).
+Based on [generator-angular-xl](https://github.com/kennethlynne/generator-angular-xl) and [angular-seed](https://github.com/angular/angular-seed/) and [generator-angular](https://github.com/yeoman/generator-angular).
 
 ## Quick start
+
+Install SASS with GEM, then run:
 
 Install Node.js with npm, then run:
 
@@ -49,6 +53,8 @@ yo angular-cmelion app-name
 ```
 
 Run `grunt server` to start the local server.
+
+Open another terminal and run `grunt exec:sass_dev`
 
 *Awesomeness ensues*
 
