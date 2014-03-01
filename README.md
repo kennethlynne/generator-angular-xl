@@ -1,4 +1,4 @@
-# generator-angular-cmelion [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.png?branch=master)](http://travis-ci.org/yeoman/generator-angular-cmelion) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-angular-cmelion  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Yeoman generator for AngularJS - An opinionated kickstarter for your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
