@@ -1,32 +1,34 @@
 {
   "name": "generator-angular-cmelion",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
-  "license": "MIT",
+  "version": "0.1.0",
+  "description": "Custom yeoman generator for AngularJS",
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "framework",
+    "component",
+    "front-end",
+    "app"
+  ],
+  "homepage": "https://github.com/cmelion/generator-angular-cmelion",
+  "bugs": "https://github.com/cmelion/generator-angular-cmelion/issues",
+  "author": "Charles Fulnecky",
   "main": "app/index.js",
-  "repository": "cmelion/generator-angular-cmelion",
-  "author": {
-    "name": "Charles Fulnecky",
-    "email": "",
-    "url": "https://github.com/cmelion"
-  },
-  "engines": {
-    "node": ">=0.10.0"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cmelion/generator-angular-cmelion.git"
   },
   "scripts": {
     "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd test/temp && npm install && bower install && grunt test && grunt test-e2e"
   },
-  "files": [
-    "app"
-  ],
-  "keywords": [
-    "yeoman-generator"
-  ],
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
-    "chalk": "~0.4.0",
+    "yeoman-generator": "~0.13.0",
     "underscore.string": "~2.3.1",
     "inflection": "~1.3.5"
+  },
+  "peerDependencies": {
+    "generator-karma": "~0.6.0",
+    "yo": ">=1.0.0-rc.1.1"
   },
   "devDependencies": {
     "mocha": "~1.13.0",
@@ -38,8 +40,13 @@
     "semver": "~2.1.0",
     "grunt-release": "~0.6.0"
   },
-  "peerDependencies": {
-    "generator-karma": "~0.6.0",
-    "yo": ">=1.0.0"
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
     }
+  ]
 }
