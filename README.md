@@ -1,15 +1,8 @@
-[![generator-angular-cmelion logo](https://raw2.github.com/cmelion/generator-angular-cmelion/master/logo.png)](https://github.com/cmelion/generator-angular-cmelion/)
+# generator-angular-cmelion [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.png?branch=master)](http://travis-ci.org/yeoman/generator-angular-cmelion) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-An opinionated kickstarter for your next large scale AngularJS application.
+> Yeoman generator for AngularJS - An opinionated kickstarter for your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
 
-[[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)](https://travis-ci.org/cmelion/generator-angular-cmelion) [![Code Climate](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion.png)](https://codeclimate.com/github/kennethlynne/generator-angular-cmelion)
-
-<img height="250" align="left" src="http://gruntjs.com/img/grunt-logo.svg">
-
-<img height="250" align="left" src="http://bower.io/img/bower-logo.png">
-
-<img height="250" align="left" src="https://s3.amazonaws.com/media-p.slid.es/uploads/hugojosefson/images/86267/angularjs-logo.png">
 
 ---
 
