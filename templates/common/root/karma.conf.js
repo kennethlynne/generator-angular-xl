@@ -69,7 +69,7 @@ module.exports = function(config) {
             dir : 'test/coverage/'
         },
         // list of files / patterns to exclude
-        exclude: ['/**/yeoman-generator/**/*.js'],
+        exclude: [],
 
         // web server port
         port: 8080,

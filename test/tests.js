@@ -78,7 +78,7 @@ describe('angular-cmelion generator', function () {
             });
         });
 
-        it('should generate a new sub-state', function (done) {
+        xit('should generate a new sub-state', function (done) {
             var controllerGenerator;
             var deps = [
                 '../../controller',
