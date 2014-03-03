@@ -1,4 +1,4 @@
-# generator-angular-cmelion  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-angular-cmelion 
 
 > [generator-angular-cmelion] - An opinionated kickstarter for your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
