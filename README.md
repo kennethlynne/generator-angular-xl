@@ -1,5 +1,5 @@
 # generator-angular-cmelion 
-
+[[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)](https://travis-ci.org/cmelion/generator-angular-cmelion) 
 > [generator-angular-cmelion] - An opinionated kickstarter for your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
 
