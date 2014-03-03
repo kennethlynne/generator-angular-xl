@@ -35,9 +35,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             'resourceModule',
             'cookiesModule',
             'sanitizeModule',
-            'restangularModule',
             'touchModule',
-            'xeditableModule',
             'angularUIBootstrapModule',
             'ngStorageModule'
         ]

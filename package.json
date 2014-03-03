@@ -19,7 +19,7 @@
     "url": "git://github.com/cmelion/generator-angular-cmelion.git"
   },
   "scripts": {
-    "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd test/temp && npm install && bower install && grunt test && grunt test-e2e"
+    "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd ./test/temp && npm install && bower install && grunt test && grunt test-e2e"
   },
   "dependencies": {
     "yeoman-generator": "~0.13.0",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "mocha": "~1.13.0",
+    "karma-mocha": "~0.1",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-conventional-changelog": "~1.0.0",

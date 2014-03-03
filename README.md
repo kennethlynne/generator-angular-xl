@@ -278,7 +278,6 @@ The following packages are always installed by the [app](#app) generator:
 * angular-ui-router
 * angular-promise-tracker
 * angular-loading-bar
-* angular-xeditable
 * angular-ui-bootstrap
 * ng-symbiosis-utils
 * ng-symbiosis-routeprovider
