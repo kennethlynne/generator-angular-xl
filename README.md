@@ -45,9 +45,9 @@ Run `yo angular-cmelion`, with your application name:
 yo angular-cmelion app-name
 ```
 
-Run `grunt server` to start the local server.
+Run `grunt exec:sass_dev` to watch for css changes
 
-Open another terminal and run `grunt exec:sass_dev`
+Open another terminal and run `grunt server` to start the local server
 
 *Awesomeness ensues*
 
