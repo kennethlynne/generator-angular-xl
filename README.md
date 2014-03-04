@@ -83,6 +83,7 @@ Available generators:
 * [angular-xl:provider](#service)
 * [angular-xl:factory](#service)
 * [angular-xl:repository](#repository)
+* [angular-xl:model](#model)
 * [angular-xl:value](#service)
 * [angular-xl:constant](#service)
 * [angular-xl:decorator](#decorator)
@@ -225,9 +226,63 @@ angular.module('myMod').service('myService', function () {
 
 You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`, and `yo angular:constant` for other types of services.
 
+### Model
+Generates an model that has methods like `$save` and `$delete`. Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default.
+
+Example:
+```bash
+yo angular-xl:model category
+```
+
+Produces `app/models/category.js` and an accompanying test:
+
+```javascript
+angular.module('yourApp')
+    .factory('CategoryModel', function (BaseModel, APIBaseUrl) {
+
+        var collectionUrl = 'categories';
+
+        function CategoryModel(data) {
+            data = data || {};
+            data.url = APIBaseUrl + collectionUrl;
+            BaseModel.call(this,data);
+        }
+        
+        //You can add custom methods to your model here
+
+        CategoryModel.$settings = {url: APIBaseUrl + collectionUrl};
+        CategoryModel.prototype = Object.create(BaseModel.prototype);
+
+        return CategoryModel;
+    });
+```
+
+Then instantiate this in for example a controller
+
+```javascript
+angular.module('yourApp')
+    .controller('demo', function($scope, CategoryModel) {
+        
+            var category = new CategoryModel();
+
+            category.title = 'New title';
+            category.id = 5;
+
+            category
+                .$save() 
+                //Since it has an id it will now do a PUT to /categories/5, 
+                //if it did not have an id it would do a POST to /categories/
+                .then(function () {
+                    alert('Saved!');
+                })
+                .catch(function (err) {
+                    alert('Failed!');
+                });
+    });
+```
+
 ### Repository
-Generates an AngularJS factory that returns a class that has `$save` and `$delete` methods and more, and an accompanying repository to handle client side caching and change tracking.
-It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
+Generates a model and an accompanying repository to handle client side caching and change tracking. Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default. It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
 
 Example:
 ```bash
