@@ -43,7 +43,7 @@ describe('angular-cmelion generator', function () {
         });
     });
 
-/*    describe('Page', function () {
+    describe('Page', function () {
         //TODO: Test that it adds style import to _pages.scss
         it('should generate a new page', function (done) {
             var controllerGenerator;
@@ -78,7 +78,7 @@ describe('angular-cmelion generator', function () {
             });
         });
 
-        it('should generate a new sub-state', function (done) {
+        xit('should generate a new sub-state', function (done) {
             var controllerGenerator;
             var deps = [
                 '../../controller',
@@ -110,7 +110,7 @@ describe('angular-cmelion generator', function () {
             });
         });
 
-        it('should generate a new sub-state in a sub-state', function (done) {
+        xit('should generate a new sub-state in a sub-state', function (done) {
             var controllerGenerator;
             var deps = [
                 '../../controller',
@@ -142,7 +142,7 @@ describe('angular-cmelion generator', function () {
                 });
             });
         });
-    });*/
+    });
 
     describe('Component', function () {
         //TODO: Test that it adds style import to _component.scss
