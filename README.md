@@ -23,6 +23,7 @@ Avoid boilerplate and improve productivity and consistency.
 - Build and minify the project with one command: ```grunt build```
 - Deploy to your [GitHub page](http://pages.github.com/) in one command: ```grunt deploy```
 - Intercept calls to an API and provide a [mock API](#crud-mock) to do fast prototyping
+- Use [models](#model) and [repositories](#repository) to avoid monolithic `dataService`s to interact with a back-end
 
 - Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
 
@@ -227,12 +228,14 @@ angular.module('myMod').service('myService', function () {
 You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`, and `yo angular:constant` for other types of services.
 
 ### Model
-Generates an model that has methods like `$save` and `$delete`. Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default.
+Uses [ngSymbiosis.model](https://github.com/ngSymbiosis/ngSymbiosis.model).
+Generates an model with basic CRUD functionality with methods like `$save` and `$delete`. 
 
 Example:
 ```bash
 yo angular-xl:model category
 ```
+*Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default.*
 
 Produces `app/models/category.js` and an accompanying test:
 
@@ -282,12 +285,14 @@ angular.module('yourApp')
 ```
 
 ### Repository
-Generates a model and an accompanying repository to handle client side caching and change tracking. Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default. It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
+Uses [ngSymbiosis.repository](https://github.com/ngSymbiosis/ngSymbiosis.repository) 
+Generates a model and an accompanying repository to handle client side caching and change tracking. It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.
 
 Example:
 ```bash
 yo angular-xl:repository school
 ```
+*Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default.*
 
 Produces `app/scripts/models/school.js`, `app/scripts/repositories/school.js` and an accompanying tests and mock data. 
 ```javascript
