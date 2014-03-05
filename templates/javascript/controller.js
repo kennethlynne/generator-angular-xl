@@ -7,7 +7,7 @@ angular.module('<%= scriptAppName %>')
             templateUrl: '<%= viewTemplateUrl %>'
         }));
     })<% if (initService) { %>
-    .service('<%= classedName %>Init', function ($q, $log) {
+    .service('<%= classedName %>CtrlInit', function ($q, $log) {
 
         /**
          * An array of functions that return either a value or a promise.
@@ -35,6 +35,6 @@ angular.module('<%= scriptAppName %>')
         }
 
     })<% } %>
-    .controller('<%= classedName %>', function ($scope<% if (initService) { %>, init<% } %>) {
+    .controller('<%= classedName %>Ctrl', function ($scope<% if (initService) { %>, init<% } %>) {
         $scope.foo = 'bar';
     });
