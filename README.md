@@ -251,11 +251,24 @@ angular.module('yourApp')
             data.url = APIBaseUrl + collectionUrl;
             BaseModel.call(this,data);
         }
-        
-        //You can add custom methods to your model here
 
         CategoryModel.$settings = {url: APIBaseUrl + collectionUrl};
         CategoryModel.prototype = Object.create(BaseModel.prototype);
+        
+        //You can add custom methods or override existing ones here
+        //Example:
+        $delete: function () {
+          var model = this;
+          
+          return $http.delete(model.$settings.urlBase + '/' + model.id, model).then(function (response) {
+            model.$set(response.data, true);
+            
+            //Show an anoying alert on every delete
+            alert('Hey there, you deleted something. Good for you.');
+            
+            return response;
+          });
+        }
 
         return CategoryModel;
     });
