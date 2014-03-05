@@ -68,8 +68,12 @@ module.exports = function(config) {
             type : 'html',
             dir : 'test/coverage/'
         },
+
         // list of files / patterns to exclude
-        exclude: [],
+        exclude: [
+            appPath + '/bower_components/log/log.js',
+            appPath + '/scripts/log.js'
+        ],
 
         // web server port
         port: 8080,

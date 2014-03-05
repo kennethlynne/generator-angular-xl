@@ -25,7 +25,8 @@
             "bower_components/ng-symbiosis-utils/ng-symbiosis-utils.src.js",
             "bower_components/ng-symbiosis-routeprovider/ng-symbiosis-routeprovider.src.js",
             "bower_components/ng-symbiosis-repository/ng-symbiosis-repository.src.js",
-            "bower_components/ng-symbiosis-model/ng-symbiosis-model.src.js"
+            "bower_components/ng-symbiosis-model/ng-symbiosis-model.src.js",
+            "bower_components/log/log.js"
         ],
         "app" : [
             "scripts/module.js",

@@ -5,8 +5,8 @@ angular.module('<%= scriptAppName %>')
         var collectionUrl = APIBaseUrl + '<%= pluralizedName %>';
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
-        console.log('Stubbing <%= dasherizedName %> API - ' + collectionUrl);
-        console.log('************');
+        $log.log('Overriding all calls to `' + collectionUrl + '` with mocks defined in *dev/<%= dasherizedName %>-mocks.js*');
+        $log.log('*******************************************************************************************************************************************************');
 
         var <%= classedName %>Repo = {};
         <%= classedName %>Repo.data = [
@@ -23,13 +23,13 @@ angular.module('<%= scriptAppName %>')
 
         //GET <%= dasherizedName %>/
         $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
-            $log.log('Intercepted GET to <%= dasherizedName %>', data);
+            $log.debug('Intercepted GET to `' + collectionUrl + '`', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
         //POST <%= dasherizedName %>/
         $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
-            $log.log('Intercepted POST to <%= dasherizedName %>', data);
+            $log.debug('Intercepted POST to `' + collectionUrl + '`', data);
             var <%= classedName %> = angular.fromJson(data);
 
             <%= classedName %>.id = guid();
@@ -41,14 +41,14 @@ angular.module('<%= scriptAppName %>')
 
         //GET <%= dasherizedName %>/id
         $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
-            $log.log('Intercepted GET to <%= dasherizedName %>');
+            $log.debug('Intercepted GET to `' + collectionUrl + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
             return [<%= classedName %>Repo.index[id]?200:404, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
         //PUT <%= dasherizedName %>/id
         $httpBackend.whenPUT( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
-            $log.log('Intercepted PUT to <%= dasherizedName %>');
+            $log.debug('Intercepted PUT to `' + collectionUrl + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
 
             if (!<%= classedName %>Repo.index[id]) {
@@ -62,7 +62,7 @@ angular.module('<%= scriptAppName %>')
 
         //DELETE <%= dasherizedName %>/id
         $httpBackend.whenDELETE( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
-            $log.log('Intercepted DELETE to <%= dasherizedName %>');
+            $log.debug('Intercepted DELETE to `' + collectionUrl + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
 
             var <%= classedName %> = <%= classedName %>Repo.index[id];

@@ -153,6 +153,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
     this.template('../../templates/javascript/framework/config.js', 'app/config/config.js');
+    this.template('../../templates/javascript/framework/log-decorator.js', 'app/scripts/log.js');
     this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
     this.template('../../templates/javascript/navbar.js', 'app/components/navbar/navbar.js');
     this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar.js');

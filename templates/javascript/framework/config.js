@@ -18,6 +18,7 @@ angular.module('<%= scriptAppName %>')
         viewsDir:               'views/',
         componentsDir:          'components/',
         pagesDir:               'pages/',
+        environment:            'production', //development or production
         API: {
             protocol:           window.location.protocol.split(':')[0], //Use the same protocol, host and port as the UI is hosted from bu default
             host:               window.location.hostname,

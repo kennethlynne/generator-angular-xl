@@ -435,6 +435,7 @@ The recommended build process uses `ngmin`, a tool that automatically adds these
 The following packages are always installed by the [app](#app) generator:
 
 * angular
+* [log](http://adamschwartz.co/log/)
 * angular-mocks
 * angular-animate
 * angular-scenario

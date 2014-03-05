@@ -23,13 +23,13 @@ angular.module('<%= scriptAppName %>')
              * The data returned from this function is injected into the controller as 'init'
              */
             finishedCb = function (reponse) {
-                $log.log('<%= classedName %> loaded. Data:', response);
+                $log.debug('<%= classedName %> loaded. Data:', response);
                 return {};
             };
 
         return {
             prepare: function () {
-                $log.log('<%= classedName %> loading');
+                $log.debug('<%= classedName %> loading');
                 return $q.all(dependancies).then(finishedCb);
             }
         }
