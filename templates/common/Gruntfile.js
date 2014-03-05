@@ -449,14 +449,14 @@ module.exports = function (grunt) {
             }
         },
 
-        //The manifest file must be served with the MIME type text/cache-manifest.
+        //TODO: The manifest file must be served with the MIME type text/cache-manifest.
         manifest: {
             generate: {
                 options: {
                     basePath: '<%= yeoman.dist %>/',
                     cache: ['<%= yeoman.dist %>/scripts/scripts.js', '<%= yeoman.dist %>/styles/main.css'],
                     network: ['*', 'http://*', 'https://*'],
-                    fallback: ['/ /offline.html'],
+                    fallback: ['/ /offline.html'], //TODO: Add an offline fallback page
                     exclude: ['js/jquery.min.js'],
                     preferOnline: true,
                     verbose: true,
