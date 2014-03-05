@@ -349,8 +349,7 @@ describe('angular-xl generator', function () {
                 modelGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/scripts/models/supermodel.js'],
-                        ['test/unit/spec/models/supermodel.js'],
-                        ['app/dev/supermodel-mocks.js']
+                        ['test/unit/spec/models/supermodel.js']
                     ]);
                     done();
                 });
