@@ -28,24 +28,36 @@ module.exports = function(config) {
 
     var preprocessors = {};
 
+    //traceur preprocessor
+    [
+        '/config/**/*.es6',
+        '/scripts/**/*.es6',
+        '/components/**/*.es6',
+        '/pages/**/*.es6'
+    ].map(mapAppPath)
+        .forEach(function (path) {
+            preprocessors[path] = ['traceur'];
+        });
+
     //ng-html2js preprocessor
     [
         '/views/**/*.html',
         '/components/**/*.html',
         '/pages/**/*.html'
-    ].map(mapAppPath) //append app path to each row
+    ].map(mapAppPath)
         .forEach(function (path) {
-            preprocessors[path] = ['ng-html2js']; //insert row
+            preprocessors[path] = ['ng-html2js'];
         });
 
     //coverage preprocessor
     [
+        '/config/**/*.js',
         '/scripts/**/*.js',
         '/components/**/*.js',
         '/pages/**/*.js'
-    ].map(mapAppPath) //append app path to each row
+    ].map(mapAppPath)
         .forEach(function (path) {
-            preprocessors[path] = ['coverage']; //insert row
+            preprocessors[path] = ['coverage'];
         });
 
 
@@ -54,7 +66,7 @@ module.exports = function(config) {
         basePath: '',
 
         // testing framework to use (jasmine/mocha/qunit/...)
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine', 'requirejs', 'traceur'],
 
         preprocessors: preprocessors,
 
@@ -100,6 +112,17 @@ module.exports = function(config) {
             stripPrefix: 'app/'
         },
 
+        traceurPreprocessor: {
+            // options passed to the traceur-compiler, see traceur --longhelp for list of options
+            options: {
+                sourceMap: false,
+                modules: 'requirejs'
+            },
+            // custom filename transformation function
+            transformPath: function(path) {
+                return path.replace(/\.es6$/, '.js');
+            }
+        },
 
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit

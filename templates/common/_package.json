@@ -47,7 +47,9 @@
         "grunt-protractor-runner": "~0.2.0",
         "grunt-gh-pages": "~0.9.0",
         "underscore.string": "~2.3.3",
-        "grunt-manifest": "~0.4.0"
+        "grunt-manifest": "~0.4.0",
+        "grunt-traceur": "~0.0.3",
+        "karma-traceur-preprocessor": "~0.1"
     },
     "engines": {
         "node": ">=0.8.0"
