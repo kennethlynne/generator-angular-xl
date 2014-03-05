@@ -21,7 +21,6 @@
         "grunt-contrib-uglify": "~0.2.0",
         "grunt-contrib-watch": "~0.5.2",
         "grunt-conventional-changelog": "~1.0.0",
-        "grunt-ddescribe-iit": "v0.0.2",
         "grunt-ngmin": "~0.0.2",
         "grunt-rev": "~0.1.0",
         "jshint-stylish": "~0.1.3",

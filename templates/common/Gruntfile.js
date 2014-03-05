@@ -429,11 +429,6 @@ module.exports = function (grunt) {
                 versionFile: 'package.json'
             }
         },
-        "ddescribe-iit": {
-            files: [
-                'test/**/*.js'
-            ]
-        },
 
         autoprefixer: {
             options: {
@@ -494,7 +489,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
-        'jshint',
+        //'jshint',
         'karma'
     ]);
 
@@ -530,7 +525,6 @@ module.exports = function (grunt) {
         {
             console.log('Building using production profile');
             grunt.task.run([
-                'ddescribe-iit',
                 'test-e2e',
                 'test',
                 'clean',
