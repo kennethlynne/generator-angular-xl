@@ -2,7 +2,6 @@
 @import 'config';
 @import 'bourbon/app/assets/stylesheets/bourbon';
 @import 'sass-bootstrap/lib/bootstrap';
-@import 'animations';
 @import 'angular-xeditable';
 @import 'globals';
 @import 'site-loading';
@@ -10,3 +9,4 @@
 @import 'angular-busy';
 @import 'components';
 @import 'pages';
+@import 'animations';

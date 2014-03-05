@@ -6,6 +6,8 @@ angular.module('<%= scriptAppName %>')
             url:'/'
         }));
     })
-    .controller('IndexCtrl', function ($scope) {
-        $scope.message = 'Hello world!';
+    .controller('IndexCtrl', function ($scope, AwesomeRepository) {
+        AwesomeRepository.getAll().then(function (awesomeThings) {
+            $scope.awesomeThings = awesomeThings;
+        });
     });

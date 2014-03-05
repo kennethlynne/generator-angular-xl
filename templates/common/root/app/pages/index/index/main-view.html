@@ -8,12 +8,11 @@
             </div>
             <div class="bs-example">
                 <div class="jumbotron">
-                    <h1>Jumbotron</h1>
+                    <h1>Congratulations!</h1>
 
-                    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-                        featured content or information.</p>
+                    <p>You've successfully created a project with generator-angular-xl.</p>
 
-                    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+                    <p><a href="https://github.com/kennethlynne/generator-angular-xl" class="btn btn-primary btn-lg">Learn more</a></p>
                 </div>
             </div>
         </div>
@@ -24,37 +23,34 @@
         <div class="col-lg-4">
             <h2>Awesomesauce!</h2>
 
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-                cursus magna.</p>
-
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            <p>You've just created an angular application!</p>
         </div>
 
         <div class="col-lg-4">
             <h2>This is awesome!</h2>
 
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
-                mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh.</p>
-
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            <p>Much awesome! Don't stop now, generate some pages and components FFS!!</p>
         </div>
 
         <div class="col-lg-4">
-            <h2>Don't stop now, generate some pages and components FFS!!</h2>
+            <h2>Prototyping</h2>
 
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
-
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            <p>You see that list with awesome stuff down there, it is delivered from a mock back-end defined in <pre>/app/dev/awesome-mock.js</pre>
+            You can create your own mock back-end by creating a repository.</p>
         </div>
 
     </div>
 
     <hr>
 
-    <img class="featurette-image img-responsive" src="http://placekitten.com/g/200/300">
+    <div class="row" cg-busy="'AwesomeRepository.getAll'">
+        <div class="col-lg-4">
+            <h1>A list of awesome things <small>from the back-end</small></h1>
+            <p class="lead">This list is populated with data from a mock back-end</p>
+            <ul>
+                <li ng-repeat="thing in awesomeThings">{{thing.text}}</li>
+            </ul>
+        </div>
+    </div>
 
 </div>

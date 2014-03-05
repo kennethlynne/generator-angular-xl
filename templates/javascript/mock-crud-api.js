@@ -9,7 +9,12 @@ angular.module('<%= scriptAppName %>')
         console.log('************');
 
         var <%= classedName %>Repo = {};
-        <%= classedName %>Repo.data = [{id: guid(), text:'Hello World'}];
+        <%= classedName %>Repo.data = [
+            {id: guid(), text:'AngularJS'},
+            {id: guid(), text:'Karma'},
+            {id: guid(), text:'Yeoman'},
+            {id: guid(), text:'Generator-angular-xl'}
+        ];
         <%= classedName %>Repo.index = {};
 
         angular.forEach(<%= classedName %>Repo.data, function(item, key) {

@@ -38,6 +38,10 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
+  this.hookFor('angular-xl:repository', {
+    args: 'awesome'
+  });
+
   this.on('end', function () {
     this.installDependencies({ skipInstall: this.options['skip-install'] });
   });
