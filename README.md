@@ -242,7 +242,7 @@ Produces `app/models/category.js` and an accompanying test:
 
 ```javascript
 angular.module('yourApp')
-    .factory('CategoryModel', function (BaseModel, APIBaseUrl) {
+    .factory('CategoryModel', function (BaseModel, APIBaseUrl, $http) {
 
         var collectionUrl = 'categories';
 
@@ -257,7 +257,7 @@ angular.module('yourApp')
         
         //You can add custom methods or override existing ones here
         //Example:
-        $delete: function () {
+        CategoryModel.prototype.$delete: function () {
           var model = this;
           
           return $http.delete(model.$settings.urlBase + '/' + model.id, model).then(function (response) {
