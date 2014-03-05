@@ -36,6 +36,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         yeoman: yeomanConfig,
+        gitinfo: {},
         watch: {
             styles: {
                 files: ['<%%= yeoman.app %>/styles/**/*.css'],
@@ -435,6 +436,17 @@ module.exports = function (grunt) {
                 ],
                 dest: '<%%= yeoman.dist %>/manifest.appcache'
             }
+        },
+
+        replace: {
+            baseHref: {
+                src: ['dist/index.html'],
+                overwrite: true,                 // overwrite matched source files
+                replacements: [{
+                    from: 'base href="/"',
+                    to: 'base href="<%= gitinfo.remote.origin.url.substr(gitinfo.remote.origin.url.lastIndexOf("/")).replace(".git","/") %>"'
+                }]
+            }
         }
 
     });
@@ -510,9 +522,13 @@ module.exports = function (grunt) {
         'bump'
     ]);
 
-    grunt.registerTask('deploy', [
-        'gh-pages'
-    ]);
+    grunt.registerTask('deploy', function(){
+        grunt.task.run([
+            'gitinfo',
+            'replace:baseHref',
+            'gh-pages'
+        ]);
+    });
 
     grunt.registerTask('linkAssets-dev', [
         'sails-linker:devStyles',
