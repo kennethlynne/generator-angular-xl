@@ -29,7 +29,7 @@
         ],
         "app" : [
             "scripts/module.js",
-            "config/_local.js",
+            "config/local.js",
             "config/*.js",
             "scripts/framework/**/*.js",
             "components/**/*.js",

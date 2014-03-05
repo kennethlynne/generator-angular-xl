@@ -291,7 +291,7 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    src: appJs.concat(['!_local.js']),
+                    src: appJs.concat(['!<%%= yeoman.dist %>/config/local.js']),
                     dest: '.tmp/app_js/'
                 }]
             }
@@ -494,6 +494,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
+        'jshint',
         'karma'
     ]);
 
