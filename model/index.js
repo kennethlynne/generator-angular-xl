@@ -5,17 +5,16 @@ var path = require('path');
 
 var Generator = module.exports = function Generator() {
     ScriptBase.apply(this, arguments);
-    this.hookFor('angular-xl:model');
+    this.hookFor('angular-xl:crud-mock');
 };
 
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createRepositoryFiles = function createRepositoryFiles() {
     this.generateSourceAndTest(
-        'repository',
-        'spec/repository',
-        'repositories/',
-        '../unit/spec/repositories/',
-        this.dasherizedName + '-repository'
+        'model',
+        'spec/model',
+        'models/',
+        '../unit/spec/models/'
     );
 };

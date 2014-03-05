@@ -332,10 +332,36 @@ describe('angular-xl generator', function () {
         });
     });
 
+    describe('Model', function () {
+        it('should generate a new model', function (done) {
+            var modelGenerator;
+            var deps = [
+                '../../model',
+                '../../crud-mock'
+            ];
+            modelGenerator = helpers.createGenerator('angular-xl:model', deps, ['supermodel']);
+
+            helpers.mockPrompt(angular, {
+                modules: []
+            });
+            angular.run([], function () {
+                modelGenerator.run([], function () {
+                    helpers.assertFiles([
+                        ['app/scripts/models/supermodel.js'],
+                        ['test/unit/spec/models/supermodel.js'],
+                        ['app/dev/supermodel-mocks.js']
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+
     describe('Repository', function () {
         it('should generate a new repository', function (done) {
             var repositoryGenerator;
             var deps = [
+                '../../model',
                 '../../repository',
                 '../../crud-mock'
             ];
@@ -357,7 +383,6 @@ describe('angular-xl generator', function () {
             });
         });
     });
-
 
     describe('CRUD mock', function () {
         it('should generate a new CRUD mock', function (done) {
