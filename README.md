@@ -7,6 +7,7 @@ Avoid boilerplate and improve productivity and consistency.
 
 
 ---
+[demo](//cmelion.github.io/test-angular-cmelion/)
 
 ## Features
 - Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl
