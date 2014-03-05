@@ -71,6 +71,11 @@ Generator.prototype.askForModules = function askForModules() {
                     checked: false
                 },
                 {
+                    value: 'lodash',
+                    name: 'lodash.js',
+                    checked: false
+                },
+                {
                     value: 'restangularModule',
                     name: 'restangular.js',
                     checked: false
@@ -108,6 +113,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.touchModule = hasMod('touchModule');
     this.xeditableModule = hasMod('xeditableModule');
     this.ngStorageModule = hasMod('ngStorageModule');
+    this.lodash = hasMod('lodash');
 
     var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'ngSymbiosis.routeProvider'", "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
@@ -132,6 +138,10 @@ Generator.prototype.askForModules = function askForModules() {
       }
       if (this.ngStorageModule) {
           angMods.push("'ngStorage'");
+      }
+      if (this.lodash) {
+          this.template('../../templates/javascript/framework/lodash.js', 'app/scripts/utils/lodash.js');
+          this.template('../../templates/javascript/spec/lodash.js', 'test/unit/spec/utils/lodash.js');
       }
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
