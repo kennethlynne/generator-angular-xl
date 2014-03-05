@@ -17,6 +17,8 @@ describe('angular-xl generator', function () {
             '../../app',
             '../../common',
             '../../controller',
+            '../../repository',
+            '../../model',
             '../../main', [
                 helpers.createDummyGenerator(),
                 'karma:app'
