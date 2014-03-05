@@ -4,7 +4,7 @@
     "dependencies": {
     },
     "devDependencies": {
-        "bower": "~1.2.8",
+        "bower": "1.2.6",
         "grunt": "~0.4.1",
         "grunt-concurrent": "~0.4.1",
         "grunt-autoprefixer": "~0.4.0",
