@@ -43,6 +43,8 @@ Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
 Based on [angular-seed](https://github.com/angular/angular-seed/) and [generator-angular](https://github.com/yeoman/generator-angular).
 
+-----
+
 ## Quick start
 
 Install Node.js with npm, then run:
@@ -70,18 +72,21 @@ Run `grunt server` to start the local server.
 
 ## Available Grunt tasks
 
-`grunt server` to run a test server with live reload.
-`grunt test` to run tests once (for continous integration)
-`karma start` to run tests coninously and rerun tests on file change
-`grunt changelog` - bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
+```shell
+grunt server    to run a test server with live reload.
+grunt test      to run tests once (for continous integration)
+karma start     to run tests coninously and rerun tests on file change
+grunt changelog bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
 
 The following commands will build the application into the `/dist` folder.
-* `grunt build` - production profile, minified, concatinated and awesomified for production
-* `grunt build:dev` - development profile, unminified code
-* `grunt build:prototype` - same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
+grunt build     production profile, minified, concatinated and awesomified for production
+grunt build:dev development profile, unminified code
+grunt build:prototype same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
 
-# Deploy
-* `grunt deploy` - takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
+Deploy
+grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
+
+```
 
 ## Generators
 
