@@ -24,7 +24,6 @@ Avoid boilerplate and improve productivity and consistency.
 - Deploy to your [GitHub page](http://pages.github.com/) in one command: ```grunt deploy```
 - Intercept calls to an API and provide a [mock API](#crud-mock) to do fast prototyping
 - Use [models](#model) and [repositories](#repository) to avoid monolithic `dataService`s to interact with a back-end
-
 - Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
@@ -41,7 +40,8 @@ npm install -g generator-angular-xl
 
 Make a new directory, and `cd` into it:
 ```
-mkdir my-new-project && cd $_
+mkdir my-new-project
+cd my-new-project
 ```
 
 Run `yo angular-xl`, with your application name:
@@ -58,7 +58,8 @@ Run `grunt server` to start the local server.
 ## Available Grunt tasks
 
 `grunt server` to run a test server with live reload.
-`grunt test` to run tests once (`karma start` to run tests coninously and rerun tests on file change)
+`grunt test` to run tests once (for continous integration)
+`karma start` to run tests coninously and rerun tests on file change
 `grunt changelog` - bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
 
 The following commands will build the application into the `/dist` folder.
@@ -110,8 +111,8 @@ Prototype fast before the API is implemented, but implement like the API already
 yo angular-xl:crud-mock user
 ```
 
-Creates a mock CRUD API in the dev folder of your project.
-It will automatically intercept all calls done through ```$http``` to the API and reply with data after the given delay, when ever you are ready to implement with a real API set ```useMocks: false``` in `config/config.js`
+Creates the necessary code to stub out CRUD calls to `example.com/api/users` a CRUD API in the `dev` folder of your project. It will automatically intercept all calls done through ```$http``` to the API and reply with data after the given delay, when ever you are ready to implement with a real API set ```useMocks: false``` in `config/config.js`.
+The mocks are excluded from the build by default.
 
 ### Page
 Pages are located under `app/pages`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
