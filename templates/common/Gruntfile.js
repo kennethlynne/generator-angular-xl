@@ -444,7 +444,7 @@ module.exports = function (grunt) {
                 overwrite: true,                 // overwrite matched source files
                 replacements: [{
                     from: 'base href="/"',
-                    to: 'base href="<%= gitinfo.remote.origin.url.substr(gitinfo.remote.origin.url.lastIndexOf("/")).replace(".git","/") %>"'
+                    to: 'base href="<%%= gitinfo.remote.origin.url.substr(gitinfo.remote.origin.url.lastIndexOf("/")).replace(".git","/") %>"'
                 }]
             }
         }
