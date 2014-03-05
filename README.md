@@ -24,7 +24,20 @@ Avoid boilerplate and improve productivity and consistency.
 - Deploy to your [GitHub page](http://pages.github.com/) in one command: ```grunt deploy```
 - Intercept calls to an API and provide a [mock API](#crud-mock) to do fast prototyping
 - Use [models](#model) and [repositories](#repository) to avoid monolithic `dataService`s to interact with a back-end
-- Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
+- Generate `manifest.appcache` to allow your application to be consumed offline (automatically revving filenames too)
+
+### Roadmap:
+- Support ES6 transpilation
+- Support coffescript
+- Support Jade
+- Add demo application
+- Support associations, validation and basic ORM functionality (ngSymbiosis.Model)
+- Support caching to localStorage or similar of models and `$http` requests (offline, spotty connection, change tracking etc.) (ngSymbiosis.Repository)
+- Support build targets (Cordova/Phonegap (iOS, Android), Chrome app, Web-app, Firefox OS app, Chrome plugin)
+- Move generator templates into the project, so that the templates may be configured on a per project basis
+- Support Gulp for build instead, or in combination with, grunt
+- Add protractor tests
+- Better documentation
 
 Maintainer: [Kenneth Lynne](https://github.com/kennethlynne)
 
@@ -91,7 +104,6 @@ Available generators:
 * [angular-xl:decorator](#decorator)
 
 **Note: Generators are to be run from the root directory of your app.**
-
 
 ### Module
 `app/scripts/module.js` contains the applications main module definition. All dependancies for your application needs to be specified here.
