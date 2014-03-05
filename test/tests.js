@@ -93,7 +93,7 @@ describe('angular-xl generator', function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/pages/school/details/index/details-controller.js'],
-                        ['app/pages/school/details/index/_school-details-page.scss'],
+                        ['app/pages/school/details/index/_details-page.scss'],
                         ['app/pages/school/details/index/main-view.html'],
                         ['test/unit/spec/pages/school/details/index/details-controller.js']
                     ]);
@@ -126,7 +126,7 @@ describe('angular-xl generator', function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
                         ['app/pages/school/details/one/index/one-controller.js'],
-                        ['app/pages/school/details/one/index/_school-details-one-page.scss'],
+                        ['app/pages/school/details/one/index/_one-page.scss'],
                         ['app/pages/school/details/one/index/main-view.html'],
                         ['test/unit/spec/pages/school/details/one/index/one-controller.js']
                     ]);
