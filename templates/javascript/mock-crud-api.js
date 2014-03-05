@@ -5,8 +5,9 @@ angular.module('<%= scriptAppName %>')
         var collectionUrl = APIBaseUrl + '<%= pluralizedName %>';
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
+        $log.log('***************************************************************************************************************');
         $log.log('Overriding all calls to `' + collectionUrl + '` with mocks defined in *dev/<%= dasherizedName %>-mocks.js*');
-        $log.log('*******************************************************************************************************************************************************');
+        $log.log('***************************************************************************************************************');
 
         var <%= classedName %>Repo = {};
         <%= classedName %>Repo.data = [
