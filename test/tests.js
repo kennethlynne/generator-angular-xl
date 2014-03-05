@@ -18,6 +18,7 @@ describe('angular-xl generator', function () {
             '../../common',
             '../../controller',
             '../../repository',
+            '../../crud-mock',
             '../../model',
             '../../main', [
                 helpers.createDummyGenerator(),
