@@ -7,9 +7,10 @@ Avoid boilerplate and improve productivity and consistency.
 ---
 ## Build Status ##
 
-[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)](https://travis-ci.org/cmelion/generator-angular-cmelion)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-
+[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)
 [![Coverage Status](https://coveralls.io/repos/cmelion/generator-angular-cmelion/badge.png)](https://coveralls.io/r/cmelion/generator-angular-cmelion)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 
 <a href="//cmelion.github.io/test-angular-cmelion/" rel="Demo App">![Demo App](http://www.masterbrandlk.com/smsdemo/image/demo_icon.jpg)</a>
 
