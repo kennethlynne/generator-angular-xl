@@ -11,7 +11,7 @@ Avoid boilerplate and improve productivity and consistency.
 
 [![Coverage Status](https://coveralls.io/repos/cmelion/generator-angular-cmelion/badge.png)](https://coveralls.io/r/cmelion/generator-angular-cmelion)
 
-<a href="//cmelion.github.io/test-angular-cmelion/" rel="Demo App">![Demo App](./demo-icon.jpg)</a>
+<a href="//cmelion.github.io/test-angular-cmelion/" rel="Demo App">![Demo App](http://www.masterbrandlk.com/smsdemo/image/demo_icon.jpg)</a>
 
 ## Features
 - Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl
