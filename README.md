@@ -7,12 +7,11 @@ Avoid boilerplate and improve productivity and consistency.
 ---
 ## Build Status ##
 
-Travis: [[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)](https://travis-ci.org/cmelion/generator-angular-cmelion)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)](https://travis-ci.org/cmelion/generator-angular-cmelion)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-Code Converage: [![Coverage Status](https://coveralls.io/repos/cmelion/generator-angular-cmelion/badge.png)](https://coveralls.io/r/cmelion/generator-angular-cmelion)
+[![Coverage Status](https://coveralls.io/repos/cmelion/generator-angular-cmelion/badge.png)](https://coveralls.io/r/cmelion/generator-angular-cmelion)
 
-
-[demo](//cmelion.github.io/test-angular-cmelion/)
+<a href="//cmelion.github.io/test-angular-cmelion/" rel="Demo App">![Demo App](./demo-icon.jpg)</a>
 
 ## Features
 - Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl
