@@ -4,7 +4,6 @@
 Avoid boilerplate and improve productivity and consistency.
 
 
----
 ## Build Status ##
 
 [![Build Status](https://travis-ci.org/cmelion/generator-angular-cmelion.png?branch=master)](https://travis-ci.org/cmelion/generator-angular-cmelion)
