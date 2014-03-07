@@ -13,6 +13,8 @@ Avoid boilerplate and improve productivity and consistency.
 
 <a href="//cmelion.github.io/test-angular-cmelion/" rel="Demo App">![Demo App](http://www.masterbrandlk.com/smsdemo/image/demo_icon.jpg)</a>
 
+[Sample generator output](https://github.com/cmelion/test-angular-cmelion)
+
 ## Features
 - Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl
 - Additional `optimizations` are pending
