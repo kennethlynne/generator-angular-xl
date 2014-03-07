@@ -4,3 +4,4 @@ node_js:
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-angular-cmelion' ]; then cd .. && eval "mv $currentfolder generator-angular-cmelion" && cd generator-angular-cmelion; fi
+  - npm install -g bower
