@@ -447,6 +447,17 @@ module.exports = function (grunt) {
                     to: 'base href="<%%= gitinfo.remote.origin.url.substr(gitinfo.remote.origin.url.lastIndexOf("/")).replace(".git","/") %>"'
                 }]
             }
+        },
+
+        coveralls: {
+            options: {
+                service_name: 'travis',
+                repo_token: 'ZxL9uCI0txdnhqyyJVeQRFUWrpbINI6Gc',
+                debug: false,
+                dryRun: false,
+                force: false,
+                coverage_dir: 'test/coverage/'
+            }
         }
 
     });
