@@ -5,6 +5,9 @@ angular.module('<%= scriptAppName %>')
         var collectionUrl = APIBaseUrl + '<%= pluralizedName %>';
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
+        var <%= pluralizedName %> = collectionUrl;
+        var <%= dasherizedName %>ById = new RegExp(regexEscape(collectionUrl + '/') + IdRegExp );
+
         $log.log('***************************************************************************************************************');
         $log.log('Overriding all calls to `' + collectionUrl + '` with mocks defined in *dev/<%= dasherizedName %>-mocks.js*');
         $log.log('***************************************************************************************************************');
@@ -23,13 +26,13 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= pluralizedName %>/
-        $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( <%= pluralizedName %> ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted GET to `' + url + '`', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
         //POST <%= pluralizedName %>/
-        $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
+        $httpBackend.whenPOST( <%= pluralizedName %> ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted POST to `' + url + '`', data);
             var <%= classedName %> = angular.fromJson(data);
 
@@ -40,15 +43,15 @@ angular.module('<%= scriptAppName %>')
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //GET <%= pluralizedName %>/id
-        $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
+        //GET <%= pluralizedName %>/<id>
+        $httpBackend.whenGET( <%= dasherizedName %>ById ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted GET to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
             return [<%= classedName %>Repo.index[id]?200:404, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
-        //PUT <%= pluralizedName %>/id
-        $httpBackend.whenPUT( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
+        //PUT <%= pluralizedName %>/<id>
+        $httpBackend.whenPUT( <%= dasherizedName %>ById ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted PUT to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
 
@@ -61,7 +64,7 @@ angular.module('<%= scriptAppName %>')
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //DELETE <%= pluralizedName %>/id
+        //DELETE <%= pluralizedName %>/<id>
         $httpBackend.whenDELETE( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted DELETE to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
