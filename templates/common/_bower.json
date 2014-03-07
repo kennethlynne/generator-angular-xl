@@ -19,8 +19,7 @@
     "restangular": "~1.1.8"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "~1.2.7"<% } %><% if (sanitizeModule) { %>,
     "angular-sanitize": "~1.2.7"<% } %><% if (touchModule) { %>,
-    "angular-touch": "~1.2.7"<% } %><% if (xeditableModule) { %>,
-    "angular-xeditable": "~0.1.7"<% } %><% if (ngStorageModule) { %>,
+    "angular-touch": "~1.2.7"<% } %><% if (ngStorageModule) { %>,
     "ngstorage": "~0.3.0"<% } %>
   },
   "devDependencies": {
