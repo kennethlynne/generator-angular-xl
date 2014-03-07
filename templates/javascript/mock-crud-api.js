@@ -22,13 +22,13 @@ angular.module('<%= scriptAppName %>')
             <%= classedName %>Repo.index[item.id] = item;
         });
 
-        //GET <%= dasherizedName %>/
+        //GET <%= pluralizedName %>/
         $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
             $log.debug('Intercepted GET to `' + collectionUrl + '`', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
-        //POST <%= dasherizedName %>/
+        //POST <%= pluralizedName %>/
         $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
             $log.debug('Intercepted POST to `' + collectionUrl + '`', data);
             var <%= classedName %> = angular.fromJson(data);
@@ -40,14 +40,14 @@ angular.module('<%= scriptAppName %>')
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //GET <%= dasherizedName %>/id
+        //GET <%= pluralizedName %>/id
         $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted GET to `' + collectionUrl + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
             return [<%= classedName %>Repo.index[id]?200:404, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
-        //PUT <%= dasherizedName %>/id
+        //PUT <%= pluralizedName %>/id
         $httpBackend.whenPUT( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted PUT to `' + collectionUrl + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
@@ -61,7 +61,7 @@ angular.module('<%= scriptAppName %>')
             return [200, <%= classedName %>, {/*headers*/}];
         });
 
-        //DELETE <%= dasherizedName %>/id
+        //DELETE <%= pluralizedName %>/id
         $httpBackend.whenDELETE( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted DELETE to `' + collectionUrl + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
