@@ -24,13 +24,13 @@ angular.module('<%= scriptAppName %>')
 
         //GET <%= pluralizedName %>/
         $httpBackend.whenGET(collectionUrl).respond(function(method, url, data, headers) {
-            $log.debug('Intercepted GET to `' + collectionUrl + '`', data);
+            $log.debug('Intercepted GET to `' + url + '`', data);
             return [200, <%= classedName %>Repo.data, {/*headers*/}];
         });
 
         //POST <%= pluralizedName %>/
         $httpBackend.whenPOST(collectionUrl).respond(function(method, url, data, headers) {
-            $log.debug('Intercepted POST to `' + collectionUrl + '`', data);
+            $log.debug('Intercepted POST to `' + url + '`', data);
             var <%= classedName %> = angular.fromJson(data);
 
             <%= classedName %>.id = guid();
@@ -42,14 +42,14 @@ angular.module('<%= scriptAppName %>')
 
         //GET <%= pluralizedName %>/id
         $httpBackend.whenGET( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
-            $log.debug('Intercepted GET to `' + collectionUrl + '`');
+            $log.debug('Intercepted GET to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
             return [<%= classedName %>Repo.index[id]?200:404, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
         //PUT <%= pluralizedName %>/id
         $httpBackend.whenPUT( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
-            $log.debug('Intercepted PUT to `' + collectionUrl + '`');
+            $log.debug('Intercepted PUT to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
 
             if (!<%= classedName %>Repo.index[id]) {
@@ -63,7 +63,7 @@ angular.module('<%= scriptAppName %>')
 
         //DELETE <%= pluralizedName %>/id
         $httpBackend.whenDELETE( new RegExp(regexEscape(collectionUrl + '/') + IdRegExp ) ).respond(function(method, url, data, headers) {
-            $log.debug('Intercepted DELETE to `' + collectionUrl + '`');
+            $log.debug('Intercepted DELETE to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
 
             var <%= classedName %> = <%= classedName %>Repo.index[id];
