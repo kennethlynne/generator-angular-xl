@@ -19,6 +19,7 @@ var deps = [
     '../../filter',
     '../../directive',
     '../../crud-mock',
+    '../../model',
     '../../main', [
         helpers.createDummyGenerator(),
         'karma:app'
@@ -39,7 +40,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             'touchModule',
             'xeditableModule',
             'angularUIBootstrapModule',
-            'ngStorageModule'
+            'ngStorageModule',
+            'lodash'
         ]
     });
 
@@ -54,7 +56,8 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
         'repository',
         'directive',
         'controller',
-        'crud-mock'
+        'crud-mock',
+        'model'
     ];
 
     //Recursively do all tests
@@ -69,7 +72,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             //Do the next test in queue
             testNext();
         });
-    };
+    }
 
     //Run tests
     angular.run([], function () {
