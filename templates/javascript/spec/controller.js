@@ -2,7 +2,7 @@
 
 describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
 
-    var <%= classedName %>, scope;
+    var <%= classedName %>Ctrl, scope;
 
     beforeEach(function () {
 
