@@ -1,8 +1,8 @@
 node_modules
-./dist
+/dist
 .tmp
 .sass-cache
 .idea
 test/coverage
 .grunt/
-./app/config/local.js
+/app/config/local.js
