@@ -1,0 +1,624 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>generator-angular-xl by kennethlynne</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>generator-angular-xl</h1>
+        <p>Lean, mean scaffolding machine. Automate your workflow when implementing large scale AngularJS applications. Avoid boilerplate and improve productivity.</p>
+
+        <p class="view"><a href="https://github.com/kennethlynne/generator-angular-xl">View the Project on GitHub <small>kennethlynne/generator-angular-xl</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/kennethlynne/generator-angular-xl/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kennethlynne/generator-angular-xl/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kennethlynne/generator-angular-xl">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="https://github.com/kennethlynne/generator-angular-xl/"><img src="https://raw2.github.com/kennethlynne/generator-angular-xl/master/logo.png" alt="generator-angular-xl logo"></a></p>
+
+<p>An opinionated kickstarter for your next large scale AngularJS application.
+Avoid boilerplate and improve productivity and consistency.</p>
+
+<p><a href="https://travis-ci.org/kennethlynne/generator-angular-xl"></a><a href="https://travis-ci.org/kennethlynne/generator-angular-xl"><img src="https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/kennethlynne/generator-angular-xl"><img src="https://codeclimate.com/github/kennethlynne/generator-angular-xl.png" alt="Code Climate"></a></p>
+
+<p><img height="250" align="left" src="http://gruntjs.com/img/grunt-logo.svg"></p>
+
+<p><img height="250" align="left" src="http://bower.io/img/bower-logo.png"></p>
+
+<p><img height="250" align="left" src="https://s3.amazonaws.com/media-p.slid.es/uploads/hugojosefson/images/86267/angularjs-logo.png"></p>
+
+<hr><h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>All scripts in <code>app/scrips</code>, <code>app/components</code> and <code>app/pages</code> and styles in <code>app/styles</code> will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between <em>all the things</em>. Need more control? Check out <a href="#resources.json">resources.json</a>.</li>
+<li>Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.</li>
+<li>Test coverage using <a href="http://gotwarlost.github.io/istanbul/">Istanbul</a> helps you find exactly what the lines of code that are tested or not. See an <a href="http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html">example output</a>
+</li>
+<li>Use <a href="#component">components</a> as syntactic sugar to use directives as web components with a convention over configuration approach</li>
+<li>Start a server with live reload, easily monitoring your progress with <code>grunt server</code>
+</li>
+<li>Run tests continually when implementing using KarmaJS using <code>grunt test</code>
+</li>
+<li>Build and minify the project with one command: <code>grunt build</code>
+</li>
+<li>Deploy to your <a href="http://pages.github.com/">GitHub page</a> in one command: <code>grunt deploy</code>
+</li>
+<li>Intercept calls to an API and provide a <a href="#crud-mock">mock API</a> to do fast prototyping</li>
+<li>Use <a href="#model">models</a> and <a href="#repository">repositories</a> to avoid monolithic <code>dataService</code>s to interact with a back-end</li>
+<li>Generate <code>manifest.appcache</code> to allow your application to be consumed offline (automatically revving filenames too)</li>
+</ul><h3>
+<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap:</h3>
+
+<ul>
+<li>Support ES6 transpilation</li>
+<li>Support coffescript</li>
+<li>Support Jade</li>
+<li>Add demo application</li>
+<li>Support associations, validation and basic ORM functionality (ngSymbiosis.Model)</li>
+<li>Support caching to localStorage or similar of models and <code>$http</code> requests (offline, spotty connection, change tracking etc.) (ngSymbiosis.Repository)</li>
+<li>Support build targets (Cordova/Phonegap (iOS, Android), Chrome app, Web-app, Firefox OS app, Chrome plugin)</li>
+<li>Move generator templates into the project, so that the templates may be configured on a per project basis</li>
+<li>Support Gulp for build instead, or in combination with, grunt</li>
+<li>Add protractor tests</li>
+<li>Better documentation</li>
+</ul><p>Maintainer: <a href="https://github.com/kennethlynne">Kenneth Lynne</a></p>
+
+<p>Based on <a href="https://github.com/angular/angular-seed/">angular-seed</a> and <a href="https://github.com/yeoman/generator-angular">generator-angular</a>.</p>
+
+<hr><h2>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick start</h2>
+
+<p>Install Node.js with npm, then run:</p>
+
+<pre><code>npm install -g generator-angular-xl
+</code></pre>
+
+<p>Make a new directory, and <code>cd</code> into it:</p>
+
+<pre><code>mkdir my-new-project
+cd my-new-project
+</code></pre>
+
+<p>Run <code>yo angular-xl</code>, with your application name:</p>
+
+<pre><code>yo angular-xl app-name
+</code></pre>
+
+<p>Run <code>grunt server</code> to start the local server.</p>
+
+<p><em>Awesomeness ensues</em></p>
+
+<h1>
+<a name="developing-with-the-generator" class="anchor" href="#developing-with-the-generator"><span class="octicon octicon-link"></span></a>Developing with the generator</h1>
+
+<h2>
+<a name="available-grunt-tasks" class="anchor" href="#available-grunt-tasks"><span class="octicon octicon-link"></span></a>Available Grunt tasks</h2>
+
+<pre lang="shell"><code>grunt server    to run a test server with live reload.
+grunt test      to run tests once (for continous integration)
+karma start     to run tests coninously and rerun tests on file change
+grunt changelog bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
+
+The following commands will build the application into the `/dist` folder.
+grunt build     production profile, minified, concatinated and awesomified for production
+grunt build:dev development profile, unminified code
+grunt build:prototype same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
+
+Deploy
+grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `&lt;your-username&gt;.github.io/&lt;your-repository&gt;/`
+
+</code></pre>
+
+<h2>
+<a name="generators" class="anchor" href="#generators"><span class="octicon octicon-link"></span></a>Generators</h2>
+
+<p>Available generators:</p>
+
+<ul>
+<li>
+<a href="#app">angular-xl</a> (aka <a href="#app">angular-xl:app</a>)</li>
+<li><a href="#crud-mock">angular-xl:crud-mock</a></li>
+<li><a href="#controller">angular-xl:controller</a></li>
+<li><a href="#directive">angular-xl:directive</a></li>
+<li><a href="#component">angular-xl:component</a></li>
+<li><a href="#filter">angular-xl:filter</a></li>
+<li><a href="#page">angular-xl:page</a></li>
+<li><a href="#service">angular-xl:service</a></li>
+<li><a href="#service">angular-xl:provider</a></li>
+<li><a href="#service">angular-xl:factory</a></li>
+<li><a href="#repository">angular-xl:repository</a></li>
+<li><a href="#model">angular-xl:model</a></li>
+<li><a href="#service">angular-xl:value</a></li>
+<li><a href="#service">angular-xl:constant</a></li>
+<li><a href="#decorator">angular-xl:decorator</a></li>
+</ul><p><strong>Note: Generators are to be run from the root directory of your app.</strong></p>
+
+<h3>
+<a name="module" class="anchor" href="#module"><span class="octicon octicon-link"></span></a>Module</h3>
+
+<p><code>app/scripts/module.js</code> contains the applications main module definition. All dependancies for your application needs to be specified here.</p>
+
+<h3>
+<a name="app" class="anchor" href="#app"><span class="octicon octicon-link"></span></a>App</h3>
+
+<p>Sets up a new AngularJS app, generating all the boilerplate you need to get started. The app generator also installs Twitter Bootstrap and additional AngularJS modules.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl
+</pre></div>
+
+<h3>
+<a name="crud-mock" class="anchor" href="#crud-mock"><span class="octicon octicon-link"></span></a>CRUD-Mock</h3>
+
+<p>Prototype fast before the API is implemented, but implement like the API already exists.</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:crud-mock user
+</pre></div>
+
+<p>Creates the necessary code to stub out CRUD calls to <code>example.com/api/users</code> a CRUD API in the <code>dev</code> folder of your project. It will automatically intercept all calls done through <code>$http</code> to the API and reply with data after the given delay, when ever you are ready to implement with a real API set <code>useMocks: false</code> in <code>config/config.js</code>.
+The mocks are excluded from the build by default.</p>
+
+<h3>
+<a name="page" class="anchor" href="#page"><span class="octicon octicon-link"></span></a>Page</h3>
+
+<p>Pages are located under <code>app/pages</code>. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:page user
+</pre></div>
+
+<p>Produces <code>app/pages/user/index/user.js</code>, <code>test/spec/pages/user/index/user.js</code>, <code>app/pages/user/index/views/user.html</code> and <code>app/pages/user/styles/_user.scss</code></p>
+
+<h3>
+<a name="routing" class="anchor" href="#routing"><span class="octicon octicon-link"></span></a>Routing</h3>
+
+<p>Routes are configured in <code>app/config/routes.js</code>. Each individual controller registers its own route.</p>
+
+<h3>
+<a name="controller" class="anchor" href="#controller"><span class="octicon octicon-link"></span></a>Controller</h3>
+
+<p>Generates a controller in <code>app/pages</code> and an accompanying test in <code>test/spec/pages</code>.
+Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise. This helps you load data <em>before</em> the controller is instantiated.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:controller user
+</pre></div>
+
+<h3>
+<a name="directive" class="anchor" href="#directive"><span class="octicon octicon-link"></span></a>Directive</h3>
+
+<p>Generates a directive in <code>app/scripts/directives</code>.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:directive myDirective
+</pre></div>
+
+<p>Produces <code>app/scripts/directives/my-directive.js</code>:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myMod'</span><span class="p">).</span><span class="nx">directive</span><span class="p">(</span><span class="s1">'myDirective'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">'&lt;div&gt;&lt;/div&gt;'</span><span class="p">,</span>
+    <span class="nx">restrict</span><span class="o">:</span> <span class="s1">'E'</span><span class="p">,</span>
+    <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">postLink</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">element</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">element</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">'this is the myDirective directive'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="component" class="anchor" href="#component"><span class="octicon octicon-link"></span></a>Component</h3>
+
+<p>A component is basically a element directive that by convention use a view located in <code>app/views/component/&lt;component-name&gt;/&lt;component-name&gt;.html</code>.
+This helps keep complexity low, and makes it easy to separate parts of your application into smaller and more maintainable parts. The view folder is configurable, and it is even possible to provide your own factory function for complete customizability.
+Generates a directive in <code>app/scripts/components</code> that uses a factory called <code>componentFactory</code> for convention over configuration.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:component awesomeUnicorn
+</pre></div>
+
+<p>Produces these files:
+<code>app/scripts/components/awesome-unicorn.js</code>:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'yourModule.components'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'awesomeUnicornCtrl'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$element</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">'this is the awesome unicorn component'</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'awesomeUnicorn'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">controller</span><span class="o">:</span> <span class="s1">'awesomeUnicornComponentCtrl'</span>
+        <span class="p">};</span>
+    <span class="p">});</span>
+</pre></div>
+
+<p><code>test/spec/components/awesome-unicorn.js</code>
+<code>app/styles/components/awesome-unicorn/_awesome-unicorn.scss</code> (and adds an import statement to it in <code>app/styles/_components.scss</code>)
+<code>app/views/components/awesome-unicorn/awesome-unicorn.html</code></p>
+
+<pre><code>&lt;div class="awesome-unicorn-component"&gt;
+    &lt;p&gt;This is the awesome-unicorn component.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Witch in turn lets you specify custom HTML tags like this to invoke a completely self contained component:</p>
+
+<pre><code>&lt;awesome-unicorn-component&gt;&lt;/awesome-unicorn-component&gt;
+</code></pre>
+
+<p>The view has specified a component name as a class, helping you avoid CSS collisions. Specify your styles specific for this component in SCSS under a <code>.awesome-unicorn-component</code> class wrapper, and only this component is targeted. This is an OK approach until shadow DOMs and web components become widely supported.</p>
+
+<h3>
+<a name="filter" class="anchor" href="#filter"><span class="octicon octicon-link"></span></a>Filter</h3>
+
+<p>Generates a filter in <code>app/scripts/filters</code>.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:filter myFilter
+</pre></div>
+
+<p>Produces <code>app/scripts/filters/my-filter.js</code>:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myMod'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'myFilter'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'myFilter filter:'</span> <span class="o">+</span> <span class="nx">input</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="service" class="anchor" href="#service"><span class="octicon octicon-link"></span></a>Service</h3>
+
+<p>Generates an AngularJS service.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:service myService
+</pre></div>
+
+<p>Produces <code>app/scripts/services/my-service.js</code>:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myMod'</span><span class="p">).</span><span class="nx">service</span><span class="p">(</span><span class="s1">'myService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>You can also do <code>yo angular:factory</code>, <code>yo angular:provider</code>, <code>yo angular:value</code>, and <code>yo angular:constant</code> for other types of services.</p>
+
+<h3>
+<a name="model" class="anchor" href="#model"><span class="octicon octicon-link"></span></a>Model</h3>
+
+<p>Uses <a href="https://github.com/ngSymbiosis/ngSymbiosis.model">ngSymbiosis.model</a>.
+Generates an model with basic CRUD functionality with methods like <code>$save</code> and <code>$delete</code>. </p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:model category
+</pre></div>
+
+<p><em>Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default.</em></p>
+
+<p>Produces <code>app/models/category.js</code> and an accompanying test:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'yourApp'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'CategoryModel'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">BaseModel</span><span class="p">,</span> <span class="nx">APIBaseUrl</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">collectionUrl</span> <span class="o">=</span> <span class="s1">'categories'</span><span class="p">;</span>
+
+        <span class="kd">function</span> <span class="nx">CategoryModel</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span> <span class="o">||</span> <span class="p">{};</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="nx">APIBaseUrl</span> <span class="o">+</span> <span class="nx">collectionUrl</span><span class="p">;</span>
+            <span class="nx">BaseModel</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">CategoryModel</span><span class="p">.</span><span class="nx">$settings</span> <span class="o">=</span> <span class="p">{</span><span class="nx">url</span><span class="o">:</span> <span class="nx">APIBaseUrl</span> <span class="o">+</span> <span class="nx">collectionUrl</span><span class="p">};</span>
+        <span class="nx">CategoryModel</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">BaseModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+
+        <span class="c1">//You can add custom methods or override existing ones here</span>
+        <span class="c1">//Example:</span>
+        <span class="nx">CategoryModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">$delete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">model</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+          <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">$settings</span><span class="p">.</span><span class="nx">urlBase</span> <span class="o">+</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="nx">model</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">model</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">model</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+            <span class="c1">//Show an anoying alert on every delete</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="s1">'Hey there, you deleted something. Good for you.'</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">CategoryModel</span><span class="p">;</span>
+    <span class="p">});</span>
+</pre></div>
+
+<p>Then instantiate this in for example a controller</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'yourApp'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'demo'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">CategoryModel</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="kd">var</span> <span class="nx">category</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CategoryModel</span><span class="p">();</span>
+
+            <span class="nx">category</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s1">'New title'</span><span class="p">;</span>
+            <span class="nx">category</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+            <span class="nx">category</span>
+                <span class="p">.</span><span class="nx">$save</span><span class="p">()</span> 
+                <span class="c1">//Since it has an id it will now do a PUT to /categories/5, </span>
+                <span class="c1">//if it did not have an id it would do a POST to /categories/</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Saved!'</span><span class="p">);</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Failed!'</span><span class="p">);</span>
+                <span class="p">});</span>
+    <span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="repository" class="anchor" href="#repository"><span class="octicon octicon-link"></span></a>Repository</h3>
+
+<p>Uses <a href="https://github.com/ngSymbiosis/ngSymbiosis.repository">ngSymbiosis.repository</a> 
+Generates a model and an accompanying repository to handle client side caching and change tracking. It uses $http by default, but you should override the methods for your own implementation. Return promises, and you're good.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:repository school
+</pre></div>
+
+<p><em>Please use singluar nouns for your models and repositories. The models url will be pluralized automatically by default.</em></p>
+
+<p>Produces <code>app/scripts/models/school.js</code>, <code>app/scripts/repositories/school.js</code> and an accompanying tests and mock data. </p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'yourApp'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'SchoolRepository'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$injector</span><span class="p">,</span> <span class="nx">SchoolModel</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">BaseRepository</span> <span class="o">=</span> <span class="nx">$injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'BaseRepository'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">BaseRepository</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'Category'</span><span class="p">,</span> <span class="nx">model</span><span class="o">:</span> <span class="nx">SchoolModel</span><span class="p">});</span>
+    <span class="p">});</span>
+</pre></div>
+
+<h4>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example:</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myMod'</span><span class="p">).</span><span class="nx">service</span><span class="p">(</span><span class="s1">'myService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">SchoolRepository</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">school</span> <span class="o">=</span> <span class="nx">SchoolRepository</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="nx">id</span><span class="o">:</span><span class="mi">5</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span><span class="s1">'Awesomesauce'</span><span class="p">});</span>
+  <span class="nx">school</span><span class="p">.</span><span class="nx">$save</span><span class="p">();</span> <span class="c1">//Does a PUT to the applications configured API - /schools/1 with the elements data</span>
+<span class="p">});</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//Does a GET to the models base url (/videos/)</span>
+<span class="nx">VideoRepository</span><span class="p">.</span><span class="nx">getAll</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">videos</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">videos</span> <span class="o">=</span> <span class="nx">videos</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">//Does a GET for a specific entity (/videos/1)</span>
+<span class="nx">VideoRepository</span><span class="p">.</span><span class="nx">getById</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">video</span> <span class="o">=</span> <span class="nx">video</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>
+<a name="extending-a-repository-with-custom-methods" class="anchor" href="#extending-a-repository-with-custom-methods"><span class="octicon octicon-link"></span></a>Extending a repository with custom methods</h4>
+
+<p>Example, showing how to add a custom <code>search</code> method to a <code>tags</code> repository: </p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'yourApp'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'TagRepository'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$injector</span><span class="p">,</span> <span class="nx">TagModel</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">BaseRepository</span> <span class="o">=</span> <span class="nx">$injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'BaseRepository'</span><span class="p">);</span>
+
+
+        <span class="kd">function</span> <span class="nx">TagRepository</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">//Call `super`</span>
+            <span class="nx">BaseRepository</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">//Inherit from BaseRepository</span>
+        <span class="nx">TagRepository</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">BaseRepository</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+
+        <span class="c1">//Add custom serach method</span>
+        <span class="nx">TagRepository</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">repository</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">$settings</span><span class="p">.</span><span class="nx">model</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Model</span><span class="p">.</span><span class="nx">$settings</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s1">'/search?q='</span> <span class="o">+</span> <span class="nx">query</span><span class="p">,</span> <span class="p">{</span><span class="nx">tracker</span><span class="o">:</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">$settings</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">'.search'</span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="kd">var</span> <span class="nx">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+                        <span class="nx">repository</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">instance</span><span class="p">;</span>
+                        <span class="k">return</span> <span class="nx">instance</span><span class="p">;</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Unexpected response from API. Expected Array, got '</span> <span class="o">+</span> <span class="k">typeof</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">};</span>
+
+        <span class="c1">//Return a new instance of the repository</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">TagRepository</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'TagRepository'</span><span class="p">,</span> <span class="nx">model</span><span class="o">:</span> <span class="nx">TagModel</span><span class="p">});</span>
+    <span class="p">});</span>
+
+</pre></div>
+
+<h4>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">TagRepository</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="s1">'query'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">hits</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//hits is an array of model instances</span>
+    <span class="nx">doSomething</span><span class="p">(</span><span class="nx">hits</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="decorator" class="anchor" href="#decorator"><span class="octicon octicon-link"></span></a>Decorator</h3>
+
+<p>Generates an AngularJS service decorator.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-bash"><pre>yo angular-xl:decorator serviceName
+</pre></div>
+
+<p>Produces <code>app/scripts/decorators/servicename-decorator.js</code>:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myMod'</span><span class="p">).</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$provide</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$provide</span><span class="p">.</span><span class="nx">decorator</span><span class="p">(</span><span class="s1">'serviceName'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$delegate</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// ...</span>
+      <span class="k">return</span> <span class="nx">$delegate</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="coffeescript" class="anchor" href="#coffeescript"><span class="octicon octicon-link"></span></a>CoffeeScript</h3>
+
+<p>CoffeScript is not supported for now for maintenance reasons. Coffescript is awesome, but I won't spend the time necessary to maintain different versions for now. May be added in the future.</p>
+
+<h3>
+<a name="minification-safe" class="anchor" href="#minification-safe"><span class="octicon octicon-link"></span></a>Minification Safe</h3>
+
+<p>The recommended build process uses <code>ngmin</code>, a tool that automatically adds these annotations. However, if you'd rather not use <code>ngmin</code>, you have to add these annotations manually yourself.</p>
+
+<h2>
+<a name="bower-components" class="anchor" href="#bower-components"><span class="octicon octicon-link"></span></a>Bower Components</h2>
+
+<p>The following packages are always installed by the <a href="#app">app</a> generator:</p>
+
+<ul>
+<li>angular</li>
+<li><a href="http://adamschwartz.co/log/">log</a></li>
+<li>angular-mocks</li>
+<li>angular-animate</li>
+<li>angular-scenario</li>
+<li>angular-component-factory</li>
+<li>angular-ui-router</li>
+<li>angular-promise-tracker</li>
+<li>angular-loading-bar</li>
+<li>angular-xeditable</li>
+<li>angular-ui-bootstrap</li>
+<li>ng-symbiosis-utils</li>
+<li>ng-symbiosis-routeprovider</li>
+<li>ng-symbiosis-repository</li>
+<li>ng-symbiosis-model</li>
+</ul><p>The following additional modules are optional:</p>
+
+<ul>
+<li>angular-cookies</li>
+<li>angular-loader</li>
+<li>angular-touch</li>
+<li>angular-resource</li>
+<li>angular-sanitize</li>
+<li>ngStorage</li>
+</ul><p>All of these can be updated with <code>bower update</code> as new versions of AngularJS are released.
+When you install new dependancies you have to add a reference to the script files in <code>resources.json</code> under <code>external</code>. The build task will inject this into <code>index.html</code> during runtime, and when you build the project it will by convention use the minified version of the source file, that should be located in the same folder, with the exact same filename with a <code>.min</code> suffix. This will be concatenated without minification.</p>
+
+<h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.</p>
+
+<h3>
+<a name="output" class="anchor" href="#output"><span class="octicon octicon-link"></span></a>Output</h3>
+
+<p>You can change the <code>app</code> directory by adding a <code>appPath</code> property to <code>bower.json</code>. For instance, if you wanted to easily integrate with Express.js, you could add the following:</p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+  <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"yo-test"</span><span class="p">,</span>
+  <span class="nt">"version"</span><span class="p">:</span> <span class="s2">"0.0.0"</span><span class="p">,</span>
+  <span class="err">...</span>
+  <span class="nt">"appPath"</span><span class="p">:</span> <span class="s2">"public"</span>
+<span class="p">}</span>
+
+</pre></div>
+
+<p>This will cause Yeoman-generated client-side files to be placed in <code>public</code>.</p>
+
+<h2>
+<a name="resourcesjson" class="anchor" href="#resourcesjson"><span class="octicon octicon-link"></span></a>Resources.json</h2>
+
+<p>All configuration about what files and in what order the files are supposed to be loaded is specified in <code>resources.json</code>.
+This configuration is shared between both jasmine, minifiers and index.html.</p>
+
+<p>Resource.json contains two sections. One for JS and one for SCSS.</p>
+
+<pre><code>"config/routes.js",
+"scripts/**/*.js"
+</code></pre>
+
+<p>Files will be matched only once, so in the aforementioned example the routes config will be loaded before everything else is included.</p>
+
+<p>Add a reference in resource to the <strong>unminified</strong> version of the library you want to use, as it will automatically use the library suffixed with <code>.min</code> during build time.</p>
+
+<h2>
+<a name="manifestappcache" class="anchor" href="#manifestappcache"><span class="octicon octicon-link"></span></a>manifest.appcache</h2>
+
+<p>When you build your application, the will automatically be created a cache manifest file in the dist folder.
+The manifest file must be served with the MIME type text/cache-manifest.
+Read more about the HTML5 Appcache specification <a href="http://appcachefacts.info/">here</a></p>
+
+<h2>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
+
+<p>Running <code>grunt test</code> will run the unit tests with karma.
+Under the folder <code>test/coverage</code> you will find your whole application structure mapped into matching HTML documents describing how tests cover your code. Use this to your advantage. Crush bugs before they are born.</p>
+
+<h2>
+<a name="contribute" class="anchor" href="#contribute"><span class="octicon octicon-link"></span></a>Contribute</h2>
+
+<p>See the <a href="https://github.com/yeoman/yeoman/blob/master/contributing.md">contributing docs</a></p>
+
+<p>When submitting an issue, please follow the <a href="https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission">guidelines</a>. Especially important is to make sure Yeoman is up-to-date, and providing the command or commands that cause the issue.</p>
+
+<p>When submitting a PR, make sure that the commit messages match the <a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/">AngularJS conventions</a>.</p>
+
+<p>When submitting a bugfix, write a test that exposes the bug and fails before applying your fix. Submit the test alongside the fix.</p>
+
+<p>When submitting a new feature, add tests that cover the feature.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="http://opensource.org/licenses/bsd-license.php">BSD license</a></p>
+
+<p><a href="https://github.com/igrigorik/ga-beacon"><img src="https://ga-beacon.appspot.com/UA-46835353-1/generator-angular-xl/README" alt="Analytics"></a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/kennethlynne">kennethlynne</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46835353-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
