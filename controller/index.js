@@ -20,6 +20,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
     if (this.slugifiedPath.length > 0) {
         this.statifiedPath = this.slugifiedPath.join('-') + '-' + this.dasherizedName;
+        this.stateName = this.slugifiedPath.join('_') + '_' + this.dasherizedName;
         this.viewTemplateUrl = 'pages/' + path + '/index/main-view.html';
         this.pageUrl = '/' + this.slugifiedPath.join('/') + '/' + this.dasherizedName;
         path = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
@@ -27,7 +28,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     else
     {
         this.viewTemplateUrl = 'pages/' + this.dasherizedName + '/index/main-view.html';
-        this.statifiedPath = this.dasherizedName;
+        this.statifiedPath = this.stateName = this.dasherizedName;
         this.pageUrl = '/' + this.dasherizedName;
         path = this.dasherizedName;
     }
