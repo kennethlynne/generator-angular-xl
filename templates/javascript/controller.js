@@ -35,6 +35,6 @@ angular.module('<%= scriptAppName %>')
         }
 
     })<% } %>
-    .controller('<%= classedName %>', function ($scope<% if (initService) { %>, init<% } %>) {
+    .controller('<%= classedName %>Ctrl', function ($scope<% if (initService) { %>, init<% } %>) {
         $scope.foo = 'bar';
     });

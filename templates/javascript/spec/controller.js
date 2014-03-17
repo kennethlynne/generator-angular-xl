@@ -10,7 +10,7 @@ describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
 
         inject(function ($controller, $rootScope) {
             scope = $rootScope.$new();
-            <%= classedName %> = $controller('<%= classedName %>', {
+            <%= classedName %> = $controller('<%= classedName %>Ctrl', {
                 $scope: scope
             });
         });
