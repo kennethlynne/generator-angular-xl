@@ -5,7 +5,7 @@ angular.deepExtend = function(destination, source) {
         if (source[property] && source[property].constructor && source[property].constructor === Object)
         {
             destination[property] = destination[property] || {};
-            arguments.callee(destination[property], source[property]);
+            angular.deepExtend(destination[property], source[property]);
         } else {
             destination[property] = source[property];
         }
