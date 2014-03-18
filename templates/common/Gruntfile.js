@@ -291,7 +291,7 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    src: appJs.concat(['!<%%= yeoman.dist %>/config/local.js']),
+                    src: appJs.concat(['!<%%= yeoman.app %>/config/local.js']),
                     dest: '.tmp/app_js/'
                 }]
             }
@@ -306,7 +306,7 @@ module.exports = function (grunt) {
                 }
             },
             js: {
-                src: externalJsMin.concat(['.tmp/scripts/app.js', '!bower_components/angular-mocks/angular-mocks.js']),
+                src: externalJsMin.concat(['.tmp/scripts/app.js', '!<%%= yeoman.app %>/bower_components/angular-mocks/angular-mocks*.js']),
                 dest: '<%%= yeoman.dist %>/scripts/scripts.js'
             },
             css: {
