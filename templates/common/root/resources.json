@@ -28,6 +28,9 @@
             "bower_components/ng-symbiosis-model/ng-symbiosis-model.src.js",
             "bower_components/log/log.js"
         ],
+        "externalExcludeFromBuild": [
+            "bower_components/angular-mocks/angular-mocks*.js"
+        ],
         "app" : [
             "scripts/module.js",
             "config/local.js",
@@ -36,6 +39,9 @@
             "components/**/*.js",
             "pages/**/*.js",
             "scripts/**/*.js"
+        ],
+        "appExcludeFromBuild": [
+            "config/local.js"
         ]
     },
     "css": [
