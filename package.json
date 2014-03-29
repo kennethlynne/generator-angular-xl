@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-xl",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
