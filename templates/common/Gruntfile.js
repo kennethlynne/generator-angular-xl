@@ -163,8 +163,7 @@ module.exports = function (grunt) {
                 files: {
                     src: [
                         '<%%= yeoman.dist %>/scripts/**/*.js',
-                        '<%%= yeoman.dist %>/styles/**/*.css',
-                        '<%%= yeoman.dist %>/assets/fonts/*'
+                        '<%%= yeoman.dist %>/styles/**/*.css'
                     ]
                 }
             }
@@ -539,8 +538,7 @@ module.exports = function (grunt) {
                 'rev',
                 'copy:indexHTML',
                 'linkAssets-production',
-                'htmlmin',
-                'manifest'
+                'htmlmin'//,'manifest'
             ]);
         }
     });
