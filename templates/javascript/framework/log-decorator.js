@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>')
     .config(function ($provide, Config) {
-        $provide.decorator('$log', function ($delegate) {
+        $provide.decorator('$log', ['$delegate', function ($delegate) {
 
             var _log = $delegate.log;
             $delegate.log = function () {
@@ -17,5 +17,5 @@ angular.module('<%= scriptAppName %>')
 
             return $delegate;
 
-        });
+        }]);
     });
