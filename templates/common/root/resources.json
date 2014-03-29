@@ -29,6 +29,7 @@
             "bower_components/log/log.js"
         ],
         "app" : [
+            "scripts/deepExtend.js",
             "scripts/module.js",
             "config/local.js",
             "config/*.js",

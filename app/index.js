@@ -162,6 +162,7 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
+    this.template('../../templates/javascript/framework/deepExtend.js', 'app/scripts/deepExtend.js');
     this.template('../../templates/javascript/framework/config.js', 'app/config/config.js');
     this.template('../../templates/javascript/framework/log-decorator.js', 'app/scripts/log.js');
     this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
