@@ -31,7 +31,7 @@ module.exports = function (grunt) {
     });
 
     var appJsExcludeFromBuild = includes.javascript.appExcludeFromBuild.map(function (path) {
-        return '!' + yeomanconfig.app + '/' + path;
+        return '!' + yeomanConfig.app + '/' + path;
     });
 
     var prototypeAppJs = appJs.slice(0); //copy appJs
