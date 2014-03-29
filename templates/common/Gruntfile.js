@@ -22,8 +22,16 @@ module.exports = function (grunt) {
         return yeomanConfig.app + '/' + path;
     });
 
+    var externalJsExcludeFromBuild = includes.javascript.externalExcludeFromBuild.map(function (path) {
+        return '!' + yeomanConfig.app + '/' + path;
+    });
+
     var appJs = includes.javascript.app.map(function (path) {
         return yeomanConfig.app + '/' + path;
+    });
+
+    var appJsExcludeFromBuild = includes.javascript.appExcludeFromBuild.map(function (path) {
+        return '!' + yeomanconfig.app + '/' + path;
     });
 
     var prototypeAppJs = appJs.slice(0); //copy appJs
@@ -269,8 +277,7 @@ module.exports = function (grunt) {
             server: [
                 'coffee:dist',
                 'compass:server',
-                'copy:styles',
-                'copy:dev'
+                'copy:styles'
             ],
             dist: [
                 'coffee',
@@ -290,7 +297,7 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    src: appJs.concat(['!<%%= yeoman.dist %>/config/local.js']),
+                    src: appJs.concat(appJsExcludeFromBuild),
                     dest: '.tmp/app_js/'
                 }]
             }
@@ -305,7 +312,7 @@ module.exports = function (grunt) {
                 }
             },
             js: {
-                src: externalJsMin.concat(['.tmp/scripts/app.js', '!bower_components/angular-mocks/angular-mocks.js']),
+                src: externalJsMin.concat(['.tmp/scripts/app.js']).concat(externalJsExcludeFromBuild),
                 dest: '<%%= yeoman.dist %>/scripts/scripts.js'
             },
             css: {

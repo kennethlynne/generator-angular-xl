@@ -6,7 +6,7 @@ angular.module('<%= scriptAppName %>')
         var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
         var <%= pluralizedName %> = collectionUrl;
-        var <%= dasherizedName %>ById = new RegExp(regexEscape(collectionUrl + '/') + IdRegExp );
+        var <%= classedName %>ById = new RegExp(regexEscape(collectionUrl + '/') + IdRegExp );
 
         $log.log('***************************************************************************************************************');
         $log.log('Overriding all calls to `' + collectionUrl + '` with mocks defined in *dev/<%= dasherizedName %>-mocks.js*');
@@ -44,14 +44,14 @@ angular.module('<%= scriptAppName %>')
         });
 
         //GET <%= pluralizedName %>/<id>
-        $httpBackend.whenGET( <%= dasherizedName %>ById ).respond(function(method, url, data, headers) {
+        $httpBackend.whenGET( <%= classedName %>ById ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted GET to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
             return [<%= classedName %>Repo.index[id]?200:404, <%= classedName %>Repo.index[id] || null, {/*headers*/}];
         });
 
         //PUT <%= pluralizedName %>/<id>
-        $httpBackend.whenPUT( <%= dasherizedName %>ById ).respond(function(method, url, data, headers) {
+        $httpBackend.whenPUT( <%= classedName %>ById ).respond(function(method, url, data, headers) {
             $log.debug('Intercepted PUT to `' + url + '`');
             var id = url.match( new RegExp(IdRegExp) )[0];
 
