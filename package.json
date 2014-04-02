@@ -22,7 +22,7 @@
     "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd test/temp && npm install && bower install && grunt test && grunt test-e2e && grunt build"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
+    "yeoman-generator": "~0.13.0",
     "underscore.string": "~2.3.3",
     "inflection": "~1.3.5"
   },
