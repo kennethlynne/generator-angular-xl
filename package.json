@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-xl",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -27,8 +27,8 @@
     "inflection": "~1.3.5"
   },
   "peerDependencies": {
-      "generator-karma": ">=0.6.0",
-      "yo": ">=1.0.0"
+    "generator-karma": ">=0.6.0",
+    "yo": ">=1.0.0"
   },
   "devDependencies": {
     "mocha": "*",
