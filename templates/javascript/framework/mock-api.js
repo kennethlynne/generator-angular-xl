@@ -35,6 +35,50 @@ angular.module('<%= scriptAppName %>')
     }]);
 
   })
+  .factory('mockRepository', function (guid) {
+
+    function repository() {
+      this.data = [];
+      this.index = {};
+    }
+
+    repository.prototype.insert = function (id, item) {
+      item.id = id;
+
+      if (this.index[id] ) {
+          this.delete(id);
+      }
+
+      this.data.push(item);
+      this.index[id] = item;
+      return item;
+    };
+
+    repository.prototype.remove = function (id) {
+      for(var prop in this.data) if(this.data[prop].id === id) delete this.data[prop];
+      delete this.index[id];
+    };
+
+    repository.prototype.push = function (item) {
+      item.id = guid();
+      this.insert(item.id, item);
+      return item;
+    };
+
+    repository.prototype.getAll = function () {
+      return this.data;
+    };
+
+    repository.prototype.getById = function (id) {
+      return this.index[id];
+    };
+
+    return {
+      create: function () {
+        return new repository();
+      }
+    };
+  })
   .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape) {
     if (!Config.API.useMocks) return;
 
