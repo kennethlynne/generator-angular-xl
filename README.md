@@ -16,7 +16,7 @@ Avoid boilerplate and improve productivity and consistency.
 <br>
 ## Features
 - All scripts in `app/scrips`, `app/components` and `app/states` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
-- Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.
+- Controllers, views and styling are grouped on a per component and state basis to facilitate high cohesion.
 - Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
 - Use [components](#component) as syntactic sugar to use directives as web components with a convention over configuration approach
 - Start a server with live reload, easily monitoring your progress with ```grunt server```
@@ -85,7 +85,7 @@ grunt build:dev development profile, unminified code
 grunt build:prototype same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
 
 Deploy
-grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
+grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `gh-states` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
 
 ```
 
@@ -99,7 +99,7 @@ Available generators:
 * [angular-xl:directive](#directive)
 * [angular-xl:component](#component)
 * [angular-xl:filter](#filter)
-* [angular-xl:page](#page)
+* [angular-xl:state](#state)
 * [angular-xl:service](#service)
 * [angular-xl:provider](#service)
 * [angular-xl:factory](#service)
@@ -133,11 +133,11 @@ Creates the necessary code to stub out CRUD calls to `example.com/api/users` a C
 The mocks are excluded from the build by default.
 
 ### State
-States are located under `app/states`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
+States are located under `app/states`. A state basically is a controller, with a view and state specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
 
 Example:
 ```bash
-yo angular-xl:page user
+yo angular-xl:state user
 ```
 
 Produces `app/states/user/index/user.js`, `test/spec/states/user/index/user.js`, `app/states/user/index/views/user.html` and `app/states/user/styles/_user.scss`
