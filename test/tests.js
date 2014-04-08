@@ -395,7 +395,7 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 crudMockGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/dev/super-mock-mock.js']
+                        ['app/dev/super-mock-mocks.js']
                     ]);
                     done();
                 });
