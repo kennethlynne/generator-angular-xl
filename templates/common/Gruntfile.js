@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                 tasks: ['coffee:test']
             },
             compass: {
-                files: ['<%%= yeoman.app %>/styles/**/*.{scss,sass}', '<%%= yeoman.app %>/components/**/*.{scss,sass}', '<%%= yeoman.app %>/pages/**/*.{scss,sass}'],
+                files: ['<%%= yeoman.app %>/styles/**/*.{scss,sass}', '<%%= yeoman.app %>/components/**/*.{scss,sass}', '<%%= yeoman.app %>/states/**/*.{scss,sass}'],
                 tasks: ['compass:server']
             },
             styles: {
@@ -212,7 +212,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%%= yeoman.app %>',
-                    src: ['*.html', '!index.html', '../.tmp/index.html', 'views/**/*.html', 'pages/**/*.html', 'components/**/*.html'],
+                    src: ['*.html', '!index.html', '../.tmp/index.html', 'views/**/*.html', 'states/**/*.html', 'components/**/*.html'],
                     dest: '<%%= yeoman.dist %>'
                 }]
             }

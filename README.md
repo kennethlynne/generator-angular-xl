@@ -15,7 +15,7 @@ Avoid boilerplate and improve productivity and consistency.
 ========================
 <br>
 ## Features
-- All scripts in `app/scrips`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
+- All scripts in `app/scrips`, `app/components` and `app/states` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
 - Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.
 - Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
 - Use [components](#component) as syntactic sugar to use directives as web components with a convention over configuration approach
@@ -132,21 +132,21 @@ yo angular-xl:crud-mock user
 Creates the necessary code to stub out CRUD calls to `example.com/api/users` a CRUD API in the `dev` folder of your project. It will automatically intercept all calls done through ```$http``` to the API and reply with data after the given delay, when ever you are ready to implement with a real API set ```useMocks: false``` in `config/config.js`.
 The mocks are excluded from the build by default.
 
-### Page
-Pages are located under `app/pages`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
+### State
+States are located under `app/states`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
 
 Example:
 ```bash
 yo angular-xl:page user
 ```
 
-Produces `app/pages/user/index/user.js`, `test/spec/pages/user/index/user.js`, `app/pages/user/index/views/user.html` and `app/pages/user/styles/_user.scss`
+Produces `app/states/user/index/user.js`, `test/spec/states/user/index/user.js`, `app/states/user/index/views/user.html` and `app/states/user/styles/_user.scss`
 
 ### Routing
 Routes are configured in `app/config/routes.js`. Each individual controller registers its own route.
 
 ### Controller
-Generates a controller in `app/pages` and an accompanying test in `test/spec/pages`.
+Generates a controller in `app/states` and an accompanying test in `test/spec/states`.
 Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise. This helps you load data *before* the controller is instantiated.
 
 Example:

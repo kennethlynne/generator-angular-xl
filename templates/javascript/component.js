@@ -2,7 +2,7 @@
 
 angular.module('<%= scriptAppName %>.components')
     .controller('<%= cameledName %>ComponentCtrl', function ($scope, $element) {
-        $scope.text = 'this is the <%= name %> component';
+        $scope.text = '<%= name %> component';
     })
     .component('<%= cameledName %>', function () {
         return {

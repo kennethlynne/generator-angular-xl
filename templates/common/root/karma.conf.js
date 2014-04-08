@@ -23,7 +23,7 @@ module.exports = function(config) {
         'test/unit/spec/**/*.js',
         appPath + '/views/**/*.html',
         appPath + '/components/**/*.html',
-        appPath + '/pages/**/*.html'
+        appPath + '/states/**/*.html'
     ]);
 
     var preprocessors = {};
@@ -32,7 +32,7 @@ module.exports = function(config) {
     [
         '/views/**/*.html',
         '/components/**/*.html',
-        '/pages/**/*.html'
+        '/states/**/*.html'
     ].map(mapAppPath) //append app path to each row
         .forEach(function (path) {
             preprocessors[path] = ['ng-html2js']; //insert row
@@ -42,7 +42,7 @@ module.exports = function(config) {
     [
         '/scripts/**/*.js',
         '/components/**/*.js',
-        '/pages/**/*.js'
+        '/states/**/*.js'
     ].map(mapAppPath) //append app path to each row
         .forEach(function (path) {
             preprocessors[path] = ['coverage']; //insert row

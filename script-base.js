@@ -112,8 +112,8 @@ Generator.prototype.appendStyleToScss = function (target, style) {
     }
 };
 
-Generator.prototype.addStyleToPagesScss = function (style) {
-    this.appendStyleToScss('_pages.scss', style);
+Generator.prototype.addStyleToStateScss = function (style) {
+    this.appendStyleToScss('_states.scss', style);
 };
 
 Generator.prototype.addStyleToComponentScss = function (style) {

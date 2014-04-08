@@ -4,7 +4,7 @@ angular.module('<%= scriptAppName %>')
     .constant('Config', angular.deepExtend({
         viewsDir:               'views/',
         componentsDir:          'components/',
-        pagesDir:               'pages/',
+        statesDir:              'states/',
         environment:            'production', //development or production
         API: {
             protocol:           window.location.protocol.split(':')[0], //Use the same protocol, host and port as the UI is hosted from bu default

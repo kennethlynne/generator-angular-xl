@@ -38,7 +38,7 @@
             "config/*.js",
             "scripts/framework/**/*.js",
             "components/**/*.js",
-            "pages/**/*.js",
+            "states/**/*.js",
             "scripts/**/*.js"
         ],
         "appExcludeFromBuild": [

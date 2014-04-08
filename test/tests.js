@@ -45,16 +45,15 @@ describe('angular-xl generator', function () {
         });
     });
 
-    describe('Page', function () {
-        //TODO: Test that it adds style import to _pages.scss
-        it('should generate a new page', function (done) {
+    describe('State', function () {
+        //TODO: Test that it adds style import to _states.scss
+        it('should generate a new state', function (done) {
             var controllerGenerator;
             var deps = [
                 '../../controller',
-                '../../page',
-                '../../page'
+                '../../state'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['thing']);
+            controllerGenerator = helpers.createGenerator('angular-xl:state', deps, ['thing']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -62,17 +61,17 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/thing/index/thing-controller.js'],
-                        ['app/pages/thing/index/_thing-page.scss'],
-                        ['app/pages/thing/index/main-view.html'],
-                        ['test/unit/spec/pages/thing/index/thing-controller.js']
+                        ['app/states/thing/index/thing-controller.js'],
+                        ['app/states/thing/index/_thing-state.scss'],
+                        ['app/states/thing/index/main-view.html'],
+                        ['test/unit/spec/states/thing/index/thing-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/pages/thing/index/thing-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('app/states/thing/index/thing-controller.js', 'utf8');
                     var urlRegex = new RegExp('url: \'/thing\'');
                     assert.ok(urlRegex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
-                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/thing/index/main-view.html\'');
+                    var viewTemplateRegex = new RegExp('templateUrl: \'states/thing/index/main-view.html\'');
                     assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
@@ -84,9 +83,9 @@ describe('angular-xl generator', function () {
             var controllerGenerator;
             var deps = [
                 '../../controller',
-                '../../page'
+                '../../state'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details']);
+            controllerGenerator = helpers.createGenerator('angular-xl:state', deps, ['school/details']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -94,17 +93,17 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/school/details/index/details-controller.js'],
-                        ['app/pages/school/details/index/_details-page.scss'],
-                        ['app/pages/school/details/index/main-view.html'],
-                        ['test/unit/spec/pages/school/details/index/details-controller.js']
+                        ['app/states/school/details/index/details-controller.js'],
+                        ['app/states/school/details/index/_details-state.scss'],
+                        ['app/states/school/details/index/main-view.html'],
+                        ['test/unit/spec/states/school/details/index/details-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/pages/school/details/index/details-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('app/states/school/details/index/details-controller.js', 'utf8');
                     var regex = new RegExp('url: \'/school/details\'');
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
-                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/index/main-view.html\'');
+                    var viewTemplateRegex = new RegExp('templateUrl: \'states/school/details/index/main-view.html\'');
                     assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();
@@ -116,10 +115,9 @@ describe('angular-xl generator', function () {
             var controllerGenerator;
             var deps = [
                 '../../controller',
-                '../../page',
-                '../../page'
+                '../../state'
             ];
-            controllerGenerator = helpers.createGenerator('angular-xl:page', deps, ['school/details/one']);
+            controllerGenerator = helpers.createGenerator('angular-xl:state', deps, ['school/details/one']);
 
             helpers.mockPrompt(angular, {
                 modules: []
@@ -127,17 +125,17 @@ describe('angular-xl generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/pages/school/details/one/index/one-controller.js'],
-                        ['app/pages/school/details/one/index/_one-page.scss'],
-                        ['app/pages/school/details/one/index/main-view.html'],
-                        ['test/unit/spec/pages/school/details/one/index/one-controller.js']
+                        ['app/states/school/details/one/index/one-controller.js'],
+                        ['app/states/school/details/one/index/_one-state.scss'],
+                        ['app/states/school/details/one/index/main-view.html'],
+                        ['test/unit/spec/states/school/details/one/index/one-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/pages/school/details/one/index/one-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('app/states/school/details/one/index/one-controller.js', 'utf8');
                     var regex = new RegExp('url: \'/school/details/one\'');
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
-                    var viewTemplateRegex = new RegExp('templateUrl: \'pages/school/details/one/index/main-view.html\'');
+                    var viewTemplateRegex = new RegExp('templateUrl: \'states/school/details/one/index/main-view.html\'');
                     assert.ok(viewTemplateRegex.test(controllerSrc), 'controller registers wrong template url: ' + controllerSrc);
 
                     done();

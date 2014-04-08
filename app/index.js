@@ -165,11 +165,11 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/framework/deepExtend.js', 'app/scripts/deepExtend.js');
     this.template('../../templates/javascript/framework/config.js', 'app/config/config.js');
     this.template('../../templates/javascript/framework/log-decorator.js', 'app/scripts/log.js');
-    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
+    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/states/error/index/error.js');
     this.template('../../templates/javascript/navbar.js', 'app/components/navbar/navbar.js');
     this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar.js');
-    this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
-    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
-    this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
+    this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/states/error/index/error.js');
+    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/states/index/index/index.js');
+    this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/states/index/index/index.js');
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
 };
