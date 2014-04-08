@@ -468,10 +468,10 @@ module.exports = function (grunt) {
                 src: [ //TODO: Rev images, fonts, icons etc. to bust cache
                     '**/*.html',
                     '<%= yeoman.dist %>/scripts/**/*.js',
-                    '<%= yeoman.dist %>/styles/**/*.css',
-                    '*.{ico,png,txt}',
-                    'assets/images/**/*',
-                    'assets/fonts/**/*'
+                    '<%= yeoman.dist %>/styles/**/*.css'//,
+                    //'*.{ico,png,txt}',
+                    //'assets/images/**/*',
+                    //'assets/fonts/**/*'
                 ],
                 dest: 'manifest.appcache'
             }
