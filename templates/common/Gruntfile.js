@@ -119,13 +119,6 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      all: appJs
-    },
     coffee: {
       options: {
         sourceMap: true,
@@ -515,7 +508,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
-    'jshint',
     'karma'
   ]);
 

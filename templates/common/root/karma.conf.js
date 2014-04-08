@@ -28,6 +28,16 @@ module.exports = function (config) {
 
   var preprocessors = {};
 
+  //jshint preprocessor
+  [
+    '/scripts/**/*.js',
+    '/components/**/*.js',
+    '/states/**/*.js'
+  ].map(mapAppPath) //append app path to each row
+    .forEach(function (path) {
+      preprocessors[path] = ['jshint']; //insert row
+    });
+
   //ng-html2js preprocessor
   [
     '/views/**/*.html',
