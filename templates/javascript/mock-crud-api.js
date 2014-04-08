@@ -6,7 +6,7 @@ angular.module('<%= scriptAppName %>')
     var IdRegExp = /[\d\w-_]+$/.toString().slice(1, -1);
 
     var <%= pluralizedName %> = collectionUrl;
-    var <%= classedNameById %> = new RegExp(regexEscape(collectionUrl + '/') + IdRegExp);
+    var <%= classedName %>ById = new RegExp(regexEscape(collectionUrl + '/') + IdRegExp);
 
     $log.log('***************************************************************************************************************');
     $log.log('Overriding all calls to `' + collectionUrl + '` with mocks defined in *dev/<%= dasherizedName %>-mocks.js*');
@@ -28,38 +28,38 @@ angular.module('<%= scriptAppName %>')
     //GET <%= pluralizedName %>/
     $httpBackend.whenGET(<%= pluralizedName %>).respond(function (method, url, data, headers) {
       $log.debug('Intercepted GET to `' + url + '`', data);
-      return [200, classedNameRepo.getAll(), {/*headers*/}];
+      return [200, <%= classedName %>Repo.getAll(), {/*headers*/}];
     });
 
     //POST <%= pluralizedName %>/
     $httpBackend.whenPOST(<%= pluralizedName %>).respond(function (method, url, data, headers) {
       $log.debug('Intercepted POST to `' + url + '`', data);
 
-      var classedName = classedNameRepo.push(angular.fromJson(data));
+      var <%= classedName %> = <%= classedName %>Repo.push(angular.fromJson(data));
 
-      return [200, classedName, {/*headers*/}];
+      return [200, <%= classedName %>, {/*headers*/}];
     });
 
     //GET <%= pluralizedName %>/<id>
-    $httpBackend.whenGET(<%= classedNameById %>).respond(function (method, url, data, headers) {
+    $httpBackend.whenGET(<%= <%= classedName %>ById %>).respond(function (method, url, data, headers) {
       $log.debug('Intercepted GET to `' + url + '`');
       var id = url.match(new RegExp(IdRegExp))[0];
-      var item = classedNameRepo.getById(id);
+      var item = <%= classedName %>Repo.getById(id);
       return [item ? 200 : 404, item || null, {/*headers*/}];
     });
 
     //PUT <%= pluralizedName %>/<id>
-    $httpBackend.whenPUT(<%= classedNameById %>).respond(function (method, url, data, headers) {
+    $httpBackend.whenPUT(<%= <%= classedName %>ById %>).respond(function (method, url, data, headers) {
       $log.debug('Intercepted PUT to `' + url + '`');
       var id = url.match(new RegExp(IdRegExp))[0];
 
-      if (!classedNameRepo.getById(id)) {
+      if (!<%= classedName %>Repo.getById(id)) {
         return [404, {} , {/*headers*/}];
       }
 
-      var classedName = classedNameRepo.insert(id, angular.fromJson(data));
+      var <%= classedName %> = <%= classedName %>Repo.insert(id, angular.fromJson(data));
 
-      return [200, classedName, {/*headers*/}];
+      return [200, <%= classedName %>, {/*headers*/}];
     });
 
     //DELETE <%= pluralizedName %>/<id>
@@ -67,13 +67,13 @@ angular.module('<%= scriptAppName %>')
       $log.debug('Intercepted DELETE to `' + url + '`');
       var id = url.match(new RegExp(IdRegExp))[0];
 
-      var classedName = classedNameRepo.getById(id);
-      if (!classedName) {
+      var <%= classedName %> = <%= classedName %>Repo.getById(id);
+      if (!<%= classedName %>) {
         return [404, {} , {/*headers*/}];
       }
-      classedNameRepo.remove(classedName.id);
+      <%= classedName %>Repo.remove(<%= classedName %>.id);
 
-      return [200, classedName , {/*headers*/}];
+      return [200, <%= classedName %> , {/*headers*/}];
     });
 
   });
