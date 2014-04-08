@@ -14,10 +14,16 @@ module.exports = function (grunt) {
     };
 
     var externalJsSrc = includes.javascript.external.map(function (path) {
+        if (typeof path === 'object') {
+            return yeomanConfig.app + '/' + path.src;
+        }
         return yeomanConfig.app + '/' + path;
     });
 
     var externalJsMin = includes.javascript.external.map(function (path) {
+        if (typeof path === 'object') {
+            return yeomanConfig.app + '/' + path.min;
+        }
         path = path.replace(/(\.js|\.src.js)/, ".min.js");
         return yeomanConfig.app + '/' + path;
     });
