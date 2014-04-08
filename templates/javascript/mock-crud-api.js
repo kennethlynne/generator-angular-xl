@@ -41,7 +41,7 @@ angular.module('<%= scriptAppName %>')
     });
 
     //GET <%= pluralizedName %>/<id>
-    $httpBackend.whenGET(<%= <%= classedName %>ById %>).respond(function (method, url, data, headers) {
+    $httpBackend.whenGET(<%= classedName %>ById).respond(function (method, url, data, headers) {
       $log.debug('Intercepted GET to `' + url + '`');
       var id = url.match(new RegExp(IdRegExp))[0];
       var item = <%= classedName %>Repo.getById(id);
@@ -49,7 +49,7 @@ angular.module('<%= scriptAppName %>')
     });
 
     //PUT <%= pluralizedName %>/<id>
-    $httpBackend.whenPUT(<%= <%= classedName %>ById %>).respond(function (method, url, data, headers) {
+    $httpBackend.whenPUT(<%= classedName %>ById).respond(function (method, url, data, headers) {
       $log.debug('Intercepted PUT to `' + url + '`');
       var id = url.match(new RegExp(IdRegExp))[0];
 
