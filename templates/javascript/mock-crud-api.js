@@ -22,7 +22,7 @@ angular.module('<%= scriptAppName %>')
     var classedNameRepo = mockRepository.create();
 
     angular.forEach(seed, function (item, key) {
-      classedNameRepo.insert(item.id, item);
+        <%= classedName %>Repo.insert(item.id, item);
     });
 
     //GET <%= pluralizedName %>/
