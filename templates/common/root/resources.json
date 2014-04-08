@@ -1,53 +1,53 @@
 {
-    "javascript": {
-        "external" : [
-            "bower_components/jquery/jquery.js",
-            "bower_components/angular/angular.js",
-            "bower_components/angular-mocks/angular-mocks.js",
-            "bower_components/lodash/dist/lodash.js",
-            "bower_components/angular-route/angular-route.js",
-            "bower_components/angular-xeditable/dist/js/xeditable.js",
-            "bower_components/angular-animate/angular-animate.js",
-            "bower_components/angular-touch/angular-touch.js",
-            "bower_components/angular-resource/angular-resource.js",
-            "bower_components/angular-cookies/angular-cookies.js",
-            "bower_components/angular-sanitize/angular-sanitize.js",
-            "bower_components/angular-component-factory/angular-component-factory.js",
-            "bower_components/angular-loading-bar/build/loading-bar.js",
-            "bower_components/angular-animate/angular-animate.js",
-            "bower_components/angular-busy/dist/angular-busy.js",
-            "bower_components/angular-promise-tracker/promise-tracker.js",
-            "bower_components/restangular/dist/restangular.js",
-            "bower_components/angular-ui-router/release/angular-ui-router.js",
-            "bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js",
-            "bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
-            "bower_components/ngstorage/ngStorage.js",
-            "bower_components/ng-symbiosis-utils/ng-symbiosis-utils.src.js",
-            "bower_components/ng-symbiosis-routeprovider/ng-symbiosis-routeprovider.src.js",
-            "bower_components/ng-symbiosis-repository/ng-symbiosis-repository.src.js",
-            "bower_components/ng-symbiosis-model/ng-symbiosis-model.src.js",
-            "bower_components/log/log.js"
-        ],
-        "externalExcludeFromBuild": [
-            "bower_components/angular-mocks/angular-mocks*.js"
-        ],
-        "app" : [
-            "scripts/deepExtend.js",
-            "scripts/module.js",
-            "config/local.js",
-            "config/*.js",
-            "scripts/framework/**/*.js",
-            "components/**/*.js",
-            "states/**/*.js",
-            "scripts/**/*.js"
-        ],
-        "appExcludeFromBuild": [
-            "config/local.js"
-        ]
-    },
-    "css": [
-        "styles/**/*.css"
+  "javascript": {
+    "external": [
+      "bower_components/jquery/jquery.js",
+      "bower_components/angular/angular.js",
+      "bower_components/angular-mocks/angular-mocks.js",
+      "bower_components/lodash/dist/lodash.js",
+      "bower_components/angular-route/angular-route.js",
+      "bower_components/angular-xeditable/dist/js/xeditable.js",
+      "bower_components/angular-animate/angular-animate.js",
+      "bower_components/angular-touch/angular-touch.js",
+      "bower_components/angular-resource/angular-resource.js",
+      "bower_components/angular-cookies/angular-cookies.js",
+      "bower_components/angular-sanitize/angular-sanitize.js",
+      "bower_components/angular-component-factory/angular-component-factory.js",
+      "bower_components/angular-loading-bar/build/loading-bar.js",
+      "bower_components/angular-animate/angular-animate.js",
+      "bower_components/angular-busy/dist/angular-busy.js",
+      "bower_components/angular-promise-tracker/promise-tracker.js",
+      "bower_components/restangular/dist/restangular.js",
+      "bower_components/angular-ui-router/release/angular-ui-router.js",
+      "bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js",
+      "bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
+      "bower_components/ngstorage/ngStorage.js",
+      "bower_components/ng-symbiosis-utils/ng-symbiosis-utils.src.js",
+      "bower_components/ng-symbiosis-routeprovider/ng-symbiosis-routeprovider.src.js",
+      "bower_components/ng-symbiosis-repository/ng-symbiosis-repository.src.js",
+      "bower_components/ng-symbiosis-model/ng-symbiosis-model.src.js",
+      "bower_components/log/log.js"
+    ],
+    "externalExcludeFromBuild": [
+      "bower_components/angular-mocks/angular-mocks*.js"
+    ],
+    "app": [
+      "scripts/deepExtend.js",
+      "scripts/module.js",
+      "config/local.js",
+      "config/*.js",
+      "scripts/framework/**/*.js",
+      "components/**/*.js",
+      "states/**/*.js",
+      "scripts/**/*.js"
+    ],
+    "appExcludeFromBuild": [
+      "config/local.js"
     ]
+  },
+  "css": [
+    "styles/**/*.css"
+  ]
 }
 
 

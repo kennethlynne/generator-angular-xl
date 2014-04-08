@@ -1,9 +1,9 @@
 module.exports = {
-    config: {
-        specs: [
-            'test/e2e/spec/**/*.js'
-        ],
+  config: {
+    specs: [
+      'test/e2e/spec/**/*.js'
+    ],
 
-        baseUrl: 'http://localhost:3333'
-    }
+    baseUrl: 'http://localhost:3333'
+  }
 };
