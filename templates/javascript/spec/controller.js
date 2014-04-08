@@ -2,45 +2,45 @@
 
 describe('Controller(<%= stateUrl %>): <%= classedName %>Ctrl', function () {
 
-    var <%= classedName %>Ctrl, scope;
+  var <%= classedName %>Ctrl, scope;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+    module('<%= scriptAppName %>');
 
-        inject(function ($controller, $rootScope) {
-            scope = $rootScope.$new();
-            <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
-                $scope: scope
-            });
-        });
+    inject(function ($controller, $rootScope) {
+      scope = $rootScope.$new();
+      <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
+        $scope: scope
+      });
     });
+  });
 
-    it('should attach init data to scope', function () {
-        expect(scope.foo).toEqual('bar');
-    });
+  it('should attach init data to scope', function () {
+    expect(scope.foo).toEqual('bar');
+  });
 });
 <% if (initService) { %>
 describe('Service(<%= stateUrl %>): <%= classedName %>CtrlInit', function () {
 
-    var <%= classedName %>CtrlInit;
+  var <%= classedName %>CtrlInit;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+    module('<%= scriptAppName %>');
 
-        inject(function (_<%= classedName %>CtrlInit_) {
-            <%= classedName %>CtrlInit = _<%= classedName %>CtrlInit_;
-        });
-
+    inject(function (_<%= classedName %>CtrlInit_) {
+      <%= classedName %>CtrlInit = _<%= classedName %>CtrlInit_;
     });
 
-    it('should have a prepare function', function () {
-        expect(typeof <%= classedName %>CtrlInit.prepare).toEqual('function');
-    });
+  });
 
-    it('should return a promise', function () {
-        expect(typeof <%= classedName %>CtrlInit.prepare().then).toEqual('function');
-    });
+  it('should have a prepare function', function () {
+    expect(typeof <%= classedName %>CtrlInit.prepare).toEqual('function');
+  });
+
+  it('should return a promise', function () {
+    expect(typeof <%= classedName %>CtrlInit.prepare().then).toEqual('function');
+  });
 
 });<% } %>

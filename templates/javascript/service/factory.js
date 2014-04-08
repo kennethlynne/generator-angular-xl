@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .factory('<%= cameledName %>', function () {
+  .factory('<%= cameledName %>', function () {
 
-        var _privateVar = 42;
+    var _privateVar = 42;
 
-        var _getMeaningOfLife = function () {
-            return _privateVar;
-        };
+    var _getMeaningOfLife = function () {
+      return _privateVar;
+    };
 
-        return {
-            getMeaningOfLife: _getMeaningOfLife
-        }
-    });
+    return {
+      getMeaningOfLife: _getMeaningOfLife
+    };
+  });

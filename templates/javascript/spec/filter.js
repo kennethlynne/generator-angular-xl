@@ -2,21 +2,21 @@
 
 describe('Filter: <%= cameledName %>', function () {
 
-    var <%= cameledName %>;
+  var <%= cameledName %>;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+    module('<%= scriptAppName %>');
 
-        inject(function ($filter) {
-            <%= cameledName %> = $filter('<%= cameledName %>');
-        });
-
+    inject(function ($filter) {
+      <%= cameledName %> = $filter('<%= cameledName %>');
     });
 
-    it('should return the input prefixed with "<%= cameledName %> filter:"', function () {
-        var text = 'angularjs';
-        expect(<%= cameledName %>(text)).toBe('<%= cameledName %> filter: ' + text);
-    });
+  });
+
+  it('should return the input prefixed with "<%= cameledName %> filter:"', function () {
+    var text = 'angularjs';
+    expect(<%= cameledName %>(text)).toBe('<%= cameledName %> filter: ' + text);
+  });
 
 });

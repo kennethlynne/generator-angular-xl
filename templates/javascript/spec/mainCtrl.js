@@ -2,36 +2,36 @@
 
 describe('Controller: IndexCtrl', function () {
 
-    var IndexCtrl, scope, $rootScope, deferred, promise, AwesomeRepository;
+  var IndexCtrl, scope, $rootScope, deferred, promise, AwesomeRepository;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+    module('<%= scriptAppName %>');
 
-        inject(function ($controller, _$rootScope_, $q) {
-            $rootScope = _$rootScope_;
+    inject(function ($controller, _$rootScope_, $q) {
+      $rootScope = _$rootScope_;
 
-            deferred = $q.defer();
-            promise = deferred.promise;
+      deferred = $q.defer();
+      promise = deferred.promise;
 
-            AwesomeRepository = {
-                getAll: jasmine.createSpy('AwesomeRepository.getAll()').andCallFake(function () {
-                    return promise;
-                })
-            };
+      AwesomeRepository = {
+        getAll: jasmine.createSpy('AwesomeRepository.getAll()').andCallFake(function () {
+          return promise;
+        })
+      };
 
-            scope = $rootScope.$new();
-            IndexCtrl = $controller('IndexCtrl', {
-                $scope: scope,
-                AwesomeRepository: AwesomeRepository
-            });
-        });
+      scope = $rootScope.$new();
+      IndexCtrl = $controller('IndexCtrl', {
+        $scope: scope,
+        AwesomeRepository: AwesomeRepository
+      });
     });
+  });
 
-    it('should attach init data to scope', function () {
-        var data = [1,2,3];
-        deferred.resolve(data);
-        $rootScope.$digest();
-        expect(scope.awesomeThings).toBe(data);
-    });
+  it('should attach init data to scope', function () {
+    var data = [1, 2, 3];
+    deferred.resolve(data);
+    $rootScope.$digest();
+    expect(scope.awesomeThings).toBe(data);
+  });
 });

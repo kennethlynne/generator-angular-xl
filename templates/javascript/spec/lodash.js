@@ -2,20 +2,20 @@
 
 describe('Service: lodash', function () {
 
-    var _;
+  var _;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+    module('<%= scriptAppName %>');
 
-        inject(function (___) {
-            _ = ___;
-        });
-
+    inject(function (___) {
+      _ = ___;
     });
 
-    it('should do something', function () {
-        expect(!!_).toBe(true);
-    });
+  });
+
+  it('should do something', function () {
+    expect(!!_).toBe(true);
+  });
 
 });

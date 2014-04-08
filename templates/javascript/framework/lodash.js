@@ -1,4 +1,4 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .constant('_', window._);
+  .constant('_', window._);

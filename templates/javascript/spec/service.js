@@ -2,21 +2,21 @@
 
 describe('Service: <%= cameledName %>', function () {
 
-    var <%= cameledName %>;
+  var <%= cameledName %>;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('<%= scriptAppName %>');
+    module('<%= scriptAppName %>');
 
-        inject(function (_<%= cameledName %>_) {
-            <%= cameledName %> = _<%= cameledName %>_;
-        });
-
+    inject(function (_<%= cameledName %>_) {
+      <%= cameledName %> = _<%= cameledName %>_;
     });
 
+  });
 
-    it('should do something', function () {
-        expect(!!<%= cameledName %>).toBe(true);
-    });
+
+  it('should do something', function () {
+    expect(!!<%= cameledName %>).toBe(true);
+  });
 
 });

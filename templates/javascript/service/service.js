@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-    .service('<%= cameledName %>', function <%= cameledName %>() {
+  .service('<%= cameledName %>', function () {
 
-        var _privateVar = 42;
+    var _privateVar = 42;
 
-        this.meaningOfLife = function () {
-            return _privateVar;
-        };
+    this.meaningOfLife = function () {
+      return _privateVar;
+    };
 
-    });
+  });
