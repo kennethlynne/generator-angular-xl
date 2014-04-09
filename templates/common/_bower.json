@@ -17,7 +17,7 @@
     "angular-animate": "~1.2.7",
     "log": "~0.1.2"<% if (lodash) { %>,
     "lodash": "~2.4.1"<% } %>,
-    "angular-ui-router": "0.2.8-bowratic-tedium"<% if (resourceModule) { %>,
+    "angular-ui-router": "~0.2.10"<% if (resourceModule) { %>,
     "angular-resource": "~1.2.15"<% } %><% if (restangularModule) { %>,
     "restangular": "~1.1.8"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "~1.2.15"<% } %><% if (sanitizeModule) { %>,
