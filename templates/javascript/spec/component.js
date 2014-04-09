@@ -51,7 +51,7 @@ describe('Component: <%= cameledName %>Component', function () {
     });
 
     it('should render a message', function () {
-      expect(scope.text).toEqual('this is the <%= _.camelize(name) %> component');
+      expect(scope.text).toContain('<%= _.camelize(name) %>');
     });
   });
 

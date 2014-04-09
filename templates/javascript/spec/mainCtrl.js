@@ -15,7 +15,7 @@ describe('Controller: IndexCtrl', function () {
       promise = deferred.promise;
 
       AwesomeRepository = {
-        getAll: jasmine.createSpy('AwesomeRepository.getAll()').andCallFake(function () {
+        getAll: jasmine.createSpy('AwesomeRepository.getAll()').and.callFake(function () {
           return promise;
         })
       };
