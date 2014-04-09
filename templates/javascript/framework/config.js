@@ -24,7 +24,7 @@ angular.module('<%= scriptAppName %>')
   })
   .factory('APIBaseUrl', function (Config) {
     return (Config.API.protocol + '://' + Config.API.host + ':' + Config.API.port + Config.API.path + '/');
-  })< % if (xeditableModule) { %>.run(function (editableOptions) {
+  })<% if (xeditableModule) { %>.run(function (editableOptions) {
     editableOptions.theme = 'bs3'
   })< % } %>;
 
