@@ -28,35 +28,35 @@ module.exports = function (config) {
 
   var preprocessors = {};
 
-  //jshint preprocessor
+  function addPreprocessor(pros) {
+    return function (path) {
+      if (preprocessors[path]) {
+        if (typeof pros === 'string') {
+          preprocessors[path].push(pros);
+        }
+        else if (pros instanceof Array) {
+          preprocessors[path] = preprocessors[path].concat(pros);
+        }
+      }
+      else {
+        preprocessors[path] = [pros];
+      }
+    };
+  }
+
   [
     '/scripts/**/*.js',
     '/components/**/*.js',
     '/states/**/*.js'
-  ].map(mapAppPath) //append app path to each row
-    .forEach(function (path) {
-      preprocessors[path] = ['jshint']; //insert row
-    });
+  ].map(mapAppPath)
+    .forEach(addPreprocessor(['jshint', 'coverage']));
 
-  //ng-html2js preprocessor
   [
     '/views/**/*.html',
     '/components/**/*.html',
     '/states/**/*.html'
-  ].map(mapAppPath) //append app path to each row
-    .forEach(function (path) {
-      preprocessors[path] = ['ng-html2js']; //insert row
-    });
-
-  //coverage preprocessor
-  [
-    '/scripts/**/*.js',
-    '/components/**/*.js',
-    '/states/**/*.js'
-  ].map(mapAppPath) //append app path to each row
-    .forEach(function (path) {
-      preprocessors[path] = ['coverage']; //insert row
-    });
+  ].map(mapAppPath)
+    .forEach(addPreprocessor('ng-html2js')); //insert row
 
   config.set({
     // base path, that will be used to resolve files and exclude
