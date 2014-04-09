@@ -30,17 +30,7 @@ module.exports = function (config) {
 
   function addPreprocessor(pros) {
     return function (path) {
-      if (preprocessors[path]) {
-        if (typeof pros === 'string') {
-          preprocessors[path].push(pros);
-        }
-        else if (pros instanceof Array) {
-          preprocessors[path] = preprocessors[path].concat(pros);
-        }
-      }
-      else {
-        preprocessors[path] = [pros];
-      }
+      preprocessors[path] = pros;
     };
   }
 
