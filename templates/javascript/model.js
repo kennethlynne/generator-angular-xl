@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-  .factory('<%= classedName %>Model', function ($q, $http, $rootScope, BaseModel, APIBaseUrl, $injector) {
+  .factory('<%= classedName %>Model', function ($rootScope, BaseModel, APIBaseUrl, $injector) {
 
     var url = APIBaseUrl + '<%= pluralizedName %>';
 
