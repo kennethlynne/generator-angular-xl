@@ -173,6 +173,6 @@ describe('Model Repository: <%= classedName %>Repository', function () {
   });
 
   describe('saveChanges', function () {
-    it('should save all changes in current Repository to the server');
+    //it('should save all changes in current Repository to the server');
   });
 });
