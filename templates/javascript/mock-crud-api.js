@@ -19,7 +19,7 @@ angular.module('<%= scriptAppName %>')
       {id: guid(), text: 'Generator-angular-xl'}
     ];
 
-    var classedNameRepo = mockRepository.create();
+    var <%= classedName %>Repo = mockRepository.create();
 
     angular.forEach(seed, function (item, key) {
         <%= classedName %>Repo.insert(item.id, item);

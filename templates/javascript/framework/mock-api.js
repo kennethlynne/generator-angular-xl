@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-  .config(function ($httpProvider, Config, $provide, $window) {
+  .config(function ($httpProvider, Config, $provide) {
     if (!Config.API.useMocks) return;
 
     $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 
-    var log = $window.log;
+    var log = window.log;
 
     var APIUrl = (Config.API.protocol + '://' + Config.API.host + ':' + Config.API.port + Config.API.path + '/');
 

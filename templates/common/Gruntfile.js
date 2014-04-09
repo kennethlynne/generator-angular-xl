@@ -41,7 +41,7 @@ module.exports = function (grunt) {
   });
 
   var prototypeAppJs = appJs.slice(0); //copy appJs
-  prototypeAppJs.splice(1, 0, (yeomanConfig.app + '/dev/**/*.js')); //insert dev stuff (mocks etc) after module.js
+  prototypeAppJs.splice(2, 0, (yeomanConfig.app + '/dev/**/*.js')); //insert dev stuff (mocks etc) after module.js
 
   var cssFiles = includes.css.map(function (path) {
     return '.tmp/' + path;
