@@ -3,30 +3,26 @@
 
 module.exports = function (config) {
 
-  var mapAppPath = function (path) {
-    return appPath + '/' + path;
-  };
-
-  var appPath = (require('./bower.json').appPath || 'app');
-  var js = require('./resources.json').javascript;
-
-  var jsFiles = js.external.concat(js.app).map(mapAppPath);
-
-  var files = jsFiles.concat([
-    'test/unit/loadTemplates.js',
-    'test/unit/matchers/**/*.js',
-    'test/unit/utils/*.js',
-    'test/unit/utils/**/*.js',
-      appPath + '/scripts/*.js',
-      appPath + '/scripts/**/*.js',
-    'test/unit/mock/**/*.js',
-    'test/unit/spec/**/*.js',
-      appPath + '/views/**/*.html',
-      appPath + '/components/**/*.html',
-      appPath + '/states/**/*.html'
-  ]);
-
-  var preprocessors = {};
+  var preprocessors = {},
+    mapAppPath = function (path) {
+      return appPath + '/' + path;
+    },
+    appPath = (require('./bower.json').appPath || 'app'),
+    js = require('./resources.json').javascript,
+    jsFiles = js.external.concat(js.app).map(mapAppPath),
+    files = jsFiles.concat([
+      'test/unit/loadTemplates.js',
+      'test/unit/matchers/**/*.js',
+      'test/unit/utils/*.js',
+      'test/unit/utils/**/*.js',
+        appPath + '/scripts/*.js',
+        appPath + '/scripts/**/*.js',
+      'test/unit/mock/**/*.js',
+      'test/unit/spec/**/*.js',
+        appPath + '/views/**/*.html',
+        appPath + '/components/**/*.html',
+        appPath + '/states/**/*.html'
+    ]);
 
   function addPreprocessor(pros) {
     return function (path) {
