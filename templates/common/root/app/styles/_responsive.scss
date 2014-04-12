@@ -1,0 +1,14 @@
+@mixin min-screen-width($media) {
+  @if $media == xs {
+    @media only screen and (max-width: $screen-xs) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $screen-sm) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $screen-md) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: $screen-lg) { @content; }
+  }
+}
