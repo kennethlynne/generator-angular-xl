@@ -35,21 +35,14 @@ angular.module('<%= scriptAppName %>')
     }]);
 
   })
-  .factory('mockRepository', function (guid) {
+  .factory('mockRepository', function (guid, _) {
 
     function repository() {
-      this.data = [];
       this.index = {};
     }
 
     repository.prototype.insert = function (id, item) {
       item.id = id;
-
-      if (this.index[id] ) {
-          this.delete(id);
-      }
-
-      this.data.push(item);
       this.index[id] = item;
       return item;
     };
@@ -66,7 +59,8 @@ angular.module('<%= scriptAppName %>')
     };
 
     repository.prototype.getAll = function () {
-      return this.data;
+      var rep = this;
+      return _.toArray(rep.index);
     };
 
     repository.prototype.getById = function (id) {
