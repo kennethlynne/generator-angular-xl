@@ -30,16 +30,30 @@
       <section>
         <p><a href="https://github.com/kennethlynne/generator-angular-xl/"><img src="https://raw2.github.com/kennethlynne/generator-angular-xl/master/logo.png" alt="generator-angular-xl logo"></a></p>
 
-<p>Avoid boilerplate and improve productivity and consistency.</p>
+<p>An opinionated kickstarter for your next large scale AngularJS application.
+Avoid boilerplate and improve productivity and consistency.</p>
 
 <p><a href="https://travis-ci.org/kennethlynne/generator-angular-xl"></a><a href="https://travis-ci.org/kennethlynne/generator-angular-xl"><img src="https://travis-ci.org/kennethlynne/generator-angular-xl.png?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/kennethlynne/generator-angular-xl"><img src="https://codeclimate.com/github/kennethlynne/generator-angular-xl.png" alt="Code Climate"></a></p>
+
+<p><img height="180" align="left" src="http://gruntjs.com/img/grunt-logo.svg"></p>
+
+<p><img height="180" align="left" src="http://bower.io/img/bower-logo.png"></p>
+
+<p><img height="180" align="left" src="https://s3.amazonaws.com/media-p.slid.es/uploads/hugojosefson/images/86267/angularjs-logo.png"></p>
+
+<h1>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>
+<br><br><br>
+</h1>
+
+<p><br></p>
 
 <h2>
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
-<li>All scripts in <code>app/scrips</code>, <code>app/components</code> and <code>app/pages</code> and styles in <code>app/styles</code> will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between <em>all the things</em>. Need more control? Check out <a href="#resources.json">resources.json</a>.</li>
-<li>Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.</li>
+<li>All scripts in <code>app/scrips</code>, <code>app/components</code> and <code>app/states</code> and styles in <code>app/styles</code> will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between <em>all the things</em>. Need more control? Check out <a href="#resources.json">resources.json</a>.</li>
+<li>Controllers, views and styling are grouped on a per component and state basis to facilitate high cohesion.</li>
 <li>Test coverage using <a href="http://gotwarlost.github.io/istanbul/">Istanbul</a> helps you find exactly what the lines of code that are tested or not. See an <a href="http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html">example output</a>
 </li>
 <li>Use <a href="#component">components</a> as syntactic sugar to use directives as web components with a convention over configuration approach</li>
@@ -113,7 +127,7 @@ grunt build:dev development profile, unminified code
 grunt build:prototype same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
 
 Deploy
-grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `&lt;your-username&gt;.github.io/&lt;your-repository&gt;/`
+grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `gh-states` branch, making whatever build you run before available to the world to see at `&lt;your-username&gt;.github.io/&lt;your-repository&gt;/`
 
 </code></pre>
 
@@ -130,7 +144,7 @@ grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `
 <li><a href="#directive">angular-xl:directive</a></li>
 <li><a href="#component">angular-xl:component</a></li>
 <li><a href="#filter">angular-xl:filter</a></li>
-<li><a href="#page">angular-xl:page</a></li>
+<li><a href="#state">angular-xl:state</a></li>
 <li><a href="#service">angular-xl:service</a></li>
 <li><a href="#service">angular-xl:provider</a></li>
 <li><a href="#service">angular-xl:factory</a></li>
@@ -168,16 +182,16 @@ grunt deploy    takes whatever lies in the `/dist` folder and pushes it to the `
 The mocks are excluded from the build by default.</p>
 
 <h3>
-<a name="page" class="anchor" href="#page"><span class="octicon octicon-link"></span></a>Page</h3>
+<a name="state" class="anchor" href="#state"><span class="octicon octicon-link"></span></a>State</h3>
 
-<p>Pages are located under <code>app/pages</code>. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.</p>
+<p>States are located under <code>app/states</code>. A state basically is a controller, with a view and state specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.</p>
 
 <p>Example:</p>
 
-<div class="highlight highlight-bash"><pre>yo angular-xl:page user
+<div class="highlight highlight-bash"><pre>yo angular-xl:state user
 </pre></div>
 
-<p>Produces <code>app/pages/user/index/user.js</code>, <code>test/spec/pages/user/index/user.js</code>, <code>app/pages/user/index/views/user.html</code> and <code>app/pages/user/styles/_user.scss</code></p>
+<p>Produces <code>app/states/user/index/user.js</code>, <code>test/spec/states/user/index/user.js</code>, <code>app/states/user/index/views/user.html</code> and <code>app/states/user/styles/_user.scss</code></p>
 
 <h3>
 <a name="routing" class="anchor" href="#routing"><span class="octicon octicon-link"></span></a>Routing</h3>
@@ -187,7 +201,7 @@ The mocks are excluded from the build by default.</p>
 <h3>
 <a name="controller" class="anchor" href="#controller"><span class="octicon octicon-link"></span></a>Controller</h3>
 
-<p>Generates a controller in <code>app/pages</code> and an accompanying test in <code>test/spec/pages</code>.
+<p>Generates a controller in <code>app/states</code> and an accompanying test in <code>test/spec/states</code>.
 Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise. This helps you load data <em>before</em> the controller is instantiated.</p>
 
 <p>Example:</p>
