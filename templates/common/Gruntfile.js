@@ -467,26 +467,19 @@ module.exports = function (grunt) {
     manifest: {
       generate: {
         options: {
-          basePath: '<%= yeoman.dist %>/',
-          cache: ['<%= yeoman.dist %>/scripts/scripts.js', '<%= yeoman.dist %>/styles/main.css'],
-          network: ['*', 'http://*', 'https://*'],
-          fallback: ['/ /offline.html'], //TODO: Add an offline fallback page
-          exclude: ['js/jquery.min.js'],
+          basePath: '<%= yeoman.dist %>',
+//          fallback: ['/ /offline.html'], //TODO: Add an offline fallback page
           preferOnline: true,
-          verbose: true,
-          timestamp: true,
-          hash: true,
-          master: ['index.html']
+          verbose: false
         },
         src: [ //TODO: Rev images, fonts, icons etc. to bust cache
-          '**/*.html',
-          '<%= yeoman.dist %>/scripts/**/*.js',
-          '<%= yeoman.dist %>/styles/**/*.css'//,
-          //'*.{ico,png,txt}',
-          //'assets/images/**/*',
-          //'assets/fonts/**/*'
+          './scripts/**/*.js',
+          './styles/**/*.css',
+          './assets/**/*.*',
+          'index.html',
+          'favicon.ico'
         ],
-        dest: 'manifest.appcache'
+        dest: '<%= yeoman.dist %>/manifest.appcache'
       }
     }
 
