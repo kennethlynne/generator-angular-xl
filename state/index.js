@@ -26,7 +26,15 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.createViewFiles = function createViewFiles() {
     this.viewClassesForHTML = this.dasherizedName + '-state';
     this.viewClassesForScss = '.' + this.dasherizedName + '-state';
-    var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
+    var targetPath;
+    if ( this.slugifiedPath.length > 0 ) {
+      targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
+    }
+    else
+    {
+      targetPath = this.dasherizedName;
+    }
+
     this.template('common/view.html', path.join(this.env.options.appPath, 'states', targetPath, 'index', 'main-view.html'));
     this.template('common/state.scss', path.join(this.env.options.appPath, 'states', targetPath, 'index', '_' + this.dasherizedName + '-state' + '.scss'));
     this.addStyleToStateScss('../states/' + targetPath + '/index/' + this.dasherizedName + '-state');
