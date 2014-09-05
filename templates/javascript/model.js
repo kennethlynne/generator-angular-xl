@@ -1,29 +1,38 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-  .factory('<%= classedName %>Model', function ($rootScope, BaseModel, APIBaseUrl, $injector) {
+  .factory('<%= classedName %>Model', function (_, guid) {
 
-    var url = APIBaseUrl + '<%= pluralizedName %>';
-
-    function Model(data) {
-      data = data || {};
-      data.url = url;
-      BaseModel.call(this, data);
+    function parseName(data) {
+      return data.name || 'Untitled';
     }
 
-    Model.$settings = {url: url};
-    Model.prototype = Object.create(BaseModel.prototype);
+    function <%= classedName %>Model(data) {
+      data = data || {};
 
-    //Decorate save to attach this item to the Repository on successful save
-    var _$save = Model.prototype.$save;
-    Model.prototype.$save = function () {
-      var self = this;
-      return _$save.apply(this, arguments).then(function (response) {
-        var Repository = $injector.get('<%= classedName %>Repository');
-        Repository.attach(self);
-        return response;
+      this.$set({
+        id: data.id || guid(),
+        name: parseName(data)
       });
-    };
+    }
 
-    return Model;
+    <%= classedName %>Model.prototype = (function () {
+      return {
+
+        $set: function (data) {
+          var instance = this;
+
+          //Remove all non $ preficed properties from this instance
+          for (var key in instance) {
+            if (key.substr(0, 1) !== '$') delete instance[key];
+          }
+
+          angular.extend(instance, data);
+        }
+
+      };
+    })();
+
+    return <%= classedName %>Model;
+
   });

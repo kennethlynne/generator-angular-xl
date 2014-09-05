@@ -10,8 +10,6 @@
     "angular-busy": "*",
     "ng-symbiosis-utils": "~0.0.0",
     "ng-symbiosis-routeprovider": "~0.1.0",
-    "ng-symbiosis-repository": "~0.0.0",
-    "ng-symbiosis-model": "~0.0.0",
     "angular-promise-tracker": "~1.5.0",
     "angular-loading-bar": "~0.1.1",
     "angular-animate": "~1.2.16",
