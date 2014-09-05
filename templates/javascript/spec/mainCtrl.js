@@ -2,7 +2,7 @@
 
 describe('Controller: IndexCtrl', function () {
 
-  var IndexCtrl, scope, $rootScope, deferred, promise, AwesomeRepository;
+  var IndexCtrl, scope, $rootScope, deferred, promise, AwesomeModel;
 
   beforeEach(function () {
 
@@ -14,8 +14,8 @@ describe('Controller: IndexCtrl', function () {
       deferred = $q.defer();
       promise = deferred.promise;
 
-      AwesomeRepository = {
-        getAll: jasmine.createSpy('AwesomeRepository.getAll()').and.callFake(function () {
+      AwesomeModel = {
+        getAll: jasmine.createSpy('AwesomeModel.getAll()').and.callFake(function () {
           return promise;
         })
       };
@@ -23,7 +23,7 @@ describe('Controller: IndexCtrl', function () {
       scope = $rootScope.$new();
       IndexCtrl = $controller('IndexCtrl', {
         $scope: scope,
-        AwesomeRepository: AwesomeRepository
+        AwesomeModel: AwesomeModel
       });
     });
   });

@@ -38,7 +38,7 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.hookFor('angular-xl:repository', {
+  this.hookFor('angular-xl:model', {
     args: 'awesome'
   });
 
@@ -109,7 +109,7 @@ Generator.prototype.askForModules = function askForModules() {
     this.ngStorageModule = hasMod('ngStorageModule');
     this.lodash = hasMod('lodash');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'ngSymbiosis.routeProvider'", "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
+    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'ngSymbiosis.routeProvider'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
