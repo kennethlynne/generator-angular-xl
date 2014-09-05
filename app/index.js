@@ -81,11 +81,6 @@ Generator.prototype.askForModules = function askForModules() {
                     checked: false
                 },
                 {
-                    value: 'xeditableModule',
-                    name: 'xeditable.js',
-                    checked: false
-                },
-                {
                     value: 'resourceModule',
                     name: 'angular-resource.js',
                     checked: false
@@ -111,7 +106,6 @@ Generator.prototype.askForModules = function askForModules() {
     this.sanitizeModule = hasMod('sanitizeModule');
     this.restangularModule = hasMod('restangularModule');
     this.touchModule = hasMod('touchModule');
-    this.xeditableModule = hasMod('xeditableModule');
     this.ngStorageModule = hasMod('ngStorageModule');
     this.lodash = hasMod('lodash');
 
@@ -131,10 +125,6 @@ Generator.prototype.askForModules = function askForModules() {
       }
       if (this.touchModule) {
           angMods.push("'ngTouch'");
-      }
-      if (this.xeditableModule)
-      {
-          angMods.push("'xeditable'");
       }
       if (this.ngStorageModule) {
           angMods.push("'ngStorage'");
