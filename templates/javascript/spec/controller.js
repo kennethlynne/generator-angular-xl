@@ -1,8 +1,8 @@
 'use strict';
 
-describe('Controller(<%= stateUrl %>): <%= classedName %>Ctrl', function () {
+describe('Controller(<%= stateUrl %>): <%= name %>Ctrl', function () {
 
-  var <%= classedName %>Ctrl, scope;
+  var <%= name %>Ctrl, scope;
 
   beforeEach(function () {
 
@@ -10,13 +10,13 @@ describe('Controller(<%= stateUrl %>): <%= classedName %>Ctrl', function () {
 
     inject(function ($controller, $rootScope) {
       scope = $rootScope.$new();
-      <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
+      <%= name %>Ctrl = $controller('<%= name %>Ctrl', {
         $scope: scope
       });
     });
   });
 
-  it('should attach init data to scope', function () {
-    expect(scope.foo).toEqual('bar');
+  it('should initialize', function () {
+    expect(<%= name %>Ctrl).not.toBeUndefined();
   });
 });

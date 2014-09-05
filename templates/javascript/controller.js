@@ -2,11 +2,10 @@
 
 angular.module('<%= scriptAppName %>')
   .config(function ($stateProvider, stateFactory) {
-    $stateProvider.state('<%= stateName %>', stateFactory('<%= classedName %>', {
+    $stateProvider.state('<%= stateName %>', stateFactory('<%= name %>', {
       url: '<%= stateUrl %>',
       templateUrl: '<%= viewTemplateUrl %>'
     }));
   })
-  .controller('<%= classedName %>Ctrl', function ($scope) {
-    $scope.foo = 'bar';
+  .controller('<%= name %>Ctrl', function ($scope) {
   });
