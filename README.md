@@ -475,17 +475,12 @@ local.js is included in your .gitignore, so if you're using git as a version con
 
 
 ```
-config.js
+// config.js
 {
   APIUrl: 'http://live.api/url'
 }
 
-local.js
-{
-  APIUrl: 'http://test.api/url'
-}
-
-config.js after build:
+// local.js - will have precedence while developing
 {
   APIUrl: 'http://test.api/url'
 }
