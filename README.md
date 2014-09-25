@@ -466,6 +466,31 @@ When you install new dependancies you have to add a reference to the script file
 ## Configuration
 Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.
 
+###local.js
+
+This file is used to specify configuration settings for use while developing the app on your personal system: for example, this would be a good place to store a url for a local API. These settings take precedence over configurations specified in config.js.
+
+PLEASE NOTE:
+local.js is included in your .gitignore, so if you're using git as a version control solution for your app, keep in mind that this file won't be committed to your repository!
+
+
+```
+config.js
+{
+  APIUrl: 'http://live.api/url'
+}
+
+local.js
+{
+  APIUrl: 'http://test.api/url'
+}
+
+config.js after build:
+{
+  APIUrl: 'http://test.api/url'
+}
+```
+
 ### Output
 You can change the `app` directory by adding a `appPath` property to `bower.json`. For instance, if you wanted to easily integrate with Express.js, you could add the following:
 
