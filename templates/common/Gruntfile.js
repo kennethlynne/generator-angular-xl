@@ -223,16 +223,24 @@ module.exports = function (grunt) {
             ]
         },
         sass: {                              // Task
-            dist: {                            // Target
-                options: {                       // Target options
-                    style: 'compressed',
-                    loadPath: '<%%= yeoman.app %>/bower_components/',
-                    noCache: true
-                },
-                files: {                         // Dictionary of files
-                    '<%%= yeoman.app %>/styles/main.css': '<%%= yeoman.dist %>/styles/main.scss'       // 'destination': 'source'
-                }
+          dist: {                            // Target
+            options: {                       // Target options
+              style: 'compressed',
+              loadPath: '<%%= yeoman.app %>/bower_components/',
+              noCache: true
+            },
+            files: {                         // Dictionary of files
+              '<%%= yeoman.app %>/styles/main.css': '<%%= yeoman.dist %>/styles/main.scss'       // 'destination': 'source'
             }
+          },
+          dev: {
+            options: {                       // Target options
+              loadPath: '<%%= yeoman.app %>/bower_components/'
+            },
+            files: {                         // Dictionary of files
+              '<%%= yeoman.app %>/styles/main.css': '<%%= yeoman.app %>/styles/main.scss'       // 'destination': 'source'
+            }
+          }
         },
         exec: {
           sass_dev: {
@@ -468,6 +476,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
+            'sass:dev',
             'clean:server',
             'concurrent:server',
             'connect:livereload',
