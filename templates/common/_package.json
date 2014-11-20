@@ -56,7 +56,6 @@
         "node": ">=0.8.0"
     },
     "scripts": {
-        "postinstall" : "npm update -g bower && bower cache clean && bower install",
         "start": "grunt server:dist",
         "test": "grunt test"
     }
