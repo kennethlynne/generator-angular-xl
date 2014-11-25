@@ -5,9 +5,10 @@ angular.module('<%= scriptAppName %>')
     $stateProvider.state('index', stateFactory('Index', {
       url:'/',
       resolve: {
-        modelPromise: function(MyTestRepository){
+        //help ng-min & ng-annotate out
+        modelPromise: ['MyTestRepository',function(MyTestRepository){
           return MyTestRepository.getAll();
-        }
+        }]
       }
     }));
   })
