@@ -30,10 +30,6 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
-  this.hookFor('angular-cmelion:repository', {
-    args: ['my-test']
-  });
-
   this.hookFor('angular-cmelion:common', {
     args: args
   });
@@ -41,6 +37,11 @@ var Generator = module.exports = function Generator(args, options) {
   this.hookFor('angular-cmelion:main', {
     args: args
   });
+
+  this.hookFor('angular-cmelion:repository', {
+    args: 'my-test'
+  });
+
 
 
   this.on('end', function () {
@@ -150,6 +151,6 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar.js');
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
-    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
+    this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
 };
