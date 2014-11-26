@@ -19,7 +19,7 @@
     "url": "git://github.com/cmelion/generator-angular-cmelion.git"
   },
   "scripts": {
-    "postinstall" : "bower cache clean && bower install && yo --help",
+    "postinstall" : "bower cache clean && bower install",
     "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd ./test/temp && npm cache clear && npm install && bower cache clean  && bower install && grunt test && grunt test-e2e"
   },
   "dependencies": {
