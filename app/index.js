@@ -151,7 +151,5 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
-    this.template('../../templates/javascript/repository.js', 'app/scripts/repositories/my-test-repository.js');
-    this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/repositories/my-test-repository.js');
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
 };
