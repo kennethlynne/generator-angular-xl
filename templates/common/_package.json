@@ -58,6 +58,7 @@
     },
     "scripts": {
         "start": "grunt server:dist",
-        "test": "grunt test"
+        "test": "grunt test",
+        "postinstall" : "yo --help"
     }
 }
