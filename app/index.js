@@ -38,9 +38,6 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.hookFor('angular-cmelion:repository', {
-    args: 'my-test'
-  });
 
 
   this.on('end', function () {
