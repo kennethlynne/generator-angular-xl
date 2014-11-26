@@ -30,16 +30,16 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
+  this.hookFor('angular-cmelion:repository', {
+    args: ['my-test']
+  });
+
   this.hookFor('angular-cmelion:common', {
     args: args
   });
 
   this.hookFor('angular-cmelion:main', {
     args: args
-  });
-
-  this.hookFor('angular-cmelion:repository', {
-    args: ['my-test']
   });
 
 
