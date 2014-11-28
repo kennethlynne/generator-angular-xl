@@ -18,9 +18,6 @@ var Generator = module.exports = function Generator(args, options) {
     required: 'false'
   });
   this.scriptAppName = this.appname;
-  this.testRepository = 'MyTest';
-  this.pluralizedName = 'my-tests';
-  this.dasherizedName = 'my-test';
 
   args = ['index'];
 
@@ -144,11 +141,12 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function () {
+
     var context = {
       scriptAppName: this.scriptAppName,
-      classedName: this.testRepository,
-      pluralizedName: this.pluralizedName,
-      dasherizedName: this.dasherizedName
+      classedName   : 'MyTest',
+      pluralizedName: 'my-tests',
+      dasherizedName: 'my-test'
     };
     //Configuration
     this.template('../../templates/common/_bower.json', 'bower.json');
@@ -172,6 +170,6 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/my-test.js', context);
     //Mocks
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
-    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + this.dasherizedName + '-mock.js', context);
-    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + this.dasherizedName + '-mock.json');
+    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + context.dasherizedName + '-mock.js', context);
+    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + context.dasherizedName + '-mock.json');
 };
