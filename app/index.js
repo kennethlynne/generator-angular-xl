@@ -168,6 +168,6 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/my-test.js', context);
 
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
-    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + this._.dasherize(context.classedName) + '-mock.js', context);
-    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + this._.dasherize(context.classedName) + '-mock.json');
+    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + this.dasherizedName + '-mock.js', context);
+    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + this.dasherizedName + '-mock.json');
 };
