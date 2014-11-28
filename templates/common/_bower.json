@@ -32,6 +32,7 @@
   },
    "resolutions": {
     "angular-promise-tracker": "~1.5.0",
-    "angular": "1.2.16"
+    "angular": "1.2.16",
+    "angular-animate": "1.2.16"
   }
 }
