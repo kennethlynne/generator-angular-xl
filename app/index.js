@@ -18,6 +18,9 @@ var Generator = module.exports = function Generator(args, options) {
     required: 'false'
   });
   this.scriptAppName = this.appname;
+  this.testRepository = 'MyTest';
+  this.pluralizedName = 'my-tests';
+  this.dasherizedName = 'my-test';
 
   args = ['index'];
 
@@ -38,11 +41,10 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.hookFor('angular-cmelion:repository', {
-    args: 'my-test'
-  });
 
-
+  //this.hookFor('angular-cmelion:repository', {
+  //  args: ['my-test']
+  //});
 
   this.on('end', function () {
     this.installDependencies({ skipInstall: this.options['skip-install'] });
@@ -142,6 +144,13 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function () {
+    var context = {
+      scriptAppName: this.scriptAppName,
+      classedName: this.testRepository,
+      pluralizedName: this.pluralizedName,
+      dasherizedName: this.dasherizedName
+    };
+
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
@@ -152,5 +161,13 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
+    this.template('../../templates/javascript/repository.js', 'app/scripts/factories/my-test-repository.js', context);
+    this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/scripts/repositories/my-test-repository.js', context);
+
+  this.template('../../templates/javascript/model.js', 'app/scripts/models/my-test.js', context);
+  this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/my-test.js', context);
+
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
+    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + this._.dasherize(context.classedName) + '-mock.js', context);
+    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + this._.dasherize(context.classedName) + '-mock.json');
 };
