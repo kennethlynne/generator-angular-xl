@@ -108,7 +108,28 @@ Example:
 ```bash
 yo angular-cmelion
 ```
+The default page uses the same json data to drive the live view from mock data in DEV and it's unit test:
+```    
+        // app/dev/my-test-mock.js
+        var MyTestRepo = {};
 
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './dev/' + 'my-test' + '-mock.json', false); // sync request
+        xhr.send();
+        MyTestRepo.data = JSON.parse(xhr.response);
+
+       // test/unit/spec/pages/index/index/index.js
+       //Make external json used by dev mock available in tests
+       module('app/dev/my-test-mock.json');
+
+      inject(function ($controller, $rootScope, _appDevMyTestMock_) {
+            scope = $rootScope.$new();
+            IndexCtrl = $controller('IndexCtrl', {
+                $scope: scope,
+                modelPromise: _appDevMyTestMock_
+            });
+        });
+```
 ### CRUD-Mock
 Prototype fast before the API is implemented, but implement like the API already exists.
 
