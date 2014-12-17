@@ -38,6 +38,11 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
+
+  //this.hookFor('angular-cmelion:repository', {
+  //  args: ['my-test']
+  //});
+
   this.on('end', function () {
     this.installDependencies({ skipInstall: this.options['skip-install'] });
   });
@@ -136,15 +141,35 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function () {
+
+    var context = {
+      scriptAppName: this.scriptAppName,
+      classedName   : 'MyTest',
+      pluralizedName: 'my-tests',
+      dasherizedName: 'my-test'
+    };
+    //Configuration
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
     this.template('../../templates/javascript/framework/config.js', 'app/config/config.js');
-    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
+    //Navbar
     this.template('../../templates/javascript/navbar.js', 'app/components/navbar/navbar.js');
     this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar.js');
+    //Error page/state
+    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
+    //Main page/state
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
+    //Repositories
+    this.template('../../templates/javascript/repository.js', 'app/scripts/factories/my-test-repository.js', context);
+    this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/scripts/repositories/my-test-repository.js', context);
+    //Models
+    this.template('../../templates/javascript/model.js', 'app/scripts/models/my-test.js', context);
+    this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/my-test.js', context);
+    //Mocks
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
+    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + context.dasherizedName + '-mock.js', context);
+    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + context.dasherizedName + '-mock.json');
 };

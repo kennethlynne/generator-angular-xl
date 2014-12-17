@@ -11,4 +11,5 @@ util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createMockFiles = function createMockFiles() {
     this.template('mock-crud-api.js', path.join(this.env.options.appPath, 'dev', this.dasherizedName + '-mock.js'));
+    this.template('mock-crud-api.json', path.join(this.env.options.appPath, 'dev', this.dasherizedName + '-mock.json'));
 };

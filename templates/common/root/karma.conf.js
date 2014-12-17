@@ -23,12 +23,21 @@ module.exports = function(config) {
         'test/unit/spec/**/*.js',
         appPath + '/views/**/*.html',
         appPath + '/components/**/*.html',
-        appPath + '/pages/**/*.html'
+        appPath + '/pages/**/*.html',
+        appPath + '/dev/**/*.json'
     ]);
 
     var preprocessors = {};
 
-    //ng-html2js preprocessor
+    //ng-json2js preprocessor
+    [
+      '**/*.json'
+    ].map(mapAppPath) //append app path to each row
+      .forEach(function (path) {
+        preprocessors[path] = ['json2js']; //insert row
+      });
+
+  //ng-html2js preprocessor
     [
         '/views/**/*.html',
         '/components/**/*.html',

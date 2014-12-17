@@ -9,7 +9,13 @@ angular.module('<%= scriptAppName %>')
         console.log('************');
 
         var <%= classedName %>Repo = {};
-        <%= classedName %>Repo.data = [{id: guid(), text:'Hello World'}];
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './dev/' + '<%= dasherizedName %>' + '-mock.json', false); // sync request
+        xhr.send();
+        <%= classedName %>Repo.data = JSON.parse(xhr.response);
+
+        //<%= classedName %>Repo.data = [{id: guid(), text:'Hello World'}];
         <%= classedName %>Repo.index = {};
 
         angular.forEach(<%= classedName %>Repo.data, function(item, key) {
