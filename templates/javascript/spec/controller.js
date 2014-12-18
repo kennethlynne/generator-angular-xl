@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
+describe('Controller(<%= stateUrl %>): <%= classedName %>Ctrl', function () {
 
     var <%= classedName %>, scope;
 
@@ -21,7 +21,7 @@ describe('Controller(<%= pageUrl %>): <%= classedName %>Ctrl', function () {
     });
 });
 <% if (initService) { %>
-describe('Service(<%= pageUrl %>): <%= classedName %>Init', function () {
+describe('Service(<%= stateUrl %>): <%= classedName %>Init', function () {
 
     var <%= classedName %>Init;
 

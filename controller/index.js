@@ -20,15 +20,15 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
     if (this.slugifiedPath.length > 0) {
         this.statifiedPath = this.slugifiedPath.join('-') + '-' + this.dasherizedName;
-        this.viewTemplateUrl = 'pages/' + path + '/index/main-view.html';
-        this.pageUrl = '/' + this.slugifiedPath.join('/') + '/' + this.dasherizedName;
+        this.viewTemplateUrl = 'states/' + path + '/index/main-view.html';
+        this.stateUrl = '/' + this.slugifiedPath.join('/') + '/' + this.dasherizedName;
         path = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
     }
     else
     {
-        this.viewTemplateUrl = 'pages/' + this.dasherizedName + '/index/main-view.html';
+        this.viewTemplateUrl = 'states/' + this.dasherizedName + '/index/main-view.html';
         this.statifiedPath = this.dasherizedName;
-        this.pageUrl = '/' + this.dasherizedName;
+        this.stateUrl = '/' + this.dasherizedName;
         path = this.dasherizedName;
     }
 
@@ -37,8 +37,8 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     this.generateSourceAndTest(
         'controller',
         'spec/controller',
-        ('../pages/' + path + '/index'),
-        ('../unit/spec/pages/' + path + '/index'),
+        ('../states/' + path + '/index'),
+        ('../unit/spec/states/' + path + '/index'),
         this.dasherizedName + '-controller'
     );
 };

@@ -18,8 +18,8 @@ Avoid boilerplate and improve productivity and consistency.
 ## Features
 - Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl
 - Additional `optimizations` are pending
-- All scripts in `app/scripts`, `app/components` and `app/pages` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
-- Controllers, views and styling are grouped on a per component and page basis to facilitate high cohesion.
+- All scripts in `app/scripts`, `app/components` and `app/states` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
+- Controllers, views and styling are grouped on a per component and state basis to facilitate high cohesion.
 - Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
 - Use [components](#component) as syntactic sugar to use directives as web components with a convention over configuration approach
 - Start a server with live reload, easily monitoring your progress with ```grunt server```
@@ -74,7 +74,7 @@ The following commands will build the application into the `/dist` folder.
 * `grunt build:prototype` - same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
 
 # Deploy
-* `grunt deploy` - takes whatever lies in the `/dist` folder and pushes it to the `gh-pages` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
+* `grunt deploy` - takes whatever lies in the `/dist` folder and pushes it to the `gh-states` branch, making whatever build you run before available to the world to see at `<your-username>.github.io/<your-repository>/`
 
 ## Generators
 
@@ -86,7 +86,7 @@ Available generators:
 * [angular-cmelion:directive](#directive)
 * [angular-cmelion:component](#component)
 * [angular-cmelion:filter](#filter)
-* [angular-cmelion:page](#page)
+* [angular-cmelion:state](#state)
 * [angular-cmelion:service](#service)
 * [angular-cmelion:provider](#service)
 * [angular-cmelion:factory](#service)
@@ -108,9 +108,9 @@ Example:
 ```bash
 yo angular-cmelion
 ```
-The default page uses the same json data to drive the live view from mock data in DEV and it's unit test:
+The default state uses the same json data to drive the live view from mock data in DEV and it's unit test:
 ```    
-       // test/unit/spec/pages/index/index/index.js
+       // test/unit/spec/states/index/index/index.js
        //Make external json used by dev mock available in tests
        module('app/dev/my-test-mock.json');
 
@@ -142,20 +142,20 @@ It will automatically intercept all calls done through ```$http``` to the API an
 ```
 
 ### Page
-Pages are located under `app/pages`. A page basically is a controller, with a view and page specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
+Pages are located under `app/states`. A state basically is a controller, with a view and state specific styling. Routes are specified using the powerful Angular-UI Route API in the config section in the controller.
 
 Example:
 ```bash
-yo angular-cmelion:page user
+yo angular-cmelion:state user
 ```
 
-Produces `app/pages/user/index/user.js`, `test/spec/pages/user/index/user.js`, `app/pages/user/index/views/user.html` and `app/pages/user/styles/_user.scss`
+Produces `app/states/user/index/user.js`, `test/spec/states/user/index/user.js`, `app/states/user/index/views/user.html` and `app/states/user/styles/_user.scss`
 
 ### Routing
 Routes are configured in `app/config/routes.js`. Each individual controller registers its own route.
 
 ### Controller
-Generates a controller in `app/pages` and an accompanying test in `test/spec/pages`.
+Generates a controller in `app/states` and an accompanying test in `test/spec/states`.
 Every controller is generated with an accompanying initService, that is responsible for fetching data and returning a promise. This helps you load data *before* the controller is instantiated.
 
 Example:

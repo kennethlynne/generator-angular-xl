@@ -157,11 +157,11 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/navbar.js', 'app/components/navbar/navbar.js');
     this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar.js');
     //Error page/state
-    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/pages/error/index/error.js');
-    this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/pages/error/index/error.js');
+    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/states/error/index/error.js');
+    this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/states/error/index/error.js');
     //Main page/state
-    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/pages/index/index/index.js');
-    this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/pages/index/index/index.js');
+    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/states/index/index/index.js');
+    this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/states/index/index/index.js');
     //Repositories
     this.template('../../templates/javascript/repository.js', 'app/scripts/factories/my-test-repository.js', context);
     this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/scripts/repositories/my-test-repository.js', context);

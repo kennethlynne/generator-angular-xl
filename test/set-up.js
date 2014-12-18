@@ -8,7 +8,7 @@ var deps = [
     '../../app',
     '../../common',
     '../../controller',
-    '../../page',
+    '../../state',
     '../../component',
     '../../decorator',
     '../../value',
@@ -43,7 +43,7 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
     });
 
     var queue = [
-        'page',
+        'state',
         'component',
         'service',
         'factory',

@@ -44,6 +44,6 @@ angular.module('<%= scriptAppName %>')
 
         passThrough(Config.viewsDir);
         passThrough(Config.componentsDir);
-        passThrough(Config.pagesDir);
+        passThrough(Config.statesDir);
 
      });

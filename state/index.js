@@ -24,10 +24,10 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-    this.viewClassesForHTML = this.dasherizedName + '-page';
-    this.viewClassesForScss = '.' + this.dasherizedName + '-page';
+    this.viewClassesForHTML = this.dasherizedName + '-state';
+    this.viewClassesForScss = '.' + this.dasherizedName + '-state';
     var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
-    this.template('common/view.html', path.join(this.env.options.appPath, 'pages', targetPath, 'index', 'main-view.html'));
-    this.template('common/page.scss', path.join(this.env.options.appPath, 'pages', targetPath, 'index', '_' + this.dasherizedName + '-page' + '.scss'));
-    this.addStyleToPagesScss('../pages/' + targetPath + '/index/' + this.dasherizedName + '-page');
+    this.template('common/view.html', path.join(this.env.options.appPath, 'states', targetPath, 'index', 'main-view.html'));
+    this.template('common/state.scss', path.join(this.env.options.appPath, 'states', targetPath, 'index', '_' + this.dasherizedName + '-state' + '.scss'));
+    this.addStyleToStatesScss('../states/' + targetPath + '/index/' + this.dasherizedName + '-state');
 };

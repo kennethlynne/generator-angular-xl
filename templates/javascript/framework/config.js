@@ -2,7 +2,7 @@
         .constant('Config', {
             viewsDir:               'views/',
             componentsDir:          'components/',
-            pagesDir:               'pages/',
+            statesDir:               'states/',
             API: {
                 useMocks:           true,
                 protocol:           window.location.protocol.split(':')[0],
