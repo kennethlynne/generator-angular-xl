@@ -38,6 +38,7 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         gitinfo: {},
         watch: {
+            options: { interval: 5007 },
             styles: {
                 files: ['<%%= yeoman.app %>/styles/**/*.css'],
                 tasks: ['copy:styles']
