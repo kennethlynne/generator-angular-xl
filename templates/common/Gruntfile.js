@@ -245,7 +245,7 @@ module.exports = function (grunt) {
         },
         exec: {
           sass_dev: {
-              command: 'sass --load-path <%%= yeoman.app %>/bower_components/ --watch <%%= yeoman.app %>/styles/ '
+              command: 'sass --load-path <%%= yeoman.app %>/bower_components/ --watch <%%= yeoman.app %>/ '
           },
           sass_dist: {
               command: ''
