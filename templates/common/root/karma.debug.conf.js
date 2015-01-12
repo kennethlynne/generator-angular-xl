@@ -47,16 +47,6 @@ module.exports = function(config) {
             preprocessors[path] = ['ng-html2js']; //insert row
         });
 
-    //coverage preprocessor
-    [
-        '/scripts/**/*.js',
-        '/components/**/*.js',
-        '/states/**/*.js'
-    ].map(mapAppPath) //append app path to each row
-        .forEach(function (path) {
-            preprocessors[path] = ['coverage']; //insert row
-        });
-
 
     config.set({
         // base path, that will be used to resolve files and exclude
@@ -72,11 +62,6 @@ module.exports = function(config) {
 
         reporters: [/*'spec', */'story', 'coverage'],
 
-        // optionally, configure the reporter
-        coverageReporter: {
-            type : 'html',
-            dir : 'test/coverage/'
-        },
         // list of files / patterns to exclude
         exclude: [],
 
@@ -100,7 +85,7 @@ module.exports = function(config) {
         // - Safari (only Mac)
         // - PhantomJS
         // - IE (only Windows)
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
 
         ngHtml2JsPreprocessor: {
             // setting this option will create only a single module that contains templates

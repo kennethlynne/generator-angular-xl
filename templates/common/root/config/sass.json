@@ -1,0 +1,21 @@
+{
+  "dist": {
+    "options": {
+      "style": "compressed",
+      "loadPath": "<%= yeoman.app %>/bower_components/",
+      "noCache": true
+    },
+    "files": {
+      "<%= yeoman.app %>/styles/main.css": "<%= yeoman.dist %>/styles/main.scss"
+    }
+  },
+  "dev": {
+    "options": {
+      "loadPath": "<%= yeoman.app %>/bower_components/"
+    },
+    "files": {
+      "<%= yeoman.app %>/styles/main.css": "<%= yeoman.app %>/styles/main.scss"
+    }
+  },
+  "yeoman": "{<%= bugfix %>}"
+}

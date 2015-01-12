@@ -1,7 +1,12 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
-    .config(function ($urlRouterProvider) {
-        $urlRouterProvider.when('', '/');
-        $urlRouterProvider.otherwise("/error?code=404");
-    });
+  angular.module('<%= scriptAppName %>')
+      .config(configFunction);
+
+    function configFunction ($urlRouterProvider) {
+      $urlRouterProvider.when('', '/');
+      $urlRouterProvider.otherwise("/error?code=404");
+    }
+
+}());

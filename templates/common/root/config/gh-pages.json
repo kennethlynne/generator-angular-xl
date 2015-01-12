@@ -1,0 +1,10 @@
+{
+  "options": {
+    "base": "dist",
+    "tag": "v0.0.2",
+    "message": "Auto-generated build from v0.0.2"
+  },
+  "src": [
+    "**"
+  ]
+}

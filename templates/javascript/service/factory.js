@@ -1,15 +1,20 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
-    .factory('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>')
+      .factory('<%= cameledName %>', factoryFunction);
 
-        var _privateVar = 42;
+    function factoryFunction() {
 
-        var _getMeaningOfLife = function () {
-            return _privateVar;
-        };
+      var _privateVar = 42;
 
-        return {
-            getMeaningOfLife: _getMeaningOfLife
-        }
-    });
+      var _getMeaningOfLife = function () {
+        return _privateVar;
+      };
+
+      return {
+        getMeaningOfLife: _getMeaningOfLife
+      }
+    }
+
+}());

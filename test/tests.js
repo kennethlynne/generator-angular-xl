@@ -8,6 +8,13 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
+if (typeof this.env.options.appPath === 'undefined') {
+  try {
+    this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
+  } catch (e) {}
+  this.env.options.appPath = this.env.options.appPath || 'src';
+}
+
 describe('angular-cmelion generator', function () {
     var angular;
     var folderName = 'temp';
@@ -60,9 +67,9 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/states/thing/index/thing-controller.js'],
-                        ['app/states/thing/index/_thing-state.scss'],
-                        ['app/states/thing/index/main-view.html'],
+                        [this.env.options.appPath + '/states/thing/index/thing-controller.js'],
+                        [this.env.options.appPath + '/states/thing/index/_thing-state.scss'],
+                        [this.env.options.appPath + '/states/thing/index/main-view.html'],
                         ['test/unit/spec/states/thing/index/thing-controller.js']
                     ]);
 

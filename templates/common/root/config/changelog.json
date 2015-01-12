@@ -1,0 +1,6 @@
+{
+  "options": {
+    "dest": "CHANGELOG.md",
+    "versionFile": "package.json"
+  }
+}

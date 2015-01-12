@@ -1,0 +1,11 @@
+{
+  "options": {
+    "jshintrc": ".jshintrc",
+    "reporter": "/software/cmelion/test/node_modules/jshint-stylish/stylish.js"
+  },
+  "all": [
+    "Gruntfile.js",
+    "<%= yeoman.app %>/scripts/**/*.js"
+  ],
+  "yeoman": "{<%= bugfix %>}"
+}

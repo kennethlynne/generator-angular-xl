@@ -1,0 +1,8 @@
+{
+  "options": {
+    "configFile": "protractor.conf.js",
+    "keepAlive": false,
+    "noColor": false,
+    "args": {}
+  }
+}

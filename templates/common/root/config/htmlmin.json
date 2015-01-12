@@ -1,0 +1,32 @@
+{
+  "dist": {
+    "options": {
+      "removeCommentsFromCDATA": true,
+      "collapseWhitespace": true,
+      "removeComments": true,
+      "collapseBooleanAttributes": true,
+      "removeAttributeQuotes": true,
+      "removeRedundantAttributes": true,
+      "useShortDoctype": true,
+      "removeEmptyAttributes": false,
+      "removeOptionalTags": true,
+      "removeEmptyElements": false,
+      "yeoman": "{<%= bugfix %>}"
+    },
+    "files": [
+      {
+        "expand": true,
+        "cwd": "<%= yeoman.app %>",
+        "src": [
+          "*.html",
+          "!index.html",
+          "../.tmp/index.html",
+          "views/**/*.html",
+          "states/**/*.html",
+          "components/**/*.html"
+        ],
+        "dest": "<%= yeoman.dist %>"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "unit": {
+    "configFile": "karma.conf.js",
+    "singleRun": true
+  },
+  "debug": {
+    "configFile": "karma.debug.conf.js",
+    "singleRun": false
+  },
+  "continuous": {
+    "configFile": "karma.conf.js",
+    "singleRun": false
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "test/**/*.js",
+    "!test/coverage/**/*.js"
+  ]
+}

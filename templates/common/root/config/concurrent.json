@@ -1,0 +1,11 @@
+{
+  "server": [
+    "copy:styles",
+    "copy:dev"
+  ],
+  "dist": [
+    "copy:styles",
+    "imagemin",
+    "htmlmin"
+  ]
+}

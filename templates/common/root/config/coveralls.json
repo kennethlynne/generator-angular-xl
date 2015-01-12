@@ -1,0 +1,10 @@
+{
+  "options": {
+    "service_name": "travis",
+    "repo_token": "ZxL9uCI0txdnhqyyJVeQRFUWrpbINI6Gc",
+    "debug": false,
+    "dryRun": false,
+    "force": false,
+    "coverage_dir": "test/coverage/"
+  }
+}

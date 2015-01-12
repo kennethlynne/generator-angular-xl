@@ -15,7 +15,7 @@ Generator.prototype.askForOverwrite = function askForOverwrite() {
   var cb = this.async();
 
   // TODO: Any yeoman.util function to handle this?
-  var fileExists = fs.existsSync(this.env.cwd + '/app/scripts/' + buildRelativePath(this.fileName) + ".js");
+  var fileExists = fs.existsSync(this.env.cwd + '/src/scripts/' + buildRelativePath(this.fileName) + ".js");
   if (fileExists) {
     var prompts = [{
       type: 'confirm',

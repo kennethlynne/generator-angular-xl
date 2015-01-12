@@ -1,0 +1,19 @@
+{
+  "dist": {
+    "files": [
+      {
+        "expand": true,
+        "src": [
+          "<%= yeoman.app %>/scripts/module.js",
+          "<%= yeoman.app %>/config/*.js",
+          "<%= yeoman.app %>/scripts/framework/**/*.js",
+          "<%= yeoman.app %>/components/**/*.js",
+          "<%= yeoman.app %>/states/**/*.js",
+          "<%= yeoman.app %>/scripts/**/*.js"
+        ],
+        "dest": ".tmp/app_js/"
+      }
+    ]
+  },
+  "yeoman": "{<%= bugfix %>}"
+}

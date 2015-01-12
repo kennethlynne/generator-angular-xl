@@ -1,15 +1,15 @@
 {
   "name": "<%= _.slugify(_.humanize(appname)) %>",
   "version": "0.0.2",
+  "appPath": "src",
   "dependencies": {
     "angular": "~1.3.3",
-    "bourbon": "~3.1.8",
     "angular-component-factory": "~1.3.1",
     "angular-busy": "*",
     "ng-symbiosis-utils": "~0.0.0",
-    "ng-symbiosis-routeprovider": "~0.1.1",
     "ng-symbiosis-repository": "~0.0.0",
     "ng-symbiosis-model": "~0.0.0",
+    "cmelion-routeprovider": "~0.1.2",
     "angular-promise-tracker": "~1.5.0",
     "angular-loading-bar": "~0.6.0",
     "angular-animate": "1.3.0-build.3121+sha.a4520a7",

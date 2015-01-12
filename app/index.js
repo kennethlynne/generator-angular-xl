@@ -25,7 +25,7 @@ var Generator = module.exports = function Generator(args, options) {
     try {
       this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
     } catch (e) {}
-    this.env.options.appPath = this.env.options.appPath || 'app';
+    this.env.options.appPath = this.env.options.appPath || 'src';
   }
 
   this.appPath = this.env.options.appPath;
@@ -105,7 +105,7 @@ Generator.prototype.askForModules = function askForModules() {
 
     this.ngStorageModule = hasMod('ngStorageModule');
 
-    var angMods = ["'kennethlynne.componentFactory'", "'ngSymbiosis.utils'", "'ngSymbiosis.routeProvider'", "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
+    var angMods = ["'cmelion.routeProvider'","'kennethlynne.componentFactory'", "'ngSymbiosis.utils'",  "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
       if (this.cookiesModule) {
           angMods.push("'ngCookies'");
@@ -152,24 +152,24 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-    this.template('../../templates/javascript/framework/config.js', 'app/config/config.js');
+    this.template('../../templates/javascript/framework/config.js', this.env.options.appPath + '/config/config.js');
     //Navbar
-    this.template('../../templates/javascript/navbar.js', 'app/components/navbar/navbar.js');
+    this.template('../../templates/javascript/navbar.js', this.env.options.appPath + '/components/navbar/navbar.js');
     this.template('../../templates/javascript/spec/navbar.js', 'test/unit/spec/components/navbar.js');
     //Error page/state
-    this.template('../../templates/javascript/framework/errorCtrl.js', 'app/states/error/index/error.js');
+    this.template('../../templates/javascript/framework/errorCtrl.js', this.env.options.appPath + '/states/error/index/error.js');
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/states/error/index/error.js');
     //Main page/state
-    this.template('../../templates/javascript/framework/mainCtrl.js', 'app/states/index/index/index.js');
+    this.template('../../templates/javascript/framework/mainCtrl.js', this.env.options.appPath + '/states/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/states/index/index/index.js');
     //Repositories
-    this.template('../../templates/javascript/repository.js', 'app/scripts/factories/my-test-repository.js', context);
+    this.template('../../templates/javascript/repository.js', this.env.options.appPath + '/scripts/factories/my-test-repository.js', context);
     this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/scripts/repositories/my-test-repository.js', context);
     //Models
-    this.template('../../templates/javascript/model.js', 'app/scripts/models/my-test.js', context);
+    this.template('../../templates/javascript/model.js', this.env.options.appPath + '/scripts/models/my-test.js', context);
     this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/my-test.js', context);
     //Mocks
-    this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
-    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + context.dasherizedName + '-mock.js', context);
-    this.template('../../templates/javascript/mock-crud-api.json', 'app/dev/' + context.dasherizedName + '-mock.json');
+    this.template('../../templates/javascript/framework/mock-api.js', this.env.options.appPath + '/dev/mock-api.js');
+    this.template('../../templates/javascript/mock-crud-api.js', this.env.options.appPath + '/dev/' + context.dasherizedName + '-mock.js', context);
+    this.template('../../templates/javascript/mock-crud-api.json', this.env.options.appPath + '/dev/' + context.dasherizedName + '-mock.json');
 };

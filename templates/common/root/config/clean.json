@@ -1,0 +1,18 @@
+{
+  "dist": {
+    "files": [
+      {
+        "dot": true,
+        "src": [
+          ".tmp",
+          "<%= yeoman.dist %>/**/*",
+          "!<%= yeoman.dist %>/.git*"
+        ]
+      }
+    ]
+  },
+  "coverage": "test/coverage/*",
+  "server": ".tmp",
+  "yeoman": "{<%= bugfix %>}"
+
+}
