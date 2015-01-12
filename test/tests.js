@@ -8,12 +8,6 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-if (typeof this.env.options.appPath === 'undefined') {
-  try {
-    this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
-  } catch (e) {}
-  this.env.options.appPath = this.env.options.appPath || 'src';
-}
 
 describe('angular-cmelion generator', function () {
     var angular;
@@ -67,9 +61,9 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        [this.env.options.appPath + '/states/thing/index/thing-controller.js'],
-                        [this.env.options.appPath + '/states/thing/index/_thing-state.scss'],
-                        [this.env.options.appPath + '/states/thing/index/main-view.html'],
+                        ['src/states/thing/index/thing-controller.js'],
+                        ['src/states/thing/index/_thing-state.scss'],
+                        ['src/states/thing/index/main-view.html'],
                         ['test/unit/spec/states/thing/index/thing-controller.js']
                     ]);
 
@@ -132,9 +126,9 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/states/school/details/one/index/one-controller.js'],
-                        ['app/states/school/details/one/index/_school-details-one-state.scss'],
-                        ['app/states/school/details/one/index/main-view.html'],
+                        ['src/states/school/details/one/index/one-controller.js'],
+                        ['src/states/school/details/one/index/_school-details-one-state.scss'],
+                        ['src/states/school/details/one/index/main-view.html'],
                         ['test/unit/spec/states/school/details/one/index/one-controller.js']
                     ]);
 
@@ -166,9 +160,9 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 componentGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/components/thing-thing/thing-thing.js'],
-                        ['app/components/thing-thing/_thing-thing.scss'],
-                        ['app/components/thing-thing/thing-thing.html'],
+                        ['src/components/thing-thing/thing-thing.js'],
+                        ['src/components/thing-thing/_thing-thing.scss'],
+                        ['src/components/thing-thing/thing-thing.html'],
                         ['test/unit/spec/components/thing-thing.js']
                     ]);
                     done();
@@ -191,7 +185,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 serviceGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/services/service-thing.js'],
+                        ['src/scripts/services/service-thing.js'],
                         ['test/unit/spec/services/service-thing.js']
                     ]);
                     done();
@@ -214,7 +208,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 factoryGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/factories/factory-thing.js'],
+                        ['src/scripts/factories/factory-thing.js'],
                         ['test/unit/spec/factories/factory-thing.js']
                     ]);
                     done();
@@ -237,7 +231,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 filterGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/filters/filter-thing.js'],
+                        ['src/scripts/filters/filter-thing.js'],
                         ['test/unit/spec/filters/filter-thing.js']
                     ]);
                     done();
@@ -260,7 +254,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 providerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/providers/provider-thing.js'],
+                        ['src/scripts/providers/provider-thing.js'],
                         ['test/unit/spec/providers/provider-thing.js']
                     ]);
                     done();
@@ -283,7 +277,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 valueGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/values/value-thing.js'],
+                        ['src/scripts/values/value-thing.js'],
                         ['test/unit/spec/values/value-thing.js']
                     ]);
                     done();
@@ -306,7 +300,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 directiveGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/directives/super-directive.js'],
+                        ['src/scripts/directives/super-directive.js'],
                         ['test/unit/spec/directives/super-directive.js']
                     ]);
                     done();
@@ -329,7 +323,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 decoratorGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/decorators/super-decorator.js']
+                        ['src/scripts/decorators/super-decorator.js']
                     ]);
                     done();
                 });
@@ -352,9 +346,9 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 repositoryGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/scripts/models/super-thang.js'],
+                        ['src/scripts/models/super-thang.js'],
                         ['test/unit/spec/models/super-thang.js'],
-                        ['app/scripts/repositories/super-thang-repository.js'],
+                        ['src/scripts/repositories/super-thang-repository.js'],
                         ['test/unit/spec/repositories/super-thang-repository.js']
                     ]);
                     done();
@@ -378,7 +372,7 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 crudMockGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/dev/super-mock-mock.js']
+                        ['src/dev/super-mock-mock.js']
                     ]);
                     done();
                 });
@@ -389,9 +383,9 @@ describe('angular-cmelion generator', function () {
     /*
 
         // read JS Files
-        var module_js = fs.readFileSync('app/scripts/module.js', 'utf8');
-        var route_js = fs.readFileSync('app/config/routes.js', 'utf8');
-        var main_js = fs.readFileSync('app/scripts/controllers/main.js', 'utf8');
+        var module_js = fs.readFileSync('src/scripts/module.js', 'utf8');
+        var route_js = fs.readFileSync('src/config/routes.js', 'utf8');
+        var main_js = fs.readFileSync('src/scripts/controllers/main.js', 'utf8');
         var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
 
         // Test JS Files
