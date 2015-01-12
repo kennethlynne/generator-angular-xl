@@ -5,4 +5,4 @@ node_modules
 .idea
 test/coverage
 .grunt/
-./app/styles/main.css
+./src/styles/main.css

@@ -1,11 +1,18 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('<%= scriptAppName %>.components')
-    .controller('navbarComponentCtrl', function ($scope, $element) {
-        $scope.text = 'this is the navbar component';
-    })
-    .component('navbar', function () {
-        return {
-            controller: 'navbarComponentCtrl'
-        };
-    });
+  angular.module('<%= scriptAppName %>.components')
+      .controller('navbarComponentCtrl', controllerFunction)
+      .component('navbar', componentFunction);
+
+    function controllerFunction($scope, $element) {
+      $scope.text = 'this is the navbar component';
+    }
+
+    function componentFunction() {
+      return {
+        controller: 'navbarComponentCtrl'
+      };
+    }
+
+}());

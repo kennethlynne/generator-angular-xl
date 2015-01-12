@@ -1,0 +1,65 @@
+{
+  "dist": {
+    "files": [
+      {
+        "expand": true,
+        "dot": true,
+        "cwd": "<%= yeoman.app %>",
+        "dest": "<%= yeoman.dist %>",
+        "src": [
+          "*.{ico,png,txt}",
+          ".htaccess",
+          "assets/images/**/*.{gif,webp}",
+          "assets/fonts/**/*",
+          "CNAME",
+          "package.json"
+        ]
+      },
+      {
+        "expand": true,
+        "cwd": ".tmp/assets/images",
+        "dest": "<%= yeoman.dist %>/assets/images",
+        "src": [
+          "generated/*"
+        ]
+      }
+    ]
+  },
+  "styles": {
+    "expand": true,
+    "cwd": "<%= yeoman.app %>/styles",
+    "dest": ".tmp/styles/",
+    "src": "**/*.css"
+  },
+  "tmpStyles2dist": {
+    "expand": true,
+    "cwd": ".tmp/styles/",
+    "dest": "<%= yeoman.dist %>/styles/",
+    "src": "**/*.css"
+  },
+  "dev": {
+    "expand": true,
+    "cwd": "<%= yeoman.app %>/dev",
+    "dest": "<%= yeoman.dist %>/dev",
+    "src": "**/*.js"
+  },
+  "indexHTML": {
+    "expand": true,
+    "cwd": "<%= yeoman.app %>/",
+    "dest": "<%= yeoman.dist %>/",
+    "src": [
+      "./index.html"
+    ]
+  },
+  "app": {
+    "expand": true,
+    "cwd": "<%= yeoman.app %>/",
+    "dest": "<%= yeoman.dist %>/",
+    "src": [
+      "**/*",
+      "!**/*.{scss,sass,coffee}",
+      "!dev/**/*"
+    ]
+  },
+  "yeoman": "{<%= bugfix %>}"
+}

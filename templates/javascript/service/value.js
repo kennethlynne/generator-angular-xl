@@ -1,4 +1,7 @@
-'use strict';
+(function(){
+  "use strict";
 
-angular.module('<%= scriptAppName %>')
-    .value('<%= cameledName %>', 42);
+  angular.module('<%= scriptAppName %>')
+      .value('<%= cameledName %>', 42);
+
+}());

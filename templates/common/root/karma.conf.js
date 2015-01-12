@@ -7,7 +7,7 @@ module.exports = function(config) {
         return appPath + '/' + path;
     };
 
-    var appPath = (require('./bower.json').appPath || 'app');
+    var appPath = (require('./bower.json').appPath || 'src');
     var js = require('./resources.json').javascript;
 
     var jsFiles = js.external.concat(js.app).map(mapAppPath);
@@ -70,7 +70,7 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: files,
 
-        reporters: [/*'spec', */'progress', 'coverage'],
+        reporters: [/*'spec', */'story', 'coverage'],
 
         // optionally, configure the reporter
         coverageReporter: {
@@ -106,7 +106,7 @@ module.exports = function(config) {
             // setting this option will create only a single module that contains templates
             // from all the files, so you can load them all with module('foo')
             moduleName: 'compiledTemplates',
-            stripPrefix: 'app/'
+            stripPrefix: 'src/'
         },
 
 

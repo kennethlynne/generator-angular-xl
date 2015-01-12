@@ -9,13 +9,13 @@ describe('Controller: IndexCtrl', function () {
         module('<%= scriptAppName %>');
 
        //Make external json used by dev mock available in tests
-       module('app/dev/my-test-mock.json');
+       module('<%= appPath %>/dev/my-test-mock.json');
 
-      inject(function ($controller, $rootScope, _appDevMyTestMock_) {
+      inject(function ($controller, $rootScope, _<%= appPath %>DevMyTestMock_) {
             scope = $rootScope.$new();
             IndexCtrl = $controller('IndexCtrl', {
                 $scope: scope,
-                modelPromise: _appDevMyTestMock_
+                modelPromise: _<%= appPath %>DevMyTestMock_
             });
         });
     });

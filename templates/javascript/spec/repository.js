@@ -51,7 +51,7 @@ describe('Model Repository: <%= classedName %>Repository', function () {
             expect(response.id).toEqual(5);
         });
 
-        it('should not do subsequent calls if model already exits in pool', function() {
+        it('should not do subsequent calls if model already exists in pool', function() {
             $httpBackend.expectGET(Model.$settings.url + '/5').respond(200, {id: 5});
             <%= classedName %>Repository.getById(5);
             $httpBackend.flush();

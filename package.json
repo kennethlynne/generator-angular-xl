@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-cmelion",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -13,7 +13,7 @@
   "homepage": "https://github.com/cmelion/generator-angular-cmelion",
   "bugs": "https://github.com/cmelion/generator-angular-cmelion/issues",
   "author": "Charles Fulnecky",
-  "main": "app/index.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/cmelion/generator-angular-cmelion.git"

@@ -1,24 +1,30 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
-    .provider('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>')
+      .provider('<%= cameledName %>', providerFunction);
 
-        // Private variables
-        var salutation = 'Hello';
+    function providerFunction () {
 
-        // Private constructor
-        function Greeter() {
-            this.greet = function () {
-                return salutation;
-            };
-        }
+      // Private variables
+      var salutation = 'Hello';
 
-        // Configuration API
-        this.setSalutation = function (s) {
-            salutation = s;
+      // Private constructor
+      function Greeter() {
+        this.greet = function () {
+          return salutation;
         };
+      }
 
-        this.$get = function () {
-            return new Greeter();
-        };
-    });
+      // Configuration API
+      this.setSalutation = function (s) {
+        salutation = s;
+      };
+
+      this.$get = function () {
+        return new Greeter();
+      };
+    }
+
+}());
+
