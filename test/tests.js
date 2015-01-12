@@ -36,7 +36,7 @@ describe('angular-cmelion generator', function () {
     describe('App', function () {
         it('should use the correct app name', function() {
             angular.run([], function () {
-                var index_html = fs.readFileSync('app/index.html', 'utf8');
+                var index_html = fs.readFileSync('src/index.html', 'utf8');
                 var regex_html = new RegExp('ng-app=\"testApp\"');
                 assert.ok(regex_html.test(index_html), 'index.html template using a wrong appName');
                 done();
@@ -67,7 +67,7 @@ describe('angular-cmelion generator', function () {
                         ['test/unit/spec/states/thing/index/thing-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/states/thing/index/thing-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('src/states/thing/index/thing-controller.js', 'utf8');
                     var urlRegex = new RegExp('url: \'/thing\'');
                     assert.ok(urlRegex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
@@ -93,13 +93,13 @@ describe('angular-cmelion generator', function () {
             angular.run([], function () {
                 controllerGenerator.run([], function () {
                     helpers.assertFiles([
-                        ['app/states/school/details/index/details-controller.js'],
-                        ['app/states/school/details/index/_school-details-state.scss'],
-                        ['app/states/school/details/index/main-view.html'],
+                        ['src/states/school/details/index/details-controller.js'],
+                        ['src/states/school/details/index/_school-details-state.scss'],
+                        ['src/states/school/details/index/main-view.html'],
                         ['test/unit/spec/states/school/details/index/details-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/states/school/details/index/details-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('src/states/school/details/index/details-controller.js', 'utf8');
                     var regex = new RegExp('url: \'/school/details\'');
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
@@ -132,7 +132,7 @@ describe('angular-cmelion generator', function () {
                         ['test/unit/spec/states/school/details/one/index/one-controller.js']
                     ]);
 
-                    var controllerSrc = fs.readFileSync('app/states/school/details/one/index/one-controller.js', 'utf8');
+                    var controllerSrc = fs.readFileSync('src/states/school/details/one/index/one-controller.js', 'utf8');
                     var regex = new RegExp('url: \'/school/details/one\'');
                     assert.ok(regex.test(controllerSrc), 'controller registers on wrong url: ' + controllerSrc);
 
