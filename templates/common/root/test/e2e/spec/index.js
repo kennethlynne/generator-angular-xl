@@ -1,10 +1,8 @@
-describe('Index route', function () {
-   var protractor = protractor.getInstance();
-    
-    describe('index', function () {
-        it('should display the correct title', function() {
-            protractor.get('/#');
-            expect(protractor.getTitle()).toContain('generator-angular-cmelion');
-        });
-    })
+describe('angular-cmelion generator homepage', function() {
+  it('should say Hello', function() {
+    browser.get('#/');
+
+    var message = element(by.binding('message'));
+    expect(message.getText()).toEqual('Hello world!');
+  });
 });

@@ -18,3 +18,5 @@ Use appPath to configure mock data injection into tests.
 
 Move Grunt task configurations into separate files under the config directory
 ** currently unable to copy config files without resorting to hack: "yeoman": "{<%= bugfix %>}"
+
+Added Gruntfile-e2e.js for generating coverage reports with Protractor
