@@ -1,49 +1,57 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
-    .config(function ($httpProvider, Config, $provide) {
-        if(!Config.API.useMocks) return;
+  angular.module('<%= scriptAppName %>')
+      .config(configFunction)
+      .run(runFunction);
 
-        console.log('Stubbing API');
-        console.log('************');
+  function configFunction ($httpProvider, Config, $provide) {
+    if(!Config.API.useMocks) return;
 
-        $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
+    console.log('Stubbing API');
+    console.log('************');
 
-        var APIUrl = (Config.API.protocol + '://' + Config.API.host + ':' + Config.API.port + Config.API.path + '/');
+    $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 
-        $httpProvider.interceptors.push(function ($q, $timeout, Config, $log) {
-            return {
-                'request': function (config) {
-                    $log.log('Requesting ' + config.url, config);
-                    return config;
-                },
-                'response': function (response) {
-                    var deferred = $q.defer();
+    var APIUrl = (Config.API.protocol + '://' + Config.API.host + ':' + Config.API.port + Config.API.path + '/');
 
-                    if(response.config.url.indexOf(APIUrl) != 0) return response; //Only handle calls to the API
+    $httpProvider.interceptors.push(function ($q, $timeout, Config, $log) {
+      return {
+        'request': function (config) {
+          $log.log('Requesting ' + config.url, config);
+          return config;
+        },
+        'response': function (response) {
+          var deferred = $q.defer();
 
-                    //Fake delay on response from APIs and other urls
-                    $log.log('Delaying response with ' + Config.API.fakeDelay + 'ms');
-                    $timeout(function () {
-                        deferred.resolve(response);
-                    }, Config.API.fakeDelay);
+          if(response.config.url.indexOf(APIUrl) != 0) return response; //Only handle calls to the API
 
-                    return deferred.promise;
-                }
+          //Fake delay on response from APIs and other urls
+          $log.log('Delaying response with ' + Config.API.fakeDelay + 'ms');
+          $timeout(function () {
+            deferred.resolve(response);
+          }, Config.API.fakeDelay);
 
-            }
-        })
-
-    })
-    .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape) {
-        if(!Config.API.useMocks) return;
-
-        function passThrough(url) {
-            $httpBackend.whenGET( new RegExp( regexEscape( url ) ) ).passThrough();
+          return deferred.promise;
         }
 
-        passThrough(Config.viewsDir);
-        passThrough(Config.componentsDir);
-        passThrough(Config.statesDir);
+      }
+    })
 
-     });
+  }
+
+  function runFunction (Config, $httpBackend, $log, APIBaseUrl, regexEscape) {
+    if(!Config.API.useMocks) return;
+
+    function passThrough(url) {
+      $httpBackend.whenGET( new RegExp( regexEscape( url ) ) ).passThrough();
+    }
+
+    passThrough(Config.viewsDir);
+    passThrough(Config.componentsDir);
+    passThrough(Config.statesDir);
+
+  }
+
+
+}());
