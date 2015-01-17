@@ -48,7 +48,6 @@ function rewrite (args) {
   if (re.test(args.haystack)) {
     return args.haystack;
   }
-
   var lines = args.haystack.split('\n');
 
   var otherwiseLineIndex = 0;
@@ -69,6 +68,7 @@ function rewrite (args) {
   }
 
   lines.splice(otherwiseLineIndex, 0, args.splicable.map(function (line) {
+    console.log('adding: ' + line);
     return spaceStr + line;
   }).join('\n'));
 

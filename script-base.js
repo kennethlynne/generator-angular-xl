@@ -101,9 +101,11 @@ Generator.prototype.htmlTemplate = function (src, dest) {
 Generator.prototype.appendStyleToScss = function (target, style) {
     try {
         var appPath = this.env.options.appPath;
-        var fullPath = path.join(appPath, 'styles', target);
-        angularUtils.appendFile({
+        var fullPath = path
+          .join(appPath, 'styles', target);
+        angularUtils.rewriteFile({
             file: fullPath,
+            splicable: ['@import \'' + style + '\';'],
             lines: [
                 '@import \'' + style + '\';'
             ]
