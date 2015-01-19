@@ -41,7 +41,8 @@
     }
   }<% } %>
     function controllerFunction ($scope<% if (initService) { %>, init<% } %>) {
-      $scope.foo = 'bar';
+      var vm = this;
+      this.foo = 'bar';
     }
 
 }());

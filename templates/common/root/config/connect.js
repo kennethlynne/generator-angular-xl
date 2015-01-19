@@ -1,5 +1,5 @@
 module.exports = function(){
-  var host = '0.0.0.0'; //Useful for debugging devices via host machines ip
+  var host = 'localhost'; //Useful for debugging devices via host machines ip
   var port = 9000;
   var yeomanConfig = {
     app: require('../bower.json').appPath || 'src',

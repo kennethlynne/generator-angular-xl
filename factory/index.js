@@ -14,6 +14,6 @@ Generator.prototype.createServiceFiles = function createServiceFiles() {
     'service/factory',
     'spec/service',
     'factories/',
-    '../unit/spec/factories/'
+    '../unit/spec/scripts/factories/'
   );
 };

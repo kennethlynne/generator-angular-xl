@@ -1,4 +1,3 @@
-// Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
 'use strict';
 var path = require('path');
 
@@ -82,9 +81,9 @@ module.exports = function(grunt) {
           ]
         }, {
           expand: true,
-          cwd: '.tmp/images',
-          dest: '<%= yeoman.e2e %>/instrumented/<%= yeoman.app %>/images',
-          src: ['generated/*']
+          cwd: '.tmp',
+          dest: '<%= yeoman.e2e %>/instrumented/<%= yeoman.app %>',
+          src: ['**/*']
         }, {
           expand:true,
           cwd: '.',

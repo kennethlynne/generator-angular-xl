@@ -1,11 +1,9 @@
 {
   "server": [
-    "copy:styles",
+    "sass:dev",
     "copy:dev"
   ],
   "dist": [
-    "copy:styles",
-    "imagemin",
     "htmlmin"
   ]
 }

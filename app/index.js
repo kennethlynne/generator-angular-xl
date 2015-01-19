@@ -133,11 +133,11 @@ Generator.prototype.askForModules = function askForModules() {
 };
 
 Generator.prototype.readIndex = function readIndex() {
-  this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
+  this.indexFile = this.engine(this.read('../../templates/common/index.template'), this);
 };
 
 Generator.prototype.createIndexHtml = function createIndexHtml() {
-  this.write(path.join(this.appPath, 'index.html'), this.indexFile);
+  this.write(path.join(this.appPath, 'index.template'), this.indexFile);
 };
 
 Generator.prototype.packageFiles = function () {
@@ -163,11 +163,11 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/framework/mainCtrl.js', this.env.options.appPath + '/states/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/states/index/index/index.js');
     //Repositories
-    this.template('../../templates/javascript/repository.js', this.env.options.appPath + '/scripts/factories/my-test-repository.js', context);
-    this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/scripts/repositories/my-test-repository.js', context);
+    this.template('../../templates/javascript/repository.js', this.env.options.appPath + '/scripts/repositories/my-test-repository.js', context);
+    this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/repositories/my-test-repository.js', context);
     //Models
     this.template('../../templates/javascript/model.js', this.env.options.appPath + '/scripts/models/my-test.js', context);
-    this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/my-test.js', context);
+    this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/models/my-test.js', context);
     //Mocks
     this.template('../../templates/javascript/framework/mock-api.js', this.env.options.appPath + '/dev/mock-api.js');
     this.template('../../templates/javascript/mock-crud-api.js', this.env.options.appPath + '/dev/' + context.dasherizedName + '-mock.js', context);

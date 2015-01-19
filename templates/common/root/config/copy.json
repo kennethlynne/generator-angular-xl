@@ -9,7 +9,7 @@
         "src": [
           "*.{ico,png,txt}",
           ".htaccess",
-          "assets/images/**/*.{gif,webp}",
+          "assets/images/**/*.{gif,webp,png}",
           "assets/fonts/**/*",
           "CNAME",
           "package.json"
@@ -24,12 +24,6 @@
         ]
       }
     ]
-  },
-  "styles": {
-    "expand": true,
-    "cwd": "<%= yeoman.app %>/styles",
-    "dest": ".tmp/styles/",
-    "src": "**/*.css"
   },
   "tmpStyles2dist": {
     "expand": true,
@@ -50,6 +44,11 @@
     "src": [
       "./index.html"
     ]
+  },
+  "indexHTMLTemplate": {
+    "src": "<%= yeoman.app %>/index.template",
+    "dest": "<%= yeoman.app %>/index.html"
+
   },
   "app": {
     "expand": true,

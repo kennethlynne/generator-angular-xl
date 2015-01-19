@@ -3,10 +3,8 @@
 var path = require('path');
 
 module.exports = function (grunt) {
-    require('load-grunt-tasks')(grunt);
-    require('time-grunt')(grunt);
-
-    var includes = require('./resources.json');
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
 
   //Load external task configs from config folder
   var configs = require('load-grunt-configs')(grunt);
@@ -17,26 +15,6 @@ module.exports = function (grunt) {
     dist: require('./bower.json').distPath || 'dist'
   };
 
-  var externalJsSrc = includes.javascript.external.map(function (path) {
-    return yeomanConfig.app + '/' + path;
-  });
-
-  var externalJsMin = includes.javascript.external.map(function (path) {
-    path = path.replace(/(\.js|\.src.js)/, ".min.js");
-    return yeomanConfig.app + '/' + path;
-  });
-
-  var appJs = includes.javascript.app.map(function (path) {
-    return yeomanConfig.app + '/' + path;
-  });
-
-  var prototypeAppJs = appJs.slice(0); //copy appJs
-
-  prototypeAppJs.splice(1, 0, (yeomanConfig.app + '/dev/**/*.js') ); //insert dev stuff (mocks etc) after module.js
-
-  var cssFiles = includes.css.map(function (path) {
-    return '.tmp/' + path;
-  });
 
   //Aliases
   grunt.registerTask('Run-app', [
@@ -45,6 +23,16 @@ module.exports = function (grunt) {
 
   grunt.registerTask('Run-app-dist', [
     'server:dist'
+  ]);
+
+  grunt.registerTask('Sass-continuos(ruby)', [
+    'exec:sass_watch',
+    'replace:cssSourceMap'
+  ]);
+
+  grunt.registerTask('Sass-once(ruby)', [
+    'exec:sass_dev',
+    'replace:cssSourceMap'
   ]);
 
   grunt.registerTask('Test-once', [
@@ -65,7 +53,6 @@ module.exports = function (grunt) {
     'karma:continuous'
   ]);
 
-
   grunt.registerTask('changelog', [
     'changelog',
     'bump'
@@ -77,21 +64,15 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('linkAssets-dev', [
-    'sails-linker:devStyles',
     'sails-linker:devJs'
   ]);
 
   grunt.registerTask('linkAssets-production', [
-    'sails-linker:prodStyles',
     'sails-linker:prodJs'
   ]);
 
   grunt.registerTask('test', [
     'Test-once'
-  ]);
-
-  grunt.registerTask('test-e2e', [
-    'protractor'
   ]);
 
   //Tasks
@@ -101,7 +82,6 @@ module.exports = function (grunt) {
       console.log('Building using development profile');
       grunt.task.run([
         'clean',
-        'copy:styles',
         'copy:tmpStyles2dist',
         'copy:app',
         'linkAssets-dev'
@@ -116,8 +96,7 @@ module.exports = function (grunt) {
         'linkAssets-dev'
       ]);
     }
-    else
-    {
+    else {
       console.log('Building using production profile');
       grunt.task.run([
         'ddescribe-iit',
@@ -125,12 +104,14 @@ module.exports = function (grunt) {
         'test',
         'clean',
         'concurrent:dist',
+        'sass:dist',
         'ngAnnotate',
         'uglify',
         'concat:js',
         'concat:css',
         'copy:dist',
         'cssmin',
+        'copy:indexHTMLTemplate',
         'copy:indexHTML',
         'linkAssets-production',
         'htmlmin',
@@ -139,7 +120,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('deploy', function(){
+  grunt.registerTask('deploy', function () {
     grunt.task.run([
       'gitinfo',
       'replace:baseHref',
@@ -153,12 +134,14 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'sass:dev',
+      'copy:indexHTMLTemplate',
       'clean:server',
       'concurrent:server',
       'connect:livereload',
+      'replace:cssSourceMap',
       'linkAssets-dev',
       'watch'
     ]);
   });
+
 };

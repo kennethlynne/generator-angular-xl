@@ -20,10 +20,8 @@
     <!-- TODO: Add startup image - On iPhone and iPod touch, the image must be 320 x 480 pixels and in portrait orientation.-->
     <!--<link rel="apple-touch-startup-image" href="images/startup.png">-->
 
-    <!-- TODO: Insert Qbaka script-->
-    <!-- /Qbaka -->
 
-    <!--INJECT STYLES--><!--/INJECT STYLES-->
+    <link rel="stylesheet" href="styles/main.css">
 
   </head>
   <body>

@@ -1,13 +1,16 @@
 {
   "options": {
-    "interval": 5007
+    "interval": 2007
   },
   "styles": {
+    "options": {
+      "livereload": true
+    },
     "files": [
-      "<%= yeoman.app %>/styles/**/*.css"
+      ".tmp/styles/**/*.css"
     ],
     "tasks": [
-      "copy:styles"
+      "replace:cssSourceMap"
     ]
   },
   "livereload": {
@@ -16,8 +19,7 @@
     },
     "files": [
       "<%= yeoman.app %>/**/*.html",
-      ".tmp/styles/**/*.css",
-      "{.tmp,<%= yeoman.app %>}/**/*.js",
+      "<%= yeoman.app %>/**/*.js",
       "<%= yeoman.app %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}"
     ]
   },

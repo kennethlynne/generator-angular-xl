@@ -1,7 +1,7 @@
 (function(){
-'use strict';
+  'use strict';
 
-  angular.module('<%= scriptAppName %>')
+  angular.module('test')
     .config(configFunction)
     .controller('IndexCtrl', controllerFunction);
 
@@ -9,17 +9,19 @@
     $stateProvider.state('index', stateFactory('Index', {
       url:'/',
       resolve: {
-        //help ng-min & ng-annotate out
-        modelPromise: ['MyTestRepository',function(MyTestRepository){
-          return MyTestRepository.getAll();
-        }]
+        modelPromise: getAll
       }
     }));
   }
 
-  function controllerFunction ($scope, modelPromise) {
-    $scope.message = modelPromise[0].text;
-    console.log('first item text from modelPromise', $scope.message);
+  function controllerFunction (modelPromise) {
+    var vm = this;
+    vm.message = modelPromise[0].text;
+    console.log('first item text from modelPromise', vm.message);
+  }
+
+  function getAll (MyTestRepository) {
+    return MyTestRepository.getAll();
   }
 
 }());

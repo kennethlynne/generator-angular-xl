@@ -1,6 +1,9 @@
 {
+  "sass_watch": {
+    "command": "sass --watch <%= yeoman.app %>/:.tmp/"
+  },
   "sass_dev": {
-    "command": "sass --load-path <%= yeoman.app %>/bower_components/ --watch <%= yeoman.app %>/ "
+    "command": "sass <%= yeoman.app %>/styles/main.scss:.tmp/styles/main.css"
   },
   "sass_dist": {
     "command": ""
