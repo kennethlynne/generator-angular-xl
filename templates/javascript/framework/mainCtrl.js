@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('test')
+  angular.module('<%= scriptAppName %>')
     .config(configFunction)
     .controller('IndexCtrl', controllerFunction);
 
