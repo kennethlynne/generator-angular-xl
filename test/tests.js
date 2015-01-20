@@ -209,7 +209,7 @@ describe('angular-cmelion generator', function () {
                 factoryGenerator.run([], function () {
                     helpers.assertFiles([
                         ['src/scripts/factories/factory-thing.js'],
-                        ['test/unit/spec/factories/factory-thing.js']
+                        ['test/unit/spec/scripts/factories/factory-thing.js']
                     ]);
                     done();
                 });
