@@ -100,7 +100,6 @@ module.exports = function (grunt) {
       console.log('Building using production profile');
       grunt.task.run([
         'ddescribe-iit',
-        'test-e2e',
         'test',
         'clean',
         'concurrent:dist',
