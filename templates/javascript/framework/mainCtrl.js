@@ -20,6 +20,9 @@
     console.log('first item text from modelPromise', vm.message);
   }
 
+  //ng-annotate won't catch this DI and the app will fail silently
+  getAll.$inject = ['MyTestRepository'];
+
   function getAll (MyTestRepository) {
     return MyTestRepository.getAll();
   }
