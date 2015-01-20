@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-cmelion",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Custom yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "postinstall": "bower cache clean && bower install",
-    "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd ./test/temp && npm cache clear && npm install && bower cache clean  && bower install && grunt test && grunt test-e2e"
+    "test": "mocha ./test/tests.js && npm install -g grunt-cli bower && rm -rf ./test/temp/ && node ./test/set-up.js && cd ./test/temp && npm cache clear && npm install && bower cache clean  && bower install && grunt Test-once"
   },
   "dependencies": {
     "yeoman-generator": "~0.13.0",
