@@ -6,12 +6,14 @@
       .component('navbar', componentFunction);
 
     function controllerFunction($scope, $element) {
-      $scope.text = 'this is the navbar component';
+      var vm = this;
+      vm.text = 'this is the navbar component';
     }
 
     function componentFunction() {
       return {
-        controller: 'navbarComponentCtrl'
+        controller: 'navbarComponentCtrl',
+        controllerAs: 'vm'
       };
     }
 

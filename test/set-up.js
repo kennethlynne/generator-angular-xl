@@ -32,13 +32,6 @@ helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
 
     helpers.mockPrompt(angular, {
         modules: [
-            'resourceModule',
-            'cookiesModule',
-            'sanitizeModule',
-            'restangularModule',
-            'touchModule',
-            'angularUIBootstrapModule',
-            'ngStorageModule'
         ]
     });
 

@@ -42,7 +42,7 @@
   }<% } %>
     function controllerFunction ($scope<% if (initService) { %>, init<% } %>) {
       var vm = this;
-      this.foo = 'bar';
+      vm.foo = 'bar';
     }
 
 }());

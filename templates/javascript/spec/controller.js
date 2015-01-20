@@ -17,7 +17,7 @@ describe('Controller(<%= stateUrl %>): <%= classedName %>Ctrl', function () {
     });
 
     it('should attach init data to scope', function () {
-        expect(scope.foo).toEqual('bar');
+        expect(<%= classedName %>.foo).toEqual('bar');
     });
 });
 <% if (initService) { %>

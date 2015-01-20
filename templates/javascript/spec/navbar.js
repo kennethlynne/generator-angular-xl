@@ -44,7 +44,7 @@ describe('Component: navbarComponent', function () {
         });
 
         it('should render a message', function () {
-            expect(scope.text).toEqual('this is the navbar component');
+            expect(Ctrl.text).toEqual('this is the navbar component');
         });
     });
 

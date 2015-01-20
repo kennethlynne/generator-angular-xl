@@ -6,12 +6,14 @@
       .component('<%= cameledName %>', componentFunction);
 
   function controllerFunction ($scope, $element) {
-    $scope.text = 'this is the <%= name %> component';
+    var vm = this;
+    vm.text = 'this is the <%= name %> component';
   }
 
   function componentFunction () {
     return {
-      controller: '<%= cameledName %>ComponentCtrl'
+      controller: '<%= cameledName %>ComponentCtrl',
+      controllerAs: 'vm'
     };
   }
 
