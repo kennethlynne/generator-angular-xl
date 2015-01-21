@@ -163,7 +163,7 @@ describe('angular-cmelion generator', function () {
                         ['src/components/thing-thing/thing-thing.js'],
                         ['src/components/thing-thing/_thing-thing.scss'],
                         ['src/components/thing-thing/thing-thing.html'],
-                        ['test/unit/spec/components/thing-thing.js']
+                        ['test/unit/spec/components/thing-thing/thing-thing.js']
                     ]);
                     done();
                 });
