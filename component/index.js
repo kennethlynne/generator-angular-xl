@@ -24,15 +24,20 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createComponentFiles = function createComponentFiles() {
+    this.viewClassesForScss = '.' + this.dasherizedName + '-component';
+    this.viewClassesForHTML = this.dasherizedName + '-component';
+    var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
+
     this.generateSourceAndTest(
         'component',
         'spec/component',
         ('../components/' + _.dasherize(this.name)),
-        '../unit/spec/components'
+        '../unit/spec/components/' + targetPath
     );
 
-    this.template('../common/component.scss', path.join(this.env.options.appPath, 'components', this.dasherizedName, '_' + this.dasherizedName + '.scss'));
-    this.addStyleToComponentScss('../components/' + _.dasherize(this.name) + '/' + _.dasherize(this.name));
 
-    this.template('../common/component.html', path.join(this.env.options.appPath, 'components', this.dasherizedName, this.dasherizedName + '.html'));
+    this.template('../common/component.scss', path.join(this.env.options.appPath, 'components', targetPath, '_' + this.dasherizedName + '.scss'));
+    this.addStyleToComponentScss('../components/' + targetPath + '/' + this.dasherizedName);
+
+    this.template('../common/component.html', path.join(this.env.options.appPath, 'components', targetPath, this.dasherizedName + '.html'));
 };
