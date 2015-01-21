@@ -60,13 +60,13 @@ Open another terminal and run `grunt server` to start the local server
 
 You can also use the convenient aliases from the grunt console or via shell tab auto-completion:
 
-* Run-app - Runs an the app directly from source using available mocks (sass compiled into .tmp/styles/main.css)
-* Run-app-dist - Runs an optimized "production" version of the app (no mocks)
-* Sass-continuos(ruby) - Runs ruby sass, watching for changes and producing css with source maps
-* Sass-once(ruby) - Single run producing css with source maps
-* Test-once - Runs Karma unit tests once exiting on completion or failure via PhantomJS
-* Test-continuous-debug - Runs tests each time a source change is detected via Chrome
-* Test-continuous-coverage - Runs instrumented code to help debug code coverage, launching coverage report in Chrome
+* `Run-app` - Runs an the app directly from source using available mocks (sass compiled into .tmp/styles/main.css)
+* `Run-app-dist` - Runs an optimized "production" version of the app (no mocks)
+* `Sass-continuos(ruby)` - Runs ruby sass, watching for changes and producing css with source maps
+* `Sass-once(ruby)` - Single run producing css with source maps
+* `Test-once` - Runs Karma unit tests once exiting on completion or failure via PhantomJS
+* `Test-continuous-debug` - Runs tests each time a source change is detected via Chrome
+* `Test-continuous-coverage` - Runs instrumented code to help debug code coverage, launching coverage report in Chrome
 
 # Developing with the generator
 
