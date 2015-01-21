@@ -29,5 +29,5 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     var targetPath = this.slugifiedPath.join('/') + '/' + this.dasherizedName;
     this.template('common/view.html', path.join(this.env.options.appPath, 'states', targetPath, 'index', 'main-view.html'));
     this.template('common/state.scss', path.join(this.env.options.appPath, 'states', targetPath, 'index', '_' + this.dasherizedName + '-state' + '.scss'));
-    this.addStyleToStatesScss('../states' + targetPath + '/index/' + this.dasherizedName + '-state');
+    this.addStyleToStatesScss('../states/' + targetPath + '/index/' + this.dasherizedName + '-state');
 };
