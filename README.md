@@ -58,7 +58,15 @@ Run `grunt exec:sass_dev` to watch for css changes
 
 Open another terminal and run `grunt server` to start the local server
 
-*Awesomeness ensues*
+You can also use the convenient aliases from the grunt console or via shell tab auto-completion:
+
+* Run-app - Runs an the app directly from source using available mocks (sass compiled into .tmp/styles/main.css)
+* Run-app-dist - Runs an optimized "production" version of the app (no mocks)
+* Sass-continuos(ruby) - Runs ruby sass, watching for changes and producing css with source maps
+* Sass-once(ruby) - Single run producing css with source maps
+* Test-once - Runs Karma unit tests once exiting on completion or failure via PhantomJS
+* Test-continuous-debug - Runs tests each time a source change is detected via Chrome
+* Test-continuous-coverage - Runs instrumented code to help debug code coverage, launching coverage report in Chrome
 
 # Developing with the generator
 
@@ -69,6 +77,7 @@ Open another terminal and run `grunt server` to start the local server
 `grunt changelog` - bumps version numbers in `bower.json` and `package.json` and creates a changelog based on your commit history using [these](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) conventions
 
 The following commands will build the application into the `/dist` folder.
+
 * `grunt build` - production profile, minified, concatinated and awesomified for production
 * `grunt build:dev` - development profile, unminified code
 * `grunt build:prototype` - same as dev profile, only stubbing out the API witch in turn makes this app a prototype :)
@@ -315,14 +324,6 @@ The following packages are always installed by the [app](#app) generator:
 * ng-symbiosis-repository
 * ng-symbiosis-model
 
-The following additional modules are optional:
-
-* angular-cookies
-* angular-loader
-* angular-touch
-* angular-resource
-* angular-sanitize
-* ngStorage
 
 All of these can be updated with `bower update` as new versions of AngularJS are released.
 When you install new dependancies you have to add a reference to the script files in `resources.json` under ```external```. The build task will inject this into `index.html` during runtime, and when you build the project it will by convention use the minified version of the source file, that should be located in the same folder, with the exact same filename with a `.min` suffix. This will be concatenated without minification.
@@ -331,7 +332,7 @@ When you install new dependancies you have to add a reference to the script file
 Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.
 
 ### Output
-You can change the `app` directory by adding a `appPath` property to `bower.json`. For instance, if you wanted to easily integrate with Express.js, you could add the following:
+You can change the `app` directory by adding a `appPath` property to `bower.json` (the default is `src`). For instance, if you wanted to easily integrate with Express.js, you could add the following:
 
 ```json
 {
@@ -367,6 +368,32 @@ Read more about the HTML5 Appcache specification [here](http://appcachefacts.inf
 Running `grunt test` will run the unit tests with karma.
 Under the folder ```test/coverage``` you will find your whole application structure mapped into matching HTML documents describing how tests cover your code. Use this to your advantage. Crush bugs before they are born.
 
+
+## Grunt Tools
+
+```Webstorm
+Context menu of a Gruntfile.js - Open Grunt Console
+```
+
+```Webstorm
+View | Tool Windows | Grunt
+```
+
+[Grunt Tool Window](http://www.jetbrains.com/webstorm/webhelp/grunt-tool-window.html)
+
+## Shell tab auto-completion
+To enable tab auto-completion for Grunt, add one of the following lines to your `~/.bashrc` or `~/.zshrc` file.
+
+```bash
+# Bash, ~/.bashrc
+eval "$(grunt --completion=bash)"
+```
+
+```bash
+# Zsh, ~/.zshrc
+eval "$(grunt --completion=zsh)"
+```
+
 ## Contribute
 
 See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)
@@ -382,5 +409,3 @@ When submitting a new feature, add tests that cover the feature.
 ## License
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
-
-[![Analytics](https://ga-beacon.appspot.com/UA-46835353-1/generator-angular-cmelion/README)](https://github.com/igrigorik/ga-beacon)
