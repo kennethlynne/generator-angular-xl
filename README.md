@@ -1,6 +1,6 @@
 # generator-angular-cmelion 
 
-> [generator-angular-cmelion] - An opinionated kickstarter for your next large scale AngularJS application.
+> [generator-angular-cmelion] - An opinionated kickstarter and [Style Guide](https://github.com/johnpapa/angularjs-styleguide) for syntax, conventions, and structuring your next large scale AngularJS application.
 Avoid boilerplate and improve productivity and consistency.
 
 
