@@ -1,5 +1,5 @@
 (function(){
-  "use strict";
+  'use strict';
 
   angular.module('<%= scriptAppName %>')
       .run(function (Config, $httpBackend, $log, APIBaseUrl, regexEscape, guid) {

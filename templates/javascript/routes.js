@@ -6,7 +6,7 @@
 
     function configFunction ($urlRouterProvider) {
       $urlRouterProvider.when('', '/');
-      $urlRouterProvider.otherwise("/error?code=404");
+      $urlRouterProvider.otherwise('/error?code=404');
     }
 
 }());
