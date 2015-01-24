@@ -18,7 +18,7 @@ Avoid boilerplate and improve productivity and consistency.
 ## Features
 - Lightweight SASS only (no Compass and no jQuery) version of https://github.com/kennethlynne/generator-angular-xl.
 - Additional `optimizations` are pending
-- All scripts in `app/scripts`, `app/components` and `app/states` and styles in `app/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
+- All scripts in `src/scripts`, `src/components` and `src/states` and styles in `src/styles` will be automatically included in minifiers, index.html and tests. Specify configuration once and share it between *all the things*. Need more control? Check out [resources.json](#resources.json).
 - Controllers, views and styling are grouped on a per component and state basis to facilitate high cohesion.
 - Test coverage using [Istanbul](http://gotwarlost.github.io/istanbul/) helps you find exactly what the lines of code that are tested or not. See an [example output](http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html)
 - Use [components](#component) as syntactic sugar to use directives as web components with a convention over configuration approach
@@ -28,7 +28,7 @@ Avoid boilerplate and improve productivity and consistency.
 - Deploy to your [GitHub page](http://pages.github.com/) in one command: ```grunt deploy```
 - Intercept calls to an API and provide a [mock API](#crud-mock) to do fast prototyping
 
-- Generate `manifest.appcache` to allow your application to be consumed offline. It will handle busting cache for you by renaming files and adding a hash of the folder to the manifest.
+- Generate `manifest.appcache` to allow your application to be consumed offline. (It can optionally handle busting cache for you by renaming files and adding a hash of the folder to the manifest).
 
 Maintainer: [Charles Fulnecky](https://github.com/cmelion)
 
