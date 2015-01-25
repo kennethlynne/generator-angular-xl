@@ -1,21 +1,21 @@
 (function(){
-    'use strict';
+  'use strict';
 
-    angular.module('<%= scriptAppName %>.components')
-        .controller('<%= cameledName %>ComponentCtrl', controllerFunction)
-        .component('<%= cameledName %>', componentFunction);
+  angular.module('<%= scriptAppName %>.components')
+      .controller('<%= cameledName %>ComponentCtrl', controllerFunction)
+      .component('<%= cameledName %>', componentFunction);
 
-    function controllerFunction ($scope, $element) {
-        var vm = this;
-        vm.text = 'this is the <%= name %> component';
-    }
+  function controllerFunction ($scope, $element) {
+    var vm = this;
+    vm.text = 'this is the <%= name %> component';
+  }
 
-    function componentFunction () {
-        return {
-            templateUrl: '<%= viewTemplateUrl %>',
-            controller: '<%= cameledName %>ComponentCtrl'
-        };
-    }
+  function componentFunction () {
+    return {
+      controller: '<%= cameledName %>ComponentCtrl',
+      controllerAs: 'vm'
+    };
+  }
 
 }());
 

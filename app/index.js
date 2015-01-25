@@ -61,7 +61,7 @@ Generator.prototype.askForModules = function askForModules() {
 
   this.prompt(prompts, function (props) {
 
-    var angMods = ["'cmelion.routeProvider'","'kennethlynne.componentFactory'", "'ngSymbiosis.utils'",  "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
+    var angMods = ["'cmelion.routeProvider'","'cmelion.componentFactory'", "'ngSymbiosis.utils'",  "'ngSymbiosis.repository'", "'ngSymbiosis.model'", "'" + this.scriptAppName + ".components'", "'ngAnimate'", "'ajoslin.promise-tracker'", "'cgBusy'", "'chieffancypants.loadingBar'", "'ui.router'", "'ui.bootstrap'"];
 
     this.env.options.angularDeps = "\n  " + angMods.join(",\n  ") +"\n";
 
