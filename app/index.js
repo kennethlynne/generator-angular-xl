@@ -38,10 +38,6 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.hookFor('angular-xl:repository', {
-    args: 'awesome'
-  });
-
   this.on('end', function () {
     this.installDependencies({ skipInstall: this.options['skip-install'] });
   });
@@ -149,6 +145,13 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function () {
+    var context = {
+      scriptAppName: this.scriptAppName,
+      classedName   : 'Awesome',
+      pluralizedName: 'awesomes',
+      dasherizedName: 'awesome'
+    };
+
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
@@ -161,5 +164,14 @@ Generator.prototype.packageFiles = function () {
     this.template('../../templates/javascript/spec/errorCtrl.js', 'test/unit/spec/states/error/index/error.js');
     this.template('../../templates/javascript/framework/mainCtrl.js', 'app/states/index/index/index.js');
     this.template('../../templates/javascript/spec/mainCtrl.js', 'test/unit/spec/states/index/index/index.js');
+
+    //Repositories
+    this.template('../../templates/javascript/repository.js', 'app/scripts/factories/awesome-repository.js', context);
+    this.template('../../templates/javascript/spec/repository.js', 'test/unit/spec/scripts/repositories/awesome-repository.js', context);
+    //Models
+    this.template('../../templates/javascript/model.js', 'app/scripts/models/awesome.js', context);
+    this.template('../../templates/javascript/spec/model.js', 'test/unit/spec/scripts/models/awsome.js', context);
+    //Mocks
     this.template('../../templates/javascript/framework/mock-api.js', 'app/dev/mock-api.js');
+    this.template('../../templates/javascript/mock-crud-api.js', 'app/dev/' + context.dasherizedName + '-mock.js', context);
 };

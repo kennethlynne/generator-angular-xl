@@ -7,7 +7,7 @@
     "sass-bootstrap": "~3.0.2",
     "bourbon": "~3.1.8",
     "angular-component-factory": "~1.3.1",
-    "angular-busy": "*",
+    "angular-busy": "4.1.0",
     "ng-symbiosis-utils": "~0.0.0",
     "ng-symbiosis-routeprovider": "~0.1.0",
     "ng-symbiosis-repository": "~0.0.0",
@@ -32,6 +32,7 @@
   },
    "resolutions": {
     "angular-promise-tracker": "~1.5.0",
-    "angular": "1.2.16"
+    "angular": "1.2.16",
+    "angular-animate": "1.2.16"
   }
 }
